@@ -1,0 +1,22 @@
+{
+  "name": "cube",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "ts-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@vitest/ui": "^1.1.1",
+    "vite-tsconfig-paths": "^4.2.3",
+    "vitest": "^1.1.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "ts-pattern": "^5.0.6"
+  }
+}
