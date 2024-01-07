@@ -1,5 +1,5 @@
 {
-  "name": "cube",
+  "name": "@repo/cube",
   "module": "index.ts",
   "type": "module",
   "scripts": {
@@ -11,12 +11,12 @@
     "@types/bun": "latest",
     "@vitest/ui": "^1.1.1",
     "vite-tsconfig-paths": "^4.2.3",
-    "vitest": "^1.1.1"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
+    "vitest": "^1.1.1",
+    "typescript": "^5.0.0",
+    "@repo/typescript-config": "workspace:*"
   },
   "dependencies": {
+    "immer": "^10.0.3",
     "ts-pattern": "^5.0.6"
   }
 }
