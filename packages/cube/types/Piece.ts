@@ -1,3 +1,4 @@
+import type { Colors } from "@/types/Colors";
 import { PieceScheme } from "@/types/PieceScheme";
 
 export enum PieceType {
@@ -9,6 +10,11 @@ export enum PieceType {
 export interface Piece {
   type: PieceType;
   scheme: PieceScheme;
+}
+
+export interface ColoredPiece {
+  type: PieceType;
+  scheme: PieceScheme<Colors>;
 }
 
 export interface CornerPiece extends Piece {

@@ -1,3 +1,6 @@
 import { Faces } from "@/types/Faces";
 
-export type PieceScheme = Record<keyof typeof Faces, Faces | undefined>;
+export type PieceScheme<Value = Faces> = Record<
+  keyof typeof Faces,
+  Value | undefined
+>;

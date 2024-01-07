@@ -33,6 +33,7 @@ export enum Rotations {
   D = "D",
   D_ = "D'",
   D2 = "D2",
+  D2_ = "D2'",
   d = "d",
   d_ = "d'",
   d2 = "d2",
@@ -41,6 +42,7 @@ export enum Rotations {
   L = "L",
   L_ = "L'",
   L2 = "L2",
+  L2_ = "L2'",
   l = "l",
   l_ = "l'",
   l2 = "l2",
@@ -49,6 +51,7 @@ export enum Rotations {
   R = "R",
   R_ = "R'",
   R2 = "R2",
+  R2_ = "R2'",
   r = "r",
   r_ = "r'",
   r2 = "r2",
@@ -57,6 +60,7 @@ export enum Rotations {
   F = "F",
   F_ = "F'",
   F2 = "F2",
+  F2_ = "F2'",
   f = "f",
   f_ = "f'",
   f2 = "f2",
@@ -65,6 +69,7 @@ export enum Rotations {
   B = "B",
   B_ = "B'",
   B2 = "B2",
+  B2_ = "B2'",
   b = "b",
   b_ = "b'",
   b2 = "b2",
@@ -88,12 +93,18 @@ export enum Rotations {
   x = "x",
   x_ = "x'",
   x2 = "x2",
+  x2_ = "x2'",
   // y
   y = "y",
   y_ = "y'",
   y2 = "y2",
+  y2_ = "y2'",
   // z
   z = "z",
   z_ = "z'",
   z2 = "z2",
+  z2_ = "z2'",
 }
+
+export const isRotation = (rotation: string): rotation is Rotations =>
+  Object.values(Rotations).includes(rotation as Rotations);
