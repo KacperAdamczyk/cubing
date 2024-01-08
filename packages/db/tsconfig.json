@@ -2,8 +2,7 @@
   "extends": "@repo/typescript-config/tsconfig.library.json",
   "compilerOptions": {
     "baseUrl": "./",
-    "esModuleInterop": true,
-    "types": ["./index.d.ts"]
+    "esModuleInterop": true
   }
   // "compilerOptions": {
   //   "lib": ["ESNext"],

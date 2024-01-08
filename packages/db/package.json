@@ -1,6 +1,6 @@
 {
   "name": "@repo/db",
-  "module": "dist/index.js",
+  "module": "index.ts",
   "type": "module",
   "scripts": {
     "generate": "drizzle-kit generate:sqlite",
@@ -18,5 +18,8 @@
   },
   "dependencies": {
     "drizzle-orm": "^0.29.3"
+  },
+  "peerDependencies": {
+    "better-sqlite3": "^9.2.2"
   }
 }

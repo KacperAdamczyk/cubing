@@ -6,8 +6,4 @@ export default defineConfig({
   format: ["esm"],
   dts: true,
   clean: true,
-  external: ["bun:sqlite"],
-  loader: {
-    ".db": "binary",
-  },
 });
