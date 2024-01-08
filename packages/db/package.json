@@ -6,7 +6,7 @@
     "generate": "drizzle-kit generate:sqlite",
     "migrate": "bun migrate.ts",
     "studio": "drizzle-kit studio",
-    "build": "tsup index.ts"
+    "build-old": "tsup index.ts"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
