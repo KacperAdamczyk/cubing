@@ -22,8 +22,6 @@ jobs:
         uses: oven-sh/setup-bun@v1
       - name: Install dependencies
         run: bun install --frozen-lockfile
-      - name: LOG
-        run: pwd
       - name: Build
         env:
           BASE_PATH: "/${{ github.event.repository.name }}"
