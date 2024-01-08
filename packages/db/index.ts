@@ -10,28 +10,32 @@ import fs from "node:fs";
 import packageJson from "./package.json";
 
 const fileName = "database.db";
+const rootsToCheck = ["./", "../../"] as const;
 const dbPath = `**/node_modules/${packageJson.name}/${fileName}`;
-console.log(process.cwd());
-fs.readdirSync("./").forEach((file) => {
-  console.log(file);
-});
-const matches = globSync(dbPath);
+let foundPath: string | undefined;
 
-if (matches.length === 0) {
-  throw new Error(`Could not find database file matching: ${dbPath}`);
-} else if (matches.length > 1) {
-  throw new Error(
-    `Found multiple database files: ${matches}, matching: ${dbPath}`
-  );
+for (const root of rootsToCheck) {
+  const path = globSync(`${root}${dbPath}`).at(0);
+
+  if (path) {
+    foundPath = path;
+    break;
+  }
 }
 
-const dbFile = matches[0]!;
+if (!foundPath) {
+  throw new Error(`Could not find database file matching: ${dbPath}`);
+}
 
 let database: BetterSQLite3Database<typeof schema> | undefined;
 export let sqlite: DatabaseType | undefined;
 export const db = () => {
+  if (!foundPath) {
+    throw new Error(`Could not find database file matching: ${dbPath}`);
+  }
+
   if (!database) {
-    sqlite = new Database(dbFile, { readonly: true });
+    sqlite = new Database(foundPath, { readonly: true });
     database = drizzle(sqlite, {
       schema,
       logger: true,
