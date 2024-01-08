@@ -6,6 +6,8 @@ export const categories = sqliteTable("categories", {
   name: text("name").notNull(),
 });
 
+export type Category = typeof categories.$inferSelect;
+
 export const categoriesRelations = relations(categories, ({ many }) => ({
   groups: many(groups),
 }));
@@ -29,6 +31,7 @@ export const groupsRelations = relations(groups, ({ one, many }) => ({
 
 export const cases = sqliteTable("cases", {
   id: text("id").primaryKey(),
+  name: text("name"),
   setup: text("setup").notNull(),
   groupId: text("group_id")
     .notNull()
