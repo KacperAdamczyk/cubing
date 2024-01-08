@@ -1,17 +1,20 @@
 {
   "name": "@repo/db",
-  "module": "index.ts",
+  "module": "dist/index.js",
   "type": "module",
   "scripts": {
     "generate": "drizzle-kit generate:sqlite",
     "migrate": "bun migrate.ts",
-    "studio": "drizzle-kit studio"
+    "studio": "drizzle-kit studio",
+    "build": "tsup index.ts"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
+    "@types/better-sqlite3": "^7.6.8",
     "@types/bun": "latest",
     "better-sqlite3": "^9.2.2",
-    "drizzle-kit": "^0.20.10"
+    "drizzle-kit": "^0.20.10",
+    "tsup": "^8.0.1"
   },
   "dependencies": {
     "drizzle-orm": "^0.29.3"
