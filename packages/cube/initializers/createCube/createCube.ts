@@ -1,7 +1,7 @@
 import { createCubeState } from "@/initializers/createCubeState";
-import { ColorOrientation } from "@/types/ColorOrientation";
+import type { ColorOrientation } from "@/types/ColorOrientation";
 import { Colors } from "@/types/Colors";
-import { Cube } from "@/types/Cube";
+import type { Cube } from "@/types/Cube";
 
 const defaultColorOrientation = {
   U: Colors.W,
@@ -10,7 +10,6 @@ const defaultColorOrientation = {
 
 export interface CreateCubeOptions {
   orientation?: ColorOrientation;
-  scramble?: string;
 }
 
 export const createCube = ({

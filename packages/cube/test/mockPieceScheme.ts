@@ -1,4 +1,4 @@
-import { PieceScheme } from "@/types/PieceScheme";
+import type { PieceScheme } from "@/types/PieceScheme";
 
 export const mockPieceScheme = (scheme: Partial<PieceScheme>): PieceScheme => ({
   U: undefined,

@@ -1,6 +1,6 @@
 import { createCube } from "@/initializers/createCube";
 import { Colors } from "@/types/Colors";
-import { Cube } from "@/types/Cube";
+import type { Cube } from "@/types/Cube";
 import { expect, test } from "vitest";
 
 test("creates a cube", () => {

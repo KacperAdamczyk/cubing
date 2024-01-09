@@ -1,4 +1,4 @@
-import { toColoredFaceSlices } from "@/helpers/toColoredFaceSlices";
+import { toColoredFaceSlices } from "@/compound/toColoredFaceSlices";
 import { createCube } from "@/initializers/createCube";
 import { mockPieceScheme } from "@/test/mockPieceScheme";
 import { Colors } from "@/types/Colors";
@@ -7,7 +7,11 @@ import { Faces } from "@/types/Faces";
 import { expect, test } from "vitest";
 
 test("returns colored faces", () => {
-  const faces = toColoredFaceSlices({ U: Colors.W, F: Colors.G }, createCube());
+  const faces = toColoredFaceSlices(
+    createCube({
+      orientation: { U: Colors.W, F: Colors.G },
+    })
+  );
 
   expect(faces).toEqual({
     U: [
@@ -44,7 +48,9 @@ test("returns colored faces", () => {
 });
 
 test("returns colored faces for a cube with two pieces swapped", () => {
-  const cube = createCube();
+  const cube = createCube({
+    orientation: { U: Colors.W, F: Colors.G },
+  });
 
   cube.state[0].scheme = mockPieceScheme({
     B: Faces.B,
@@ -57,7 +63,7 @@ test("returns colored faces for a cube with two pieces swapped", () => {
     L: Faces.U,
   });
 
-  const faces = toColoredFaceSlices({ U: Colors.W, F: Colors.G }, cube);
+  const faces = toColoredFaceSlices(cube);
 
   expect(faces).toEqual({
     U: [

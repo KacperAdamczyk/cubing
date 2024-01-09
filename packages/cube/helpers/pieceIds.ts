@@ -1,5 +1,5 @@
 import { Faces } from "@/types/Faces";
-import { PieceId } from "@/types/PieceId";
+import type { PieceId } from "@/types/PieceId";
 
 export type PieceDescriptor =
   | `${Faces}`
@@ -34,8 +34,3 @@ export const pieceIds = {
   F: { F: true },
   B: { B: true },
 } satisfies Partial<Record<PieceDescriptor, PieceId>>;
-
-for (const pieceId of Object.values(pieceIds)) {
-  Object.freeze(pieceId);
-}
-Object.freeze(pieceIds);

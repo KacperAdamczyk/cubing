@@ -1,1 +1,1 @@
-export * from "./getPieceId";
+export { getPieceId } from "./getPieceId";

@@ -1,12 +1,11 @@
 import { pieceIds } from "@/helpers/pieceIds";
 import { stringifyPieceId } from "@/helpers/stringifyPieceId/stringifyPieceId";
 import { getPieceId } from "@/internal/getPieceId";
-import type { Colors } from "@/types/Colors";
 import type { Cube } from "@/types/Cube";
 import type { FaceSlice } from "@/types/FaceSlice";
 import type { FaceSlices } from "@/types/FaceSlices";
 import type { Faces } from "@/types/Faces";
-import { Piece } from "@/types/Piece";
+import type { Piece } from "@/types/Piece";
 import type { PieceId } from "@/types/PieceId";
 
 const facesToIdsMap = {

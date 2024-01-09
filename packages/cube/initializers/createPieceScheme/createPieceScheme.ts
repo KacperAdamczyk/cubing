@@ -1,6 +1,6 @@
 import { Faces } from "@/types/Faces";
-import { PieceId } from "@/types/PieceId";
-import { PieceScheme } from "@/types/PieceScheme";
+import type { PieceId } from "@/types/PieceId";
+import type { PieceScheme } from "@/types/PieceScheme";
 
 export const createPieceScheme = (config: PieceId): PieceScheme => ({
   U: config.U ? Faces.U : undefined,

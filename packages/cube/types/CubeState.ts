@@ -1,4 +1,4 @@
-import { CenterPiece, CornerPiece, EdgePiece } from "@/types/Piece";
+import type { CenterPiece, CornerPiece, EdgePiece } from "@/types/Piece";
 
 export type CubeState = [
   // Top layer

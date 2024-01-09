@@ -1,7 +1,6 @@
 import { moveInScheme } from "@/internal/moveInScheme";
 import { Faces } from "@/types/Faces";
-import { Piece } from "@/types/Piece";
-import { PieceScheme } from "@/types/PieceScheme";
+import { type Piece } from "@/types/Piece";
 import { FundamentalRotations } from "@/types/Rotations";
 import { P, match } from "ts-pattern";
 

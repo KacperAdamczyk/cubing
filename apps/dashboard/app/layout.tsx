@@ -3,9 +3,9 @@ import { Inter } from "next/font/google";
 import type { FC, PropsWithChildren } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Providers } from "@/components/Providers";
+import { cn } from "@nextui-org/react";
 
 import "./globals.css";
-import clsx from "clsx";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => (
   <html lang="en">
-    <body className={clsx(inter.className, "min-w-[430px]")}>
+    <body className={cn(inter.className, "min-w-[430px]")}>
       <Providers>
         <Navbar />
         {children}

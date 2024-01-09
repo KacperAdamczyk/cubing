@@ -1,1 +1,1 @@
-export * from "./rotateCube";
+export { rotateCube } from "./rotateCube";

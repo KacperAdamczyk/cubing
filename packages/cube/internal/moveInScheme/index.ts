@@ -1,1 +1,1 @@
-export * from "./moveInScheme";
+export { moveInScheme } from "./moveInScheme";

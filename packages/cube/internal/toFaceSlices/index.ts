@@ -1,1 +1,1 @@
-export * from "./toFaceSlices";
+export { toFaceSlices } from "./toFaceSlices";

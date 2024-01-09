@@ -1,5 +1,5 @@
-import { ColorOrientation } from "@/types/ColorOrientation";
-import { CubeState } from "@/types/CubeState";
+import type { ColorOrientation } from "@/types/ColorOrientation";
+import type { CubeState } from "@/types/CubeState";
 
 export interface Cube {
   orientation: ColorOrientation;

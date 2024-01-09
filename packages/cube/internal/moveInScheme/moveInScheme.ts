@@ -1,5 +1,5 @@
 import { Faces } from "@/types/Faces";
-import { PieceScheme } from "@/types/PieceScheme";
+import type { PieceScheme } from "@/types/PieceScheme";
 
 export const moveInScheme = (
   swaps: [Faces, Faces][],

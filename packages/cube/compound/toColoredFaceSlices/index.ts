@@ -1,0 +1,1 @@
+export { toColoredFaceSlices } from "./toColoredFaceSlices";
