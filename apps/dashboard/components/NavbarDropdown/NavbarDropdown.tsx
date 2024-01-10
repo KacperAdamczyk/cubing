@@ -39,10 +39,7 @@ export const NavbarDropdown: FC<Props> = ({ categories }) => {
         }}
       >
         {categories.map((category) => (
-          <DropdownItem
-            key={category.id}
-            // startContent={icons[category.icon]}
-          >
+          <DropdownItem key={category.id} href={`/${category.id}`}>
             {category.name}
           </DropdownItem>
         ))}

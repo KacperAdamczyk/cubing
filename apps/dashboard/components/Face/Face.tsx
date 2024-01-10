@@ -59,25 +59,43 @@ export const Face: FC<Props> = ({ face, maskedColors, adjacentPieces }) => {
   const pieces = face.flat().map(maskColor);
 
   return (
+<<<<<<< Updated upstream
     <div className="grid grid-cols-5 grid-rows-5 w-fit gap-1">
       <SidePiece
         className="col-start-2 row-start-1 self-end"
+=======
+    <div className="grid w-fit gap-1">
+      <SidePiece
+        className="col-start-2 row-start-1"
+>>>>>>> Stashed changes
         color={maskColor(adjacentPieces.B[0])}
         orientation="horizontal"
       />
       <SidePiece
+<<<<<<< Updated upstream
         className="col-start-3 row-start-1 self-end"
+=======
+        className="col-start-3 row-start-1"
+>>>>>>> Stashed changes
         color={maskColor(adjacentPieces.B[1])}
         orientation="horizontal"
       />
       <SidePiece
+<<<<<<< Updated upstream
         className="col-start-4 row-start-1 self-end"
+=======
+        className="col-start-4 row-start-1"
+>>>>>>> Stashed changes
         color={maskColor(adjacentPieces.B[2])}
         orientation="horizontal"
       />
 
       <SidePiece
+<<<<<<< Updated upstream
         className="col-start-1 row-start-2 justify-self-end"
+=======
+        className="col-start-1 row-start-2"
+>>>>>>> Stashed changes
         color={maskColor(adjacentPieces.L[0])}
         orientation="vertical"
       />
@@ -91,7 +109,11 @@ export const Face: FC<Props> = ({ face, maskedColors, adjacentPieces }) => {
       />
 
       <SidePiece
+<<<<<<< Updated upstream
         className="col-start-1 row-start-3 justify-self-end"
+=======
+        className="col-start-1 row-start-3"
+>>>>>>> Stashed changes
         color={maskColor(adjacentPieces.L[1])}
         orientation="vertical"
       />
@@ -105,7 +127,11 @@ export const Face: FC<Props> = ({ face, maskedColors, adjacentPieces }) => {
       />
 
       <SidePiece
+<<<<<<< Updated upstream
         className="col-start-1 row-start-4 justify-self-end"
+=======
+        className="col-start-1 row-start-4"
+>>>>>>> Stashed changes
         color={maskColor(adjacentPieces.L[2])}
         orientation="vertical"
       />

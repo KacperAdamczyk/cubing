@@ -7,11 +7,11 @@ import {
 } from "@nextui-org/navbar";
 import { Link } from "@nextui-org/link";
 import { NavbarDropdown } from "@/components/NavbarDropdown";
-import { db } from "@repo/db";
 import { PiCubeTransparentFill } from "react-icons/pi";
+import { getCategories } from "@/queries/getCategories";
 
 export const Navbar: FC = async () => {
-  const categories = await db().query.categories.findMany();
+  const categories = await getCategories();
 
   return (
     <NextUINavbar isBordered>
