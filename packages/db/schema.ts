@@ -6,11 +6,11 @@ export const sets = sqliteTable("sets", {
   name: text("name").notNull(),
 });
 
-export type Set = typeof sets.$inferSelect;
-
 export const setsRelations = relations(sets, ({ many }) => ({
   subsets: many(subsets),
 }));
+
+export type Set = typeof sets.$inferSelect;
 
 export const subsets = sqliteTable("subsets", {
   id: text("id").primaryKey(),
@@ -29,6 +29,8 @@ export const subsetsRelations = relations(subsets, ({ one, many }) => ({
   cases: many(cases),
 }));
 
+export type Subset = typeof subsets.$inferSelect;
+
 export const cases = sqliteTable("cases", {
   id: text("id").primaryKey(),
   name: text("name"),
@@ -45,6 +47,8 @@ export const casesRelations = relations(cases, ({ one, many }) => ({
   }),
   algorithms: many(algorithms),
 }));
+
+export type Case = typeof cases.$inferSelect;
 
 export const algorithms = sqliteTable("algorithms", {
   id: text("id").primaryKey(),
@@ -64,3 +68,5 @@ export const algorithmsRelations = relations(algorithms, ({ one }) => ({
     references: [cases.id],
   }),
 }));
+
+export type Algorithm = typeof algorithms.$inferSelect;
