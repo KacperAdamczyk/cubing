@@ -22,4 +22,4 @@ export const db = () => {
   return database;
 };
 
-export type { Category } from "./schema";
+export type { Set } from "./schema";

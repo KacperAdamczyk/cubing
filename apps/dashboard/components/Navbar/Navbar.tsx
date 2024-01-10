@@ -8,10 +8,10 @@ import {
 import { Link } from "@nextui-org/link";
 import { NavbarDropdown } from "@/components/NavbarDropdown";
 import { PiCubeTransparentFill } from "react-icons/pi";
-import { getCategories } from "@/queries/getCategories";
+import { getSets } from "@/queries/getSets";
 
 export const Navbar: FC = async () => {
-  const categories = await getCategories();
+  const sets = await getSets();
 
   return (
     <NextUINavbar isBordered>
@@ -20,7 +20,7 @@ export const Navbar: FC = async () => {
         <p className="font-bold text-inherit">Rubik's Algorithms</p>
       </NavbarBrand>
       <NavbarContent className="gap-4" justify="center">
-        <NavbarDropdown categories={categories} />
+        <NavbarDropdown sets={sets} />
         <NavbarItem>
           <Link href="#" aria-current="page">
             Scrambles

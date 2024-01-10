@@ -11,20 +11,21 @@ CREATE TABLE `algorithms` (
 --> statement-breakpoint
 CREATE TABLE `cases` (
 	`id` text PRIMARY KEY NOT NULL,
+	`name` text,
 	`setup` text NOT NULL,
-	`group_id` text NOT NULL,
-	FOREIGN KEY (`group_id`) REFERENCES `groups`(`id`) ON UPDATE no action ON DELETE no action
+	`subset_id` text NOT NULL,
+	FOREIGN KEY (`subset_id`) REFERENCES `subsets`(`id`) ON UPDATE no action ON DELETE no action
 );
 --> statement-breakpoint
-CREATE TABLE `categories` (
+CREATE TABLE `sets` (
 	`id` text PRIMARY KEY NOT NULL,
 	`name` text NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE `groups` (
+CREATE TABLE `subsets` (
 	`id` text PRIMARY KEY NOT NULL,
 	`name` text NOT NULL,
 	`preview_algorithm` text NOT NULL,
-	`category_id` text NOT NULL,
-	FOREIGN KEY (`category_id`) REFERENCES `categories`(`id`) ON UPDATE no action ON DELETE no action
+	`set_id` text NOT NULL,
+	FOREIGN KEY (`set_id`) REFERENCES `sets`(`id`) ON UPDATE no action ON DELETE no action
 );

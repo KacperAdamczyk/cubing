@@ -8,14 +8,14 @@ import {
 } from "@nextui-org/dropdown";
 import { Button } from "@nextui-org/button";
 import { NavbarItem } from "@nextui-org/navbar";
-import type { Category } from "@repo/db";
+import type { Set } from "@repo/db";
 import { FaChevronDown } from "react-icons/fa6";
 
 interface Props {
-  categories: Category[];
+  sets: Set[];
 }
 
-export const NavbarDropdown: FC<Props> = ({ categories }) => {
+export const NavbarDropdown: FC<Props> = ({ sets }) => {
   return (
     <Dropdown>
       <NavbarItem>
@@ -32,15 +32,15 @@ export const NavbarDropdown: FC<Props> = ({ categories }) => {
         </DropdownTrigger>
       </NavbarItem>
       <DropdownMenu
-        aria-label="Algorithms categories"
+        aria-label="Algorithms sets"
         className="w-[200px]"
         itemClasses={{
           base: "gap-4",
         }}
       >
-        {categories.map((category) => (
-          <DropdownItem key={category.id} href={`/${category.id}`}>
-            {category.name}
+        {sets.map((set) => (
+          <DropdownItem key={set.id} href={`/${set.id}`}>
+            {set.name}
           </DropdownItem>
         ))}
       </DropdownMenu>

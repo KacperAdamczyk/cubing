@@ -1,4 +1,3 @@
 {
-  "vitest.commandLine": "bun test --",
-  "exportall.config.relExclusion": ["/apps/dashboard/queries/getCategories"]
+  "vitest.commandLine": "bun test --"
 }
