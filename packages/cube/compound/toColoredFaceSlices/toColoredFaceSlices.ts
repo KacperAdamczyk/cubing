@@ -14,11 +14,11 @@ export const toColoredFaceSlices = (cube: Cube): FaceSlices<Colors> => {
     (Object.entries(slices) as [Faces, FaceSlice<Faces>][]).map(
       ([face, slice]) => {
         const coloredSlice = slice.map((row) =>
-          row.map((value) => colorScheme[value])
+          row.map((value) => colorScheme[value]),
         );
 
         return [face, coloredSlice] as const;
-      }
-    )
+      },
+    ),
   ) as FaceSlices<Colors>;
 };

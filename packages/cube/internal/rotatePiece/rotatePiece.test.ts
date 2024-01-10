@@ -175,5 +175,5 @@ test.each`
     });
 
     expect(rotatedPiece.scheme).toEqual(expectedScheme);
-  }
+  },
 );

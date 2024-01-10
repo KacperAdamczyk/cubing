@@ -19,7 +19,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => (
     <body className={cn(inter.className, "min-w-[430px]")}>
       <Providers>
         <Navbar />
-        <main className="max-w-7xl mx-auto pt-4">{children}</main>
+        <main className="mx-auto max-w-7xl pt-4">{children}</main>
       </Providers>
     </body>
   </html>

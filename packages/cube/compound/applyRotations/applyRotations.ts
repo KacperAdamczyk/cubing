@@ -5,5 +5,5 @@ import { rotations } from "@/compound/rotations";
 export const applyRotations = (rotationsList: Rotations[], cube: Cube): Cube =>
   rotationsList.reduce(
     (currentCube, rotation) => rotations[rotation](currentCube),
-    cube
+    cube,
   );

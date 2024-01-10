@@ -6,7 +6,7 @@ import { P, match } from "ts-pattern";
 
 export const rotatePiece = (
   rotation: FundamentalRotations,
-  piece: Piece
+  piece: Piece,
 ): Piece => {
   const currentScheme = piece.scheme;
 
@@ -15,7 +15,7 @@ export const rotatePiece = (
       P.union(
         FundamentalRotations.U,
         FundamentalRotations.D_,
-        FundamentalRotations.E_
+        FundamentalRotations.E_,
       ),
       () =>
         moveInScheme(
@@ -25,14 +25,14 @@ export const rotatePiece = (
             [Faces.F, Faces.L],
             [Faces.L, Faces.B],
           ],
-          currentScheme
-        )
+          currentScheme,
+        ),
     )
     .with(
       P.union(
         FundamentalRotations.U_,
         FundamentalRotations.D,
-        FundamentalRotations.E
+        FundamentalRotations.E,
       ),
       () =>
         moveInScheme(
@@ -42,14 +42,14 @@ export const rotatePiece = (
             [Faces.F, Faces.R],
             [Faces.R, Faces.B],
           ],
-          currentScheme
-        )
+          currentScheme,
+        ),
     )
     .with(
       P.union(
         FundamentalRotations.R,
         FundamentalRotations.L_,
-        FundamentalRotations.M_
+        FundamentalRotations.M_,
       ),
       () =>
         moveInScheme(
@@ -59,14 +59,14 @@ export const rotatePiece = (
             [Faces.D, Faces.F],
             [Faces.F, Faces.U],
           ],
-          currentScheme
-        )
+          currentScheme,
+        ),
     )
     .with(
       P.union(
         FundamentalRotations.R_,
         FundamentalRotations.L,
-        FundamentalRotations.M
+        FundamentalRotations.M,
       ),
       () =>
         moveInScheme(
@@ -76,14 +76,14 @@ export const rotatePiece = (
             [Faces.D, Faces.B],
             [Faces.B, Faces.U],
           ],
-          currentScheme
-        )
+          currentScheme,
+        ),
     )
     .with(
       P.union(
         FundamentalRotations.F,
         FundamentalRotations.B_,
-        FundamentalRotations.S
+        FundamentalRotations.S,
       ),
       () =>
         moveInScheme(
@@ -93,14 +93,14 @@ export const rotatePiece = (
             [Faces.D, Faces.L],
             [Faces.L, Faces.U],
           ],
-          currentScheme
-        )
+          currentScheme,
+        ),
     )
     .with(
       P.union(
         FundamentalRotations.F_,
         FundamentalRotations.B,
-        FundamentalRotations.S_
+        FundamentalRotations.S_,
       ),
       () =>
         moveInScheme(
@@ -110,8 +110,8 @@ export const rotatePiece = (
             [Faces.D, Faces.R],
             [Faces.R, Faces.U],
           ],
-          currentScheme
-        )
+          currentScheme,
+        ),
     )
     .exhaustive();
 

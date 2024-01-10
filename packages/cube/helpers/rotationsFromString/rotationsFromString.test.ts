@@ -11,7 +11,7 @@ test("converts all possible rotations from string", () => {
       " F F' F2 F2' f f' f2 f2'" +
       " B B' B2 B2' b b' b2 b2'" +
       " M M' M2 M2' E E' E2 E2' S S' S2 S2'" +
-      " x x' x2 x2' y y' y2 y2' z z' z2 z2'"
+      " x x' x2 x2' y y' y2 y2' z z' z2 z2'",
   );
 
   expect(rotations).toEqual([
@@ -124,7 +124,7 @@ test("skips parentheses", () => {
 
 test("skips unknown rotations", () => {
   const rotations = rotationsFromString(
-    "F (R U R' U') W F' f Z G' (R U R' U') f' x"
+    "F (R U R' U') W F' f Z G' (R U R' U') f' x",
   );
 
   expect(rotations).toEqual([

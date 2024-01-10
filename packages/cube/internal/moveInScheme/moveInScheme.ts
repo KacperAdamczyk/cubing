@@ -3,7 +3,7 @@ import type { PieceScheme } from "@/types/PieceScheme";
 
 export const moveInScheme = (
   swaps: [Faces, Faces][],
-  scheme: PieceScheme
+  scheme: PieceScheme,
 ): PieceScheme => {
   const swapMap = new Map([
     ...swaps.map(([from]) => [from, undefined] as const),

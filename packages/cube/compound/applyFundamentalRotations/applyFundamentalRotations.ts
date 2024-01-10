@@ -4,9 +4,9 @@ import type { FundamentalRotations } from "@/types/Rotations";
 
 export const applyFundamentalRotations = (
   rotations: FundamentalRotations[],
-  cube: Cube
+  cube: Cube,
 ): Cube =>
   rotations.reduce(
     (currentCube, rotation) => rotateCube(rotation, currentCube),
-    cube
+    cube,
   );

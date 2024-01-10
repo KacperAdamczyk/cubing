@@ -4,7 +4,7 @@ import { Faces } from "@/types/Faces";
 
 export const getAdjacentPieces = <Face extends Faces, Value>(
   faces: FaceSlices<Value>,
-  upFace: Face
+  upFace: Face,
 ): AdjacentPieces<Face, Value> => {
   if (upFace === Faces.U) {
     return {

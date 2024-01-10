@@ -9,7 +9,7 @@ interface GetPieceDescriptorForRotation {
 }
 
 export const getPieceDescriptorForRotation = (
-  rotation: FundamentalRotations
+  rotation: FundamentalRotations,
 ): GetPieceDescriptorForRotation =>
   match(rotation)
     .returnType<GetPieceDescriptorForRotation>()

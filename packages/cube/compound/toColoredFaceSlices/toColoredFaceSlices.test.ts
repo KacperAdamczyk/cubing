@@ -10,7 +10,7 @@ test("returns colored faces", () => {
   const faces = toColoredFaceSlices(
     createCube({
       orientation: { U: Colors.W, F: Colors.G },
-    })
+    }),
   );
 
   expect(faces).toEqual({

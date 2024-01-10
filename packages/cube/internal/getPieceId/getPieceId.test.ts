@@ -10,7 +10,7 @@ test("returns the piece id", () => {
       U: Faces.R,
       R: Faces.U,
       B: Faces.F,
-    })
+    }),
   );
 
   expect(id).toEqual({

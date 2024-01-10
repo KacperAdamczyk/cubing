@@ -43,7 +43,7 @@ const facesToIdsMap = {
 
 export const toFaceSlices = ({ state }: Cube): FaceSlices<Faces> => {
   const piecesMap = new Map<string, Piece>(
-    state.map((piece) => [stringifyPieceId(getPieceId(piece.scheme)), piece])
+    state.map((piece) => [stringifyPieceId(getPieceId(piece.scheme)), piece]),
   );
 
   return Object.fromEntries(
@@ -56,7 +56,7 @@ export const toFaceSlices = ({ state }: Cube): FaceSlices<Faces> => {
 
             if (!piece) {
               throw new Error(
-                `Piece ${JSON.stringify(pieceId)} for face ${face} not found`
+                `Piece ${JSON.stringify(pieceId)} for face ${face} not found`,
               );
             }
 
@@ -67,9 +67,9 @@ export const toFaceSlices = ({ state }: Cube): FaceSlices<Faces> => {
             }
 
             return facesAtPlace;
-          })
+          }),
         ),
-      ]
-    )
+      ],
+    ),
   ) as FaceSlices<Faces>;
 };

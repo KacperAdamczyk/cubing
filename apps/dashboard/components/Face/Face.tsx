@@ -39,9 +39,9 @@ interface SidePieceProps {
 
 const SidePiece: FC<SidePieceProps> = ({ color, className, orientation }) => (
   <div
-    className={cn(className, "rounded bg-cube-blank", {
-      "w-10 h-2": orientation === "horizontal",
-      "w-2 h-10": orientation === "vertical",
+    className={cn(className, "bg-cube-blank rounded", {
+      "h-2 w-10": orientation === "horizontal",
+      "h-10 w-2": orientation === "vertical",
       "bg-cube-green": color === Colors.G,
       "bg-cube-red": color === Colors.R,
       "bg-cube-blue": color === Colors.B,
