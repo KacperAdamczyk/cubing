@@ -1,3 +1,7 @@
+[![Deploy to GitHub Pages](https://github.com/KacperAdamczyk/cubing/actions/workflows/deploy.yml/badge.svg)](https://github.com/KacperAdamczyk/cubing/actions/workflows/deploy.yml)
+
+https://kacperadamczyk.github.io/cubing/
+
 # Turborepo starter
 
 This is an official starter Turborepo.
