@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import { nextui } from "@nextui-org/react";
+import containerQueries from "@tailwindcss/container-queries";
 
 const config: Config = {
   content: [
@@ -18,8 +19,17 @@ const config: Config = {
       "cube-yellow": "#FFD500",
       "cube-blank": "#808080",
     },
+    extend: {
+      gridTemplateColumns: {
+        cube: "1fr repeat(3, 5fr) 1fr",
+      },
+      gridTemplateRows: {
+        cube: "1fr repeat(3, 5fr) 1fr",
+      },
+    },
   },
   plugins: [
+    containerQueries,
     nextui({
       defaultTheme: "dark",
     }),

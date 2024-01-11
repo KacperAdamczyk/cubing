@@ -12,10 +12,15 @@ export const setsRelations = relations(sets, ({ many }) => ({
 
 export type Set = typeof sets.$inferSelect;
 
+export enum CaseViewTypes {
+  OLL = "OLL",
+  PLL = "PLL",
+}
 export const subsets = sqliteTable("subsets", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
   previewAlgorithm: text("preview_algorithm").notNull(),
+  viewType: text("view_type").$type<CaseViewTypes>().notNull(),
   setId: text("set_id")
     .notNull()
     .references(() => sets.id),
@@ -35,6 +40,7 @@ export const cases = sqliteTable("cases", {
   id: text("id").primaryKey(),
   name: text("name"),
   setup: text("setup").notNull(),
+  viewType: text("view_type").$type<CaseViewTypes>().notNull(),
   subsetId: text("subset_id")
     .notNull()
     .references(() => subsets.id),

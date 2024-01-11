@@ -17,12 +17,17 @@ export const Navbar: FC = async () => {
     <NextUINavbar isBordered>
       <NavbarBrand>
         <PiCubeTransparentFill size={32} />
-        <p className="font-bold text-inherit">Rubik's Algorithms</p>
+        <Link
+          href="/"
+          className="md:text-medium whitespace-normal text-xs font-bold text-inherit lg:text-xl"
+        >
+          Rubik's Algorithms
+        </Link>
       </NavbarBrand>
       <NavbarContent className="gap-4" justify="center">
         <NavbarDropdown sets={sets} />
         <NavbarItem>
-          <Link href="#" aria-current="page">
+          <Link href="#" className="text-inherit">
             Scrambles
           </Link>
         </NavbarItem>

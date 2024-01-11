@@ -8,13 +8,26 @@ import { produce } from "immer";
 export const rotateCube = (rotation: FundamentalRotations, cube: Cube): Cube =>
   produce(cube, (cubeDraft) => {
     for (const piece of cubeDraft.state) {
-      const { faces, types } = getPieceDescriptorForRotation(rotation);
+      const {
+        types,
+        includeFaces,
+        skipFaces = [],
+      } = getPieceDescriptorForRotation(rotation);
 
-      const hasMatchingFace = (
-        Object.entries(piece.scheme) as [Faces, Faces | undefined][]
-      ).some(([face, value]) => value && faces.includes(face));
+      const pieceFaces = Object.entries(piece.scheme) as [
+        Faces,
+        Faces | undefined,
+      ][];
 
-      if (!types.includes(piece.type) || !hasMatchingFace) {
+      const hasMatchingFace = pieceFaces.some(
+        ([face, value]) => value && includeFaces.includes(face),
+      );
+      const hasSkippedFaces = pieceFaces.some(
+        ([face, value]) => value && skipFaces.includes(face),
+      );
+      const hasMatchingType = types.includes(piece.type);
+
+      if (!hasMatchingFace || hasSkippedFaces || !hasMatchingType) {
         continue;
       }
 

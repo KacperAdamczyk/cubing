@@ -21,4 +21,5 @@ export const db = () => {
   return database;
 };
 
+export { CaseViewTypes } from "@/schema";
 export type * from "@/schema";

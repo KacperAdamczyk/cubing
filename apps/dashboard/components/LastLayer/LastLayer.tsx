@@ -26,12 +26,10 @@ export const LastLayer: FC<Props> = ({
   const adjacentColors = getAdjacentPieces(faces, Faces.U);
 
   return (
-    <div>
-      <Face
-        face={faces.U}
-        maskedColors={maskedColors}
-        adjacentPieces={adjacentColors}
-      />
-    </div>
+    <Face
+      face={faces.U}
+      maskedColors={maskedColors}
+      adjacentPieces={adjacentColors}
+    />
   );
 };

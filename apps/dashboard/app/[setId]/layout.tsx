@@ -1,6 +1,5 @@
-import { Subsets } from "@/components/Subsets";
+import { SubsetsList } from "@/components/SubsetsList";
 import { getSets } from "@/queries/getSets";
-import { getSubsets } from "@/queries/getSubsets";
 import type { FC, PropsWithChildren } from "react";
 
 export const generateStaticParams = async () => {
@@ -17,18 +16,14 @@ interface Props {
   };
 }
 
-const SetLayout: FC<PropsWithChildren<Props>> = async ({
+const SetLayout: FC<PropsWithChildren<Props>> = ({
   params: { setId },
   children,
-}) => {
-  const subsets = await getSubsets(setId);
-
-  return (
-    <div>
-      <Subsets subsets={subsets} />
-      {children}
-    </div>
-  );
-};
+}) => (
+  <div>
+    <SubsetsList setId={setId} />
+    {children}
+  </div>
+);
 
 export default SetLayout;
