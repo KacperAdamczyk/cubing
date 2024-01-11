@@ -20,6 +20,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "latest"
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
       - name: Install dependencies
@@ -28,7 +32,7 @@ jobs:
         env:
           BASE_PATH: "/${{ github.event.repository.name }}"
         run: |
-          bun --bun turbo build
+          bun turbo build
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v2
         with:
