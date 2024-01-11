@@ -7,7 +7,7 @@ import type { PieceScheme } from "@/types/PieceScheme";
 
 export const colorPiece = (
   orientation: ColorOrientation,
-  piece: Piece
+  piece: Piece,
 ): ColoredPiece => {
   const expandedColors = expandColors(orientation);
 
@@ -19,8 +19,8 @@ export const colorPiece = (
         }
 
         return [face, expandedColors[orientedFace]] as const;
-      }
-    )
+      },
+    ),
   ) as PieceScheme<Colors>;
 
   return {

@@ -4,10 +4,9 @@ import { rotatePiece } from "@/internal/rotatePiece";
 import { mockPieceScheme } from "@/test/mockPieceScheme";
 import { Faces } from "@/types/Faces";
 import { PieceType } from "@/types/Piece";
-import { PieceScheme } from "@/types/PieceScheme";
+import type { PieceScheme } from "@/types/PieceScheme";
 import { FundamentalRotations } from "@/types/Rotations";
 import { expect, test } from "vitest";
-import { W } from "vitest/dist/reporters-O4LBziQ_.js";
 
 const c = createPieceScheme;
 const m = mockPieceScheme;
@@ -176,5 +175,5 @@ test.each`
     });
 
     expect(rotatedPiece.scheme).toEqual(expectedScheme);
-  }
+  },
 );

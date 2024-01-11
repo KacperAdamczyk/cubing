@@ -1,5 +1,5 @@
 import { createPieceScheme } from "@/initializers/createPieceScheme";
-import { CubeState } from "@/types/CubeState";
+import type { CubeState } from "@/types/CubeState";
 import { PieceType } from "@/types/Piece";
 
 export const createCubeState = (): CubeState => [

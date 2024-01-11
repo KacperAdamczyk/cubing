@@ -1,5 +1,5 @@
 import type { Colors } from "@/types/Colors";
-import { PieceScheme } from "@/types/PieceScheme";
+import type { PieceScheme } from "@/types/PieceScheme";
 
 export enum PieceType {
   CORNER = "CORNER",

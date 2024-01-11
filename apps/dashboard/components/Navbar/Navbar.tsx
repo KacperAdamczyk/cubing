@@ -7,22 +7,27 @@ import {
 } from "@nextui-org/navbar";
 import { Link } from "@nextui-org/link";
 import { NavbarDropdown } from "@/components/NavbarDropdown";
-import { db } from "@repo/db";
 import { PiCubeTransparentFill } from "react-icons/pi";
+import { getSets } from "@/queries/getSets";
 
 export const Navbar: FC = async () => {
-  const categories = await db().query.categories.findMany();
+  const sets = await getSets();
 
   return (
     <NextUINavbar isBordered>
       <NavbarBrand>
         <PiCubeTransparentFill size={32} />
-        <p className="font-bold text-inherit">Rubik's Algorithms</p>
+        <Link
+          href="/"
+          className="md:text-medium whitespace-normal text-xs font-bold text-inherit lg:text-xl"
+        >
+          Rubik's Algorithms
+        </Link>
       </NavbarBrand>
       <NavbarContent className="gap-4" justify="center">
-        <NavbarDropdown categories={categories} />
+        <NavbarDropdown sets={sets} />
         <NavbarItem>
-          <Link href="#" aria-current="page">
+          <Link href="#" className="text-inherit">
             Scrambles
           </Link>
         </NavbarItem>

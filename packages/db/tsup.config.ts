@@ -5,5 +5,9 @@ export default defineConfig({
   target: "esnext",
   format: ["esm"],
   dts: true,
+  sourcemap: true,
   clean: true,
+  loader: {
+    ".db": "binary",
+  },
 });

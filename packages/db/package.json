@@ -1,12 +1,19 @@
 {
   "name": "@repo/db",
-  "module": "index.ts",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
     "generate": "drizzle-kit generate:sqlite",
     "migrate": "bun migrate.ts",
     "studio": "drizzle-kit studio",
-    "build-old": "tsup index.ts"
+    "build": "tsup index.ts"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
@@ -17,8 +24,7 @@
     "tsup": "^8.0.1"
   },
   "dependencies": {
-    "drizzle-orm": "^0.29.3",
-    "glob": "^10.3.10"
+    "drizzle-orm": "^0.29.3"
   },
   "peerDependencies": {
     "better-sqlite3": "^9.2.2"

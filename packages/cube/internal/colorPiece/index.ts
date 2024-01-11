@@ -1,1 +1,1 @@
-export * from "./colorPiece";
+export { colorPiece } from "./colorPiece";

@@ -44,3 +44,42 @@ test("rotates cube by R", () => {
     ],
   } satisfies FaceSlices<Faces>);
 });
+
+test("rotates cube by M", () => {
+  const cube = createCube();
+
+  const rotatedCube = rotateCube(FundamentalRotations.M, cube);
+
+  expect(toFaceSlices(rotatedCube)).toEqual({
+    U: [
+      [Faces.U, Faces.B, Faces.U],
+      [Faces.U, Faces.B, Faces.U],
+      [Faces.U, Faces.B, Faces.U],
+    ],
+    F: [
+      [Faces.F, Faces.U, Faces.F],
+      [Faces.F, Faces.U, Faces.F],
+      [Faces.F, Faces.U, Faces.F],
+    ],
+    R: [
+      [Faces.R, Faces.R, Faces.R],
+      [Faces.R, Faces.R, Faces.R],
+      [Faces.R, Faces.R, Faces.R],
+    ],
+    D: [
+      [Faces.D, Faces.F, Faces.D],
+      [Faces.D, Faces.F, Faces.D],
+      [Faces.D, Faces.F, Faces.D],
+    ],
+    B: [
+      [Faces.B, Faces.D, Faces.B],
+      [Faces.B, Faces.D, Faces.B],
+      [Faces.B, Faces.D, Faces.B],
+    ],
+    L: [
+      [Faces.L, Faces.L, Faces.L],
+      [Faces.L, Faces.L, Faces.L],
+      [Faces.L, Faces.L, Faces.L],
+    ],
+  } satisfies FaceSlices<Faces>);
+});

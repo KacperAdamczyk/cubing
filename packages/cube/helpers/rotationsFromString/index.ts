@@ -1,1 +1,1 @@
-export * from "./rotationsFromString";
+export { rotationsFromString } from "./rotationsFromString";

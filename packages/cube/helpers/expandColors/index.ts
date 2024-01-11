@@ -1,1 +1,1 @@
-export * from "./expandColors";
+export { expandColors } from "./expandColors";

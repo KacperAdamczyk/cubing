@@ -1,50 +1,60 @@
 import { relations } from "drizzle-orm";
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
 
-export const categories = sqliteTable("categories", {
+export const sets = sqliteTable("sets", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
 });
 
-export type Category = typeof categories.$inferSelect;
-
-export const categoriesRelations = relations(categories, ({ many }) => ({
-  groups: many(groups),
+export const setsRelations = relations(sets, ({ many }) => ({
+  subsets: many(subsets),
 }));
 
-export const groups = sqliteTable("groups", {
+export type Set = typeof sets.$inferSelect;
+
+export enum CaseViewTypes {
+  OLL = "OLL",
+  PLL = "PLL",
+}
+export const subsets = sqliteTable("subsets", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
   previewAlgorithm: text("preview_algorithm").notNull(),
-  categoryId: text("category_id")
+  viewType: text("view_type").$type<CaseViewTypes>().notNull(),
+  setId: text("set_id")
     .notNull()
-    .references(() => categories.id),
+    .references(() => sets.id),
 });
 
-export const groupsRelations = relations(groups, ({ one, many }) => ({
-  category: one(categories, {
-    fields: [groups.categoryId],
-    references: [categories.id],
+export const subsetsRelations = relations(subsets, ({ one, many }) => ({
+  set: one(sets, {
+    fields: [subsets.setId],
+    references: [sets.id],
   }),
   cases: many(cases),
 }));
+
+export type Subset = typeof subsets.$inferSelect;
 
 export const cases = sqliteTable("cases", {
   id: text("id").primaryKey(),
   name: text("name"),
   setup: text("setup").notNull(),
-  groupId: text("group_id")
+  viewType: text("view_type").$type<CaseViewTypes>().notNull(),
+  subsetId: text("subset_id")
     .notNull()
-    .references(() => groups.id),
+    .references(() => subsets.id),
 });
 
 export const casesRelations = relations(cases, ({ one, many }) => ({
-  group: one(groups, {
-    fields: [cases.groupId],
-    references: [groups.id],
+  subset: one(subsets, {
+    fields: [cases.subsetId],
+    references: [subsets.id],
   }),
   algorithms: many(algorithms),
 }));
+
+export type Case = typeof cases.$inferSelect;
 
 export const algorithms = sqliteTable("algorithms", {
   id: text("id").primaryKey(),
@@ -64,3 +74,5 @@ export const algorithmsRelations = relations(algorithms, ({ one }) => ({
     references: [cases.id],
   }),
 }));
+
+export type Algorithm = typeof algorithms.$inferSelect;

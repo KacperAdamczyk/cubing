@@ -15,7 +15,7 @@ test("colors a piece", () => {
         R: Faces.U,
         B: Faces.B,
       }),
-    }
+    },
   );
 
   expect(coloredPiece.scheme).toEqual({

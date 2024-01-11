@@ -1,1 +1,1 @@
-export * from "./createPieceScheme";
+export { createPieceScheme } from "./createPieceScheme";

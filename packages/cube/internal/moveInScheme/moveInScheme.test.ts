@@ -10,7 +10,7 @@ test("moves to an empty slot", () => {
       U: Faces.U,
       L: Faces.L,
       B: Faces.B,
-    })
+    }),
   );
 
   expect(scheme).toEqual(
@@ -18,7 +18,7 @@ test("moves to an empty slot", () => {
       R: Faces.U,
       L: Faces.L,
       B: Faces.B,
-    })
+    }),
   );
 });
 
@@ -29,14 +29,14 @@ test("swaps to a non-empty slot", () => {
       U: Faces.U,
       L: Faces.L,
       B: Faces.B,
-    })
+    }),
   );
 
   expect(scheme).toEqual(
     mockPieceScheme({
       L: Faces.U,
       B: Faces.B,
-    })
+    }),
   );
 });
 
@@ -50,7 +50,7 @@ test("swaps items", () => {
       U: Faces.U,
       L: Faces.L,
       B: Faces.B,
-    })
+    }),
   );
 
   expect(scheme).toEqual(
@@ -58,6 +58,6 @@ test("swaps items", () => {
       U: Faces.L,
       L: Faces.U,
       B: Faces.B,
-    })
+    }),
   );
 });
