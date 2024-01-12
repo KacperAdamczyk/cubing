@@ -10,6 +10,7 @@ import { Button } from "@nextui-org/button";
 import { NavbarItem } from "@nextui-org/navbar";
 import type { Set } from "@repo/db";
 import { FaChevronDown } from "react-icons/fa6";
+import NextLink from "next/link";
 
 interface Props {
   sets: Set[];
@@ -22,7 +23,6 @@ export const NavbarDropdown: FC<Props> = ({ sets }) => {
         <DropdownTrigger>
           <Button
             disableRipple
-            // className="p-0 bg-transparent data-[hover=true]:bg-transparent"
             endContent={<FaChevronDown />}
             radius="sm"
             variant="light"
@@ -39,7 +39,7 @@ export const NavbarDropdown: FC<Props> = ({ sets }) => {
         }}
       >
         {sets.map((set) => (
-          <DropdownItem key={set.id} href={`/${set.id}`}>
+          <DropdownItem as={NextLink} key={set.id} href={`/${set.id}`}>
             {set.name}
           </DropdownItem>
         ))}

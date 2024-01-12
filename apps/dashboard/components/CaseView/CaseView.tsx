@@ -3,8 +3,9 @@ import { MultiLayer } from "@/components/MultiLayer";
 import type { GetCasesEntity } from "@/queries/getCases";
 import { Card, CardBody } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
-import Link from "next/link";
+import { Link } from "@nextui-org/link";
 import type { FC } from "react";
+import NextLink from "next/link";
 
 interface Props {
   case: GetCasesEntity;
@@ -15,7 +16,7 @@ export const CaseView: FC<Props> = ({
   case: { id, name, algorithms, setup, subset, viewType },
   slim,
 }) => (
-  <Link className="block w-full" href={`/case/${id}`}>
+  <Link as={NextLink} className="w-full" href={`/case/${id}`}>
     <Card className="@container w-full">
       <CardBody className="@lg:grid-cols-[15rem_1fr] grid grid-cols-[8rem_1fr] grid-rows-[auto_1fr_auto] items-center justify-center gap-2">
         <div className="col-start-1 row-span-2 row-start-1">
