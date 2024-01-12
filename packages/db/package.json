@@ -12,6 +12,7 @@
   "scripts": {
     "generate": "drizzle-kit generate:sqlite",
     "migrate": "bun migrate.ts",
+    "push": "drizzle-kit push:sqlite",
     "studio": "drizzle-kit studio",
     "build": "tsup index.ts"
   },
