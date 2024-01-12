@@ -61,16 +61,21 @@ export const algorithms = sqliteTable("algorithms", {
   rotations: text("rotations").notNull(),
   mnemonic: text("rotations_mnemonic"),
   description: text("description"),
-  appendSetup: text("append_setup"),
   caseId: text("case_id")
     .notNull()
     .references(() => cases.id),
-  isMain: integer("is_main", { mode: "boolean" }).default(false),
+  mainForCaseId: text("default_for_case_id")
+    .references(() => cases.id)
+    .unique(),
 });
 
 export const algorithmsRelations = relations(algorithms, ({ one }) => ({
   case: one(cases, {
     fields: [algorithms.caseId],
+    references: [cases.id],
+  }),
+  mainForCase: one(cases, {
+    fields: [algorithms.mainForCaseId],
     references: [cases.id],
   }),
 }));

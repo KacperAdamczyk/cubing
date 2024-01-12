@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const AlgorithmsList: FC<Props> = ({ algorithms, slim }) => {
-  const mainAlgorithm = algorithms.find((algorithm) => algorithm.isMain);
+  const mainAlgorithm = algorithms.find((algorithm) => algorithm.mainForCaseId);
   const otherAlgorithms = algorithms.filter(
     (algorithm) => algorithm.id !== mainAlgorithm?.id,
   );
