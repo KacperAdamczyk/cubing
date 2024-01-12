@@ -15,7 +15,10 @@ export const AlgorithmsList: FC<Props> = ({ algorithms, slim }) => {
   const otherAlgorithms = algorithms.filter(
     (algorithm) => algorithm.id !== mainAlgorithm?.id,
   );
-  const limitedOtherAlgorithms = otherAlgorithms.slice(0, otherAlgorithmsLimit);
+  const limitedOtherAlgorithms = otherAlgorithms.slice(
+    0,
+    slim ? otherAlgorithmsLimit : otherAlgorithms.length,
+  );
   const hasMore = otherAlgorithms.length > limitedOtherAlgorithms.length;
 
   return (
@@ -32,10 +35,9 @@ export const AlgorithmsList: FC<Props> = ({ algorithms, slim }) => {
           (No main algorithm)
         </div>
       )}
-      {!!mainAlgorithm &&
-        limitedOtherAlgorithms.map((algorithm) => (
-          <AlgorithmView key={algorithm.id} algorithm={algorithm} slim={slim} />
-        ))}
+      {limitedOtherAlgorithms.map((algorithm) => (
+        <AlgorithmView key={algorithm.id} algorithm={algorithm} slim={slim} />
+      ))}
       {hasMore && (
         <Chip className="self-center" color="primary">
           +{otherAlgorithms.length - limitedOtherAlgorithms.length}
