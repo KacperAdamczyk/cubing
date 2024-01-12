@@ -1,10 +1,10 @@
-import { Link } from "@nextui-org/link";
+import { Link } from "@nextui-org/react";
 import { Card, CardBody } from "@nextui-org/card";
-import type { Subset } from "@repo/db";
 import type { FC } from "react";
 import { MultiLayer } from "@/components/MultiLayer";
 import { Badge } from "@nextui-org/badge";
 import type { GetSubsetsEntity } from "@/queries/getSubsets";
+import NextLink from "next/link";
 
 interface Props {
   setId: string;
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const SubsetView: FC<Props> = ({ setId, subset }) => (
-  <Link className="block grow" href={`/${setId}/${subset.id}`}>
+  <Link as={NextLink} className="block grow" href={`/${setId}/${subset.id}`}>
     <Card>
       <CardBody className="flex flex-col items-center gap-2">
         <Badge placement="bottom-right" size="lg" content={subset.cases.length}>
