@@ -7,11 +7,18 @@ const otherAlgorithmsLimit = 2;
 
 interface Props {
   algorithms: Algorithm[];
+  mainAlgorithmId?: string;
   slim: boolean;
 }
 
-export const AlgorithmsList: FC<Props> = ({ algorithms, slim }) => {
-  const mainAlgorithm = algorithms.find((algorithm) => algorithm.mainForCaseId);
+export const AlgorithmsList: FC<Props> = ({
+  algorithms,
+  mainAlgorithmId,
+  slim,
+}) => {
+  const mainAlgorithm = algorithms.find(
+    (algorithm) => algorithm.id === mainAlgorithmId,
+  );
   const otherAlgorithms = algorithms.filter(
     (algorithm) => algorithm.id !== mainAlgorithm?.id,
   );

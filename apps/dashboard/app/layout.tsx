@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 };
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => (
-  <html lang="en">
-    <body className={cn(GeistMono.className, "min-w-[430px]")}>
+  <html className={GeistMono.className} lang="en">
+    <body className="min-w-[430px]">
       <Providers>
         <Navbar />
         <main className="mx-auto max-w-7xl p-2 pt-4">{children}</main>

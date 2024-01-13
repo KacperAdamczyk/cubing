@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
+import { sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const sets = sqliteTable("sets", {
   id: text("id").primaryKey(),
@@ -44,6 +44,7 @@ export const cases = sqliteTable("cases", {
   subsetId: text("subset_id")
     .notNull()
     .references(() => subsets.id),
+  mainAlgorithmId: text("main_algorithm_id").unique(),
 });
 
 export const casesRelations = relations(cases, ({ one, many }) => ({
@@ -51,7 +52,12 @@ export const casesRelations = relations(cases, ({ one, many }) => ({
     fields: [cases.subsetId],
     references: [subsets.id],
   }),
-  algorithms: many(algorithms),
+  algorithms: many(algorithms, { relationName: "algorithms" }),
+  mainAlgorithm: one(algorithms, {
+    fields: [cases.mainAlgorithmId],
+    references: [algorithms.id],
+    relationName: "mainAlgorithm",
+  }),
 }));
 
 export type Case = typeof cases.$inferSelect;
@@ -61,22 +67,14 @@ export const algorithms = sqliteTable("algorithms", {
   rotations: text("rotations").notNull(),
   mnemonic: text("rotations_mnemonic"),
   description: text("description"),
-  caseId: text("case_id")
-    .notNull()
-    .references(() => cases.id),
-  mainForCaseId: text("default_for_case_id")
-    .references(() => cases.id)
-    .unique(),
+  caseId: text("case_id").references(() => cases.id),
 });
 
 export const algorithmsRelations = relations(algorithms, ({ one }) => ({
   case: one(cases, {
     fields: [algorithms.caseId],
     references: [cases.id],
-  }),
-  mainForCase: one(cases, {
-    fields: [algorithms.mainForCaseId],
-    references: [cases.id],
+    relationName: "algorithms",
   }),
 }));
 
