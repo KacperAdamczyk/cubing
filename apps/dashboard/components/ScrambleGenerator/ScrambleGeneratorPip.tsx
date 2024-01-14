@@ -1,42 +1,39 @@
 "use client";
-import { ScrambleGeneratorContent } from "@/components/ScrambleGenerator/ScrambleGeneratorContent";
-import { use, type FC, useEffect } from "react";
+import {
+  ScrambleGeneratorContent,
+  type ScrambleGeneratorContentProps,
+} from "@/components/ScrambleGenerator/ScrambleGeneratorContent";
+import { Spinner } from "@nextui-org/spinner";
+import { use, type FC, useEffect, Suspense } from "react";
 import { createPortal } from "react-dom";
 
-interface Props {
-  onPip: (promise: Promise<any> | undefined) => void;
+interface Props extends ScrambleGeneratorContentProps {
   pipPromise?: Promise<any>;
 }
 
-export const ScrambleGeneratorPip: FC<Props> = ({ onPip, pipPromise }) => {
+export const ScrambleGeneratorPip: FC<Props> = ({ pipPromise, ...props }) => {
   const pip = use(pipPromise ?? Promise.resolve());
 
   useEffect(() => {
     if (!pip) return;
 
     [...document.styleSheets].forEach((styleSheet) => {
-      try {
-        const cssRules = [...styleSheet.cssRules]
-          .map((rule) => rule.cssText)
-          .join("");
-        const style = document.createElement("style");
+      const cssRules = [...styleSheet.cssRules]
+        .map((rule) => rule.cssText)
+        .join("");
+      const style = document.createElement("style");
 
-        style.textContent = cssRules;
-        pip.document.head.appendChild(style);
-      } catch (e) {
-        const link = document.createElement("link");
-
-        link.rel = "stylesheet";
-        link.type = styleSheet.type;
-        link.media = styleSheet.media as any;
-        link.href = styleSheet.href as any;
-        pip.document.head.appendChild(link);
-      }
+      style.textContent = cssRules;
+      pip.document.head.appendChild(style);
     });
 
-    pip.addEventListener("pagehide", () => {
-      onPip(undefined);
-    });
+    const pageHideHandler = () => {
+      props.onPip?.(undefined);
+    };
+
+    pip.addEventListener("pagehide", pageHideHandler);
+
+    return () => pip.removeEventListener("pagehide", pageHideHandler);
   }, [pip, pipPromise]);
 
   if (!pip) {
@@ -44,7 +41,9 @@ export const ScrambleGeneratorPip: FC<Props> = ({ onPip, pipPromise }) => {
   }
 
   return createPortal(
-    <ScrambleGeneratorContent onPip={onPip} />,
+    <div className="p-4">
+      <ScrambleGeneratorContent {...props} isPipDisabled />
+    </div>,
     pip.document.body,
   );
 };
