@@ -4,8 +4,7 @@ import { useCallback, type FC, useState, useEffect, use } from "react";
 import { TbPictureInPictureOn } from "react-icons/tb";
 import { randomScrambleForEvent } from "cubing/scramble";
 import type { Alg } from "cubing/alg";
-import { LastLayer } from "@/components/LastLayer";
-import { Colors } from "@repo/cube";
+import { CubeMesh } from "@/components/CubeMesh";
 
 export interface ScrambleGeneratorContentProps {
   onPip: (promise: Promise<any> | undefined) => void;
@@ -54,15 +53,9 @@ export const ScrambleGeneratorContent: FC<ScrambleGeneratorContentProps> = ({
         </Button>
       </ButtonGroup>
       <div className="text-2xl">{scramble.toString()}</div>
-      <div>
-        <LastLayer
-          orientation={{
-            U: Colors.W,
-            F: Colors.G,
-          }}
-          algorithm={scramble.toString()}
-        />
-      </div>
+      <CubeMesh
+        algorithm={"L B D2 R2 D' B R2 B' R F2 U2 L2 D2 B D2 B U2 B' D2 B2"}
+      />
     </div>
   );
 };

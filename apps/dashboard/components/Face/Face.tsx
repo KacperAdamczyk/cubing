@@ -8,19 +8,23 @@ import {
 import type { FC, ReactNode } from "react";
 
 interface Props {
+  className?: string;
   face: FaceSlice<Colors>;
-  maskedColors: Colors[];
-  adjacentPieces: AdjacentPieces<Faces.U, Colors>;
+  maskedColors: (Colors | undefined)[];
+  adjacentPieces: AdjacentPieces<Colors>;
 }
 
+const blankColor = "X";
+
 interface PieceProps {
-  color?: Colors;
+  color?: Colors | typeof blankColor;
   className?: string;
 }
 
 const Piece: FC<PieceProps> = ({ color, className }) => (
   <div
     className={cn(className, "bg-cube-blank rounded", {
+      "bg-cube-blank": color === blankColor,
       "bg-cube-green": color === Colors.G,
       "bg-cube-red": color === Colors.R,
       "bg-cube-blue": color === Colors.B,
@@ -31,74 +35,84 @@ const Piece: FC<PieceProps> = ({ color, className }) => (
   />
 );
 
-export const Face: FC<Props> = ({ face, maskedColors, adjacentPieces }) => {
+export const Face: FC<Props> = ({
+  className,
+  face,
+  maskedColors,
+  adjacentPieces,
+}) => {
   const maskedColorsSet = new Set(maskedColors);
-  const maskColor = (color: Colors): Colors | undefined =>
-    maskedColorsSet.has(color) ? undefined : color;
+  const maskColor = (color: Colors): Colors | typeof blankColor | undefined =>
+    maskedColorsSet.has(color) ? blankColor : color;
   const pieces = face.flat().map(maskColor);
 
   return (
-    <div className="grid-cols-cube grid-rows-cube grid aspect-square h-full min-h-20 w-full min-w-20 gap-[2%]">
+    <div
+      className={cn(
+        className,
+        "grid-cols-cube grid-rows-cube grid aspect-square h-full min-h-20 w-full min-w-20 gap-[2%]",
+      )}
+    >
       <Piece
         className="col-start-2 row-start-1"
-        color={maskColor(adjacentPieces.B[0])}
+        color={maskColor(adjacentPieces.Top[0])}
       />
       <Piece
         className="col-start-3 row-start-1"
-        color={maskColor(adjacentPieces.B[1])}
+        color={maskColor(adjacentPieces.Top[1])}
       />
       <Piece
         className="col-start-4 row-start-1"
-        color={maskColor(adjacentPieces.B[2])}
+        color={maskColor(adjacentPieces.Top[2])}
       />
 
       <Piece
         className="col-start-1 row-start-2"
-        color={maskColor(adjacentPieces.L[0])}
+        color={maskColor(adjacentPieces.Left[0])}
       />
       <Piece className="col-start-2 row-start-2" color={pieces[0]} />
       <Piece className="col-start-3 row-start-2" color={pieces[1]} />
       <Piece className="col-start-4 row-start-2" color={pieces[2]} />
       <Piece
         className="col-start-5 row-start-2"
-        color={maskColor(adjacentPieces.R[2])}
+        color={maskColor(adjacentPieces.Right[0])}
       />
 
       <Piece
         className="col-start-1 row-start-3"
-        color={maskColor(adjacentPieces.L[1])}
+        color={maskColor(adjacentPieces.Left[1])}
       />
       <Piece className="col-start-2 row-start-3" color={pieces[3]} />
       <Piece className="col-start-3 row-start-3" color={pieces[4]} />
       <Piece className="col-start-4 row-start-3" color={pieces[5]} />
       <Piece
         className="col-start-5 row-start-3"
-        color={maskColor(adjacentPieces.R[1])}
+        color={maskColor(adjacentPieces.Right[1])}
       />
 
       <Piece
         className="col-start-1 row-start-4"
-        color={maskColor(adjacentPieces.L[2])}
+        color={maskColor(adjacentPieces.Left[2])}
       />
       <Piece className="col-start-2 row-start-4" color={pieces[6]} />
       <Piece className="col-start-3 row-start-4" color={pieces[7]} />
       <Piece className="col-start-4 row-start-4" color={pieces[8]} />
       <Piece
         className="col-start-5 row-start-4"
-        color={maskColor(adjacentPieces.R[0])}
+        color={maskColor(adjacentPieces.Right[2])}
       />
 
       <Piece
         className="col-start-2 row-start-5"
-        color={maskColor(adjacentPieces.F[0])}
+        color={maskColor(adjacentPieces.Bottom[0])}
       />
       <Piece
         className="col-start-3 row-start-5"
-        color={maskColor(adjacentPieces.F[1])}
+        color={maskColor(adjacentPieces.Bottom[1])}
       />
       <Piece
         className="col-start-4 row-start-5"
-        color={maskColor(adjacentPieces.F[2])}
+        color={maskColor(adjacentPieces.Bottom[2])}
       />
     </div>
   );
