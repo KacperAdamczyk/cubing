@@ -2,24 +2,23 @@
 import { Button, ButtonGroup } from "@nextui-org/button";
 import { useCallback, type FC, useState, useEffect, use } from "react";
 import { TbPictureInPictureOn } from "react-icons/tb";
-import { Scrambow } from "scrambow";
 import { CubeMesh } from "@/components/CubeMesh";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export interface ScrambleGeneratorContentProps {
   onPip: (promise: Promise<any> | undefined) => void;
   isPipDisabled?: boolean;
-  scramblePromise: Promise<string>;
-  onGenerate: (promise: Promise<string>) => void;
 }
 
 export const ScrambleGeneratorContent: FC<ScrambleGeneratorContentProps> = ({
   onPip,
   isPipDisabled = false,
-  scramblePromise,
-  onGenerate,
 }) => {
   const [isSupported, setIsSupported] = useState(false);
-  const scramble = use(scramblePromise);
+  const searchParams = useSearchParams();
+  const scramble = searchParams.get("s");
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     setIsSupported("documentPictureInPicture" in window);
@@ -34,10 +33,8 @@ export const ScrambleGeneratorContent: FC<ScrambleGeneratorContentProps> = ({
   }, [onPip]);
 
   const onGenerateHandler = useCallback(() => {
-    const [scramble] = new Scrambow().get();
-
-    onGenerate(Promise.resolve(scramble.scramble_string));
-  }, []);
+    router.push(pathname);
+  }, [router, pathname]);
 
   return (
     <div className="flex flex-col items-center gap-2">
@@ -51,8 +48,14 @@ export const ScrambleGeneratorContent: FC<ScrambleGeneratorContentProps> = ({
           <TbPictureInPictureOn />
         </Button>
       </ButtonGroup>
-      <div className="text-2xl">{scramble.toString()}</div>
-      <CubeMesh algorithm={scramble.toString()} />
+      {scramble ? (
+        <>
+          <div className="text-2xl">{scramble}</div>
+          <CubeMesh algorithm={scramble} />
+        </>
+      ) : (
+        <div className="flex justify-center text-4xl">No scramble</div>
+      )}
     </div>
   );
 };

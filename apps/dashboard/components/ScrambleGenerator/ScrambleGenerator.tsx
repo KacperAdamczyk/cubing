@@ -3,14 +3,24 @@
 import { ScrambleGeneratorContent } from "@/components/ScrambleGenerator/ScrambleGeneratorContent";
 import { ScrambleGeneratorPip } from "@/components/ScrambleGenerator/ScrambleGeneratorPip";
 import { Spinner } from "@nextui-org/spinner";
-import { useState, type FC, Suspense } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useState, type FC, Suspense, useEffect } from "react";
 import { Scrambow } from "scrambow";
 
 export const ScrambleGenerator: FC = () => {
   const [pipPromise, setPipPromise] = useState<Promise<any>>();
-  const [scramblePromise, setScramblePromise] = useState(() =>
-    Promise.resolve(new Scrambow().get().at(0)!.scramble_string),
-  );
+  const searchParams = useSearchParams();
+  const scramble = searchParams.get("s");
+  const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (scramble) return;
+
+    const [newScramble] = new Scrambow().get();
+
+    router.push(`${pathname}?s=${newScramble.scramble_string}`);
+  }, [scramble, pathname, router]);
 
   return (
     <Suspense
@@ -23,16 +33,9 @@ export const ScrambleGenerator: FC = () => {
       <ScrambleGeneratorContent
         onPip={setPipPromise}
         isPipDisabled={!!pipPromise}
-        scramblePromise={scramblePromise}
-        onGenerate={setScramblePromise}
       />
       {pipPromise && (
-        <ScrambleGeneratorPip
-          onPip={setPipPromise}
-          pipPromise={pipPromise}
-          scramblePromise={scramblePromise}
-          onGenerate={setScramblePromise}
-        />
+        <ScrambleGeneratorPip onPip={setPipPromise} pipPromise={pipPromise} />
       )}
     </Suspense>
   );
