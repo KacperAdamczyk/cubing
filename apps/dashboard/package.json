@@ -15,13 +15,13 @@
     "@repo/cube": "workspace:*",
     "@repo/db": "workspace:*",
     "@tailwindcss/container-queries": "^0.1.1",
-    "cubing": "^0.45.0",
     "framer-motion": "^10.17.9",
     "geist": "^1.2.0",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-icons": "^4.12.0"
+    "react-icons": "^4.12.0",
+    "scrambow": "^1.8.1"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -2,15 +2,14 @@
 import { Button, ButtonGroup } from "@nextui-org/button";
 import { useCallback, type FC, useState, useEffect, use } from "react";
 import { TbPictureInPictureOn } from "react-icons/tb";
-import { randomScrambleForEvent } from "cubing/scramble";
-import type { Alg } from "cubing/alg";
+import { Scrambow } from "scrambow";
 import { CubeMesh } from "@/components/CubeMesh";
 
 export interface ScrambleGeneratorContentProps {
   onPip: (promise: Promise<any> | undefined) => void;
   isPipDisabled?: boolean;
-  scramblePromise: Promise<Alg>;
-  onGenerate: (promise: Promise<Alg>) => void;
+  scramblePromise: Promise<string>;
+  onGenerate: (promise: Promise<string>) => void;
 }
 
 export const ScrambleGeneratorContent: FC<ScrambleGeneratorContentProps> = ({
@@ -35,9 +34,9 @@ export const ScrambleGeneratorContent: FC<ScrambleGeneratorContentProps> = ({
   }, [onPip]);
 
   const onGenerateHandler = useCallback(() => {
-    const promise = randomScrambleForEvent("333");
+    const [scramble] = new Scrambow().get();
 
-    onGenerate(promise);
+    onGenerate(Promise.resolve(scramble.scramble_string));
   }, []);
 
   return (

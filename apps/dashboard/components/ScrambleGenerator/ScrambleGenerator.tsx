@@ -3,14 +3,13 @@
 import { ScrambleGeneratorContent } from "@/components/ScrambleGenerator/ScrambleGeneratorContent";
 import { ScrambleGeneratorPip } from "@/components/ScrambleGenerator/ScrambleGeneratorPip";
 import { Spinner } from "@nextui-org/spinner";
-import { randomScrambleForEvent } from "cubing/scramble";
-import { useSearchParams } from "next/navigation";
-import { useCallback, useState, type FC, Suspense } from "react";
+import { useState, type FC, Suspense } from "react";
+import { Scrambow } from "scrambow";
 
 export const ScrambleGenerator: FC = () => {
   const [pipPromise, setPipPromise] = useState<Promise<any>>();
   const [scramblePromise, setScramblePromise] = useState(() =>
-    randomScrambleForEvent("333"),
+    Promise.resolve(new Scrambow().get().at(0)!.scramble_string),
   );
 
   return (
