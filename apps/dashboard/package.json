@@ -15,7 +15,7 @@
     "@repo/cube": "workspace:*",
     "@repo/db": "workspace:*",
     "@tailwindcss/container-queries": "^0.1.1",
-    "cubing": "^0.45.0",
+    "cubing": "^0.46.0",
     "framer-motion": "^10.17.9",
     "geist": "^1.2.0",
     "next": "14.0.4",
