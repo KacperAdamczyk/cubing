@@ -1,4 +1,4 @@
-import { cn } from "@nextui-org/react";
+import { cn, divider } from "@nextui-org/react";
 import {
   Colors,
   type AdjacentPieces,
@@ -12,6 +12,7 @@ interface Props {
   face: FaceSlice<Colors>;
   maskedColors: (Colors | undefined)[];
   adjacentPieces: AdjacentPieces<Colors>;
+  faceLabel?: Faces;
 }
 
 const blankColor = "X";
@@ -40,6 +41,7 @@ export const Face: FC<Props> = ({
   face,
   maskedColors,
   adjacentPieces,
+  faceLabel,
 }) => {
   const maskedColorsSet = new Set(maskedColors);
   const maskColor = (color: Colors): Colors | typeof blankColor | undefined =>
@@ -84,6 +86,11 @@ export const Face: FC<Props> = ({
       />
       <Piece className="col-start-2 row-start-3" color={pieces[3]} />
       <Piece className="col-start-3 row-start-3" color={pieces[4]} />
+      {!!faceLabel && (
+        <div className="text-default-400 relative col-start-3 row-start-3 flex select-none items-center justify-center text-2xl font-bold">
+          {faceLabel}
+        </div>
+      )}
       <Piece className="col-start-4 row-start-3" color={pieces[5]} />
       <Piece
         className="col-start-5 row-start-3"

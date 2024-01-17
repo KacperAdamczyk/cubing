@@ -28,14 +28,14 @@ test("rotates cube by R", () => {
       [Faces.R, Faces.R, Faces.R],
     ],
     D: [
-      [Faces.B, Faces.D, Faces.D],
-      [Faces.B, Faces.D, Faces.D],
-      [Faces.B, Faces.D, Faces.D],
+      [Faces.D, Faces.D, Faces.B],
+      [Faces.D, Faces.D, Faces.B],
+      [Faces.D, Faces.D, Faces.B],
     ],
     B: [
-      [Faces.B, Faces.B, Faces.U],
-      [Faces.B, Faces.B, Faces.U],
-      [Faces.B, Faces.B, Faces.U],
+      [Faces.U, Faces.B, Faces.B],
+      [Faces.U, Faces.B, Faces.B],
+      [Faces.U, Faces.B, Faces.B],
     ],
     L: [
       [Faces.L, Faces.L, Faces.L],

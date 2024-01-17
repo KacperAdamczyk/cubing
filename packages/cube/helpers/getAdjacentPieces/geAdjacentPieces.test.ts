@@ -34,27 +34,27 @@ const DPieces = {
 } satisfies AdjacentPieces<Colors>;
 
 const FPieces = {
-  Top: [Colors.G, Colors.G, Colors.G],
-  Right: [Colors.R, Colors.R, Colors.R],
-  Bottom: [Colors.O, Colors.O, Colors.O],
-  Left: [Colors.B, Colors.B, Colors.B],
+  Top: [Colors.O, Colors.Y, Colors.W],
+  Right: [Colors.G, Colors.G, Colors.Y],
+  Bottom: [Colors.B, Colors.B, Colors.G],
+  Left: [Colors.B, Colors.O, Colors.W],
 } satisfies AdjacentPieces<Colors>;
 
 const BPieces = {
-  Top: [Colors.W, Colors.W, Colors.O],
-  Right: [Colors.B, Colors.Y, Colors.O],
-  Bottom: [Colors.R, Colors.G, Colors.G],
-  Left: [Colors.G, Colors.W, Colors.B],
+  Top: [Colors.G, Colors.G, Colors.R],
+  Right: [Colors.B, Colors.W, Colors.G],
+  Bottom: [Colors.O, Colors.W, Colors.W],
+  Left: [Colors.O, Colors.Y, Colors.B],
 } satisfies AdjacentPieces<Colors>;
 
 test.each`
-  scramble                                                   | face       | expected
-  ${"L B D2 R2 D' B R2 B' R F2 U2 L2 D2 B D2 B U2 B' D2 B2"} | ${Faces.U} | ${UPieces}
-  ${"D2 L' F' B2 U' R2 L U' B R2 F R2 D2 F2 D2 B2 L2 D2 L'"} | ${Faces.R} | ${RPieces}
-  ${"L B D2 R2 D' B R2 B' R F2 U2 L2 D2 B D2 B U2 B' D2 B2"} | ${Faces.L} | ${LPieces}
-  ${"L B D2 R2 D' B R2 B' R F2 U2 L2 D2 B D2 B U2 B' D2 B2"} | ${Faces.D} | ${DPieces}
-  ${""}                                                      | ${Faces.F} | ${FPieces}
-  ${"D2 L' F' B2 U' R2 L U' B R2 F R2 D2 F2 D2 B2 L2 D2 L'"} | ${Faces.B} | ${BPieces}
+  scramble                                                       | face       | expected
+  ${"L B D2 R2 D' B R2 B' R F2 U2 L2 D2 B D2 B U2 B' D2 B2"}     | ${Faces.U} | ${UPieces}
+  ${"D2 L' F' B2 U' R2 L U' B R2 F R2 D2 F2 D2 B2 L2 D2 L'"}     | ${Faces.R} | ${RPieces}
+  ${"L B D2 R2 D' B R2 B' R F2 U2 L2 D2 B D2 B U2 B' D2 B2"}     | ${Faces.L} | ${LPieces}
+  ${"L B D2 R2 D' B R2 B' R F2 U2 L2 D2 B D2 B U2 B' D2 B2"}     | ${Faces.D} | ${DPieces}
+  ${"D B2 D F2 R2 D F2 D2 R2 F2 R2 U2 B' U' F L2 B' L' F' R B'"} | ${Faces.F} | ${FPieces}
+  ${"D2 L' F' B2 U' R2 L U' B R2 F R2 D2 F2 D2 B2 L2 D2 L'"}     | ${Faces.B} | ${BPieces}
 `(
   "Returns correct adjacent pieces for: $face",
   ({

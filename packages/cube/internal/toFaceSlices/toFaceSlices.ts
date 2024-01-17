@@ -15,9 +15,9 @@ const facesToIdsMap = {
     [pieceIds.FLU, pieceIds.FU, pieceIds.FRU],
   ],
   D: [
-    [pieceIds.BDR, pieceIds.BD, pieceIds.BDL],
-    [pieceIds.DR, pieceIds.D, pieceIds.DL],
-    [pieceIds.DFR, pieceIds.DF, pieceIds.DFL],
+    [pieceIds.DFL, pieceIds.DF, pieceIds.DFR],
+    [pieceIds.DL, pieceIds.D, pieceIds.DR],
+    [pieceIds.BDL, pieceIds.BD, pieceIds.BDR],
   ],
   F: [
     [pieceIds.FLU, pieceIds.FU, pieceIds.FRU],
@@ -25,9 +25,9 @@ const facesToIdsMap = {
     [pieceIds.DFL, pieceIds.DF, pieceIds.DFR],
   ],
   B: [
-    [pieceIds.BDL, pieceIds.BD, pieceIds.BDR],
-    [pieceIds.BL, pieceIds.B, pieceIds.BR],
-    [pieceIds.BLU, pieceIds.BU, pieceIds.BRU],
+    [pieceIds.BRU, pieceIds.BU, pieceIds.BLU],
+    [pieceIds.BR, pieceIds.B, pieceIds.BL],
+    [pieceIds.BDR, pieceIds.BD, pieceIds.BDL],
   ],
   L: [
     [pieceIds.BLU, pieceIds.LU, pieceIds.FLU],

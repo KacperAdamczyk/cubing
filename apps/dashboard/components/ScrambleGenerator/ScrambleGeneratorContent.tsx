@@ -54,7 +54,7 @@ export const ScrambleGeneratorContent: FC<ScrambleGeneratorContentProps> = ({
       </ButtonGroup>
       <div className="text-2xl">{scramble.toString()}</div>
       <CubeMesh
-        algorithm={"D2 L' F' B2 U' R2 L U' B R2 F R2 D2 F2 D2 B2 L2 D2 L'"}
+        algorithm={"D B2 D F2 R2 D F2 D2 R2 F2 R2 U2 B' U' F L2 B' L' F' R B'"}
       />
     </div>
   );

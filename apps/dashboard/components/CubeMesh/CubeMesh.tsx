@@ -22,39 +22,45 @@ export const CubeMesh: FC<Props> = ({ algorithm }) => {
     <div className="grid aspect-[4/3] w-full">
       <Face
         className="col-start-2 row-start-1"
-        face={faces.B}
-        adjacentPieces={adjB}
+        face={faces.U}
+        adjacentPieces={adjU}
         maskedColors={[]}
+        faceLabel={Faces.U}
       />
       <Face
         className="col-start-1 row-start-2"
         face={faces.L}
         adjacentPieces={adjL}
         maskedColors={[]}
+        faceLabel={Faces.L}
       />
       <Face
         className="col-start-2 row-start-2"
-        face={faces.U}
-        adjacentPieces={adjU}
+        face={faces.F}
+        adjacentPieces={adjF}
         maskedColors={[]}
+        faceLabel={Faces.F}
       />
       <Face
         className="col-start-3 row-start-2"
         face={faces.R}
         adjacentPieces={adjR}
         maskedColors={[]}
+        faceLabel={Faces.R}
       />
       <Face
         className="col-start-4 row-start-2"
-        face={faces.D}
-        adjacentPieces={adjD}
+        face={faces.B}
+        adjacentPieces={adjB}
         maskedColors={[]}
+        faceLabel={Faces.B}
       />
       <Face
         className="col-start-2 row-start-3"
-        face={faces.F}
-        adjacentPieces={adjF}
+        face={faces.D}
+        adjacentPieces={adjD}
         maskedColors={[]}
+        faceLabel={Faces.D}
       />
     </div>
   );
