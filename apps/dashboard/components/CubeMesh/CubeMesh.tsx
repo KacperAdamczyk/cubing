@@ -1,5 +1,12 @@
 import { Face } from "@/components/Face";
-import { Colors, Faces, algorithmToFaces, getAdjacentPieces } from "@repo/cube";
+import {
+  Colors,
+  Faces,
+  algorithmToFaces,
+  getAdjacentPieces,
+  type AdjacentFaces,
+  type AdjacentPieces,
+} from "@repo/cube";
 import type { FC } from "react";
 
 interface Props {
@@ -26,6 +33,9 @@ export const CubeMesh: FC<Props> = ({ algorithm }) => {
         adjacentPieces={adjU}
         maskedColors={[]}
         faceLabel={Faces.U}
+        maskedAdjPieces={{
+          Bottom: [true, true, true],
+        }}
       />
       <Face
         className="col-start-1 row-start-2"
@@ -33,6 +43,9 @@ export const CubeMesh: FC<Props> = ({ algorithm }) => {
         adjacentPieces={adjL}
         maskedColors={[]}
         faceLabel={Faces.L}
+        maskedAdjPieces={{
+          Right: [true, true, true],
+        }}
       />
       <Face
         className="col-start-2 row-start-2"
@@ -40,6 +53,12 @@ export const CubeMesh: FC<Props> = ({ algorithm }) => {
         adjacentPieces={adjF}
         maskedColors={[]}
         faceLabel={Faces.F}
+        maskedAdjPieces={{
+          Top: [true, true, true],
+          Left: [true, true, true],
+          Right: [true, true, true],
+          Bottom: [true, true, true],
+        }}
       />
       <Face
         className="col-start-3 row-start-2"
@@ -47,6 +66,10 @@ export const CubeMesh: FC<Props> = ({ algorithm }) => {
         adjacentPieces={adjR}
         maskedColors={[]}
         faceLabel={Faces.R}
+        maskedAdjPieces={{
+          Left: [true, true, true],
+          Right: [true, true, true],
+        }}
       />
       <Face
         className="col-start-4 row-start-2"
@@ -54,6 +77,9 @@ export const CubeMesh: FC<Props> = ({ algorithm }) => {
         adjacentPieces={adjB}
         maskedColors={[]}
         faceLabel={Faces.B}
+        maskedAdjPieces={{
+          Left: [true, true, true],
+        }}
       />
       <Face
         className="col-start-2 row-start-3"
@@ -61,6 +87,9 @@ export const CubeMesh: FC<Props> = ({ algorithm }) => {
         adjacentPieces={adjD}
         maskedColors={[]}
         faceLabel={Faces.D}
+        maskedAdjPieces={{
+          Top: [true, true, true],
+        }}
       />
     </div>
   );
