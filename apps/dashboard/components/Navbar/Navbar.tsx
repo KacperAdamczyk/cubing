@@ -29,7 +29,12 @@ export const Navbar: FC = async () => {
       <NavbarContent className="gap-4" justify="center">
         <NavbarDropdown sets={sets} />
         <NavbarItem>
-          <Link as={NextLink} href="/scramble" className="text-inherit">
+          <Link
+            as={NextLink}
+            prefetch={false}
+            href="/scramble"
+            className="text-inherit"
+          >
             Scrambles
           </Link>
         </NavbarItem>
