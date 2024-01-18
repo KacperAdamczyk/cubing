@@ -17,7 +17,7 @@ export const CaseView: FC<Props> = ({
   case: { id, name, algorithms, setup, subset, viewType },
   slim,
 }) => (
-  <Card id={id} className="@container w-full">
+  <Card id={id} className="@container border-cube-green w-full target:border-2">
     <CardBody className="@lg:grid-cols-[15rem_1fr] grid grid-cols-[8rem_1fr] grid-rows-[auto_1fr_auto] items-center justify-center gap-2">
       <div className="col-start-1 row-span-2 row-start-1">
         <MultiLayer algorithm={setup} type={viewType} />

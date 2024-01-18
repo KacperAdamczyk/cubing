@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
+    "@react-stately/data": "^3.11.0",
     "@repo/cube": "workspace:*",
     "@repo/db": "workspace:*",
     "@tailwindcss/container-queries": "^0.1.1",

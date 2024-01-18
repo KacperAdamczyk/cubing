@@ -16,7 +16,7 @@ export const CasesList: FC<Props> = ({ cases, slim }) => (
         key={currentCase.id}
         as={NextLink}
         className="w-full"
-        href={`/case/${currentCase.id}`}
+        href={`/cases/${currentCase.id}`}
       >
         <CaseView case={currentCase} slim={slim} />
       </Link>
