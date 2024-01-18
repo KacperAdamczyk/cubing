@@ -3,7 +3,10 @@ import { MultiLayer } from "@/components/MultiLayer";
 import type { GetCasesEntity } from "@/queries/getCases";
 import { Card, CardBody } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
+import { Chip } from "@nextui-org/chip";
 import type { FC } from "react";
+import { Link } from "@nextui-org/link";
+import NextLink from "next/link";
 
 interface Props {
   case: GetCasesEntity;
@@ -11,10 +14,10 @@ interface Props {
 }
 
 export const CaseView: FC<Props> = ({
-  case: { name, algorithms, setup, subset, viewType },
+  case: { id, name, algorithms, setup, subset, viewType },
   slim,
 }) => (
-  <Card className="@container w-full">
+  <Card id={id} className="@container w-full">
     <CardBody className="@lg:grid-cols-[15rem_1fr] grid grid-cols-[8rem_1fr] grid-rows-[auto_1fr_auto] items-center justify-center gap-2">
       <div className="col-start-1 row-span-2 row-start-1">
         <MultiLayer algorithm={setup} type={viewType} />
@@ -24,9 +27,15 @@ export const CaseView: FC<Props> = ({
         <Divider className="m-2" />
         <span className="text-center">{setup}</span>
       </div>
-      <div className="flex justify-center gap-1">
+      <div className="flex items-center justify-center gap-1">
         <span className="text-2xl font-bold">{name}</span>
-        <span className="text-2xl">[{subset.name}]</span>
+        {slim ? (
+          <Chip color="success">{subset.name}</Chip>
+        ) : (
+          <Link as={NextLink} href={`/${subset.set.id}/${subset.id}#${id}`}>
+            <Chip color="success">{subset.name}</Chip>
+          </Link>
+        )}
       </div>
       <AlgorithmsList setup={setup} algorithms={algorithms} slim={slim} />
     </CardBody>

@@ -7,7 +7,11 @@ export const getCasesForSubset = unstable_cache(
       where: (cases, { eq }) => eq(cases.subsetId, subsetId),
       with: {
         algorithms: true,
-        subset: true,
+        subset: {
+          with: {
+            set: true,
+          },
+        },
       },
     }),
   ["cases-for-subset"],

@@ -7,7 +7,11 @@ export const getCase = unstable_cache(
       where: (cases, { eq }) => eq(cases.id, caseId),
       with: {
         algorithms: true,
-        subset: true,
+        subset: {
+          with: {
+            set: true,
+          },
+        },
       },
     }),
   ["get-case"],

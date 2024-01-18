@@ -9,7 +9,11 @@ export const getCasesForSet = unstable_cache(
         cases: {
           with: {
             algorithms: true,
-            subset: true,
+            subset: {
+              with: {
+                set: true,
+              },
+            },
           },
         },
       },

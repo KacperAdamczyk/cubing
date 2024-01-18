@@ -6,7 +6,11 @@ export const getCases = unstable_cache(
     db().query.cases.findMany({
       with: {
         algorithms: true,
-        subset: true,
+        subset: {
+          with: {
+            set: true,
+          },
+        },
       },
     }),
   ["cases"],
