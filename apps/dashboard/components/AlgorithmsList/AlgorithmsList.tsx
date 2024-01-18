@@ -6,12 +6,14 @@ import { Chip } from "@nextui-org/chip";
 const otherAlgorithmsLimit = 2;
 
 interface Props {
+  setup: string;
   algorithms: Algorithm[];
   mainAlgorithmId?: string;
   slim: boolean;
 }
 
 export const AlgorithmsList: FC<Props> = ({
+  setup,
   algorithms,
   mainAlgorithmId,
   slim,
@@ -33,6 +35,7 @@ export const AlgorithmsList: FC<Props> = ({
       {mainAlgorithm ? (
         <AlgorithmView
           key={mainAlgorithm.id}
+          setup={setup}
           algorithm={mainAlgorithm}
           slim={slim}
           isMain
@@ -43,7 +46,12 @@ export const AlgorithmsList: FC<Props> = ({
         </div>
       )}
       {limitedOtherAlgorithms.map((algorithm) => (
-        <AlgorithmView key={algorithm.id} algorithm={algorithm} slim={slim} />
+        <AlgorithmView
+          key={algorithm.id}
+          setup={setup}
+          algorithm={algorithm}
+          slim={slim}
+        />
       ))}
       {hasMore && (
         <Chip className="self-center" color="primary">

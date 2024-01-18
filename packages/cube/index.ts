@@ -15,3 +15,4 @@ export { rotationsFromString } from "@/helpers/rotationsFromString";
 export { createCube } from "@/initializers/createCube";
 export { algorithmToFaces } from "@/compound/algorithmToFaces";
 export { getAdjacentPieces } from "@/helpers/getAdjacentPieces";
+export { isCubeSolved } from "@/helpers/isCubeSolved";
