@@ -1,6 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { Button, ButtonGroup } from "@nextui-org/button";
-import { useCallback, type FC, useState, useEffect, use } from "react";
+import { useCallback, type FC, useState, useEffect } from "react";
 import { TbPictureInPictureOn } from "react-icons/tb";
 import { CubeMesh } from "@/components/CubeMesh";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";

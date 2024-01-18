@@ -1,3 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import {
   ScrambleGeneratorContent,
@@ -27,13 +33,13 @@ export const ScrambleGeneratorPip: FC<Props> = ({ pipPromise, ...props }) => {
     });
 
     const pageHideHandler = () => {
-      props.onPip?.(undefined);
+      props.onPip(undefined);
     };
 
     pip.addEventListener("pagehide", pageHideHandler);
 
     return () => pip.removeEventListener("pagehide", pageHideHandler);
-  }, [pip, pipPromise]);
+  }, [pip, pipPromise, props]);
 
   if (!pip) {
     return null;

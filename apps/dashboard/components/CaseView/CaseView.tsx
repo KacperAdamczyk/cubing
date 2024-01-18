@@ -13,7 +13,7 @@ interface Props {
 }
 
 export const CaseView: FC<Props> = ({
-  case: { id, name, algorithms, mainAlgorithmId, setup, subset, viewType },
+  case: { id, name, algorithms, setup, subset, viewType },
   slim,
 }) => (
   <Link as={NextLink} className="w-full" href={`/case/${id}`}>

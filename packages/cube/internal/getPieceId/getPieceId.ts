@@ -1,5 +1,4 @@
 import { Faces } from "@/types/Faces";
-import type { Piece } from "@/types/Piece";
 import type { PieceId } from "@/types/PieceId";
 import type { PieceScheme } from "@/types/PieceScheme";
 
