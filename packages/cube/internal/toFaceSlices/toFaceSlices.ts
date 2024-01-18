@@ -63,7 +63,9 @@ export const toFaceSlices = ({ state }: Cube): FaceSlices<Faces> => {
             const facesAtPlace = piece.scheme[face];
 
             if (!facesAtPlace) {
-              throw new Error(`Piece ${pieceId} has no face ${face}`);
+              throw new Error(
+                `Piece ${JSON.stringify(pieceId)} has no face ${face}`,
+              );
             }
 
             return facesAtPlace;

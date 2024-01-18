@@ -2,9 +2,7 @@ import { applyFundamentalRotations } from "@/compound/applyFundamentalRotations"
 import type { Cube } from "@/types/Cube";
 import { FundamentalRotations, Rotations } from "@/types/Rotations";
 
-interface RotateFunction {
-  (cube: Cube): Cube;
-}
+type RotateFunction = (cube: Cube) => Cube;
 
 const createRotation =
   (fundamentalRotation: FundamentalRotations[]): RotateFunction =>

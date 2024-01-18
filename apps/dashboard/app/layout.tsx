@@ -4,7 +4,6 @@ import { GeistMono } from "geist/font/mono";
 import type { FC, PropsWithChildren } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Providers } from "@/components/Providers";
-import { cn } from "@nextui-org/react";
 
 import "./globals.css";
 

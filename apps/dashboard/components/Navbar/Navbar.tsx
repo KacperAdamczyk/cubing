@@ -21,9 +21,9 @@ export const Navbar: FC = async () => {
         <Link
           as={NextLink}
           href="/"
-          className="md:text-medium whitespace-normal text-xs font-bold text-inherit lg:text-xl"
+          className="md:text-medium whitespace-normal text-xs font-bold lg:text-xl"
         >
-          Rubik's Algorithms
+          Rubik&aposs Algorithms
         </Link>
       </NavbarBrand>
       <NavbarContent className="gap-4" justify="center">

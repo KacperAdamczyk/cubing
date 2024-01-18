@@ -1,7 +1,6 @@
 {
   "extends": [
     "eslint:recommended",
-    "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
     "plugin:@typescript-eslint/strict-type-checked"
@@ -11,5 +10,6 @@
   "root": true,
   "parserOptions": {
     "project": true
-  }
+  },
+  "ignorePatterns": ["**/node_modules/*", "**/dist/*"]
 }

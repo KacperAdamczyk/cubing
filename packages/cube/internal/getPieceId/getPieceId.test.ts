@@ -1,4 +1,3 @@
-import { createPieceScheme } from "@/initializers/createPieceScheme";
 import { getPieceId } from "@/internal/getPieceId";
 import { mockPieceScheme } from "@/test/mockPieceScheme";
 import { Faces } from "@/types/Faces";
