@@ -2,10 +2,12 @@ import type { FC } from "react";
 import type { Algorithm } from "@repo/db";
 import { AlgorithmView } from "@/components/AlgorithmView";
 import { Chip } from "@nextui-org/chip";
+import { cn } from "@nextui-org/react";
 
 const otherAlgorithmsLimit = 2;
 
 interface Props {
+  className?: string;
   setup: string;
   algorithms: Algorithm[];
   mainAlgorithmId?: string;
@@ -13,6 +15,7 @@ interface Props {
 }
 
 export const AlgorithmsList: FC<Props> = ({
+  className,
   setup,
   algorithms,
   mainAlgorithmId,
@@ -31,7 +34,7 @@ export const AlgorithmsList: FC<Props> = ({
   const hasMore = otherAlgorithms.length > limitedOtherAlgorithms.length;
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className={cn(className, "flex flex-col gap-1")}>
       {mainAlgorithm ? (
         <AlgorithmView
           key={mainAlgorithm.id}

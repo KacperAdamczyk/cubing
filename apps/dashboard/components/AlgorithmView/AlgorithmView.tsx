@@ -29,10 +29,13 @@ export const AlgorithmView: FC<Props> = ({
       )}
     >
       <span
-        className={cn("flex items-center gap-1 p-1 text-center", {
-          "text-xl": !isMain,
-          "bold text-2xl": isMain,
-        })}
+        className={cn(
+          "flex items-center justify-center gap-1 p-1 text-center",
+          {
+            "text-xl": !isMain,
+            "bold text-2xl": isMain,
+          },
+        )}
       >
         {rotations}
         <AlgorithmVerifier
