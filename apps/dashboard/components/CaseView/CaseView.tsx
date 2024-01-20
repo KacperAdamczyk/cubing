@@ -38,6 +38,7 @@ export const CaseView: FC<Props> = ({
         )}
       </div>
       <AlgorithmsList
+        viewType={viewType}
         className="self-start"
         setup={setup}
         algorithms={algorithms}

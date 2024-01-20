@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import type { Algorithm } from "@repo/db";
+import type { Algorithm, CaseViewTypes } from "@repo/db";
 import { AlgorithmView } from "@/components/AlgorithmView";
 import { Chip } from "@nextui-org/chip";
 import { cn } from "@nextui-org/react";
@@ -12,6 +12,7 @@ interface Props {
   algorithms: Algorithm[];
   mainAlgorithmId?: string;
   slim: boolean;
+  viewType: CaseViewTypes;
 }
 
 export const AlgorithmsList: FC<Props> = ({
@@ -20,6 +21,7 @@ export const AlgorithmsList: FC<Props> = ({
   algorithms,
   mainAlgorithmId,
   slim,
+  viewType,
 }) => {
   const mainAlgorithm = algorithms.find(
     (algorithm) => algorithm.id === mainAlgorithmId,
@@ -41,6 +43,7 @@ export const AlgorithmsList: FC<Props> = ({
           setup={setup}
           algorithm={mainAlgorithm}
           slim={slim}
+          viewType={viewType}
           isMain
         />
       ) : (
@@ -54,6 +57,7 @@ export const AlgorithmsList: FC<Props> = ({
           setup={setup}
           algorithm={algorithm}
           slim={slim}
+          viewType={viewType}
         />
       ))}
       {hasMore && (
