@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const CaseView: FC<Props> = ({
-  case: { id, name, algorithms, setup, subset, viewType },
+  case: { id, name, algorithms, mainAlgorithmId, setup, subset, viewType },
   slim,
 }) => (
   <Card id={id} className="@container border-cube-green w-full target:border-2">
@@ -37,7 +37,14 @@ export const CaseView: FC<Props> = ({
           </Link>
         )}
       </div>
-      <AlgorithmsList setup={setup} algorithms={algorithms} slim={slim} />
+      <AlgorithmsList
+        viewType={viewType}
+        className="self-start"
+        setup={setup}
+        algorithms={algorithms}
+        mainAlgorithmId={mainAlgorithmId ?? undefined}
+        slim={slim}
+      />
     </CardBody>
   </Card>
 );

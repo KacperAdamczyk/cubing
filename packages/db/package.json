@@ -21,8 +21,8 @@
     "@repo/typescript-config": "workspace:*",
     "@types/better-sqlite3": "^7.6.8",
     "@types/bun": "latest",
-    "better-sqlite3": "^9.2.2",
-    "drizzle-kit": "^0.20.10",
+    "better-sqlite3": "^9.3.0",
+    "drizzle-kit": "^0.20.13",
     "tsup": "^8.0.1"
   },
   "dependencies": {
