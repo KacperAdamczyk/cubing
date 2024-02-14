@@ -7,7 +7,4 @@ export default defineConfig({
   dts: true,
   sourcemap: true,
   clean: true,
-  loader: {
-    ".db": "binary",
-  },
 });
