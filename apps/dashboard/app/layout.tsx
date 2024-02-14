@@ -4,8 +4,11 @@ import { GeistMono } from "geist/font/mono";
 import type { FC, PropsWithChildren } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Providers } from "@/components/Providers";
+import { setNodeModulesPath } from "@repo/db";
 
 import "./globals.css";
+
+setNodeModulesPath("../../node_modules");
 
 export const metadata: Metadata = {
   title: "Cube Algorithms",
