@@ -5,6 +5,13 @@
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/dashboard/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/dashboard/out" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/cube/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/cube/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/db/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/db/dist" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
