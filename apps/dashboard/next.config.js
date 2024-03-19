@@ -2,7 +2,6 @@
 const nextConfig = {
   output: "export",
   basePath: process.env.BASE_PATH || "/__dev__",
-  transpilePackages: ["three"],
 };
 
 export default nextConfig;
