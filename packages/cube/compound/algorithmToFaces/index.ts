@@ -1,1 +1,1 @@
-export { algorithmToFaces } from "./algorithmToFaces";
+export * from "./algorithmToFaces";

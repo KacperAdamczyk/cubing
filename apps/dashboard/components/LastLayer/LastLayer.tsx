@@ -7,6 +7,7 @@ import {
   Faces,
 } from "@repo/cube";
 import { Face } from "@/components/Face";
+import { CubeView } from "@/components/CubeView";
 
 interface Props {
   algorithm: string;

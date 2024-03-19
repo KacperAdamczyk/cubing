@@ -1,6 +1,6 @@
-import { Face } from "@/components/Face";
 import { Colors, algorithmToFaces } from "@repo/cube";
 import type { FC } from "react";
+import { Face } from "@/components/Face";
 
 interface Props {
   algorithm: string;
@@ -13,24 +13,22 @@ export const F2L: FC<Props> = ({ algorithm }) => {
   });
 
   return (
-    <div className="aspect-square size-80 [perspective:800px]">
-      <div className="relative size-full origin-center [transform-style:preserve-3d]">
-        <Face
-          className="absolute bottom-[25px] left-[25px] !size-[50%] [transform:rotateX(45deg)_rotateX(-90deg)_translateX(50%)_rotateX(90deg)]"
-          face={faces.U}
-          maskedColors={[]}
-        />
-        <Face
-          className="absolute bottom-[25px] left-[25px] !size-[50%] [transform:translateZ(180px)]"
-          face={faces.F}
-          maskedColors={[]}
-        />
-        <Face
-          className="absolute bottom-[25px] left-[25px] !size-[50%] [transform:rotateY(45deg)_translateZ(180px)]"
-          face={faces.R}
-          maskedColors={[]}
-        />
-      </div>
+    <div className="relative aspect-square grid mr-[-33%] mt-[-33%]">
+      <Face
+        className="col-start-1 row-start-1 transform [--tw-skew-x:-45deg] [--tw-translate-x:25%] [--tw-translate-y:25%] [--tw-scale-y:0.5]"
+        face={faces.U}
+        maskedColors={[]}
+      />
+      <Face
+        className="col-start-1 row-span-2"
+        face={faces.F}
+        maskedColors={[]}
+      />
+      <Face
+        className="bottom-0 col-start-2 row-start-2 transform [--tw-skew-y:-45deg] [--tw-translate-y:-25%] [--tw-translate-x:-25%] [--tw-scale-x:0.5]"
+        face={faces.R}
+        maskedColors={[]}
+      />
     </div>
   );
 };

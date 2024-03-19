@@ -7,6 +7,7 @@ import { Providers } from "@/components/Providers";
 import { setNodeModulesPath } from "@repo/db";
 
 import "./globals.css";
+import CubeCanvas from "@/components/CubeCanvas/CubeCanvas";
 
 setNodeModulesPath("../../node_modules");
 
@@ -21,6 +22,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => (
       <Providers>
         <Navbar />
         <main className="mx-auto max-w-7xl p-2 pt-4">{children}</main>
+        <CubeCanvas />
       </Providers>
     </body>
   </html>

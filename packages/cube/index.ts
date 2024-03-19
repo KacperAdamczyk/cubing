@@ -13,6 +13,9 @@ export { applyRotations } from "@/compound/applyRotations";
 export { toColoredFaceSlices } from "@/compound/toColoredFaceSlices";
 export { rotationsFromString } from "@/helpers/rotationsFromString";
 export { createCube } from "@/initializers/createCube";
-export { algorithmToFaces } from "@/compound/algorithmToFaces";
+export {
+  algorithmToFaces,
+  type AlgorithmToFacesParams,
+} from "@/compound/algorithmToFaces";
 export { getAdjacentPieces } from "@/helpers/getAdjacentPieces";
 export { isCubeSolved } from "@/helpers/isCubeSolved";

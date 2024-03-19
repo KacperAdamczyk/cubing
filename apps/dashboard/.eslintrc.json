@@ -11,5 +11,8 @@
   "root": true,
   "parserOptions": {
     "project": true
-  }
+  },
+  "ignorePatterns": [
+    "next.config.js"
+  ]
 }
