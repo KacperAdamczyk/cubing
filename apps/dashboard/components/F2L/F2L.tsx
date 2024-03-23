@@ -13,21 +13,21 @@ export const F2L: FC<Props> = ({ algorithm }) => {
   });
 
   return (
-    <div className="relative aspect-square grid mr-[-33%] mt-[-33%]">
+    <div className="relative aspect-square flex items-end min-h-20 min-w-20">
       <Face
-        className="col-start-1 row-start-1 transform [--tw-skew-x:-45deg] [--tw-translate-x:25%] [--tw-translate-y:25%] [--tw-scale-y:0.5]"
+        className="absolute bottom-[65%] h-[66%] w-[66%] min-h-12 min-w-12 transform [--tw-skew-x:-45deg] [--tw-translate-x:25%] [--tw-translate-y:25%] [--tw-scale-y:0.5]"
         face={faces.U}
-        maskedColors={[]}
+        maskedColors={[Colors.Y, Colors.B, Colors.O]}
       />
       <Face
-        className="col-start-1 row-span-2"
+        className="h-[66%] w-[66%] min-h-12 min-w-12"
         face={faces.F}
-        maskedColors={[]}
+        maskedColors={[Colors.Y, Colors.B, Colors.O]}
       />
       <Face
-        className="bottom-0 col-start-2 row-start-2 transform [--tw-skew-y:-45deg] [--tw-translate-y:-25%] [--tw-translate-x:-25%] [--tw-scale-x:0.5]"
+        className="absolute left-[65%] top-[34%] h-[66%] w-[66%] min-h-12 min-w-12 transform [--tw-skew-y:-45deg] [--tw-translate-y:-25%] [--tw-translate-x:-25%] [--tw-scale-x:0.5]"
         face={faces.R}
-        maskedColors={[]}
+        maskedColors={[Colors.Y, Colors.B, Colors.O]}
       />
     </div>
   );

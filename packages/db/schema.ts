@@ -15,6 +15,7 @@ export type Set = typeof sets.$inferSelect;
 export enum CaseViewTypes {
   OLL = "OLL",
   PLL = "PLL",
+  F2L = "F2L",
 }
 export const subsets = sqliteTable("subsets", {
   id: text("id").primaryKey(),
