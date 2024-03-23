@@ -1,1 +1,1 @@
-export { applyFundamentalRotations } from "./applyFundamentalRotations";
+export * from "./applyFundamentalRotations";

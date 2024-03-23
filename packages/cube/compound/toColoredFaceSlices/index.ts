@@ -1,1 +1,1 @@
-export { toColoredFaceSlices } from "./toColoredFaceSlices";
+export * from "./toColoredFaceSlices";

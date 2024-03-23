@@ -19,14 +19,14 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "@types/better-sqlite3": "^7.6.8",
+    "@types/better-sqlite3": "^7.6.9",
     "@types/bun": "latest",
-    "better-sqlite3": "^9.3.0",
-    "drizzle-kit": "^0.20.13",
-    "tsup": "^8.0.1"
+    "better-sqlite3": "^9.4.3",
+    "drizzle-kit": "^0.20.14",
+    "tsup": "^8.0.2"
   },
   "dependencies": {
-    "drizzle-orm": "^0.29.3"
+    "drizzle-orm": "^0.30.4"
   },
   "peerDependencies": {
     "better-sqlite3": "^9.2.2"
