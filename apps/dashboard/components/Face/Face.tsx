@@ -61,7 +61,7 @@ export const Face: FC<Props> = ({
   return (
     <div
       className={cn(
-        "grid-cols-cube grid-rows-cube grid aspect-square h-full min-h-20 w-full min-w-20 gap-[2%]",
+        "grid-cols-cube grid-rows-cube grid aspect-square h-full w-full gap-[2%]",
         {
           "grid-cols-cube-flat": !adjacentPieces,
           "grid-rows-cube-flat": !adjacentPieces,

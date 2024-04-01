@@ -16,10 +16,12 @@ export const SubsetView: FC<Props> = ({ setId, subset }) => (
     <Card>
       <CardBody className="flex flex-col items-center gap-2">
         <Badge placement="bottom-right" size="lg" content={subset.cases.length}>
-          <MultiLayer
-            algorithm={subset.previewAlgorithm}
-            type={subset.viewType}
-          />
+          <div className="size-20">
+            <MultiLayer
+              algorithm={subset.previewAlgorithm}
+              type={subset.viewType}
+            />
+          </div>
         </Badge>
         <div className="">{subset.name}</div>
       </CardBody>
