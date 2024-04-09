@@ -1,5 +1,8 @@
 {
   "name": "@repo/typescript-config",
+  "files": [
+    "tsconfig.library.json"
+  ],
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
