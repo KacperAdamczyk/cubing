@@ -15,7 +15,8 @@
     "push": "drizzle-kit push:sqlite",
     "studio": "drizzle-kit studio",
     "lint": "eslint .",
-    "build": "tsup index.ts"
+    "build": "tsup",
+    "dev": "tsup --watch"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
