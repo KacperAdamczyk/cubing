@@ -13,9 +13,9 @@ export const F2L: FC<Props> = ({ algorithm }) => {
   });
 
   return (
-    <div className="relative aspect-square flex items-end">
+    <div className="relative flex aspect-square items-end">
       <Face
-        className="absolute bottom-[65%] !h-[66%] !w-[66%] transform [--tw-skew-x:-45deg] [--tw-translate-x:25%] [--tw-translate-y:25%] [--tw-scale-y:0.5]"
+        className="absolute bottom-[65%] !h-[66%] !w-[66%] transform [--tw-scale-y:0.5] [--tw-skew-x:-45deg] [--tw-translate-x:25%] [--tw-translate-y:25%]"
         face={faces.U}
         maskedColors={[Colors.Y, Colors.B, Colors.O]}
       />
@@ -25,7 +25,7 @@ export const F2L: FC<Props> = ({ algorithm }) => {
         maskedColors={[Colors.Y, Colors.B, Colors.O]}
       />
       <Face
-        className="absolute left-[65%] top-[34%] !h-[66%] !w-[66%] transform [--tw-skew-y:-45deg] [--tw-translate-y:-25%] [--tw-translate-x:-25%] [--tw-scale-x:0.5]"
+        className="absolute left-[65%] top-[34%] !h-[66%] !w-[66%] transform [--tw-scale-x:0.5] [--tw-skew-y:-45deg] [--tw-translate-x:-25%] [--tw-translate-y:-25%]"
         face={faces.R}
         maskedColors={[Colors.Y, Colors.B, Colors.O]}
       />
