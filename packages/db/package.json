@@ -27,7 +27,7 @@
     "tsup": "^8.0.2"
   },
   "dependencies": {
-    "drizzle-orm": "^0.30.4"
+    "drizzle-orm": "^0.31.0"
   },
   "peerDependencies": {
     "better-sqlite3": "^9.2.2"
