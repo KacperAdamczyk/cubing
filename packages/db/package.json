@@ -23,7 +23,7 @@
     "@types/better-sqlite3": "^7.6.9",
     "@types/bun": "latest",
     "better-sqlite3": "^9.4.3",
-    "drizzle-kit": "^0.20.14",
+    "drizzle-kit": "^0.22.0",
     "tsup": "^8.0.2"
   },
   "dependencies": {
