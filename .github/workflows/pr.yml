@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
       - name: Run tests
-        run: pnpm test
+        run: pnpm test:run
       - name: Run prettier
         run: pnpm format:check
       - name: Build
