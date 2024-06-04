@@ -16,25 +16,30 @@
     "@repo/cube": "workspace:*",
     "@repo/db": "workspace:*",
     "@tailwindcss/container-queries": "^0.1.1",
+    "babel-plugin-react-compiler": "^0.0.0-experimental-938cd9a-20240601",
     "framer-motion": "^11.0.0",
     "geist": "^1.2.1",
-    "next": "^14.2.0-canary.63",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "^15.0.0-canary.10",
+    "react": "^19.0.0-rc-bf3a29d097-20240603",
+    "react-dom": "^19.0.0-rc-bf3a29d097-20240603",
     "react-icons": "^5.0.1",
     "scrambow": "^1.8.1"
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "types/react": "npm:types-react@rc",
+    "@types/react-dom": "npm:types-react-dom@rc",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "autoprefixer": "^10.4.17",
     "eslint": "^8",
     "eslint-config-next": "14.2.2",
     "eslint-plugin-tailwindcss": "^3.14.0",
     "postcss": "^8",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.3",
     "typescript": "^5"
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@rc",
+    "@types/react-dom": "npm:types-react-dom@rc"
   }
 }

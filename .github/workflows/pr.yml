@@ -15,11 +15,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: latest
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
-      - name: Install dependencies
-        run: bun install
+          cache: pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: |
+            args: [--frozen-lockfile]
       - name: Run tests
-        run: bun test
+        run: pnpm test
       - name: Run prettier
-        run: bun format:check
+        run: pnpm format:check
+      - name: Build
+        run: pnpm build
