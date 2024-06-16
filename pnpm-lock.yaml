@@ -81,6 +81,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.17
         version: 10.4.19(postcss@8.4.38)
+      better-sqlite3:
+        specifier: ^9.4.3
+        version: 9.6.0
       eslint:
         specifier: ^8
         version: 8.57.0

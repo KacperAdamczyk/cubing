@@ -1,15 +1,25 @@
 {
-  "extends": "@repo/typescript-config/tsconfig.library.json",
   "compilerOptions": {
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "target": "ESNext",
+    "verbatimModuleSyntax": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "moduleResolution": "Bundler",
+    "module": "ESNext",
+    "lib": [
+      "ESNext"
+    ],
     "baseUrl": "./",
-    "rootDir": "./"
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
   },
-  "include": [
-    "./**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    ".turbo"
-  ]
 }
