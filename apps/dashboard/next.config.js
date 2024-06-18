@@ -3,8 +3,8 @@ const nextConfig = {
   output: "export",
   basePath: process.env.BASE_PATH ?? "/__dev__",
     experimental: {
-        reactCompiler: true,
-        ppr: true,
+        // reactCompiler: true,
+        // ppr: true,
     },
 };
 
