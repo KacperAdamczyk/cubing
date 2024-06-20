@@ -9,7 +9,7 @@ import {
   ScrambleGeneratorContent,
   type ScrambleGeneratorContentProps,
 } from "@/components/ScrambleGenerator/ScrambleGeneratorContent";
-import {use, type FC, useEffect, type ReactNode} from "react";
+import {use, type FC, useEffect} from "react";
 import { createPortal } from "react-dom";
 
 interface Props extends ScrambleGeneratorContentProps {
@@ -50,5 +50,5 @@ export const ScrambleGeneratorPip: FC<Props> = ({ pipPromise, ...props }) => {
       <ScrambleGeneratorContent {...props} isPipDisabled />
     </div>,
     pip.document.body,
-  ) as ReactNode;
+  );
 };

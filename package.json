@@ -9,7 +9,7 @@
     "test:run": "turbo test:run",
     "lint": "turbo lint",
     "format": "prettier --write .",
-    "format:check": "prettier --write ."
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",

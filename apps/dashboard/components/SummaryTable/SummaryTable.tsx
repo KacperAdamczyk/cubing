@@ -15,7 +15,7 @@ import {
   getKeyValue,
 } from "@nextui-org/table";
 import { useAsyncList } from "@react-stately/data";
-import {useCallback, type FC,} from "react";
+import {useCallback, type FC} from "react";
 
 interface Props {
   cases: GetCasesEntity[];
