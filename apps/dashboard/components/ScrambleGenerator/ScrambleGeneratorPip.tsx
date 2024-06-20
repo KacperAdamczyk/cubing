@@ -9,7 +9,7 @@ import {
   ScrambleGeneratorContent,
   type ScrambleGeneratorContentProps,
 } from "@/components/ScrambleGenerator/ScrambleGeneratorContent";
-import {use, type FC, useEffect} from "react";
+import { use, type FC, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 interface Props extends ScrambleGeneratorContentProps {

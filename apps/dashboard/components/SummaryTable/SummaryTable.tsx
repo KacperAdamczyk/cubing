@@ -15,7 +15,7 @@ import {
   getKeyValue,
 } from "@nextui-org/table";
 import { useAsyncList } from "@react-stately/data";
-import {useCallback, type FC} from "react";
+import { useCallback, type FC } from "react";
 
 interface Props {
   cases: GetCasesEntity[];
@@ -84,7 +84,7 @@ export const SummaryTable: FC<Props> = ({ cases }) => {
   });
 
   const renderCell = useCallback(
-      (row: (typeof list.items)[number], columnKey: string | number) => {
+    (row: (typeof list.items)[number], columnKey: string | number) => {
       switch (columnKey) {
         case "preview":
           return (

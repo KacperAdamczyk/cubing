@@ -12,14 +12,10 @@
     "noUncheckedIndexedAccess": true,
     "moduleResolution": "Bundler",
     "module": "ESNext",
-    "lib": [
-      "ESNext"
-    ],
+    "lib": ["ESNext"],
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     }
   }
 }
