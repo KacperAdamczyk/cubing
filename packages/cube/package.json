@@ -10,10 +10,11 @@
   },
   "type": "module",
   "files": [
-    "dist/*"
+    "dist"
   ],
   "scripts": {
     "test": "vitest",
+    "test:run": "vitest run",
     "test:ui": "vitest --ui",
     "ts-check": "tsc --noEmit",
     "lint": "eslint .",
@@ -31,6 +32,6 @@
   },
   "dependencies": {
     "immer": "^10.0.3",
-    "ts-pattern": "^5.0.6"
+    "ts-pattern": "^5.2.0"
   }
 }

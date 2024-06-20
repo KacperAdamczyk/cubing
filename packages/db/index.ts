@@ -7,8 +7,8 @@ import * as schema from "@/schema";
 
 import DATABASE from "@/database.db";
 
-let database: BetterSQLite3Database<typeof schema> | undefined;
-export let sqlite: DatabaseType | undefined;
+let database: BetterSQLite3Database<typeof schema>;
+export let sqlite: DatabaseType;
 export const db = () => {
   if (!database) {
     sqlite = new Database(Buffer.from(DATABASE));

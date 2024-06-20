@@ -22,11 +22,11 @@ const config: Config = {
     extend: {
       gridTemplateColumns: {
         cube: "1fr repeat(3, 5fr) 1fr",
-          "cube-flat": "0 repeat(3, 5fr) 0",
+        "cube-flat": "0 repeat(3, 5fr) 0",
       },
       gridTemplateRows: {
         cube: "1fr repeat(3, 5fr) 1fr",
-          "cube-flat": "0 repeat(3, 5fr) 0",
+        "cube-flat": "0 repeat(3, 5fr) 0",
       },
     },
   },
