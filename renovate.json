@@ -4,7 +4,8 @@
   "packageRules": [
     {
       "matchDepTypes": ["action"],
-      "pinDigests": false
+      "pinDigests": false,
+      "rangeStrategy": "auto"
     }
   ]
 }
