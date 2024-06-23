@@ -6,6 +6,9 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**"]
     },
+    "dashboard#build": {
+      "env": ["BASE_PATH"]
+    },
     "lint": {
       "dependsOn": ["^lint"]
     },
