@@ -138,14 +138,14 @@ importers:
     dependencies:
       drizzle-orm:
         specifier: ^0.31.2
-        version: 0.31.2(@types/better-sqlite3@7.6.10)(@types/react@18.3.3)(better-sqlite3@11.1.2)(bun-types@1.1.17)(react@18.3.1)
+        version: 0.31.2(@types/better-sqlite3@7.6.11)(@types/react@18.3.3)(better-sqlite3@11.1.2)(bun-types@1.1.17)(react@18.3.1)
     devDependencies:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       '@types/better-sqlite3':
-        specifier: 7.6.10
-        version: 7.6.10
+        specifier: 7.6.11
+        version: 7.6.11
       '@types/bun':
         specifier: latest
         version: 1.1.6
@@ -1891,8 +1891,8 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.2.0'
 
-  '@types/better-sqlite3@7.6.10':
-    resolution: {integrity: sha512-TZBjD+yOsyrUJGmcUj6OS3JADk3+UZcNv3NOBqGkM09bZdi28fNZw8ODqbMOLfKCu7RYCO62/ldq1iHbzxqoPw==}
+  '@types/better-sqlite3@7.6.11':
+    resolution: {integrity: sha512-i8KcD3PgGtGBLl3+mMYA8PdKkButvPyARxA7IQAd6qeslht13qxb1zzO8dRCtE7U3IoJS782zDBAeoKiM695kg==}
 
   '@types/bun@1.1.6':
     resolution: {integrity: sha512-uJgKjTdX0GkWEHZzQzFsJkWp5+43ZS7HC8sZPFnOwnSo1AsNl2q9o2bFeS23disNDqbggEgyFkKCHl/w8iZsMA==}
@@ -6962,7 +6962,7 @@ snapshots:
     dependencies:
       tailwindcss: 3.4.4
 
-  '@types/better-sqlite3@7.6.10':
+  '@types/better-sqlite3@7.6.11':
     dependencies:
       '@types/node': 20.14.9
 
@@ -7762,9 +7762,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.31.2(@types/better-sqlite3@7.6.10)(@types/react@18.3.3)(better-sqlite3@11.1.2)(bun-types@1.1.17)(react@18.3.1):
+  drizzle-orm@0.31.2(@types/better-sqlite3@7.6.11)(@types/react@18.3.3)(better-sqlite3@11.1.2)(bun-types@1.1.17)(react@18.3.1):
     optionalDependencies:
-      '@types/better-sqlite3': 7.6.10
+      '@types/better-sqlite3': 7.6.11
       '@types/react': 18.3.3
       better-sqlite3: 11.1.2
       bun-types: 1.1.17
