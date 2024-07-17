@@ -7,19 +7,19 @@ import type { Colors } from "@/types/Colors";
 import type { FaceSlices } from "@/types/FaceSlices";
 
 export interface AlgorithmToFacesParams {
-  algorithm: string;
-  orientation: ColorOrientation;
+	algorithm: string;
+	orientation: ColorOrientation;
 }
 
 export const algorithmToFaces = ({
-  algorithm,
-  orientation,
+	algorithm,
+	orientation,
 }: AlgorithmToFacesParams): FaceSlices<Colors> => {
-  const cube = createCube({
-    orientation,
-  });
-  const rotations = rotationsFromString(algorithm);
-  const scrambledCube = applyRotations(rotations, cube);
+	const cube = createCube({
+		orientation,
+	});
+	const rotations = rotationsFromString(algorithm);
+	const scrambledCube = applyRotations(rotations, cube);
 
-  return toColoredFaceSlices(scrambledCube);
+	return toColoredFaceSlices(scrambledCube);
 };

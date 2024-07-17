@@ -4,28 +4,28 @@ import { getSubsets } from "@/queries/getSubsets";
 import type { FC } from "react";
 
 export const generateStaticParams = async ({ params: { setId } }: Props) => {
-  const subsets = await getSubsets(setId);
+	const subsets = await getSubsets(setId);
 
-  return subsets.map(({ id }) => ({
-    subsetId: id,
-  }));
+	return subsets.map(({ id }) => ({
+		subsetId: id,
+	}));
 };
 
 interface Props {
-  params: {
-    setId: string;
-    subsetId: string;
-  };
+	params: {
+		setId: string;
+		subsetId: string;
+	};
 }
 
 const SubsetPage: FC<Props> = async ({ params: { subsetId } }) => {
-  const cases = await getCasesForSubset(subsetId);
+	const cases = await getCasesForSubset(subsetId);
 
-  return (
-    <div className="mt-2 flex flex-col gap-2">
-      <CasesList cases={cases} slim />
-    </div>
-  );
+	return (
+		<div className="mt-2 flex flex-col gap-2">
+			<CasesList cases={cases} slim />
+		</div>
+	);
 };
 
 export default SubsetPage;

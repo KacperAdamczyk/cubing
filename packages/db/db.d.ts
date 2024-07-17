@@ -1,5 +1,5 @@
 declare module "*.db" {
-  const value: Uint8Array;
+	const value: Uint8Array;
 
-  export { value as default };
+	export { value as default };
 }

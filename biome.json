@@ -3,10 +3,11 @@
 	"organizeImports": {
 		"enabled": true
 	},
-  "formatter": {
-    "enabled": true
-  },
-  "linter": {
+	"formatter": {
+		"enabled": true,
+		"ignore": ["**/*.json"]
+	},
+	"linter": {
 		"enabled": false,
 		"rules": {
 			"recommended": true

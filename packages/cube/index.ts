@@ -3,8 +3,8 @@ export { type ColorOrientation } from "./types/ColorOrientation";
 export { type FaceSlice } from "./types/FaceSlice";
 export { type FaceSlices } from "./types/FaceSlices";
 export {
-  type AdjacentPieces,
-  type AdjacentFaces,
+	type AdjacentPieces,
+	type AdjacentFaces,
 } from "./types/AdjacentPieces";
 export { Colors } from "./types/Colors";
 export { Faces } from "./types/Faces";
@@ -14,8 +14,8 @@ export { toColoredFaceSlices } from "@/compound/toColoredFaceSlices";
 export { rotationsFromString } from "@/helpers/rotationsFromString";
 export { createCube } from "@/initializers/createCube";
 export {
-  algorithmToFaces,
-  type AlgorithmToFacesParams,
+	algorithmToFaces,
+	type AlgorithmToFacesParams,
 } from "@/compound/algorithmToFaces";
 export { getAdjacentPieces } from "@/helpers/getAdjacentPieces";
 export { isCubeSolved } from "@/helpers/isCubeSolved";

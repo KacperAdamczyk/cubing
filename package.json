@@ -8,15 +8,14 @@
     "test": "turbo test",
     "test:run": "turbo test:run",
     "lint": "turbo lint",
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format": "biome format --write",
+    "format:check": "biome format"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "eslint": "8.57.0",
-    "prettier": "3.3.2",
     "prettier-plugin-tailwindcss": "0.6.5",
     "turbo": "2.0.6"
   },

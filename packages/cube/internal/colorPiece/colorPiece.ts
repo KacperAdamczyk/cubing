@@ -6,25 +6,25 @@ import type { ColoredPiece, Piece } from "@/types/Piece";
 import type { PieceScheme } from "@/types/PieceScheme";
 
 export const colorPiece = (
-  orientation: ColorOrientation,
-  piece: Piece,
+	orientation: ColorOrientation,
+	piece: Piece,
 ): ColoredPiece => {
-  const expandedColors = expandColors(orientation);
+	const expandedColors = expandColors(orientation);
 
-  const coloredPieceScheme = Object.fromEntries(
-    (Object.entries(piece.scheme) as [Faces, Faces | undefined][]).map(
-      ([face, orientedFace]) => {
-        if (orientedFace === undefined) {
-          return [face, undefined] as const;
-        }
+	const coloredPieceScheme = Object.fromEntries(
+		(Object.entries(piece.scheme) as [Faces, Faces | undefined][]).map(
+			([face, orientedFace]) => {
+				if (orientedFace === undefined) {
+					return [face, undefined] as const;
+				}
 
-        return [face, expandedColors[orientedFace]] as const;
-      },
-    ),
-  ) as PieceScheme<Colors>;
+				return [face, expandedColors[orientedFace]] as const;
+			},
+		),
+	) as PieceScheme<Colors>;
 
-  return {
-    ...piece,
-    scheme: coloredPieceScheme,
-  };
+	return {
+		...piece,
+		scheme: coloredPieceScheme,
+	};
 };

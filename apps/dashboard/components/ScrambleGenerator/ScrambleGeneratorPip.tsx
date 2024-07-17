@@ -6,49 +6,49 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import {
-  ScrambleGeneratorContent,
-  type ScrambleGeneratorContentProps,
+	ScrambleGeneratorContent,
+	type ScrambleGeneratorContentProps,
 } from "@/components/ScrambleGenerator/ScrambleGeneratorContent";
-import { use, type FC, useEffect } from "react";
+import { type FC, use, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 interface Props extends ScrambleGeneratorContentProps {
-  pipPromise?: Promise<any>;
+	pipPromise?: Promise<any>;
 }
 
 export const ScrambleGeneratorPip: FC<Props> = ({ pipPromise, ...props }) => {
-  const pip = use(pipPromise ?? Promise.resolve());
+	const pip = use(pipPromise ?? Promise.resolve());
 
-  useEffect(() => {
-    if (!pip) return;
+	useEffect(() => {
+		if (!pip) return;
 
-    [...document.styleSheets].forEach((styleSheet) => {
-      const cssRules = [...styleSheet.cssRules]
-        .map((rule) => rule.cssText)
-        .join("");
-      const style = document.createElement("style");
+		[...document.styleSheets].forEach((styleSheet) => {
+			const cssRules = [...styleSheet.cssRules]
+				.map((rule) => rule.cssText)
+				.join("");
+			const style = document.createElement("style");
 
-      style.textContent = cssRules;
-      pip.document.head.appendChild(style);
-    });
+			style.textContent = cssRules;
+			pip.document.head.appendChild(style);
+		});
 
-    const pageHideHandler = () => {
-      props.onPip(undefined);
-    };
+		const pageHideHandler = () => {
+			props.onPip(undefined);
+		};
 
-    pip.addEventListener("pagehide", pageHideHandler);
+		pip.addEventListener("pagehide", pageHideHandler);
 
-    return () => pip.removeEventListener("pagehide", pageHideHandler);
-  }, [pip, pipPromise, props]);
+		return () => pip.removeEventListener("pagehide", pageHideHandler);
+	}, [pip, pipPromise, props]);
 
-  if (!pip) {
-    return null;
-  }
+	if (!pip) {
+		return null;
+	}
 
-  return createPortal(
-    <div className="p-4">
-      <ScrambleGeneratorContent {...props} isPipDisabled />
-    </div>,
-    pip.document.body,
-  );
+	return createPortal(
+		<div className="p-4">
+			<ScrambleGeneratorContent {...props} isPipDisabled />
+		</div>,
+		pip.document.body,
+	);
 };

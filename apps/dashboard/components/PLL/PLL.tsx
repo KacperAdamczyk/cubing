@@ -1,10 +1,10 @@
-import type { FC } from "react";
 import { LastLayer } from "@/components/LastLayer";
+import type { FC } from "react";
 
 interface Props {
-  algorithm: string;
+	algorithm: string;
 }
 
 export const PLL: FC<Props> = ({ algorithm }) => {
-  return <LastLayer algorithm={algorithm} />;
+	return <LastLayer algorithm={algorithm} />;
 };
