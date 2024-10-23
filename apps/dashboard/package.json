@@ -27,7 +27,7 @@
   "devDependencies": {
     "@types/node": "20.17.0",
     "@types/react": "npm:types-react@19.0.0-rc.1",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0",
     "@typescript-eslint/eslint-plugin": "8.11.0",
     "autoprefixer": "10.4.20",
     "better-sqlite3": "11.5.0",
@@ -41,7 +41,7 @@
   "pnpm": {
     "overrides": {
       "@types/react": "npm:types-react@19.0.0-rc.1",
-      "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
+      "@types/react-dom": "npm:types-react-dom@19.0.0"
     }
   }
 }
