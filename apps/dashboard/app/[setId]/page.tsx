@@ -3,9 +3,9 @@ import { getCasesForSet } from "@/queries/getCasesForSet";
 import type { FC } from "react";
 
 interface Props {
-  params: {
+  params: Promise<{
     setId: string;
-  };
+  }>;
 }
 
 const SetPage: FC<Props> = async ({ params }) => {

@@ -11,9 +11,9 @@ export const generateStaticParams = async () => {
 };
 
 interface Props {
-  params: {
+  params: Promise<{
     caseId: string;
-  };
+  }>;
 }
 
 const CasePage: FC<Props> = async ({ params }) => {

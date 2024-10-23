@@ -3,7 +3,8 @@ import { getCasesForSubset } from "@/queries/getCasesForSubset";
 import { getSubsets } from "@/queries/getSubsets";
 import type { FC } from "react";
 
-export const generateStaticParams = async ({ params: { setId } }: Props) => {
+export const generateStaticParams = async ({ params }: Props) => {
+  const { setId } = await params;
   const subsets = await getSubsets(setId);
 
   return subsets.map(({ id }) => ({
@@ -12,10 +13,10 @@ export const generateStaticParams = async ({ params: { setId } }: Props) => {
 };
 
 interface Props {
-  params: {
+  params: Promise<{
     setId: string;
     subsetId: string;
-  };
+  }>;
 }
 
 const SubsetPage: FC<Props> = async ({ params }) => {

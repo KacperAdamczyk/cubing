@@ -11,9 +11,9 @@ export const generateStaticParams = async () => {
 };
 
 interface Props {
-  params: {
+  params: Promise<{
     setId: string;
-  };
+  }>;
 }
 
 const SetLayout: FC<PropsWithChildren<Props>> = async ({
