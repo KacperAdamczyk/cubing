@@ -8,7 +8,9 @@ interface Props {
   };
 }
 
-const SetPage: FC<Props> = async ({ params: { setId } }) => {
+const SetPage: FC<Props> = async ({ params }) => {
+  const { setId } = await params;
+
   const cases = await getCasesForSet(setId);
   const flatCases = cases.flatMap((currentCase) => currentCase.cases);
 

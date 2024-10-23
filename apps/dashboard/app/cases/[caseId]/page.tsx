@@ -16,7 +16,9 @@ interface Props {
   };
 }
 
-const CasePage: FC<Props> = async ({ params: { caseId } }) => {
+const CasePage: FC<Props> = async ({ params }) => {
+  const { caseId } = await params;
+
   const currentCase = await getCase(caseId);
 
   if (!currentCase) {

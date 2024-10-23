@@ -18,7 +18,9 @@ interface Props {
   };
 }
 
-const SubsetPage: FC<Props> = async ({ params: { subsetId } }) => {
+const SubsetPage: FC<Props> = async ({ params }) => {
+  const { subsetId } = await params;
+
   const cases = await getCasesForSubset(subsetId);
 
   return (
