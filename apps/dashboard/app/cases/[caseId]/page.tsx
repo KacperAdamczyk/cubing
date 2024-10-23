@@ -11,12 +11,14 @@ export const generateStaticParams = async () => {
 };
 
 interface Props {
-  params: {
+  params: Promise<{
     caseId: string;
-  };
+  }>;
 }
 
-const CasePage: FC<Props> = async ({ params: { caseId } }) => {
+const CasePage: FC<Props> = async ({ params }) => {
+  const { caseId } = await params;
+
   const currentCase = await getCase(caseId);
 
   if (!currentCase) {

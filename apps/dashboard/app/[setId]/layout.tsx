@@ -11,19 +11,23 @@ export const generateStaticParams = async () => {
 };
 
 interface Props {
-  params: {
+  params: Promise<{
     setId: string;
-  };
+  }>;
 }
 
-const SetLayout: FC<PropsWithChildren<Props>> = ({
-  params: { setId },
+const SetLayout: FC<PropsWithChildren<Props>> = async ({
+  params,
   children,
-}) => (
-  <div>
-    <SubsetsList setId={setId} />
-    {children}
-  </div>
-);
+}) => {
+  const { setId } = await params;
+
+  return (
+    <div>
+      <SubsetsList setId={setId} />
+      {children}
+    </div>
+  );
+};
 
 export default SetLayout;
