@@ -138,7 +138,7 @@ importers:
     dependencies:
       drizzle-orm:
         specifier: ^0.36.0
-        version: 0.36.0(@libsql/client-wasm@0.14.0)(@types/better-sqlite3@7.6.11)(@types/react@18.3.12)(better-sqlite3@11.5.0)(bun-types@1.1.34)(react@18.3.1)
+        version: 0.36.1(@libsql/client-wasm@0.14.0)(@types/better-sqlite3@7.6.11)(@types/react@18.3.12)(better-sqlite3@11.5.0)(bun-types@1.1.34)(react@18.3.1)
     devDependencies:
       '@repo/typescript-config':
         specifier: workspace:*
@@ -3007,8 +3007,8 @@ packages:
     resolution: {integrity: sha512-4BNA0T2blN+jW5wSwhtc+FIlCMuxYSMWCnYYdOBi5rttwq8aVXRUid0d0NCzcBKtZQSPZGAUxy+TXr7Q1OgEug==}
     hasBin: true
 
-  drizzle-orm@0.36.0:
-    resolution: {integrity: sha512-6BETYPdKSR7cDHC0ZfqZk2VrKJ8n/Rfd3ajFPsAbc69gi87nwZ6oBA2wUGMELHA0tQE4kUKN0Ds00LUZQ6Z69A==}
+  drizzle-orm@0.36.1:
+    resolution: {integrity: sha512-F4hbimnMEhyWzDowQB4xEuVJJWXLHZYD7FYwvo8RImY+N7pStGqsbfmT95jDbec1s4qKmQbiuxEDZY90LRrfIw==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
@@ -8785,7 +8785,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.36.0(@libsql/client-wasm@0.14.0)(@types/better-sqlite3@7.6.11)(@types/react@18.3.12)(better-sqlite3@11.5.0)(bun-types@1.1.34)(react@18.3.1):
+  drizzle-orm@0.36.1(@libsql/client-wasm@0.14.0)(@types/better-sqlite3@7.6.11)(@types/react@18.3.12)(better-sqlite3@11.5.0)(bun-types@1.1.34)(react@18.3.1):
     optionalDependencies:
       '@libsql/client-wasm': 0.14.0
       '@types/better-sqlite3': 7.6.11
@@ -9052,7 +9052,7 @@ snapshots:
       eslint: 8.57.1
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@8.12.1(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.12.1(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1))(eslint@8.57.1)
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.12.1(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@8.12.1(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.12.1(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1)
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.12.1(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.1)
       eslint-plugin-jsx-a11y: 6.10.1(eslint@8.57.1)
       eslint-plugin-react: 7.37.2(eslint@8.57.1)
       eslint-plugin-react-hooks: 5.0.0(eslint@8.57.1)
@@ -9106,7 +9106,7 @@ snapshots:
       enhanced-resolve: 5.17.0
       eslint: 8.57.1
       eslint-module-utils: 2.12.0(@typescript-eslint/parser@8.12.1(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@8.12.1(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.12.1(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1)
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.12.1(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@8.12.1(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.12.1(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1)
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.12.1(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.1)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.5
       is-core-module: 2.15.1
@@ -9181,7 +9181,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.12.1(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@8.12.1(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.12.1(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1):
+  eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.12.1(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.1):
     dependencies:
       '@rtsao/scc': 1.1.0
       array-includes: 3.1.8
