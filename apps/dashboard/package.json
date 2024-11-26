@@ -30,7 +30,7 @@
     "@types/react-dom": "npm:types-react-dom@19.0.0",
     "@typescript-eslint/eslint-plugin": "8.16.0",
     "autoprefixer": "10.4.20",
-    "better-sqlite3": "11.5.0",
+    "better-sqlite3": "11.6.0",
     "eslint": "8.57.1",
     "eslint-config-next": "15.0.3",
     "eslint-plugin-tailwindcss": "3.17.5",
