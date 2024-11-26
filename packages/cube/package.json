@@ -24,11 +24,11 @@
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
     "@types/bun": "latest",
-    "@vitest/ui": "2.1.5",
+    "@vitest/ui": "2.1.6",
     "tsup": "8.3.5",
     "typescript": "5.7.2",
     "vite-tsconfig-paths": "5.1.3",
-    "vitest": "2.1.5"
+    "vitest": "2.1.6"
   },
   "dependencies": {
     "immer": "^10.0.3",
