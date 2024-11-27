@@ -13,9 +13,8 @@
     "ts-check": "tsc --noEmit",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
-    "generate": "drizzle-kit generate:sqlite",
-    "migrate": "bun migrate.ts",
-    "push": "drizzle-kit push:sqlite",
+    "generate": "drizzle-kit generate",
+    "push": "drizzle-kit push",
     "studio": "drizzle-kit studio"
   },
   "dependencies": {
