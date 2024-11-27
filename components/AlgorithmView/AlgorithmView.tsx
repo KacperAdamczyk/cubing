@@ -24,7 +24,7 @@ export const AlgorithmView: FC<Props> = ({
   return (
     <div
       className={cn(
-        "border-divider flex flex-col justify-center rounded-md border",
+        "flex flex-col justify-center rounded-md border border-divider",
         {
           "mb-2 border-2": isMain,
         },
@@ -48,10 +48,10 @@ export const AlgorithmView: FC<Props> = ({
         />
       </span>
       {showMnemonic && (
-        <span className="text-default-600 text-center text-lg">{mnemonic}</span>
+        <span className="text-center text-lg text-default-600">{mnemonic}</span>
       )}
       {showDescription && (
-        <span className="text-medium text-default-500 text-center">
+        <span className="text-center text-medium text-default-500">
           {description}
         </span>
       )}

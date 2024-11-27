@@ -47,7 +47,7 @@ export const AlgorithmsList: FC<Props> = ({
           isMain
         />
       ) : (
-        <div className="border-cube-red rounded-md border-2 p-1 text-center text-2xl">
+        <div className="rounded-md border-2 border-cube-red p-1 text-center text-2xl">
           (No main algorithm)
         </div>
       )}

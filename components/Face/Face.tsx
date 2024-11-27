@@ -61,7 +61,7 @@ export const Face: FC<Props> = ({
   return (
     <div
       className={cn(
-        "grid-cols-cube grid-rows-cube grid aspect-square h-full w-full gap-[2%]",
+        "grid aspect-square h-full w-full grid-cols-cube grid-rows-cube gap-[2%]",
         {
           "grid-cols-cube-flat": !adjacentPieces,
           "grid-rows-cube-flat": !adjacentPieces,
@@ -118,7 +118,7 @@ export const Face: FC<Props> = ({
       <Piece className="col-start-2 row-start-3" color={pieces[3]} />
       <Piece className="col-start-3 row-start-3" color={pieces[4]} />
       {!!faceLabel && (
-        <div className="text-default-400 relative col-start-3 row-start-3 flex select-none items-center justify-center text-2xl font-bold">
+        <div className="relative col-start-3 row-start-3 flex select-none items-center justify-center text-2xl font-bold text-default-400">
           {faceLabel}
         </div>
       )}
