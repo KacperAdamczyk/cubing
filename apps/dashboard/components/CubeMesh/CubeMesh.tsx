@@ -1,5 +1,5 @@
 import { Face } from "@/components/Face";
-import { Colors, Faces, algorithmToFaces, getAdjacentPieces } from "@repo/cube";
+import { Colors, Faces, algorithmToFaces, getAdjacentPieces } from "@/cube";
 import type { FC } from "react";
 
 interface Props {

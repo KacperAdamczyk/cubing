@@ -1,4 +1,4 @@
-import { Colors, algorithmToFaces } from "@repo/cube";
+import { Colors, algorithmToFaces } from "@/cube";
 import type { FC } from "react";
 import { Face } from "@/components/Face";
 

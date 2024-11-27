@@ -4,7 +4,7 @@ import {
   type AdjacentPieces,
   type FaceSlice,
   type Faces,
-} from "@repo/cube";
+} from "@/cube";
 import type { FC } from "react";
 
 interface Props {

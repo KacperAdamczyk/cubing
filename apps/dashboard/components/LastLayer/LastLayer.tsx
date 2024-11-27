@@ -5,7 +5,7 @@ import {
   type ColorOrientation,
   getAdjacentPieces,
   Faces,
-} from "@repo/cube";
+} from "@/cube";
 import { Face } from "@/components/Face";
 
 interface Props {

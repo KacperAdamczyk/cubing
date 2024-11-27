@@ -5,7 +5,7 @@ import {
   isCubeSolved,
   rotationsFromString,
   toColoredFaceSlices,
-} from "@repo/cube";
+} from "@/cube";
 import { CaseViewTypes } from "@/db/schema";
 import type { FC } from "react";
 import { MdErrorOutline } from "react-icons/md";
