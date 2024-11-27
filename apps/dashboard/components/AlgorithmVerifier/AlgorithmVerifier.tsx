@@ -6,7 +6,7 @@ import {
   rotationsFromString,
   toColoredFaceSlices,
 } from "@repo/cube";
-import { CaseViewTypes } from "@repo/db";
+import { CaseViewTypes } from "@/db/schema";
 import type { FC } from "react";
 import { MdErrorOutline } from "react-icons/md";
 import { MdOutlineGppGood } from "react-icons/md";

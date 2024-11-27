@@ -8,7 +8,7 @@ import {
 } from "@nextui-org/dropdown";
 import { Button } from "@nextui-org/button";
 import { NavbarItem } from "@nextui-org/navbar";
-import type { Set } from "@repo/db";
+import type { Set } from "@/db/schema";
 import { FaChevronDown } from "react-icons/fa6";
 import NextLink from "next/link";
 

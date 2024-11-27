@@ -1,6 +1,6 @@
 import { AlgorithmVerifier } from "@/components/AlgorithmVerifier";
 import { cn } from "@nextui-org/react";
-import type { Algorithm, CaseViewTypes } from "@repo/db";
+import type { Algorithm, CaseViewTypes } from "@/db/schema";
 import type { FC } from "react";
 
 interface Props {

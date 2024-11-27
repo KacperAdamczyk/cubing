@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import type { Algorithm, CaseViewTypes } from "@repo/db";
+import type { Algorithm, CaseViewTypes } from "@/db/schema";
 import { AlgorithmView } from "@/components/AlgorithmView";
 import { Chip } from "@nextui-org/chip";
 import { cn } from "@nextui-org/react";

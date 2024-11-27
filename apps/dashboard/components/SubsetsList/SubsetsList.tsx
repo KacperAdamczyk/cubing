@@ -1,6 +1,6 @@
 import { SubsetView } from "@/components/SubsetView";
 import { getSubsets, type GetSubsetsEntity } from "@/queries/getSubsets";
-import { CaseViewTypes } from "@repo/db";
+import { CaseViewTypes } from "@/db/schema";
 import type { FC } from "react";
 
 interface Props {
