@@ -21,7 +21,7 @@
     "@nextui-org/react": "^2.4.2",
     "@react-stately/data": "^3.11.0",
     "@tailwindcss/container-queries": "^0.1.1",
-    "drizzle-orm": "^0.36.0",
+    "drizzle-orm": "^0.37.0",
     "framer-motion": "^11.0.0",
     "geist": "^1.2.1",
     "immer": "^10.1.1",
