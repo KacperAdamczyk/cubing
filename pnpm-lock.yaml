@@ -23,7 +23,7 @@ importers:
         version: 0.1.1(tailwindcss@3.4.16)
       drizzle-orm:
         specifier: ^0.38.0
-        version: 0.38.0(@types/better-sqlite3@7.6.12)(better-sqlite3@11.7.0)(react@19.0.0)(types-react@19.0.0-rc.1)
+        version: 0.38.1(@types/better-sqlite3@7.6.12)(better-sqlite3@11.7.0)(react@19.0.0)(types-react@19.0.0-rc.1)
       framer-motion:
         specifier: ^11.0.0
         version: 11.13.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -2310,8 +2310,8 @@ packages:
     resolution: {integrity: sha512-zAf0qg/BX2lV/Xip4igXrtbDv+Ub8S39U6qSOEGNvqcHrnmaQjS4mkkFZOUsgXRbuH56QUeWZxfnLHefrKCV5g==}
     hasBin: true
 
-  drizzle-orm@0.38.0:
-    resolution: {integrity: sha512-Ev1UYKOUxiVwLZZfos4hoNDMDkp313FqF0CHelhR+BeOdb76z/a6pKF6SgYQSrmj6EXH4cy6QIkmuxl2KIFW0A==}
+  drizzle-orm@0.38.1:
+    resolution: {integrity: sha512-TpOzNrPGy7dl0/uP9vKD6ATzp9noJaRYhOYqtOCKxxwSmZqrPxN4SW5kWawVUIcbSd2lkbDCdZue+gtVNLmQsg==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=4'
@@ -6718,7 +6718,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.38.0(@types/better-sqlite3@7.6.12)(better-sqlite3@11.7.0)(react@19.0.0)(types-react@19.0.0-rc.1):
+  drizzle-orm@0.38.1(@types/better-sqlite3@7.6.12)(better-sqlite3@11.7.0)(react@19.0.0)(types-react@19.0.0-rc.1):
     optionalDependencies:
       '@types/better-sqlite3': 7.6.12
       '@types/react': types-react@19.0.0-rc.1
