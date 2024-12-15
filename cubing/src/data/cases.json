@@ -3,232 +3,232 @@
     "id": "Aa",
     "name": "Aa",
     "setup": "x R2' D2' R U R' D2' R U' R x'",
-    "view_type": "PLL",
-    "subset_id": "Corners-Only",
-    "main_algorithm_id": "Aa-1"
+    "viewType": "PLL",
+    "subsetId": "Corners-Only",
+    "mainAlgorithmId": "Aa-1"
   },
   {
     "id": "Ab",
     "name": "Ab",
     "setup": "x R' U R' D2' R U' R' D2' R2' x'",
-    "view_type": "PLL",
-    "subset_id": "Corners-Only",
-    "main_algorithm_id": "Ab-1"
+    "viewType": "PLL",
+    "subsetId": "Corners-Only",
+    "mainAlgorithmId": "Ab-1"
   },
   {
     "id": "E",
     "name": "E",
     "setup": "x' D R U R' D' R U' R' D R U' R' D' R U R' x",
-    "view_type": "PLL",
-    "subset_id": "Corners-Only",
-    "main_algorithm_id": "E-1"
+    "viewType": "PLL",
+    "subsetId": "Corners-Only",
+    "mainAlgorithmId": "E-1"
   },
   {
     "id": "F",
     "name": "F",
     "setup": "R' U' R U' R' U R U R2' F' R U R U' R' F U R",
-    "view_type": "PLL",
-    "subset_id": "Adjacent-Swap",
-    "main_algorithm_id": "F-1"
+    "viewType": "PLL",
+    "subsetId": "Adjacent-Swap",
+    "mainAlgorithmId": "F-1"
   },
   {
     "id": "F2L-6-FR",
     "name": "F2L 6 FR",
     "setup": "F' U' F U2' F' U F U'",
-    "view_type": "F2L",
-    "subset_id": "Disconnected-Pairs",
-    "main_algorithm_id": null
+    "viewType": "F2L",
+    "subsetId": "Disconnected-Pairs",
+    "mainAlgorithmId": null
   },
   {
     "id": "Ga",
     "name": "Ga",
     "setup": "R' U' R D' U R2' U R' U R U' R U' R2' D",
-    "view_type": "PLL",
-    "subset_id": "G-Perms",
-    "main_algorithm_id": "Ga-1"
+    "viewType": "PLL",
+    "subsetId": "G-Perms",
+    "mainAlgorithmId": "Ga-1"
   },
   {
     "id": "Gb",
     "name": "Gb",
     "setup": "R2' U R' U R' U' R U' R2' D U' R' U R D'",
-    "view_type": "PLL",
-    "subset_id": "G-Perms",
-    "main_algorithm_id": "Gb-1"
+    "viewType": "PLL",
+    "subsetId": "G-Perms",
+    "mainAlgorithmId": "Gb-1"
   },
   {
     "id": "Gc",
     "name": "Gc",
     "setup": "D' R U R' U' D R2' U' R U' R' U R' U R2'",
-    "view_type": "PLL",
-    "subset_id": "G-Perms",
-    "main_algorithm_id": "Gc-1"
+    "viewType": "PLL",
+    "subsetId": "G-Perms",
+    "mainAlgorithmId": "Gc-1"
   },
   {
     "id": "Gd",
     "name": "Gd",
     "setup": "R2' U' R U' R U R' U R2' D' U R U' R' D",
-    "view_type": "PLL",
-    "subset_id": "G-Perms",
-    "main_algorithm_id": "Gd-1"
+    "viewType": "PLL",
+    "subsetId": "G-Perms",
+    "mainAlgorithmId": "Gd-1"
   },
   {
     "id": "H",
     "name": "H",
     "setup": "M2' U' M2' U2' M2' U' M2'",
-    "view_type": "PLL",
-    "subset_id": "Edges-Only",
-    "main_algorithm_id": "H-1"
+    "viewType": "PLL",
+    "subsetId": "Edges-Only",
+    "mainAlgorithmId": "H-1"
   },
   {
     "id": "Ja",
     "name": "Ja",
     "setup": "L' R' U2' R U R' U2' L U' R y'",
-    "view_type": "PLL",
-    "subset_id": "Adjacent-Swap",
-    "main_algorithm_id": "Ja-1"
+    "viewType": "PLL",
+    "subsetId": "Adjacent-Swap",
+    "mainAlgorithmId": "Ja-1"
   },
   {
     "id": "Jb",
     "name": "Jb",
     "setup": "R U R2' F' R U R U' R' F R U' R'",
-    "view_type": "PLL",
-    "subset_id": "Adjacent-Swap",
-    "main_algorithm_id": "Jb-1"
+    "viewType": "PLL",
+    "subsetId": "Adjacent-Swap",
+    "mainAlgorithmId": "Jb-1"
   },
   {
     "id": "Na",
     "name": "Na",
     "setup": "R U R' U2' R U R2' F' R U R U' R' F R U' R' U' R U' R'",
-    "view_type": "PLL",
-    "subset_id": "Diagonal-Swap",
-    "main_algorithm_id": "Na-1"
+    "viewType": "PLL",
+    "subsetId": "Diagonal-Swap",
+    "mainAlgorithmId": "Na-1"
   },
   {
     "id": "Nb",
     "name": "Nb",
     "setup": "F r' F' r U r U' r2' D' F r U r' F' D r",
-    "view_type": "PLL",
-    "subset_id": "Diagonal-Swap",
-    "main_algorithm_id": "Nb-1"
+    "viewType": "PLL",
+    "subsetId": "Diagonal-Swap",
+    "mainAlgorithmId": "Nb-1"
   },
   {
     "id": "OLL-21",
     "name": "Cross",
     "setup": "R U R' U R U' R' U R U2' R' y'",
-    "view_type": "OLL",
-    "subset_id": "Oriented-Edges",
-    "main_algorithm_id": "OLL-21-1"
+    "viewType": "OLL",
+    "subsetId": "Oriented-Edges",
+    "mainAlgorithmId": "OLL-21-1"
   },
   {
     "id": "OLL-22",
     "name": "Bruno",
     "setup": "R' U2' R2' U R2' U R2' U2' R'",
-    "view_type": "OLL",
-    "subset_id": "Oriented-Edges",
-    "main_algorithm_id": "OLL-22-1"
+    "viewType": "OLL",
+    "subsetId": "Oriented-Edges",
+    "mainAlgorithmId": "OLL-22-1"
   },
   {
     "id": "OLL-23",
     "name": "Headlights",
     "setup": "R U2' R D R' U2' R D' R2'",
-    "view_type": "OLL",
-    "subset_id": "Oriented-Edges",
-    "main_algorithm_id": "OLL-23-1"
+    "viewType": "OLL",
+    "subsetId": "Oriented-Edges",
+    "mainAlgorithmId": "OLL-23-1"
   },
   {
     "id": "OLL-24",
     "name": "Chameleon",
     "setup": "F R' F' r U R U' r'",
-    "view_type": "OLL",
-    "subset_id": "Oriented-Edges",
-    "main_algorithm_id": "OLL-24-1"
+    "viewType": "OLL",
+    "subsetId": "Oriented-Edges",
+    "mainAlgorithmId": "OLL-24-1"
   },
   {
     "id": "OLL-25",
     "name": "Bowtie",
     "setup": "R' F' r U R U' r' F y'",
-    "view_type": "OLL",
-    "subset_id": "Oriented-Edges",
-    "main_algorithm_id": "OLL-25-1"
+    "viewType": "OLL",
+    "subsetId": "Oriented-Edges",
+    "mainAlgorithmId": "OLL-25-1"
   },
   {
     "id": "OLL-26",
     "name": "Anti-Sune",
     "setup": "R U R' U R U2' R' y'",
-    "view_type": "OLL",
-    "subset_id": "Oriented-Edges",
-    "main_algorithm_id": "OLL-26-1"
+    "viewType": "OLL",
+    "subsetId": "Oriented-Edges",
+    "mainAlgorithmId": "OLL-26-1"
   },
   {
     "id": "OLL-27",
     "name": "Sune",
     "setup": "R U2' R' U' R U' R'",
-    "view_type": "OLL",
-    "subset_id": "Oriented-Edges",
-    "main_algorithm_id": "OLL-27-1"
+    "viewType": "OLL",
+    "subsetId": "Oriented-Edges",
+    "mainAlgorithmId": "OLL-27-1"
   },
   {
     "id": "Ra",
     "name": "Ra",
     "setup": "R U2' R D R' U R D' R' U' R' U R U R' y'",
-    "view_type": "PLL",
-    "subset_id": "Adjacent-Swap",
-    "main_algorithm_id": "Ra-1"
+    "viewType": "PLL",
+    "subsetId": "Adjacent-Swap",
+    "mainAlgorithmId": "Ra-1"
   },
   {
     "id": "Rb",
     "name": "Rb",
     "setup": "R' U R U R' U' R' D' R U R' D R U2' R",
-    "view_type": "PLL",
-    "subset_id": "Adjacent-Swap",
-    "main_algorithm_id": "Rb-1"
+    "viewType": "PLL",
+    "subsetId": "Adjacent-Swap",
+    "mainAlgorithmId": "Rb-1"
   },
   {
     "id": "T",
     "name": "T",
     "setup": "F R U' R' U R U R2' F' R U R U' R'",
-    "view_type": "PLL",
-    "subset_id": "Adjacent-Swap",
-    "main_algorithm_id": "T-1"
+    "viewType": "PLL",
+    "subsetId": "Adjacent-Swap",
+    "mainAlgorithmId": "T-1"
   },
   {
     "id": "Ua",
     "name": "Ua",
     "setup": "M2' U' M' U2' M U' M2' y2",
-    "view_type": "PLL",
-    "subset_id": "Edges-Only",
-    "main_algorithm_id": "Ua-1"
+    "viewType": "PLL",
+    "subsetId": "Edges-Only",
+    "mainAlgorithmId": "Ua-1"
   },
   {
     "id": "Ub",
     "name": "Ub",
     "setup": "M2' U M' U2' M U M2' y2",
-    "view_type": "PLL",
-    "subset_id": "Edges-Only",
-    "main_algorithm_id": "Ub-1"
+    "viewType": "PLL",
+    "subsetId": "Edges-Only",
+    "mainAlgorithmId": "Ub-1"
   },
   {
     "id": "V",
     "name": "V",
     "setup": "D2' R' U R D' R2' U' R' U R' U R' D' R U2' R'",
-    "view_type": "PLL",
-    "subset_id": "Diagonal-Swap",
-    "main_algorithm_id": "V-1"
+    "viewType": "PLL",
+    "subsetId": "Diagonal-Swap",
+    "mainAlgorithmId": "V-1"
   },
   {
     "id": "Y",
     "name": "Y",
     "setup": "F R' F' R U R U' R' F R U' R' U R U R' F'",
-    "view_type": "PLL",
-    "subset_id": "Diagonal-Swap",
-    "main_algorithm_id": "Y-1"
+    "viewType": "PLL",
+    "subsetId": "Diagonal-Swap",
+    "mainAlgorithmId": "Y-1"
   },
   {
     "id": "Z",
     "name": "Z",
     "setup": "M U2' M2' U2' M U' M2' U' M2'",
-    "view_type": "PLL",
-    "subset_id": "Edges-Only",
-    "main_algorithm_id": "Z-1"
+    "viewType": "PLL",
+    "subsetId": "Edges-Only",
+    "mainAlgorithmId": "Z-1"
   }
 ]

@@ -1,0 +1,1 @@
+export { getPieceId } from "./getPieceId";

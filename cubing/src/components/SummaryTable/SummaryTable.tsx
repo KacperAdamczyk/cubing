@@ -1,10 +1,6 @@
-/* eslint-disable @typescript-eslint/unbound-method */
-"use client";
 import { MultiLayer } from "@/components/MultiLayer";
-import type { GetCasesEntity } from "@/queries/getCases";
 import { Chip } from "@nextui-org/chip";
 import { Link } from "@nextui-org/link";
-import NextLink from "next/link";
 import {
   Table,
   TableHeader,
@@ -16,9 +12,17 @@ import {
 } from "@nextui-org/table";
 import { useAsyncList } from "@react-stately/data";
 import { useCallback, type FC } from "react";
+import type { InferEntrySchema } from "astro:content";
+
+export interface Case extends InferEntrySchema<"cases"> {
+  subset: InferEntrySchema<"subsets"> & {
+    set: InferEntrySchema<"sets">;
+  };
+  mainAlgorithm: InferEntrySchema<"algorithms"> | null;
+}
 
 interface Props {
-  cases: GetCasesEntity[];
+  cases: Case[];
 }
 
 export const SummaryTable: FC<Props> = ({ cases }) => {
@@ -28,20 +32,15 @@ export const SummaryTable: FC<Props> = ({ cases }) => {
         ({
           id,
           name,
-          mainAlgorithmId,
+          mainAlgorithm,
           setup,
           viewType,
-          algorithms,
           subset: {
             id: subsetId,
             name: subsetName,
             set: { id: setId, name: setName },
           },
         }) => {
-          const mainAlgorithm = algorithms.find(
-            ({ id }) => id === mainAlgorithmId,
-          );
-
           return {
             id,
             name,
@@ -94,22 +93,19 @@ export const SummaryTable: FC<Props> = ({ cases }) => {
           );
         case "name":
           return (
-            <Link as={NextLink} href={`/cases/${row.id}`}>
+            <Link href={`/cases/${row.id}`}>
               <Chip color="primary">{row.name}</Chip>
             </Link>
           );
         case "subsetName":
           return (
-            <Link
-              as={NextLink}
-              href={`/${row.setId}/${row.subsetId}#${row.id}`}
-            >
+            <Link href={`/${row.setId}/${row.subsetId}#${row.id}`}>
               <Chip color="success">{row.subsetName}</Chip>
             </Link>
           );
         case "setName":
           return (
-            <Link as={NextLink} href={`/${row.setId}#${row.id}`}>
+            <Link href={`/${row.setId}#${row.id}`}>
               <Chip color="secondary">{row.setName}</Chip>
             </Link>
           );

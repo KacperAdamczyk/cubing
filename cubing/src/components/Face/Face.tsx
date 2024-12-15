@@ -1,10 +1,9 @@
+import type { AdjacentPieces } from "@/cube/types/AdjacentPieces";
+import { Colors } from "@/cube/types/Colors";
+import type { Faces } from "@/cube/types/Faces";
+import type { FaceSlice } from "@/cube/types/FaceSlice";
 import { cn } from "@nextui-org/react";
-import {
-  Colors,
-  type AdjacentPieces,
-  type FaceSlice,
-  type Faces,
-} from "@/cube";
+
 import type { FC } from "react";
 
 interface Props {

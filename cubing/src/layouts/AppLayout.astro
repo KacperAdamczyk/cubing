@@ -1,14 +1,9 @@
 ---
-import { Navbar } from "@/components/Navbar";
-import { Providers } from "../components/Providers";
-import Layout from "./Layout.astro";
-import { getCollection } from "astro:content";
-
-const sets = await getCollection("sets");
-const setsData = sets.map((set) => set.data);
+import Navbar from "@/components/Navbar.astro";
+import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout>
-  <Navbar client:visible sets={setsData} />
+  <Navbar />
   <main class="mx-auto max-w-7xl p-2 pt-4"><slot /></main>
 </Layout>

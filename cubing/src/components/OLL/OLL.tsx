@@ -1,5 +1,5 @@
 import { LastLayer } from "@/components/LastLayer";
-import { Colors } from "@/cube";
+import { Colors } from "@/cube/types/Colors";
 import type { FC } from "react";
 
 interface Props {

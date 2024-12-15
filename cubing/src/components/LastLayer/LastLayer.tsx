@@ -1,12 +1,11 @@
 import type { FC } from "react";
-import {
-  Colors,
-  algorithmToFaces,
-  type ColorOrientation,
-  getAdjacentPieces,
-  Faces,
-} from "@/cube";
+
 import { Face } from "@/components/Face";
+import { Colors } from "@/cube/types/Colors";
+import type { ColorOrientation } from "@/cube/types/ColorOrientation";
+import { getAdjacentPieces } from "@/cube/helpers/getAdjacentPieces";
+import { Faces } from "@/cube/types/Faces";
+import { algorithmToFaces } from "@/cube/compound/algorithmToFaces";
 
 interface Props {
   algorithm: string;

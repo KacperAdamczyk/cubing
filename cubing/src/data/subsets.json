@@ -2,50 +2,50 @@
   {
     "id": "Adjacent-Swap",
     "name": "Adjacent Swap",
-    "preview_algorithm": "F R U' R' U R U R2' F' R U R U' R'",
-    "view_type": "PLL",
-    "set_id": "PLL"
+    "previewAlgorithm": "F R U' R' U R U R2' F' R U R U' R'",
+    "viewType": "PLL",
+    "setId": "PLL"
   },
   {
     "id": "Corners-Only",
     "name": "Corners Only",
-    "preview_algorithm": "x R2' D2' R U R' D2' R U' R x'",
-    "view_type": "PLL",
-    "set_id": "PLL"
+    "previewAlgorithm": "x R2' D2' R U R' D2' R U' R x'",
+    "viewType": "PLL",
+    "setId": "PLL"
   },
   {
     "id": "Diagonal-Swap",
     "name": "Diagonal Swap",
-    "preview_algorithm": "F R' F' R U R U' R' F R U' R' U R U R' F'",
-    "view_type": "PLL",
-    "set_id": "PLL"
+    "previewAlgorithm": "F R' F' R U R U' R' F R U' R' U R U R' F'",
+    "viewType": "PLL",
+    "setId": "PLL"
   },
   {
     "id": "Disconnected-Pairs",
     "name": "Disconnected Pairs",
-    "preview_algorithm": "R U R' U2' R U' R' U",
-    "view_type": "F2L",
-    "set_id": "F2L"
+    "previewAlgorithm": "R U R' U2' R U' R' U",
+    "viewType": "F2L",
+    "setId": "F2L"
   },
   {
     "id": "Edges-Only",
     "name": "Edges Only",
-    "preview_algorithm": "M2' U' M' U2' M U' M2'",
-    "view_type": "PLL",
-    "set_id": "PLL"
+    "previewAlgorithm": "M2' U' M' U2' M U' M2'",
+    "viewType": "PLL",
+    "setId": "PLL"
   },
   {
     "id": "G-Perms",
     "name": "G Perms",
-    "preview_algorithm": "R' U' R D' U R2' U R' U R U' R U' R2' D",
-    "view_type": "PLL",
-    "set_id": "PLL"
+    "previewAlgorithm": "R' U' R D' U R2' U R' U R U' R U' R2' D",
+    "viewType": "PLL",
+    "setId": "PLL"
   },
   {
     "id": "Oriented-Edges",
     "name": "Oriented Edges",
-    "preview_algorithm": "R U R' U R U' R' U R U2' R' y'",
-    "view_type": "OLL",
-    "set_id": "OLL"
+    "previewAlgorithm": "R U R' U R U' R' U R U2' R' y'",
+    "viewType": "OLL",
+    "setId": "OLL"
   }
 ]

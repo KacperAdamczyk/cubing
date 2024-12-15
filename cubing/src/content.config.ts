@@ -10,4 +10,38 @@ const sets = defineCollection({
   }),
 });
 
-export const collections = { sets };
+const subsets = defineCollection({
+  loader: file("src/data/subsets.json"),
+  schema: z.object({
+    id: z.string(),
+    name: z.string(),
+    previewAlgorithm: z.string(),
+    viewType: z.enum(["PLL", "OLL", "F2L"]),
+    setId: reference("sets"),
+  }),
+});
+
+const cases = defineCollection({
+  loader: file("src/data/cases.json"),
+  schema: z.object({
+    id: z.string(),
+    name: z.string(),
+    setup: z.string(),
+    viewType: z.enum(["PLL", "OLL", "F2L"]),
+    subsetId: reference("subsets"),
+    mainAlgorithmId: reference("algorithms").nullable(),
+  }),
+});
+
+const algorithms = defineCollection({
+  loader: file("src/data/algorithms.json"),
+  schema: z.object({
+    id: z.string(),
+    rotations: z.string(),
+    rotationsMnemonic: z.string().nullable(),
+    description: z.string().nullable(),
+    caseId: reference("cases"),
+  }),
+});
+
+export const collections = { sets, subsets, cases, algorithms };

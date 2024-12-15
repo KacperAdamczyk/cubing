@@ -1,6 +1,7 @@
-import { Colors, algorithmToFaces } from "@/cube";
 import type { FC } from "react";
 import { Face } from "@/components/Face";
+import { algorithmToFaces } from "@/cube/compound/algorithmToFaces";
+import { Colors } from "@/cube/types/Colors";
 
 interface Props {
   algorithm: string;
