@@ -1,18 +1,19 @@
 import type { FC } from "react";
-import type { Algorithm, CaseViewTypes } from "@/db/schema";
 import { AlgorithmView } from "@/components/AlgorithmView";
 import { Chip } from "@nextui-org/chip";
 import { cn } from "@nextui-org/react";
+import type { ViewType } from "src/content.config";
+import type { Case } from "@/components/CaseView";
 
 const otherAlgorithmsLimit = 2;
 
 interface Props {
   className?: string;
   setup: string;
-  algorithms: Algorithm[];
+  algorithms: Case["algorithms"];
   mainAlgorithmId?: string;
   slim: boolean;
-  viewType: CaseViewTypes;
+  viewType: ViewType;
 }
 
 export const AlgorithmsList: FC<Props> = ({

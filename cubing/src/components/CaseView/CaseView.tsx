@@ -1,15 +1,19 @@
 import { AlgorithmsList } from "@/components/AlgorithmsList";
 import { MultiLayer } from "@/components/MultiLayer";
-import type { GetCasesEntity } from "@/queries/getCases";
 import { Card, CardBody } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
 import { Chip } from "@nextui-org/chip";
 import type { FC } from "react";
 import { Link } from "@nextui-org/link";
-import NextLink from "next/link";
+import type { InferEntrySchema } from "astro:content";
+
+export interface Case extends InferEntrySchema<"cases"> {
+  algorithms: InferEntrySchema<"algorithms">[];
+  subset: InferEntrySchema<"subsets"> & { set: InferEntrySchema<"sets"> };
+}
 
 interface Props {
-  case: GetCasesEntity;
+  case: Case;
   slim: boolean;
 }
 
@@ -32,7 +36,7 @@ export const CaseView: FC<Props> = ({
         {slim ? (
           <Chip color="success">{subset.name}</Chip>
         ) : (
-          <Link as={NextLink} href={`/${subset.set.id}/${subset.id}#${id}`}>
+          <Link href={`/${subset.set.id}/${subset.id}#${id}`}>
             <Chip color="success">{subset.name}</Chip>
           </Link>
         )}
@@ -42,7 +46,7 @@ export const CaseView: FC<Props> = ({
         className="self-start"
         setup={setup}
         algorithms={algorithms}
-        mainAlgorithmId={mainAlgorithmId ?? undefined}
+        mainAlgorithmId={mainAlgorithmId?.id ?? undefined}
         slim={slim}
       />
     </CardBody>

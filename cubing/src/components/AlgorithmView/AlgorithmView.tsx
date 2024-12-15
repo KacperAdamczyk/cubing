@@ -1,24 +1,25 @@
 import { AlgorithmVerifier } from "@/components/AlgorithmVerifier";
+import type { Case } from "@/components/CaseView";
 import { cn } from "@nextui-org/react";
-import type { Algorithm, CaseViewTypes } from "@/db/schema";
 import type { FC } from "react";
+import type { ViewType } from "src/content.config";
 
 interface Props {
   setup: string;
-  algorithm: Algorithm;
+  algorithm: Case["algorithms"][number];
   isMain?: boolean;
   slim: boolean;
-  viewType: CaseViewTypes;
+  viewType: ViewType;
 }
 
 export const AlgorithmView: FC<Props> = ({
   setup,
-  algorithm: { rotations, mnemonic, description },
+  algorithm: { rotations, rotationsMnemonic, description },
   isMain,
   slim,
   viewType,
 }) => {
-  const showMnemonic = (!slim || isMain) && mnemonic;
+  const showMnemonic = (!slim || isMain) && rotationsMnemonic;
   const showDescription = (!slim || isMain) && description;
 
   return (
@@ -48,7 +49,9 @@ export const AlgorithmView: FC<Props> = ({
         />
       </span>
       {showMnemonic && (
-        <span className="text-center text-lg text-default-600">{mnemonic}</span>
+        <span className="text-center text-lg text-default-600">
+          {rotationsMnemonic}
+        </span>
       )}
       {showDescription && (
         <span className="text-center text-medium text-default-500">

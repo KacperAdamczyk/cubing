@@ -2,6 +2,9 @@ import { defineCollection, z, reference } from "astro:content";
 
 import { file } from "astro/loaders";
 
+const viewTypeSchema = z.enum(["PLL", "OLL", "F2L"]);
+export type ViewType = z.infer<typeof viewTypeSchema>;
+
 const sets = defineCollection({
   loader: file("src/data/sets.json"),
   schema: z.object({
@@ -16,7 +19,7 @@ const subsets = defineCollection({
     id: z.string(),
     name: z.string(),
     previewAlgorithm: z.string(),
-    viewType: z.enum(["PLL", "OLL", "F2L"]),
+    viewType: viewTypeSchema,
     setId: reference("sets"),
   }),
 });
@@ -27,7 +30,7 @@ const cases = defineCollection({
     id: z.string(),
     name: z.string(),
     setup: z.string(),
-    viewType: z.enum(["PLL", "OLL", "F2L"]),
+    viewType: viewTypeSchema,
     subsetId: reference("subsets"),
     mainAlgorithmId: reference("algorithms").nullable(),
   }),

@@ -1,21 +1,19 @@
+import { applyRotations } from "@/cube/compound/applyRotations";
+import { toColoredFaceSlices } from "@/cube/compound/toColoredFaceSlices";
+import { isCubeSolved } from "@/cube/helpers/isCubeSolved";
+import { rotationsFromString } from "@/cube/helpers/rotationsFromString";
+import { createCube } from "@/cube/initializers/createCube";
 import { Tooltip } from "@nextui-org/tooltip";
-import {
-  applyRotations,
-  createCube,
-  isCubeSolved,
-  rotationsFromString,
-  toColoredFaceSlices,
-} from "@/cube";
-import { CaseViewTypes } from "@/db/schema";
 import type { FC } from "react";
 import { MdErrorOutline } from "react-icons/md";
 import { MdOutlineGppGood } from "react-icons/md";
+import type { ViewType } from "src/content.config";
 
 interface Props {
   algorithm: string;
   setup: string;
   onlyError?: boolean;
-  viewType: CaseViewTypes;
+  viewType: ViewType;
 }
 
 export const AlgorithmVerifier: FC<Props> = ({
@@ -27,7 +25,7 @@ export const AlgorithmVerifier: FC<Props> = ({
   const operations = rotationsFromString(`${setup} ${algorithm}`);
   const scrambledCube = applyRotations(operations, createCube());
   const isSolved = (() => {
-    if (viewType === CaseViewTypes.PLL) {
+    if (viewType === "PLL") {
       return isCubeSolved(scrambledCube);
     }
 
