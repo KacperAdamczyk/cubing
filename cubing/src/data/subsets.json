@@ -1,0 +1,51 @@
+[
+  {
+    "id": "Adjacent-Swap",
+    "name": "Adjacent Swap",
+    "preview_algorithm": "F R U' R' U R U R2' F' R U R U' R'",
+    "view_type": "PLL",
+    "set_id": "PLL"
+  },
+  {
+    "id": "Corners-Only",
+    "name": "Corners Only",
+    "preview_algorithm": "x R2' D2' R U R' D2' R U' R x'",
+    "view_type": "PLL",
+    "set_id": "PLL"
+  },
+  {
+    "id": "Diagonal-Swap",
+    "name": "Diagonal Swap",
+    "preview_algorithm": "F R' F' R U R U' R' F R U' R' U R U R' F'",
+    "view_type": "PLL",
+    "set_id": "PLL"
+  },
+  {
+    "id": "Disconnected-Pairs",
+    "name": "Disconnected Pairs",
+    "preview_algorithm": "R U R' U2' R U' R' U",
+    "view_type": "F2L",
+    "set_id": "F2L"
+  },
+  {
+    "id": "Edges-Only",
+    "name": "Edges Only",
+    "preview_algorithm": "M2' U' M' U2' M U' M2'",
+    "view_type": "PLL",
+    "set_id": "PLL"
+  },
+  {
+    "id": "G-Perms",
+    "name": "G Perms",
+    "preview_algorithm": "R' U' R D' U R2' U R' U R U' R U' R2' D",
+    "view_type": "PLL",
+    "set_id": "PLL"
+  },
+  {
+    "id": "Oriented-Edges",
+    "name": "Oriented Edges",
+    "preview_algorithm": "R U R' U R U' R' U R U2' R' y'",
+    "view_type": "OLL",
+    "set_id": "OLL"
+  }
+]
