@@ -3,16 +3,19 @@ import { Card, CardBody } from "@nextui-org/card";
 import type { FC } from "react";
 import { MultiLayer } from "@/components/MultiLayer";
 import { Badge } from "@nextui-org/badge";
-import type { GetSubsetsEntity } from "@/queries/getSubsets";
-import NextLink from "next/link";
+import type { InferEntrySchema } from "astro:content";
+
+export interface Subset extends InferEntrySchema<"subsets"> {
+  cases: InferEntrySchema<"cases">[];
+}
 
 interface Props {
   setId: string;
-  subset: GetSubsetsEntity;
+  subset: Subset;
 }
 
 export const SubsetView: FC<Props> = ({ setId, subset }) => (
-  <Link as={NextLink} className="block grow" href={`/${setId}/${subset.id}`}>
+  <Link className="block grow" href={`/${setId}/${subset.id}`}>
     <Card>
       <CardBody className="flex flex-col items-center gap-2">
         <Badge placement="bottom-right" size="lg" content={subset.cases.length}>

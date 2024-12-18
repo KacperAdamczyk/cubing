@@ -1,0 +1,39 @@
+---
+import { SubsetView, type Subset } from "@/components/SubsetView";
+import { getCollection } from "astro:content";
+
+interface Props {
+  setId: string;
+}
+
+const { setId } = Astro.props;
+
+const subsets = await getCollection(
+  "subsets",
+  (subset) => subset.data.setId.id === setId
+);
+const subsetsWithCases = await Promise.all(
+  subsets.map(async (subset) => {
+    const cases = await getCollection(
+      "cases",
+      (currentCase) => currentCase.data.subsetId.id === subset.id
+    );
+    return { ...subset.data, cases: cases.map((currentCase) => currentCase.data) };
+  })
+);
+const allCases = subsetsWithCases.flatMap((subset) => subset.cases);
+const allSubset = {
+  id: "",
+  name: "All",
+  previewAlgorithm: "",
+  viewType: subsets.at(0)?.data.viewType ?? "PLL",
+  cases: allCases,
+  setId: { id: setId, collection: "sets" },
+} satisfies Subset;
+---
+<div class="flex flex-wrap gap-4">
+      <SubsetView client:visible setId={setId} subset={allSubset} />
+      {subsetsWithCases.map((subset) => (
+        <SubsetView client:visible setId={setId} subset={subset} />
+      ))}
+    </div>

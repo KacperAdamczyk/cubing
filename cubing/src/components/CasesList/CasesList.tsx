@@ -1,11 +1,9 @@
-import { CaseView } from "@/components/CaseView";
-import type { GetCasesEntity } from "@/queries/getCases";
-import NextLink from "next/link";
+import { CaseView, type Case } from "@/components/CaseView";
 import type { FC } from "react";
 import { Link } from "@nextui-org/link";
 
 interface Props {
-  cases: GetCasesEntity[];
+  cases: Case[];
   slim: boolean;
 }
 
@@ -14,7 +12,6 @@ export const CasesList: FC<Props> = ({ cases, slim }) => (
     {cases.map((currentCase) => (
       <Link
         key={currentCase.id}
-        as={NextLink}
         className="w-full"
         href={`/cases/${currentCase.id}`}
       >

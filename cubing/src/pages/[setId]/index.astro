@@ -1,0 +1,58 @@
+---
+import { CasesList } from "@/components/CasesList";
+import SubsetList from "@/components/SubsetList.astro";
+import AppLayout from "@/layouts/AppLayout.astro";
+import type { GetStaticPaths } from "astro";
+import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+export const getStaticPaths = (async () => {
+  const sets = await getCollection("sets");
+
+  return sets.map((set) => ({
+    params: { setId: set.id },
+  }));
+}) satisfies GetStaticPaths;
+
+const { setId } = Astro.params;
+const subsets = await getCollection(
+  "subsets",
+  (subset) => subset.data.setId.id === setId,
+);
+const subsetsWithCases = await Promise.all(
+  subsets.map(async (subset) => {
+    const cases = await getCollection(
+      "cases",
+      (currentCase) => currentCase.data.subsetId.id === subset.id,
+    );
+
+    return {
+      subset: subset.data,
+      cases: cases.map((currentCase) => currentCase.data),
+    };
+  }),
+);
+const allCases = await Promise.all(
+  subsetsWithCases.flatMap(({ subset, cases }) => {
+    return cases.map(async (currentCase) => {
+      const algorithms = await getCollection(
+        "algorithms",
+        (algorithm) => algorithm.data.caseId.id === currentCase.id,
+      );
+
+      return {
+        ...currentCase,
+        subset,
+        algorithms: algorithms.map((algorithm) => algorithm.data),
+      };
+    });
+  }),
+);
+---
+
+<AppLayout>
+  <SubsetList setId={setId} />
+  <div class="mt-2 flex flex-col gap-2">
+    <CasesList cases={allCases} slim />
+  </div>
+</AppLayout>

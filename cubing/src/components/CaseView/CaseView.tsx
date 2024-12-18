@@ -9,7 +9,7 @@ import type { InferEntrySchema } from "astro:content";
 
 export interface Case extends InferEntrySchema<"cases"> {
   algorithms: InferEntrySchema<"algorithms">[];
-  subset: InferEntrySchema<"subsets"> & { set: InferEntrySchema<"sets"> };
+  subset: InferEntrySchema<"subsets">;
 }
 
 interface Props {
@@ -36,7 +36,7 @@ export const CaseView: FC<Props> = ({
         {slim ? (
           <Chip color="success">{subset.name}</Chip>
         ) : (
-          <Link href={`/${subset.set.id}/${subset.id}#${id}`}>
+          <Link href={`/${subset.setId.id}/${subset.id}#${id}`}>
             <Chip color="success">{subset.name}</Chip>
           </Link>
         )}
