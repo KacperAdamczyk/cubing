@@ -1,5 +1,6 @@
 import { Link } from "@nextui-org/react";
 import { Card, CardBody } from "@nextui-org/card";
+import { linkWithBase } from "src/helpers/linkWithBase";
 import type { FC } from "react";
 import { MultiLayer } from "@/components/MultiLayer";
 import { Badge } from "@nextui-org/badge";
@@ -15,7 +16,7 @@ interface Props {
 }
 
 export const SubsetView: FC<Props> = ({ setId, subset }) => (
-  <Link className="block grow" href={`/${setId}/${subset.id}`}>
+  <Link className="block grow" href={linkWithBase(`/${setId}/${subset.id}`)}>
     <Card>
       <CardBody className="flex flex-col items-center gap-2">
         <Badge placement="bottom-right" size="lg" content={subset.cases.length}>

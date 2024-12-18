@@ -13,6 +13,7 @@ import {
 import { useAsyncList } from "@react-stately/data";
 import { useCallback, type FC } from "react";
 import type { InferEntrySchema } from "astro:content";
+import { linkWithBase } from "src/helpers/linkWithBase";
 
 export interface Case extends InferEntrySchema<"cases"> {
   subset: InferEntrySchema<"subsets"> & {
@@ -93,19 +94,21 @@ export const SummaryTable: FC<Props> = ({ cases }) => {
           );
         case "name":
           return (
-            <Link href={`/cases/${row.id}`}>
+            <Link href={linkWithBase(`/cases/${row.id}`)}>
               <Chip color="primary">{row.name}</Chip>
             </Link>
           );
         case "subsetName":
           return (
-            <Link href={`/${row.setId}/${row.subsetId}#${row.id}`}>
+            <Link
+              href={linkWithBase(`/${row.setId}/${row.subsetId}#${row.id}`)}
+            >
               <Chip color="success">{row.subsetName}</Chip>
             </Link>
           );
         case "setName":
           return (
-            <Link href={`/${row.setId}#${row.id}`}>
+            <Link href={linkWithBase(`/${row.setId}#${row.id}`)}>
               <Chip color="secondary">{row.setName}</Chip>
             </Link>
           );

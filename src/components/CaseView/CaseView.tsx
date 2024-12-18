@@ -1,6 +1,7 @@
 import { AlgorithmsList } from "@/components/AlgorithmsList";
 import { MultiLayer } from "@/components/MultiLayer";
 import { Card, CardBody } from "@nextui-org/card";
+import { linkWithBase } from "src/helpers/linkWithBase";
 import { Divider } from "@nextui-org/divider";
 import { Chip } from "@nextui-org/chip";
 import type { FC } from "react";
@@ -36,7 +37,7 @@ export const CaseView: FC<Props> = ({
         {slim ? (
           <Chip color="success">{subset.name}</Chip>
         ) : (
-          <Link href={`/${subset.setId.id}/${subset.id}#${id}`}>
+          <Link href={linkWithBase(`/${subset.setId.id}/${subset.id}#${id}`)}>
             <Chip color="success">{subset.name}</Chip>
           </Link>
         )}

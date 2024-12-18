@@ -10,6 +10,7 @@ import { Button } from "@nextui-org/button";
 import { NavbarItem } from "@nextui-org/navbar";
 import { FaChevronDown } from "react-icons/fa6";
 import type { InferEntrySchema } from "astro:content";
+import { linkWithBase } from "src/helpers/linkWithBase";
 
 interface Props {
   sets: InferEntrySchema<"sets">[];
@@ -38,7 +39,7 @@ export const NavbarDropdown: FC<Props> = ({ sets }) => {
         }}
       >
         {sets.map((set) => (
-          <DropdownItem as="a" key={set.id} href={`/${set.id}`}>
+          <DropdownItem as="a" key={set.id} href={linkWithBase(`/${set.id}`)}>
             {set.name}
           </DropdownItem>
         ))}

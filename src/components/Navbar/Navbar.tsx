@@ -6,6 +6,7 @@ import {
   NavbarItem,
 } from "@nextui-org/navbar";
 import { Link } from "@nextui-org/link";
+import { linkWithBase } from "src/helpers/linkWithBase";
 import { NavbarDropdown } from "@/components/NavbarDropdown";
 import { PiCubeTransparentFill } from "react-icons/pi";
 import type { InferEntrySchema } from "astro:content";
@@ -19,7 +20,7 @@ export const Navbar: FC<NavbarProps> = ({ sets }) => (
     <NavbarBrand>
       <PiCubeTransparentFill size={32} />
       <Link
-        href="/"
+        href={linkWithBase("/")}
         className="text-inherit ml-1 flex flex-col items-start whitespace-normal text-xs font-bold md:text-medium lg:text-xl"
       >
         <span className="hidden sm:inline">Rubik&apos;s Algorithms</span>

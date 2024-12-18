@@ -2,50 +2,37 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  build_site:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Install, build, and upload your site
+        uses: withastro/action@v3
         with:
-          node-version: latest
-          cache: pnpm
-      - name: Install dependencies
-        run: pnpm i --frozen-lockfile
-      - name: Build
+          node-version: "lts/*"
         env:
-          BASE_PATH: "/${{ github.event.repository.name }}"
-        run: |
-          pnpm build
-      - name: Upload Artifacts
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: "out/"
+          BASE: "/cubing"
   deploy:
-    needs: build_site
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
