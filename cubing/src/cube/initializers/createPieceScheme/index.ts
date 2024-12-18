@@ -1,1 +1,0 @@
-export { createPieceScheme } from "./createPieceScheme";
