@@ -20,7 +20,7 @@ export const Navbar: FC<NavbarProps> = ({ sets }) => (
       <PiCubeTransparentFill size={32} />
       <Link
         href="/"
-        className="ml-1 flex flex-col items-start whitespace-normal text-xs font-bold text-inherit md:text-medium lg:text-xl"
+        className="text-inherit ml-1 flex flex-col items-start whitespace-normal text-xs font-bold md:text-medium lg:text-xl"
       >
         <span className="hidden sm:inline">Rubik&apos;s Algorithms</span>
         <span className="text-xs">by Kacper Adamczyk</span>
