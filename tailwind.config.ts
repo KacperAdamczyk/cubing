@@ -2,11 +2,9 @@ import type { Config } from "tailwindcss";
 import { nextui } from "@nextui-org/react";
 import containerQueries from "@tailwindcss/container-queries";
 
-const config: Config = {
+export default {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -30,11 +28,11 @@ const config: Config = {
       },
     },
   },
+  darkMode: "class",
   plugins: [
     containerQueries,
     nextui({
       defaultTheme: "dark",
     }),
   ],
-};
-export default config;
+} satisfies Config;
