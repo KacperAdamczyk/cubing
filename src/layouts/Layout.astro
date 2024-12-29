@@ -1,6 +1,6 @@
 ---
-import { AppLayout } from "@/layouts/v2/AppLayout";
-import RootLayout from "@/layouts/v2/RootLayout.astro";
+import { AppLayout } from "@/layouts/AppLayout";
+import RootLayout from "@/layouts/RootLayout.astro";
 import { getCollection } from "astro:content";
 
 const sets = await Promise.all(
@@ -31,5 +31,7 @@ const sets = await Promise.all(
 ---
 
 <RootLayout>
-  <AppLayout client:load sets={sets} />
+  <AppLayout client:load sets={sets}>
+    <slot />
+  </AppLayout>
 </RootLayout>

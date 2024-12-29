@@ -1,6 +1,6 @@
 ---
 import { CaseView, type Case } from "@/components/CaseView";
-import AppLayout from "@/layouts/AppLayout.astro";
+import Layout from "@/layouts/Layout.astro";
 import type { GetStaticPaths } from "astro";
 import { getCollection, getEntry } from "astro:content";
 
@@ -17,10 +17,7 @@ export const getStaticPaths = (async () => {
       return {
         ...currentCase.data,
         algorithms: algorithms.map((algorithm) => algorithm.data),
-        subset: {
-          ...subset.data,
-          set: set.data,
-        },
+        subset: subset.data,
       } satisfies Case;
     }),
   );
@@ -38,6 +35,6 @@ export const getStaticPaths = (async () => {
 const { currentCase } = Astro.props;
 ---
 
-<AppLayout>
+<Layout>
   <CaseView client:visible case={currentCase} slim={false} />
-</AppLayout>
+</Layout>

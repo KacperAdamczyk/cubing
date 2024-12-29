@@ -1,7 +1,7 @@
 ---
 import { CasesList } from "@/components/CasesList";
 import SubsetList from "@/components/SubsetList.astro";
-import AppLayout from "@/layouts/AppLayout.astro";
+import Layout from "@/layouts/Layout.astro";
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 
@@ -49,9 +49,9 @@ const allCases = await Promise.all(
 );
 ---
 
-<AppLayout>
+<Layout>
   <SubsetList setId={setId} />
   <div class="mt-2 flex flex-col gap-2">
     <CasesList cases={allCases} slim />
   </div>
-</AppLayout>
+</Layout>

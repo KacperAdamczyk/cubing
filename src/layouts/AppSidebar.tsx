@@ -20,7 +20,7 @@ import {
   SidebarMenuSubItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { SearchForm } from "@/layouts/v2/SearchForm";
+import { SearchForm } from "@/layouts/SearchForm";
 import { useState, type ComponentProps, type FC } from "react";
 import type { InferEntrySchema } from "astro:content";
 
@@ -76,7 +76,7 @@ export const AppSidebar: FC<AppSidebarProps> = ({ sets, ...props }) => {
             <SidebarGroupContent>
               <SidebarMenu>
                 {subsets.map(({ id, name, cases }) => (
-                  <SidebarMenuItem>
+                  <SidebarMenuItem key={id}>
                     <SidebarMenuButton asChild>
                       <a href={"#"}>{name}</a>
                     </SidebarMenuButton>

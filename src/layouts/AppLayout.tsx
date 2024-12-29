@@ -1,5 +1,5 @@
 import type { FC, PropsWithChildren } from "react";
-import { AppSidebar, type Set } from "@/layouts/v2/AppSidebar";
+import { AppSidebar, type Set } from "@/layouts/AppSidebar";
 import {
   Breadcrumb,
   BreadcrumbItem,
