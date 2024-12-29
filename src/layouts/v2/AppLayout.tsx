@@ -1,5 +1,5 @@
 import type { FC, PropsWithChildren } from "react";
-import { AppSidebar } from "@/layouts/v2/AppSidebar";
+import { AppSidebar, type Set } from "@/layouts/v2/AppSidebar";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -15,10 +15,17 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 
-export const AppLayout: FC<PropsWithChildren> = ({ children }) => {
+interface AppLayoutProps {
+  sets: Set[];
+}
+
+export const AppLayout: FC<PropsWithChildren<AppLayoutProps>> = ({
+  sets,
+  children,
+}) => {
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <AppSidebar sets={sets} />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 border-b">
           <div className="flex items-center gap-2 px-3">
@@ -40,12 +47,9 @@ export const AppLayout: FC<PropsWithChildren> = ({ children }) => {
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
+          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min">
+            {children}
           </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
         </div>
       </SidebarInset>
     </SidebarProvider>
