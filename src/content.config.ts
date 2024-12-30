@@ -10,6 +10,7 @@ const sets = defineCollection({
   schema: z.object({
     id: z.string(),
     name: z.string(),
+    viewType: viewTypeSchema,
   }),
 });
 

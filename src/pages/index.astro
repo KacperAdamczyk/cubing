@@ -1,8 +1,55 @@
 ---
+import SetList, { type Items } from "@/components/SetList.astro";
 import SummaryTable from "@/components/SummaryTable.astro";
 import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const sets = await Promise.all(
+  (await getCollection("sets")).map(async (set) => {
+    const subsets = await getCollection(
+      "subsets",
+      (subset) => subset.data.setId.id === set.id,
+    );
+    const cases = (
+      await Promise.all(
+        subsets.map(async (subset) => {
+          const cases = await getCollection(
+            "cases",
+            (c) => c.data.subsetId.id === subset.id,
+          );
+
+          return cases.map((c) => c.data);
+        }),
+      )
+    ).flat();
+
+    return {
+      ...set.data,
+      cases,
+    };
+  }),
+);
+const allCases = await getCollection("cases");
+
+const items: Items = [
+  {
+    href: "/",
+    name: "All",
+    previewAlgorithm: "",
+    size: allCases.length,
+    viewType: "PLL",
+  },
+  ...sets.map((set) => ({
+    href: `/${set.id}`,
+    name: set.name,
+    previewAlgorithm: "",
+    size: set.cases.length,
+    viewType: set.viewType,
+  })),
+];
 ---
 
 <Layout>
+  <SetList items={items} />
   <SummaryTable />
 </Layout>

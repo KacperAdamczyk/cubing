@@ -1,0 +1,17 @@
+---
+import SetView, {
+  type Props as SetViewProps,
+} from "@/components/SetView.astro";
+
+export type Items = SetViewProps[];
+
+interface Props {
+  items: Items;
+}
+
+const { items } = Astro.props;
+---
+
+<div class="flex flex-wrap gap-4">
+  {items.map((item) => <SetView {...item} />)}
+</div>
