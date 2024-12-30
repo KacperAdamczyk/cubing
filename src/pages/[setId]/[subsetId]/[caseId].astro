@@ -1,5 +1,6 @@
 ---
 import { CaseView, type Case } from "@/components/CaseView";
+import { getBreadcrumbs } from "@/helpers/getBreadcrumbs";
 import Layout from "@/layouts/Layout.astro";
 import type { GetStaticPaths } from "astro";
 import { getCollection, getEntry } from "astro:content";
@@ -33,9 +34,18 @@ export const getStaticPaths = (async () => {
   }));
 }) satisfies GetStaticPaths;
 
+const { setId } = Astro.params;
 const { currentCase } = Astro.props;
+
+const set = await getEntry("sets", setId);
 ---
 
-<Layout>
+<Layout
+  breadcrumbs={getBreadcrumbs({
+    set: set?.data,
+    subset: currentCase.subset,
+    case: currentCase,
+  })}
+>
   <CaseView client:visible case={currentCase} slim={false} />
 </Layout>

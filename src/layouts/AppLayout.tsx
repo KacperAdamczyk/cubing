@@ -6,18 +6,18 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Breadcrumbs } from "@/layouts/Breadcrumbs";
+import { Breadcrumbs, type BreadcrumbEntry } from "@/layouts/Breadcrumbs";
 
 interface AppLayoutProps {
   sets: Set[];
-  routePattern: string;
   pathname: string;
+  breadcrumbs: BreadcrumbEntry[];
 }
 
 export const AppLayout: FC<PropsWithChildren<AppLayoutProps>> = ({
   sets,
-  routePattern,
   pathname,
+  breadcrumbs,
   children,
 }) => {
   return (
@@ -28,7 +28,7 @@ export const AppLayout: FC<PropsWithChildren<AppLayoutProps>> = ({
           <div className="flex items-center gap-2 px-3">
             <SidebarTrigger />
             <Separator orientation="vertical" className="mr-2 h-4" />
-            <Breadcrumbs routePattern={routePattern} pathname={pathname} />
+            <Breadcrumbs breadcrumbs={breadcrumbs} />
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">

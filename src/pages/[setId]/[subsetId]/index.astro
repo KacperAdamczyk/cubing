@@ -1,6 +1,7 @@
 ---
 import { CasesList } from "@/components/CasesList";
 import SetList, { type Items } from "@/components/SetList.astro";
+import { getBreadcrumbs } from "@/helpers/getBreadcrumbs";
 import Layout from "@/layouts/Layout.astro";
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
@@ -76,7 +77,7 @@ const items: Items = [
 ];
 ---
 
-<Layout>
+<Layout breadcrumbs={getBreadcrumbs({ set, subset })}>
   <SetList items={items} />
   <div class="mt-2 flex flex-col gap-2">
     <CasesList cases={cases} slim />

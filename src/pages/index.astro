@@ -1,6 +1,7 @@
 ---
 import SetList, { type Items } from "@/components/SetList.astro";
 import SummaryTable from "@/components/SummaryTable.astro";
+import { getBreadcrumbs } from "@/helpers/getBreadcrumbs";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
@@ -49,7 +50,7 @@ const items: Items = [
 ];
 ---
 
-<Layout>
+<Layout breadcrumbs={getBreadcrumbs()}>
   <SetList items={items} />
   <SummaryTable />
 </Layout>

@@ -1,7 +1,14 @@
 ---
 import { AppLayout } from "@/layouts/AppLayout";
+import type { BreadcrumbEntry } from "@/layouts/Breadcrumbs";
 import RootLayout from "@/layouts/RootLayout.astro";
 import { getCollection } from "astro:content";
+
+interface Props {
+  breadcrumbs: BreadcrumbEntry[];
+}
+
+const { breadcrumbs } = Astro.props;
 
 const sets = await Promise.all(
   (await getCollection("sets")).map(async (set) => {
@@ -34,8 +41,8 @@ const sets = await Promise.all(
   <AppLayout
     client:load
     sets={sets}
-    routePattern={Astro.routePattern}
     pathname={Astro.url.pathname}
+    breadcrumbs={breadcrumbs}
   >
     <slot />
   </AppLayout>
