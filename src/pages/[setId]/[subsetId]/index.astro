@@ -1,55 +1,84 @@
 ---
 import { CasesList } from "@/components/CasesList";
-import SubsetList from "@/components/SubsetList.astro";
+import SetList, { type Items } from "@/components/SetList.astro";
 import Layout from "@/layouts/Layout.astro";
 import type { GetStaticPaths } from "astro";
-import { getCollection, getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
 export const getStaticPaths = (async () => {
-  const subsets = await getCollection("subsets");
-  const subsetsWithSet = await Promise.all(
-    subsets.map(async (subset) => {
-      const set = await getEntry("sets", subset.data.setId.id)!;
+  const sets = await Promise.all(
+    (await getCollection("sets")).map(async (set) => {
+      const subsets = await Promise.all(
+        (
+          await getCollection(
+            "subsets",
+            (subset) => subset.data.setId.id === set.id,
+          )
+        ).map(async (subset) => {
+          const cases = await getCollection(
+            "cases",
+            (c) => c.data.subsetId.id === subset.id,
+          );
+
+          return {
+            ...subset.data,
+            cases: cases.map((c) => c.data),
+          };
+        }),
+      );
 
       return {
-        subset: subset.data,
-        set: set?.data,
+        set: set.data,
+        subsets,
       };
     }),
   );
 
-  return subsetsWithSet.map(({ set, subset }) => ({
-    params: { setId: set.id, subsetId: subset.id },
-    props: { set, subset },
-  }));
+  return sets.flatMap(({ set, subsets }) => {
+    return subsets.map((subset) => ({
+      params: { setId: set.id, subsetId: subset.id },
+      props: { set, subsets, subset },
+    }));
+  });
 }) satisfies GetStaticPaths;
 
-const { setId, subsetId } = Astro.params;
-const { subset } = Astro.props;
+const { set, subsets, subset } = Astro.props;
 
-const cases = await getCollection(
-  "cases",
-  (currentCase) => currentCase.data.subsetId.id === subsetId,
-);
-const allCases = await Promise.all(
-  cases.map(async (currentCase) => {
+const cases = await Promise.all(
+  subset.cases.map(async (c) => {
     const algorithms = await getCollection(
       "algorithms",
-      (algorithm) => algorithm.data.caseId.id === currentCase.id,
+      (algorithm) => algorithm.data.id === c.id,
     );
-
     return {
-      ...currentCase.data,
+      ...c,
       subset,
-      algorithms: algorithms.map((algorithm) => algorithm.data),
+      algorithms: algorithms.map((a) => a.data),
     };
   }),
 );
+const allCases = subsets.flatMap(({ cases }) => cases);
+const items: Items = [
+  {
+    href: `/${set.id}`,
+    name: "All",
+    previewAlgorithm: "",
+    size: allCases.length,
+    viewType: set.viewType,
+  },
+  ...subsets.map((s) => ({
+    href: `/${set.id}/${s.id}`,
+    name: s.name,
+    previewAlgorithm: s.previewAlgorithm,
+    size: subset.cases.length,
+    viewType: set.viewType,
+  })),
+];
 ---
 
 <Layout>
-  <SubsetList setId={setId} />
+  <SetList items={items} />
   <div class="mt-2 flex flex-col gap-2">
-    <CasesList cases={allCases} slim />
+    <CasesList cases={cases} slim />
   </div>
 </Layout>

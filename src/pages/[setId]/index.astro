@@ -1,6 +1,7 @@
 ---
 import { CasesList } from "@/components/CasesList";
-import SubsetList from "@/components/SubsetList.astro";
+import type { Items } from "@/components/SetList.astro";
+import SetList from "@/components/SetList.astro";
 import Layout from "@/layouts/Layout.astro";
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
@@ -10,16 +11,17 @@ export const getStaticPaths = (async () => {
 
   return sets.map((set) => ({
     params: { setId: set.id },
+    props: { set: set.data },
   }));
 }) satisfies GetStaticPaths;
 
 const { setId } = Astro.params;
-const subsets = await getCollection(
-  "subsets",
-  (subset) => subset.data.setId.id === setId,
-);
-const subsetsWithCases = await Promise.all(
-  subsets.map(async (subset) => {
+const { set } = Astro.props;
+
+const subsets = await Promise.all(
+  (
+    await getCollection("subsets", (subset) => subset.data.setId.id === setId)
+  ).map(async (subset) => {
     const cases = await getCollection(
       "cases",
       (currentCase) => currentCase.data.subsetId.id === subset.id,
@@ -31,8 +33,9 @@ const subsetsWithCases = await Promise.all(
     };
   }),
 );
+
 const allCases = await Promise.all(
-  subsetsWithCases.flatMap(({ subset, cases }) => {
+  subsets.flatMap(({ subset, cases }) => {
     return cases.map(async (currentCase) => {
       const algorithms = await getCollection(
         "algorithms",
@@ -47,10 +50,27 @@ const allCases = await Promise.all(
     });
   }),
 );
+
+const items: Items = [
+  {
+    href: "/",
+    name: "All",
+    previewAlgorithm: "",
+    size: allCases.length,
+    viewType: set.viewType,
+  },
+  ...subsets.map(({ subset, cases }) => ({
+    href: `/${subset.id}`,
+    name: subset.name,
+    previewAlgorithm: subset.previewAlgorithm,
+    size: cases.length,
+    viewType: subset.viewType,
+  })),
+];
 ---
 
 <Layout>
-  <SubsetList setId={setId} />
+  <SetList items={items} />
   <div class="mt-2 flex flex-col gap-2">
     <CasesList cases={allCases} slim />
   </div>

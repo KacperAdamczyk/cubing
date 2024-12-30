@@ -1,5 +1,6 @@
 ---
 import { linkWithBase } from "src/helpers/linkWithBase";
+import { ClientRouter } from "astro:transitions";
 
 import "@/global.css";
 ---
@@ -12,6 +13,7 @@ import "@/global.css";
     <link rel="icon" type="image/svg+xml" href={linkWithBase("/favicon.ico")} />
     <meta name="generator" content={Astro.generator} />
     <title>My Cubing Algs</title>
+    <ClientRouter />
   </head>
   <body class="dark">
     <slot />
