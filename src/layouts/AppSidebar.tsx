@@ -1,11 +1,6 @@
 import { GalleryVerticalEnd, Minus, Plus } from "lucide-react";
 
 import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
@@ -30,13 +25,21 @@ export type Set = InferEntrySchema<"sets"> & { subsets: Subset[] };
 
 interface AppSidebarProps extends ComponentProps<typeof Sidebar> {
   sets: Set[];
+  pathname: string;
 }
 
-export const AppSidebar: FC<AppSidebarProps> = ({ sets, ...props }) => {
+export const AppSidebar: FC<AppSidebarProps> = ({
+  sets,
+  pathname,
+  ...props
+}) => {
   const [query, setQuery] = useState("");
   const filteredSets = sets
     .map((set) => {
       const subsets = set.subsets.map((subset) => {
+        if (subset.name.toLowerCase().includes(query.toLowerCase()))
+          return subset;
+
         const cases = subset.cases.filter((c) =>
           c.name.toLowerCase().includes(query.toLowerCase()),
         );
@@ -48,7 +51,8 @@ export const AppSidebar: FC<AppSidebarProps> = ({ sets, ...props }) => {
       const subsets = set.subsets.filter((subset) => subset.cases.length > 0);
 
       return { ...set, subsets };
-    });
+    })
+    .filter((set) => set.subsets.length > 0);
 
   return (
     <Sidebar {...props}>
@@ -70,30 +74,41 @@ export const AppSidebar: FC<AppSidebarProps> = ({ sets, ...props }) => {
         <SearchForm query={query} setQuery={setQuery} />
       </SidebarHeader>
       <SidebarContent>
-        {filteredSets.map(({ id, name, subsets }) => (
-          <SidebarGroup key={id}>
-            <SidebarGroupLabel>{name}</SidebarGroupLabel>
+        {filteredSets.map((set) => (
+          <SidebarGroup key={set.id}>
+            <SidebarGroupLabel>{set.name}</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                {subsets.map(({ id, name, cases }) => (
-                  <SidebarMenuItem key={id}>
-                    <SidebarMenuButton asChild>
-                      <a href={"#"}>{name}</a>
-                    </SidebarMenuButton>
-                    <SidebarMenuSub>
-                      {cases.map(({ id, name }) => (
-                        <SidebarMenuSubItem key={id}>
-                          <SidebarMenuSubButton
-                            asChild
-                            // isActive={item.isActive}
-                          >
-                            <a href={"#"}>{name}</a>
-                          </SidebarMenuSubButton>
-                        </SidebarMenuSubItem>
-                      ))}
-                    </SidebarMenuSub>
-                  </SidebarMenuItem>
-                ))}
+                {set.subsets.map((subset) => {
+                  const subsetHref = `/${set.id}/${subset.id}`;
+
+                  return (
+                    <SidebarMenuItem key={subset.id}>
+                      <SidebarMenuButton
+                        asChild
+                        isActive={pathname === subsetHref}
+                      >
+                        <a href={`/${set.id}/${subset.id}`}>{subset.name}</a>
+                      </SidebarMenuButton>
+                      <SidebarMenuSub>
+                        {subset.cases.map((currentCase) => {
+                          const caseHref = `${subsetHref}/${currentCase.id}`;
+
+                          return (
+                            <SidebarMenuSubItem key={currentCase.id}>
+                              <SidebarMenuSubButton
+                                asChild
+                                isActive={pathname === caseHref}
+                              >
+                                <a href={caseHref}>{currentCase.name}</a>
+                              </SidebarMenuSubButton>
+                            </SidebarMenuSubItem>
+                          );
+                        })}
+                      </SidebarMenuSub>
+                    </SidebarMenuItem>
+                  );
+                })}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>

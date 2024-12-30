@@ -1,10 +1,4 @@
-import { defineConfig } from "vitest/config";
-import tsconfigPaths from "vite-tsconfig-paths";
+/// <reference types="vitest" />
+import { getViteConfig } from "astro/config";
 
-export default defineConfig({
-  plugins: [
-    tsconfigPaths({
-      root: "./",
-    }),
-  ],
-});
+export default getViteConfig({});

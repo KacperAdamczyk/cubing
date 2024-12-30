@@ -1,0 +1,12 @@
+---
+import LastLayer from "@/components/cube/LastLayer.astro";
+import { Colors } from "@/cube";
+
+interface Props {
+  algorithm: string;
+}
+
+const { algorithm } = Astro.props;
+---
+
+<LastLayer algorithm={algorithm} />

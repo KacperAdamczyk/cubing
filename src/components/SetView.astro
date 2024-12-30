@@ -1,0 +1,28 @@
+---
+import { MultiLayer } from "@/components/MultiLayer";
+import type { ViewType } from "@/content.config";
+import { Badge, Card, CardBody } from "@nextui-org/react";
+
+interface Props {
+  name: string;
+  size: number;
+  href: string;
+  previewAlgorithm: string;
+  viewType: ViewType;
+}
+
+const { name, size, href, previewAlgorithm, viewType } = Astro.props;
+---
+
+<a>
+  <Card>
+    <CardBody className="flex flex-col items-center gap-2">
+      <Badge placement="bottom-right" size="lg" content={size.toString()}>
+        <div class="size-20">
+          <MultiLayer algorithm={previewAlgorithm} type={viewType} />
+        </div>
+      </Badge>
+      <div>{name}</div>
+    </CardBody>
+  </Card>
+</a>

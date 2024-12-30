@@ -94,7 +94,9 @@ export const SummaryTable: FC<Props> = ({ cases }) => {
           );
         case "name":
           return (
-            <Link href={linkWithBase(`/cases/${row.id}`)}>
+            <Link
+              href={linkWithBase(`/${row.setId}/${row.subsetId}/${row.id}`)}
+            >
               <Chip color="primary">{row.name}</Chip>
             </Link>
           );

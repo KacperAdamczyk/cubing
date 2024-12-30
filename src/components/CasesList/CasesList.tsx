@@ -14,7 +14,9 @@ export const CasesList: FC<Props> = ({ cases, slim }) => (
       <Link
         key={currentCase.id}
         className="w-full"
-        href={linkWithBase(`/cases/${currentCase.id}`)}
+        href={linkWithBase(
+          `/${currentCase.subset.setId.id}/${currentCase.subset.id}/${currentCase.id}`,
+        )}
       >
         <CaseView case={currentCase} slim={slim} />
       </Link>

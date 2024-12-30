@@ -12,7 +12,6 @@ export const getStaticPaths = (async () => {
         (algorithm) => algorithm.data.caseId.id === currentCase.id,
       );
       const subset = await getEntry(currentCase.data.subsetId);
-      const set = await getEntry(subset.data.setId);
 
       return {
         ...currentCase.data,
@@ -24,6 +23,8 @@ export const getStaticPaths = (async () => {
 
   return cases.map((currentCase) => ({
     params: {
+      setId: currentCase.subset.setId.id,
+      subsetId: currentCase.subset.id,
       caseId: currentCase.id,
     },
     props: {

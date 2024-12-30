@@ -1,0 +1,26 @@
+---
+import { Colors } from "@/cube";
+import { cn } from "@nextui-org/react";
+
+export const blankColor = "X";
+
+interface Props {
+  color?: Colors | typeof blankColor;
+  className?: string;
+}
+
+const { className, color } = Astro.props;
+---
+
+<div
+  class={cn(className, "rounded", {
+    "bg-cube-blank": color === blankColor,
+    "bg-cube-green": color === Colors.G,
+    "bg-cube-red": color === Colors.R,
+    "bg-cube-blue": color === Colors.B,
+    "bg-cube-orange": color === Colors.O,
+    "bg-cube-yellow": color === Colors.Y,
+    "bg-cube-white": color === Colors.W,
+  })}
+>
+</div>

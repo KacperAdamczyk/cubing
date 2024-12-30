@@ -31,7 +31,12 @@ const sets = await Promise.all(
 ---
 
 <RootLayout>
-  <AppLayout client:load sets={sets}>
+  <AppLayout
+    client:load
+    sets={sets}
+    routePattern={Astro.routePattern}
+    pathname={Astro.url.pathname}
+  >
     <slot />
   </AppLayout>
 </RootLayout>
