@@ -24,9 +24,9 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({ breadcrumbs }) => {
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        {links.map((link) => (
+        {links.map((link, index) => (
           <Fragment key={link.href}>
-            <BreadcrumbSeparator className="hidden md:block" />
+            {!!index && <BreadcrumbSeparator className="hidden md:block" />}
             <BreadcrumbItem className="hidden md:block">
               <BreadcrumbLink href={link.href}>{link.name}</BreadcrumbLink>
             </BreadcrumbItem>
@@ -34,7 +34,9 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({ breadcrumbs }) => {
         ))}
         {active && (
           <Fragment key="active">
-            <BreadcrumbSeparator className="hidden md:block" />
+            {!!links.length && (
+              <BreadcrumbSeparator className="hidden md:block" />
+            )}
             <BreadcrumbItem>
               <BreadcrumbPage>{active.name}</BreadcrumbPage>
             </BreadcrumbItem>
