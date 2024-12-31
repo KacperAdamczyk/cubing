@@ -30,7 +30,7 @@
   {
     "id": "F2L-6-FR-1",
     "rotations": "U' r U' R' U R U r'",
-    "rotationsMnemonic": "",
+    "rotationsMnemonic": null,
     "description": null,
     "caseId": "F2L-6-FR"
   },
@@ -198,22 +198,22 @@
   {
     "id": "Ua-1",
     "rotations": "(M2 U M) U2 (M' U M2)",
-    "rotationsMnemonic": "",
-    "description": "",
+    "rotationsMnemonic": null,
+    "description": null,
     "caseId": "Ua"
   },
   {
     "id": "Ua-2",
     "rotations": "y2 (R U R' U R') U' R2 U' (R' U R' U R) [U2]",
     "rotationsMnemonic": null,
-    "description": "",
+    "description": null,
     "caseId": "Ua"
   },
   {
     "id": "Ub-1",
     "rotations": "(M2 U' M) U2 (M' U' M2)",
-    "rotationsMnemonic": "",
-    "description": "",
+    "rotationsMnemonic": null,
+    "description": null,
     "caseId": "Ub"
   },
   {
@@ -226,7 +226,7 @@
   {
     "id": "V-1",
     "rotations": "(R' U R' U') (R D' R' D) (R' U D') (R2 U' R2) D R2",
-    "rotationsMnemonic": "",
+    "rotationsMnemonic": null,
     "description": "SDB",
     "caseId": "V"
   },

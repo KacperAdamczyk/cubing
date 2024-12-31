@@ -5,7 +5,13 @@
     "setup": "x R2' D2' R U R' D2' R U' R x'",
     "viewType": "PLL",
     "subsetId": "Corners-Only",
-    "mainAlgorithmId": "Aa-1"
+    "algorithms": [
+      {
+        "rotations": "x (R' U R') D2 (R U' R') D2 R2 x'",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "Ab",
@@ -13,7 +19,13 @@
     "setup": "x R' U R' D2' R U' R' D2' R2' x'",
     "viewType": "PLL",
     "subsetId": "Corners-Only",
-    "mainAlgorithmId": "Ab-1"
+    "algorithms": [
+      {
+        "rotations": "x R2 D2 (R U R') D2 (R U' R) x'",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "E",
@@ -21,7 +33,13 @@
     "setup": "x' D R U R' D' R U' R' D R U' R' D' R U R' x",
     "viewType": "PLL",
     "subsetId": "Corners-Only",
-    "mainAlgorithmId": "E-1"
+    "algorithms": [
+      {
+        "rotations": "x' (R U' R' D) (R U R' D') (R U R' D) (R U' R' D') x",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "F",
@@ -29,7 +47,13 @@
     "setup": "R' U' R U' R' U R U R2' F' R U R U' R' F U R",
     "viewType": "PLL",
     "subsetId": "Adjacent-Swap",
-    "mainAlgorithmId": "F-1"
+    "algorithms": [
+      {
+        "rotations": "(R' U' F') (R U R' U') (R' F R2 U') (R' U' R U) (R' U R)",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "F2L-6-FR",
@@ -37,7 +61,13 @@
     "setup": "F' U' F U2' F' U F U'",
     "viewType": "F2L",
     "subsetId": "Disconnected-Pairs",
-    "mainAlgorithmId": null
+    "algorithms": [
+      {
+        "rotations": "U' r U' R' U R U r'",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "Ga",
@@ -45,7 +75,13 @@
     "setup": "R' U' R D' U R2' U R' U R U' R U' R2' D",
     "viewType": "PLL",
     "subsetId": "G-Perms",
-    "mainAlgorithmId": "Ga-1"
+    "algorithms": [
+      {
+        "rotations": "R2 U (R' U R' U') (R U' R2) D U' (R' U R D')",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "Gb",
@@ -53,7 +89,18 @@
     "setup": "R2' U R' U R' U' R U' R2' D U' R' U R D'",
     "viewType": "PLL",
     "subsetId": "G-Perms",
-    "mainAlgorithmId": "Gb-1"
+    "algorithms": [
+      {
+        "rotations": "(R' U' R U) D' R2 (U R' U R U' R U') R2 D",
+        "rotationsMnemonic": null,
+        "description": null
+      },
+      {
+        "rotations": "D ( R' U' R U ) D' ( R2 U R' U ) ( R U' R U' ) R2'",
+        "rotationsMnemonic": null,
+        "description": "CubeHead"
+      }
+    ]
   },
   {
     "id": "Gc",
@@ -61,7 +108,13 @@
     "setup": "D' R U R' U' D R2' U' R U' R' U R' U R2'",
     "viewType": "PLL",
     "subsetId": "G-Perms",
-    "mainAlgorithmId": "Gc-1"
+    "algorithms": [
+      {
+        "rotations": "R2 (U' R U' R U R' U) R2 D' (U R U' R') D",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "Gd",
@@ -69,7 +122,13 @@
     "setup": "R2' U' R U' R U R' U R2' D' U R U' R' D",
     "viewType": "PLL",
     "subsetId": "G-Perms",
-    "mainAlgorithmId": "Gd-1"
+    "algorithms": [
+      {
+        "rotations": "(R U R' U') D R2 (U' R U' R' U R' U) R2 D'",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "H",
@@ -77,7 +136,13 @@
     "setup": "M2' U' M2' U2' M2' U' M2'",
     "viewType": "PLL",
     "subsetId": "Edges-Only",
-    "mainAlgorithmId": "H-1"
+    "algorithms": [
+      {
+        "rotations": "(M2 U' M2) U2 (M2 U' M2)",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "Ja",
@@ -85,7 +150,13 @@
     "setup": "L' R' U2' R U R' U2' L U' R y'",
     "viewType": "PLL",
     "subsetId": "Adjacent-Swap",
-    "mainAlgorithmId": "Ja-1"
+    "algorithms": [
+      {
+        "rotations": "y (R' U L' U2) (R U' R' U2) R L",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "Jb",
@@ -93,7 +164,13 @@
     "setup": "R U R2' F' R U R U' R' F R U' R'",
     "viewType": "PLL",
     "subsetId": "Adjacent-Swap",
-    "mainAlgorithmId": "Jb-1"
+    "algorithms": [
+      {
+        "rotations": "(R U R' F') (R U R' U') R' F R2 U' R'",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "Na",
@@ -101,7 +178,13 @@
     "setup": "R U R' U2' R U R2' F' R U R U' R' F R U' R' U' R U' R'",
     "viewType": "PLL",
     "subsetId": "Diagonal-Swap",
-    "mainAlgorithmId": "Na-1"
+    "algorithms": [
+      {
+        "rotations": "(R U R' U) (R U R' F') (R U R' U') R' F (R2 U' R') (U2 R U' R')",
+        "rotationsMnemonic": "( R U R' U ) ( Jb- perm ) ( U2 R U' R' )",
+        "description": null
+      }
+    ]
   },
   {
     "id": "Nb",
@@ -109,7 +192,13 @@
     "setup": "F r' F' r U r U' r2' D' F r U r' F' D r",
     "viewType": "PLL",
     "subsetId": "Diagonal-Swap",
-    "mainAlgorithmId": "Nb-1"
+    "algorithms": [
+      {
+        "rotations": "(R' U R U') (R' F' U' F) (R U R' F) R' F' (R U' R)",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "OLL-21",
@@ -117,7 +206,18 @@
     "setup": "R U R' U R U' R' U R U2' R' y'",
     "viewType": "OLL",
     "subsetId": "Oriented-Edges",
-    "mainAlgorithmId": "OLL-21-1"
+    "algorithms": [
+      {
+        "rotations": "(R U R' U) (R U' R' U) (R U2' R')",
+        "rotationsMnemonic": null,
+        "description": null
+      },
+      {
+        "rotations": "y (R U2 R') (U' R U R') (U' R U' R')",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "OLL-22",
@@ -125,7 +225,13 @@
     "setup": "R' U2' R2' U R2' U R2' U2' R'",
     "viewType": "OLL",
     "subsetId": "Oriented-Edges",
-    "mainAlgorithmId": "OLL-22-1"
+    "algorithms": [
+      {
+        "rotations": "R U2' R2' U' R2 U' R2' U2' R",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "OLL-23",
@@ -133,7 +239,13 @@
     "setup": "R U2' R D R' U2' R D' R2'",
     "viewType": "OLL",
     "subsetId": "Oriented-Edges",
-    "mainAlgorithmId": "OLL-23-1"
+    "algorithms": [
+      {
+        "rotations": "R2 D (R' U2 R) D' (R' U2 R')",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "OLL-24",
@@ -141,7 +253,13 @@
     "setup": "F R' F' r U R U' r'",
     "viewType": "OLL",
     "subsetId": "Oriented-Edges",
-    "mainAlgorithmId": "OLL-24-1"
+    "algorithms": [
+      {
+        "rotations": "(r U R' U') (r' F R F')",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "OLL-25",
@@ -149,7 +267,13 @@
     "setup": "R' F' r U R U' r' F y'",
     "viewType": "OLL",
     "subsetId": "Oriented-Edges",
-    "mainAlgorithmId": "OLL-25-1"
+    "algorithms": [
+      {
+        "rotations": "y F' (r U R' U') r' F R",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "OLL-26",
@@ -157,7 +281,18 @@
     "setup": "R U R' U R U2' R' y'",
     "viewType": "OLL",
     "subsetId": "Oriented-Edges",
-    "mainAlgorithmId": "OLL-26-1"
+    "algorithms": [
+      {
+        "rotations": "y R U2 R' U' R U' R'",
+        "rotationsMnemonic": null,
+        "description": null
+      },
+      {
+        "rotations": "R' U' R U' R' U2 R",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "OLL-27",
@@ -165,7 +300,18 @@
     "setup": "R U2' R' U' R U' R'",
     "viewType": "OLL",
     "subsetId": "Oriented-Edges",
-    "mainAlgorithmId": "OLL-27-1"
+    "algorithms": [
+      {
+        "rotations": "R U R' U R U2' R'",
+        "rotationsMnemonic": null,
+        "description": null
+      },
+      {
+        "rotations": "y' R' U2' R U R' U R",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "Ra",
@@ -173,7 +319,13 @@
     "setup": "R U2' R D R' U R D' R' U' R' U R U R' y'",
     "viewType": "PLL",
     "subsetId": "Adjacent-Swap",
-    "mainAlgorithmId": "Ra-1"
+    "algorithms": [
+      {
+        "rotations": "y (R U' R' U') (R U R D) (R' U' R D') (R' U2 R')",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "Rb",
@@ -181,7 +333,13 @@
     "setup": "R' U R U R' U' R' D' R U R' D R U2' R",
     "viewType": "PLL",
     "subsetId": "Adjacent-Swap",
-    "mainAlgorithmId": "Rb-1"
+    "algorithms": [
+      {
+        "rotations": "(R' U2 R U2') R' F (R U R' U') R' F' R2",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "T",
@@ -189,7 +347,13 @@
     "setup": "F R U' R' U R U R2' F' R U R U' R'",
     "viewType": "PLL",
     "subsetId": "Adjacent-Swap",
-    "mainAlgorithmId": "T-1"
+    "algorithms": [
+      {
+        "rotations": "(R U R' U') (R' F R2 U') R' U' (R U R' F')",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "Ua",
@@ -197,7 +361,18 @@
     "setup": "M2' U' M' U2' M U' M2' y2",
     "viewType": "PLL",
     "subsetId": "Edges-Only",
-    "mainAlgorithmId": "Ua-1"
+    "algorithms": [
+      {
+        "rotations": "(M2 U M) U2 (M' U M2)",
+        "rotationsMnemonic": null,
+        "description": null
+      },
+      {
+        "rotations": "y2 (R U R' U R') U' R2 U' (R' U R' U R) [U2]",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "Ub",
@@ -205,7 +380,18 @@
     "setup": "M2' U M' U2' M U M2' y2",
     "viewType": "PLL",
     "subsetId": "Edges-Only",
-    "mainAlgorithmId": "Ub-1"
+    "algorithms": [
+      {
+        "rotations": "(M2 U' M) U2 (M' U' M2)",
+        "rotationsMnemonic": null,
+        "description": null
+      },
+      {
+        "rotations": "y2 (R' U) (R' U') (R' U') (R' U) R U R2",
+        "rotationsMnemonic": null,
+        "description": null
+      }
+    ]
   },
   {
     "id": "V",
@@ -213,7 +399,18 @@
     "setup": "D2' R' U R D' R2' U' R' U R' U R' D' R U2' R'",
     "viewType": "PLL",
     "subsetId": "Diagonal-Swap",
-    "mainAlgorithmId": "V-1"
+    "algorithms": [
+      {
+        "rotations": "(R' U R' U') (R D' R' D) (R' U D') (R2 U' R2) D R2",
+        "rotationsMnemonic": null,
+        "description": "SDB"
+      },
+      {
+        "rotations": "(R' U R' U') y (R' F' R2 U') (R' U R' F) R F",
+        "rotationsMnemonic": null,
+        "description": "CubeHead, FZ"
+      }
+    ]
   },
   {
     "id": "Y",
@@ -221,7 +418,13 @@
     "setup": "F R' F' R U R U' R' F R U' R' U R U R' F'",
     "viewType": "PLL",
     "subsetId": "Diagonal-Swap",
-    "mainAlgorithmId": "Y-1"
+    "algorithms": [
+      {
+        "rotations": "F (R U' R' U') (R U R' F') (R U R' U') (R' F R F')",
+        "rotationsMnemonic": "The alg consists of two OLL's : F (R U' R' U') (R U R' F') and (R U R' U') (R' F R F')",
+        "description": null
+      }
+    ]
   },
   {
     "id": "Z",
@@ -229,6 +432,17 @@
     "setup": "M U2' M2' U2' M U' M2' U' M2'",
     "viewType": "PLL",
     "subsetId": "Edges-Only",
-    "mainAlgorithmId": "Z-1"
+    "algorithms": [
+      {
+        "rotations": "M' U' (M2 U') (M2 U') M' U2 M2  [U']",
+        "rotationsMnemonic": "Make sure to hold a checkerboard (two sides with only two colors) on the right side for this alg.",
+        "description": "CubeHead"
+      },
+      {
+        "rotations": "(M2 U) (M2 U) (M' U2) M2 (U2 M')",
+        "rotationsMnemonic": "Make sure to hold a checkerboard (two sides with only two colors) on the right side for this alg.",
+        "description": "SDB, Felix"
+      }
+    ]
   }
 ]
