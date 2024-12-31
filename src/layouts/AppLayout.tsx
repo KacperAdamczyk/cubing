@@ -7,6 +7,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Breadcrumbs, type BreadcrumbEntry } from "@/layouts/Breadcrumbs";
+import { Commander } from "@/layouts/Commander";
 
 interface AppLayoutProps {
   sets: Set[];
@@ -29,6 +30,9 @@ export const AppLayout: FC<PropsWithChildren<AppLayoutProps>> = ({
             <SidebarTrigger />
             <Separator orientation="vertical" className="mr-2 h-4" />
             <Breadcrumbs breadcrumbs={breadcrumbs} />
+            <div>
+              <Commander />
+            </div>
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
