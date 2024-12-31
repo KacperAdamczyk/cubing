@@ -9,7 +9,6 @@ import { Link } from "@nextui-org/link";
 import type { InferEntrySchema } from "astro:content";
 
 export interface Case extends InferEntrySchema<"cases"> {
-  algorithms: InferEntrySchema<"algorithms">[];
   subset: InferEntrySchema<"subsets">;
 }
 
@@ -19,7 +18,7 @@ interface Props {
 }
 
 export const CaseView: FC<Props> = ({
-  case: { id, name, algorithms, mainAlgorithmId, setup, subset, viewType },
+  case: { id, name, algorithms, setup, subset, viewType },
   slim,
 }) => (
   <Card id={id} className="w-full border-cube-green @container target:border-2">
@@ -47,7 +46,6 @@ export const CaseView: FC<Props> = ({
         className="self-start"
         setup={setup}
         algorithms={algorithms}
-        mainAlgorithmId={mainAlgorithmId?.id ?? undefined}
         slim={slim}
       />
     </CardBody>

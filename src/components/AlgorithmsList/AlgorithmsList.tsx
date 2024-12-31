@@ -11,7 +11,6 @@ interface Props {
   className?: string;
   setup: string;
   algorithms: Case["algorithms"];
-  mainAlgorithmId?: string;
   slim: boolean;
   viewType: ViewType;
 }
@@ -20,16 +19,10 @@ export const AlgorithmsList: FC<Props> = ({
   className,
   setup,
   algorithms,
-  mainAlgorithmId,
   slim,
   viewType,
 }) => {
-  const mainAlgorithm = algorithms.find(
-    (algorithm) => algorithm.id === mainAlgorithmId,
-  );
-  const otherAlgorithms = algorithms.filter(
-    (algorithm) => algorithm.id !== mainAlgorithm?.id,
-  );
+  const [mainAlgorithm, ...otherAlgorithms] = algorithms;
   const limitedOtherAlgorithms = otherAlgorithms.slice(
     0,
     slim ? otherAlgorithmsLimit : otherAlgorithms.length,
@@ -38,23 +31,16 @@ export const AlgorithmsList: FC<Props> = ({
 
   return (
     <div className={cn(className, "flex flex-col gap-1")}>
-      {mainAlgorithm ? (
-        <AlgorithmView
-          key={mainAlgorithm.id}
-          setup={setup}
-          algorithm={mainAlgorithm}
-          slim={slim}
-          viewType={viewType}
-          isMain
-        />
-      ) : (
-        <div className="rounded-md border-2 border-cube-red p-1 text-center text-2xl">
-          (No main algorithm)
-        </div>
-      )}
+      <AlgorithmView
+        setup={setup}
+        algorithm={mainAlgorithm}
+        slim={slim}
+        viewType={viewType}
+        isMain
+      />
       {limitedOtherAlgorithms.map((algorithm) => (
         <AlgorithmView
-          key={algorithm.id}
+          key={algorithm.rotations}
           setup={setup}
           algorithm={algorithm}
           slim={slim}

@@ -1,51 +1,54 @@
 ---
-import { CaseView, type Case } from "@/components/CaseView";
+import { CaseView } from "@/components/CaseView";
 import { getBreadcrumbs } from "@/helpers/getBreadcrumbs";
 import Layout from "@/layouts/Layout.astro";
+import { getSetSubsets } from "@/queries/getSetSubsets";
+import { getSubsetCases } from "@/queries/getSubsetCases";
 import type { GetStaticPaths } from "astro";
-import { getCollection, getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
 export const getStaticPaths = (async () => {
-  const cases = await Promise.all(
-    (await getCollection("cases")).map(async (currentCase) => {
-      const algorithms = await getCollection(
-        "algorithms",
-        (algorithm) => algorithm.data.caseId.id === currentCase.id,
-      );
-      const subset = await getEntry(currentCase.data.subsetId);
+  const sets = await getCollection("sets");
 
-      return {
-        ...currentCase.data,
-        algorithms: algorithms.map((algorithm) => algorithm.data),
-        subset: subset.data,
-      } satisfies Case;
-    }),
-  );
+  return (
+    await Promise.all(
+      sets.map(async ({ data: set }) => {
+        const subsets = await getSetSubsets(set.id);
 
-  return cases.map((currentCase) => ({
-    params: {
-      setId: currentCase.subset.setId.id,
-      subsetId: currentCase.subset.id,
-      caseId: currentCase.id,
-    },
-    props: {
-      currentCase,
-    },
-  }));
+        return (
+          await Promise.all(
+            subsets.map(async (subset) => {
+              const subsetCases = await getSubsetCases(subset.id);
+
+              return subsetCases.map((subsetCase) => ({
+                params: {
+                  setId: set.id,
+                  subsetId: subset.id,
+                  caseId: subsetCase.id,
+                },
+                props: {
+                  set,
+                  subset,
+                  subsetCase,
+                },
+              }));
+            }),
+          )
+        ).flat();
+      }),
+    )
+  ).flat();
 }) satisfies GetStaticPaths;
 
-const { setId } = Astro.params;
-const { currentCase } = Astro.props;
-
-const set = await getEntry("sets", setId);
+const { set, subset, subsetCase } = Astro.props;
 ---
 
 <Layout
   breadcrumbs={getBreadcrumbs({
-    set: set?.data,
-    subset: currentCase.subset,
-    case: currentCase,
+    set,
+    subset,
+    case: subsetCase,
   })}
 >
-  <CaseView client:visible case={currentCase} slim={false} />
+  <CaseView client:visible case={subsetCase} slim={false} />
 </Layout>

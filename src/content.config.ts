@@ -31,6 +31,8 @@ const algorithmSchema = z.object({
   description: z.string().nullable(),
 });
 
+export type Algorithm = z.infer<typeof algorithmSchema>;
+
 const cases = defineCollection({
   loader: file("src/data/cases.json"),
   schema: z.object({

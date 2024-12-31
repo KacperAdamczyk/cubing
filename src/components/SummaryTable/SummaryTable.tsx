@@ -19,7 +19,6 @@ export interface Case extends InferEntrySchema<"cases"> {
   subset: InferEntrySchema<"subsets"> & {
     set: InferEntrySchema<"sets">;
   };
-  mainAlgorithm: InferEntrySchema<"algorithms"> | null;
 }
 
 interface Props {
@@ -33,9 +32,9 @@ export const SummaryTable: FC<Props> = ({ cases }) => {
         ({
           id,
           name,
-          mainAlgorithm,
           setup,
           viewType,
+          algorithms,
           subset: {
             id: subsetId,
             name: subsetName,
@@ -47,7 +46,7 @@ export const SummaryTable: FC<Props> = ({ cases }) => {
             name,
             setup,
             viewType,
-            mainAlgorithm: mainAlgorithm?.rotations ?? "-",
+            mainAlgorithm: algorithms.at(0)?.rotations,
             subsetId,
             subsetName,
             setId,

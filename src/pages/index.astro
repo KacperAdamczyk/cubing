@@ -3,36 +3,13 @@ import SetList, { type Items } from "@/components/SetList.astro";
 import SummaryTable from "@/components/SummaryTable.astro";
 import { getBreadcrumbs } from "@/helpers/getBreadcrumbs";
 import Layout from "@/layouts/Layout.astro";
+import { getSetCases } from "@/queries/getSetCases";
 import { getCollection } from "astro:content";
 
-const sets = await Promise.all(
-  (await getCollection("sets")).map(async (set) => {
-    const subsets = await getCollection(
-      "subsets",
-      (subset) => subset.data.setId.id === set.id,
-    );
-    const cases = (
-      await Promise.all(
-        subsets.map(async (subset) => {
-          const cases = await getCollection(
-            "cases",
-            (c) => c.data.subsetId.id === subset.id,
-          );
-
-          return cases.map((c) => c.data);
-        }),
-      )
-    ).flat();
-
-    return {
-      ...set.data,
-      cases,
-    };
-  }),
-);
+const sets = await getCollection("sets");
 const allCases = await getCollection("cases");
 
-const items: Items = [
+const items: Items = await Promise.all([
   {
     href: "/",
     name: "All",
@@ -40,14 +17,14 @@ const items: Items = [
     size: allCases.length,
     viewType: "PLL",
   },
-  ...sets.map((set) => ({
+  ...sets.map(async ({ data: set }) => ({
     href: `/${set.id}`,
     name: set.name,
     previewAlgorithm: "",
-    size: set.cases.length,
+    size: (await getSetCases(set.id)).length,
     viewType: set.viewType,
   })),
-];
+]);
 ---
 
 <Layout breadcrumbs={getBreadcrumbs()}>

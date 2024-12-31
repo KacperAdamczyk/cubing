@@ -4,7 +4,6 @@ import {
   SummaryTable as ClientSummaryTable,
   type Case,
 } from "@/components/SummaryTable";
-import { getEntries } from "astro:content";
 import { getEntry } from "astro:content";
 
 const cases = await getCollection("cases");
@@ -12,9 +11,6 @@ const casesData = await Promise.all(
   cases.map(async (currentCase) => {
     const subset = await getEntry(currentCase.data.subsetId);
     const set = await getEntry(subset.data.setId);
-    const mainAlgorithm =
-      currentCase.data.mainAlgorithmId &&
-      (await getEntry(currentCase.data.mainAlgorithmId));
 
     return {
       ...currentCase.data,
@@ -22,7 +18,6 @@ const casesData = await Promise.all(
         ...subset.data,
         set: set.data,
       },
-      mainAlgorithm: mainAlgorithm?.data ?? null,
     } satisfies Case;
   }),
 );
