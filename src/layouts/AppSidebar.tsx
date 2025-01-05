@@ -76,7 +76,9 @@ export const AppSidebar: FC<AppSidebarProps> = ({
       <SidebarContent>
         {filteredSets.map((set) => (
           <SidebarGroup key={set.id}>
-            <SidebarGroupLabel>{set.name}</SidebarGroupLabel>
+            <SidebarGroupLabel asChild>
+              <a href={`/${set.id}`}>{set.name}</a>
+            </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {set.subsets.map((subset) => {
