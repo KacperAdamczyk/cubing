@@ -1,13 +1,14 @@
 ---
+import { CasesList } from "@/components/CasesList";
 import SetList, { type Items } from "@/components/SetList.astro";
-import SummaryTable from "@/components/SummaryTable.astro";
 import { getBreadcrumbs } from "@/helpers/getBreadcrumbs";
 import Layout from "@/layouts/Layout.astro";
+import { getAllCases } from "@/queries/getAllCases";
 import { getSetCases } from "@/queries/getSetCases";
 import { getCollection } from "astro:content";
 
 const sets = await getCollection("sets");
-const allCases = await getCollection("cases");
+const allCases = await getAllCases();
 
 const items: Items = await Promise.all([
   {
@@ -29,5 +30,7 @@ const items: Items = await Promise.all([
 
 <Layout breadcrumbs={getBreadcrumbs()}>
   <SetList items={items} />
-  <SummaryTable />
+  <div class="mt-2 flex flex-col gap-2">
+    <CasesList cases={allCases} slim />
+  </div>
 </Layout>

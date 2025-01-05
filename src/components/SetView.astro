@@ -1,5 +1,5 @@
 ---
-import { MultiLayer } from "@/components/MultiLayer";
+import CubeView from "@/components/cube/CubeView.astro";
 import {
   Card,
   CardContent,
@@ -27,7 +27,7 @@ const { name, size, href, previewAlgorithm, viewType } = Astro.props;
     </CardHeader>
     <CardContent>
       <div class="size-20">
-        <MultiLayer algorithm={previewAlgorithm} type={viewType} />
+        <CubeView algorithm={previewAlgorithm} type={viewType} />
       </div>
     </CardContent>
     <CardFooter>{size}</CardFooter>
