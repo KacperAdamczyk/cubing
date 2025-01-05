@@ -1,8 +1,22 @@
 [
   {
-    "id": "Adjacent-Swap",
-    "name": "Adjacent Swap",
-    "previewAlgorithm": "F R U' R' U R U R2' F' R U R U' R'",
+    "id": "Disconnected-Pairs",
+    "name": "Disconnected Pairs",
+    "previewAlgorithm": "R U R' U2' R U' R' U",
+    "viewType": "F2L",
+    "setId": "F2L"
+  },
+  {
+    "id": "Oriented-Edges",
+    "name": "Oriented Edges",
+    "previewAlgorithm": "R U R' U R U' R' U R U2' R' y'",
+    "viewType": "OLL",
+    "setId": "OLL"
+  },
+  {
+    "id": "Edges-Only",
+    "name": "Edges Only",
+    "previewAlgorithm": "M2' U' M' U2' M U' M2'",
     "viewType": "PLL",
     "setId": "PLL"
   },
@@ -14,23 +28,17 @@
     "setId": "PLL"
   },
   {
-    "id": "Diagonal-Swap",
-    "name": "Diagonal Swap",
-    "previewAlgorithm": "F R' F' R U R U' R' F R U' R' U R U R' F'",
+    "id": "Adjacent-Swap",
+    "name": "Adjacent Swap",
+    "previewAlgorithm": "F R U' R' U R U R2' F' R U R U' R'",
     "viewType": "PLL",
     "setId": "PLL"
   },
+
   {
-    "id": "Disconnected-Pairs",
-    "name": "Disconnected Pairs",
-    "previewAlgorithm": "R U R' U2' R U' R' U",
-    "viewType": "F2L",
-    "setId": "F2L"
-  },
-  {
-    "id": "Edges-Only",
-    "name": "Edges Only",
-    "previewAlgorithm": "M2' U' M' U2' M U' M2'",
+    "id": "Diagonal-Swap",
+    "name": "Diagonal Swap",
+    "previewAlgorithm": "F R' F' R U R U' R' F R U' R' U R U R' F'",
     "viewType": "PLL",
     "setId": "PLL"
   },
@@ -40,12 +48,5 @@
     "previewAlgorithm": "R' U' R D' U R2' U R' U R U' R U' R2' D",
     "viewType": "PLL",
     "setId": "PLL"
-  },
-  {
-    "id": "Oriented-Edges",
-    "name": "Oriented Edges",
-    "previewAlgorithm": "R U R' U R U' R' U R U2' R' y'",
-    "viewType": "OLL",
-    "setId": "OLL"
   }
 ]
