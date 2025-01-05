@@ -1,7 +1,6 @@
 ---
 import { CasesList } from "@/components/CasesList";
-import type { Items } from "@/components/SetList.astro";
-import SetList from "@/components/SetList.astro";
+import PreviewList, { type Items } from "@/components/PreviewList.astro";
 import { getBreadcrumbs } from "@/helpers/getBreadcrumbs";
 import Layout from "@/layouts/Layout.astro";
 import { getSetCases } from "@/queries/getSetCases";
@@ -44,7 +43,7 @@ const items: Items = await Promise.all([
 ---
 
 <Layout breadcrumbs={getBreadcrumbs({ set })}>
-  <SetList items={items} />
+  <PreviewList items={items} />
   <div class="mt-2 flex flex-col gap-2">
     <CasesList cases={allCases} slim />
   </div>

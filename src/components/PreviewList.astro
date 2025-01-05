@@ -1,0 +1,17 @@
+---
+import Preview, {
+  type Props as PreviewProps,
+} from "@/components/Preview.astro";
+
+export type Items = PreviewProps[];
+
+interface Props {
+  items: Items;
+}
+
+const { items } = Astro.props;
+---
+
+<div class="flex flex-wrap gap-4">
+  {items.map((item) => <Preview {...item} />)}
+</div>
