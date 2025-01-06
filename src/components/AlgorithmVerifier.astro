@@ -1,0 +1,48 @@
+---
+import { applyRotations } from "@/cube/compound/applyRotations";
+import { toColoredFaceSlices } from "@/cube/compound/toColoredFaceSlices";
+import { isCubeSolved } from "@/cube/helpers/isCubeSolved";
+import { rotationsFromString } from "@/cube/helpers/rotationsFromString";
+import { createCube } from "@/cube/initializers/createCube";
+import { MdErrorOutline } from "react-icons/md";
+import { MdOutlineGppGood } from "react-icons/md";
+import type { ViewType } from "src/content.config";
+
+interface Props {
+  algorithm: string;
+  setup: string;
+  onlyError?: boolean;
+  viewType: ViewType;
+}
+
+const { algorithm, setup, onlyError = false, viewType } = Astro.props;
+
+const operations = rotationsFromString(`${setup} ${algorithm}`);
+const scrambledCube = applyRotations(operations, createCube());
+const isSolved = (() => {
+  if (viewType === "PLL") {
+    return isCubeSolved(scrambledCube);
+  }
+  const faces = toColoredFaceSlices(scrambledCube);
+  const isTopLayerUniform = new Set(faces.U.flat()).size === 1;
+  return isTopLayerUniform;
+})();
+---
+
+{
+  onlyError ? (
+    !isSolved && (
+      <div title="Algorithm is bad">
+        <MdErrorOutline className="text-cube-red" />
+      </div>
+    )
+  ) : isSolved ? (
+    <div title="Algorithm is good">
+      <MdOutlineGppGood className="text-cube-green" />
+    </div>
+  ) : (
+    <div title="Algorithm is bad">
+      <MdErrorOutline className="text-cube-red" />
+    </div>
+  )
+}

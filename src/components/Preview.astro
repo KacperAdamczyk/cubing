@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import type { ViewType } from "@/content.config";
+import { cn } from "@/lib/utils";
 
 export interface Props {
   name: string;
@@ -22,7 +23,7 @@ export interface Props {
 const { name, size, href, previewAlgorithm, viewType, isActive } = Astro.props;
 ---
 
-<a href={href} class:list={[isActive && "ring-2 rounded-xl ring-cube-green"]}>
+<a href={href} class={cn([isActive && "ring-2 rounded-xl ring-cube-green"])}>
   <Card>
     <CardHeader>
       <CardTitle className="text-center">{name}</CardTitle>
