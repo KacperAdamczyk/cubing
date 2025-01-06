@@ -1,13 +1,9 @@
 import type { Config } from "tailwindcss";
-import { nextui } from "@nextui-org/react";
 import containerQueries from "@tailwindcss/container-queries";
 import tailwindAnimation from "tailwindcss-animate";
 
 export default {
-  content: [
-    "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     colors: {
       "cube-green": "#009B48",
@@ -87,11 +83,5 @@ export default {
     },
   },
   darkMode: "class",
-  plugins: [
-    containerQueries,
-    nextui({
-      defaultTheme: "dark",
-    }),
-    tailwindAnimation,
-  ],
+  plugins: [containerQueries, tailwindAnimation],
 } satisfies Config;
