@@ -1,5 +1,6 @@
 ---
 import CubeView from "@/components/cube/CubeView.astro";
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -15,21 +16,24 @@ export interface Props {
   href: string;
   previewAlgorithm: string;
   viewType: ViewType;
+  isActive?: boolean;
 }
 
-const { name, size, href, previewAlgorithm, viewType } = Astro.props;
+const { name, size, href, previewAlgorithm, viewType, isActive } = Astro.props;
 ---
 
-<a href={href}>
-  <Card className="aspect-square">
+<a href={href} class:list={[isActive && "ring-2 rounded-xl ring-cube-green"]}>
+  <Card>
     <CardHeader>
-      <CardTitle>{name}</CardTitle>
+      <CardTitle className="text-center">{name}</CardTitle>
     </CardHeader>
-    <CardContent>
+    <CardContent className="flex items-center justify-center">
       <div class="size-20">
         <CubeView algorithm={previewAlgorithm} type={viewType} />
       </div>
     </CardContent>
-    <CardFooter>{size}</CardFooter>
+    <CardFooter className="flex justify-center">
+      <Badge>{size}</Badge>
+    </CardFooter>
   </Card>
 </a>

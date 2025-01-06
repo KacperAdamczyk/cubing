@@ -10,8 +10,9 @@ interface Props {
 }
 
 const { items } = Astro.props;
+const { pathname } = Astro.url;
 ---
 
-<div class="flex flex-wrap gap-4">
-  {items.map((item) => <Preview {...item} />)}
+<div class="flex flex-wrap gap-1">
+  {items.map((item) => <Preview {...item} isActive={item.href === pathname} />)}
 </div>
