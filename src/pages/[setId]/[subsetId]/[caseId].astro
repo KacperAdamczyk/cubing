@@ -1,5 +1,5 @@
 ---
-import { CaseView } from "@/components/CaseView";
+import CaseView from "@/components/CaseView.astro";
 import { getBreadcrumbs } from "@/helpers/getBreadcrumbs";
 import Layout from "@/layouts/Layout.astro";
 import { getSetSubsets } from "@/queries/getSetSubsets";
@@ -50,5 +50,5 @@ const { set, subset, subsetCase } = Astro.props;
     case: subsetCase,
   })}
 >
-  <CaseView client:visible case={subsetCase} slim={false} />
+  <CaseView case={subsetCase} slim={false} />
 </Layout>

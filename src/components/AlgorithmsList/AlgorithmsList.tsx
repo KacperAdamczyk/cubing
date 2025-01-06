@@ -3,7 +3,7 @@ import { AlgorithmView } from "@/components/AlgorithmView";
 import { Chip } from "@nextui-org/chip";
 import { cn } from "@nextui-org/react";
 import type { ViewType } from "src/content.config";
-import type { Case } from "@/components/CaseView";
+import type { Case } from "@/components/CaseView.astro";
 
 const otherAlgorithmsLimit = 2;
 

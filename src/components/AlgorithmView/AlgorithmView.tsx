@@ -1,5 +1,5 @@
 import { AlgorithmVerifier } from "@/components/AlgorithmVerifier";
-import type { Case } from "@/components/CaseView";
+import type { Case } from "@/components/CaseView.astro";
 import { cn } from "@nextui-org/react";
 import type { FC } from "react";
 import type { ViewType } from "src/content.config";
