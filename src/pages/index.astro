@@ -1,8 +1,36 @@
 ---
-import SummaryTable from "@/components/SummaryTable.astro";
-import AppLayout from "@/layouts/AppLayout.astro";
+import CasesList from "@/components/CasesList.astro";
+import PreviewList, { type Items } from "@/components/PreviewList.astro";
+import { getBreadcrumbs } from "@/helpers/getBreadcrumbs";
+import Layout from "@/layouts/Layout.astro";
+import { getAllCases } from "@/queries/getAllCases";
+import { getSetCases } from "@/queries/getSetCases";
+import { getCollection } from "astro:content";
+
+const sets = await getCollection("sets");
+const allCases = await getAllCases();
+
+const items: Items = await Promise.all([
+  {
+    href: "/",
+    name: "All",
+    previewAlgorithm: "",
+    size: allCases.length,
+    viewType: "PLL",
+  },
+  ...sets.map(async ({ data: set }) => ({
+    href: `/${set.id}`,
+    name: set.name,
+    previewAlgorithm: "",
+    size: (await getSetCases(set.id)).length,
+    viewType: set.viewType,
+  })),
+]);
 ---
 
-<AppLayout>
-  <SummaryTable />
-</AppLayout>
+<Layout breadcrumbs={getBreadcrumbs()}>
+  <PreviewList items={items} />
+  <div class="mt-2 flex flex-col gap-2">
+    <CasesList cases={allCases} slim />
+  </div>
+</Layout>

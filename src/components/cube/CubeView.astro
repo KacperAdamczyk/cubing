@@ -1,0 +1,17 @@
+---
+import F2L from "@/components/cube/F2L.astro";
+import OLL from "@/components/cube/OLL.astro";
+import PLL from "@/components/cube/PLL.astro";
+import type { ViewType } from "@/content.config";
+
+interface Props {
+  algorithm: string;
+  type: ViewType;
+}
+
+const { algorithm, type } = Astro.props;
+---
+
+{type === "F2L" && <F2L algorithm={algorithm} />}
+{type === "OLL" && <OLL algorithm={algorithm} />}
+{type === "PLL" && <PLL algorithm={algorithm} />}

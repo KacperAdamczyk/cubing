@@ -1,9 +1,0 @@
----
-import { getCollection } from "astro:content";
-import { Navbar as ClientNavbar } from "@/components/Navbar";
-
-const sets = await getCollection("sets");
-const setsData = sets.map((set) => set.data);
----
-
-<ClientNavbar client:visible sets={setsData} />

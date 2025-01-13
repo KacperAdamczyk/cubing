@@ -10,6 +10,7 @@ const sets = defineCollection({
   schema: z.object({
     id: z.string(),
     name: z.string(),
+    viewType: viewTypeSchema,
   }),
 });
 
@@ -24,6 +25,14 @@ const subsets = defineCollection({
   }),
 });
 
+const algorithmSchema = z.object({
+  rotations: z.string(),
+  rotationsMnemonic: z.string().nullable(),
+  description: z.string().nullable(),
+});
+
+export type Algorithm = z.infer<typeof algorithmSchema>;
+
 const cases = defineCollection({
   loader: file("src/data/cases.json"),
   schema: z.object({
@@ -32,19 +41,8 @@ const cases = defineCollection({
     setup: z.string(),
     viewType: viewTypeSchema,
     subsetId: reference("subsets"),
-    mainAlgorithmId: reference("algorithms").nullable(),
+    algorithms: z.array(algorithmSchema).min(1),
   }),
 });
 
-const algorithms = defineCollection({
-  loader: file("src/data/algorithms.json"),
-  schema: z.object({
-    id: z.string(),
-    rotations: z.string(),
-    rotationsMnemonic: z.string().nullable(),
-    description: z.string().nullable(),
-    caseId: reference("cases"),
-  }),
-});
-
-export const collections = { sets, subsets, cases, algorithms };
+export const collections = { sets, subsets, cases };

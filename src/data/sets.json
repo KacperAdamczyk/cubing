@@ -1,5 +1,5 @@
 [
-  { "id": "F2L", "name": "F2L" },
-  { "id": "OLL", "name": "OLL" },
-  { "id": "PLL", "name": "PLL" }
+  { "id": "F2L", "name": "F2L", "viewType": "F2L" },
+  { "id": "OLL", "name": "OLL", "viewType": "OLL" },
+  { "id": "PLL", "name": "PLL", "viewType": "PLL" }
 ]

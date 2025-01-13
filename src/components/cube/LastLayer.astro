@@ -1,0 +1,34 @@
+---
+import Face from "@/components/cube/Face.astro";
+import {
+  algorithmToFaces,
+  Colors,
+  Faces,
+  getAdjacentPieces,
+  type ColorOrientation,
+} from "@/cube";
+
+interface Props {
+  algorithm: string;
+  maskedColors?: Colors[];
+  orientation?: ColorOrientation;
+}
+
+const {
+  algorithm,
+  maskedColors = [],
+  orientation = { U: Colors.Y, F: Colors.G },
+} = Astro.props;
+
+const faces = algorithmToFaces({
+  algorithm,
+  orientation,
+});
+const adjacentColors = getAdjacentPieces(faces, Faces.U);
+---
+
+<Face
+  face={faces.U}
+  maskedColors={maskedColors}
+  adjacentPieces={adjacentColors}
+/>

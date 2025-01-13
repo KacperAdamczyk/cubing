@@ -1,0 +1,59 @@
+---
+import AlgorithmsList from "@/components/AlgorithmsList.astro";
+import CubeView from "@/components/cube/CubeView.astro";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { linkWithBase } from "@/helpers/linkWithBase";
+import type { InferEntrySchema } from "astro:content";
+
+export interface Case extends InferEntrySchema<"cases"> {
+  subset: InferEntrySchema<"subsets">;
+}
+
+interface Props {
+  case: Case;
+  slim: boolean;
+}
+
+const {
+  case: { id, name, algorithms, setup, subset, viewType },
+  slim,
+} = Astro.props;
+---
+
+<Card id={id} className="w-full @container p-2">
+  <CardContent
+    className="grid grid-cols-[8rem_1fr] grid-rows-[auto_1fr_auto] items-center justify-center gap-2 @lg:grid-cols-[15rem_1fr]"
+  >
+    <div class="col-start-1 row-span-2 row-start-1">
+      <CubeView algorithm={setup} type={viewType} />
+    </div>
+    <div
+      class="col-span-2 col-start-1 row-start-3 flex flex-col items-center rounded-md border-2 border-divider p-2"
+    >
+      <div>Setup</div>
+      <Separator className="m-2" />
+      <span class="text-center">{setup}</span>
+    </div>
+    <div class="flex items-center justify-center gap-1">
+      <span class="text-2xl font-bold">{name}</span>
+      {
+        slim ? (
+          <Badge>{subset.name}</Badge>
+        ) : (
+          <a href={linkWithBase(`/${subset.setId.id}/${subset.id}#${id}`)}>
+            <Badge>{subset.name}</Badge>
+          </a>
+        )
+      }
+    </div>
+    <AlgorithmsList
+      viewType={viewType}
+      className="self-start"
+      setup={setup}
+      algorithms={algorithms}
+      slim={slim}
+    />
+  </CardContent>
+</Card>

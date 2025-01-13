@@ -24,6 +24,8 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
+      - name: Run check
+        run: pnpm check
       - name: Run tests
         run: pnpm test
       - name: Run prettier

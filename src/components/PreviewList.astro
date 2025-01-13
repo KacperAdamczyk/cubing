@@ -1,0 +1,18 @@
+---
+import Preview, {
+  type Props as PreviewProps,
+} from "@/components/Preview.astro";
+
+export type Items = PreviewProps[];
+
+interface Props {
+  items: Items;
+}
+
+const { items } = Astro.props;
+const { pathname } = Astro.url;
+---
+
+<div class="flex flex-wrap gap-1">
+  {items.map((item) => <Preview {...item} isActive={item.href === pathname} />)}
+</div>

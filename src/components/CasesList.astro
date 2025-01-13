@@ -1,0 +1,27 @@
+---
+import CaseView, { type Case } from "@/components/CaseView.astro";
+import { linkWithBase } from "src/helpers/linkWithBase";
+
+interface Props {
+  cases: Case[];
+  slim: boolean;
+}
+
+const { cases, slim } = Astro.props;
+---
+
+<div class="flex flex-col items-center gap-4">
+  {
+    cases.map((currentCase) => (
+      <a
+        class="w-full"
+        href={linkWithBase(
+          `/${currentCase.subset.setId.id}/${currentCase.subset.id}/${currentCase.id}`,
+        )}
+      >
+        <CaseView case={currentCase} slim={slim} />
+      </a>
+    ))
+  }
+  {!cases.length && <div class="text-2xl uppercase">No cases</div>}
+</div>

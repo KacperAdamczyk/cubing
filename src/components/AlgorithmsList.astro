@@ -1,0 +1,53 @@
+---
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
+import type { ViewType } from "src/content.config";
+import type { Case } from "@/components/CaseView.astro";
+import AlgorithmView from "@/components/AlgorithmView.astro";
+
+const otherAlgorithmsLimit = 2;
+
+interface Props {
+  className?: string;
+  setup: string;
+  algorithms: Case["algorithms"];
+  slim: boolean;
+  viewType: ViewType;
+}
+
+const { className, setup, algorithms, slim, viewType } = Astro.props;
+
+const [mainAlgorithm, ...otherAlgorithms] = algorithms;
+const limitedOtherAlgorithms = otherAlgorithms.slice(
+  0,
+  slim ? otherAlgorithmsLimit : otherAlgorithms.length,
+);
+const hasMore = otherAlgorithms.length > limitedOtherAlgorithms.length;
+---
+
+<div class={cn(className, "flex flex-col gap-1")}>
+  <AlgorithmView
+    setup={setup}
+    algorithm={mainAlgorithm}
+    slim={slim}
+    viewType={viewType}
+    isMain
+  />
+  {
+    limitedOtherAlgorithms.map((algorithm) => (
+      <AlgorithmView
+        setup={setup}
+        algorithm={algorithm}
+        slim={slim}
+        viewType={viewType}
+      />
+    ))
+  }
+  {
+    hasMore && (
+      <Badge variant="outline" className="self-center">
+        +{otherAlgorithms.length - limitedOtherAlgorithms.length}
+      </Badge>
+    )
+  }
+</div>
