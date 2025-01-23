@@ -52,7 +52,7 @@
     "eslint-plugin-tailwindcss": "3.18.0",
     "prettier": "3.4.2",
     "prettier-plugin-astro": "0.14.1",
-    "prettier-plugin-tailwindcss": "0.6.10",
+    "prettier-plugin-tailwindcss": "0.6.11",
     "shadcn": "2.1.8",
     "vitest": "3.0.3"
   },
