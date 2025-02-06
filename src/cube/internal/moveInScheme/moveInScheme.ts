@@ -1,4 +1,3 @@
-/* eslint-disable @/cubetypescript-eslint/no-non-null-assertion */
 import { Faces } from "@/cube/types/Faces";
 import type { PieceScheme } from "@/cube/types/PieceScheme";
 

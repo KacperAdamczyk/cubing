@@ -7,7 +7,6 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-  CommandShortcut,
 } from "@/components/ui/command";
 import { cn } from "@/lib/utils";
 import type { InferEntrySchema } from "astro:content";
