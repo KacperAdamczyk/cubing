@@ -11,7 +11,6 @@ test("creates a cube", () => {
       U: Colors.W,
       F: Colors.G,
     },
-    // eslint-disable-next-line @/cubetypescript-eslint/no-unsafe-assignment
     state: expect.any(Array),
   } satisfies Cube);
 });

@@ -24,10 +24,12 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
-      - name: Run check
+      - name: Check
         run: pnpm check
-      - name: Run tests
+      - name: Tests
         run: pnpm test
+      - name: Lint
+        run: pnpm lint
       - name: Run prettier
         run: pnpm format:check
       - name: Build
