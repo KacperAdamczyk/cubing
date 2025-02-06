@@ -85,7 +85,7 @@ importers:
         version: 5.7.3
     devDependencies:
       '@eslint/js':
-        specifier: ^9.19.0
+        specifier: 9.19.0
         version: 9.19.0
       '@types/node':
         specifier: 22.13.1
@@ -103,13 +103,13 @@ importers:
         specifier: 9.19.0
         version: 9.19.0(jiti@2.4.2)
       eslint-plugin-react:
-        specifier: ^7.37.4
+        specifier: 7.37.4
         version: 7.37.4(eslint@9.19.0(jiti@2.4.2))
       eslint-plugin-tailwindcss:
         specifier: 3.18.0
         version: 3.18.0(tailwindcss@4.0.4)
       globals:
-        specifier: ^15.14.0
+        specifier: 15.14.0
         version: 15.14.0
       prettier:
         specifier: 3.4.2
@@ -124,7 +124,7 @@ importers:
         specifier: 2.3.0
         version: 2.3.0(typescript@5.7.3)
       typescript-eslint:
-        specifier: ^8.23.0
+        specifier: 8.23.0
         version: 8.23.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
       vitest:
         specifier: 3.0.5
