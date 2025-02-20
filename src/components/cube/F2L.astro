@@ -15,19 +15,21 @@ const faces = algorithmToFaces({
 });
 ---
 
-<div class="relative flex aspect-square items-end">
+<div
+  class="grid grid-cols-2 grid-rows-2 aspect-square origin-bottom-left scale-125"
+>
   <Face
-    className="absolute bottom-[65%] h-[66%]! w-[66%]! transform [--tw-scale-y:0.5] [--tw-skew-x:-45deg] [--tw-translate-x:25%] [--tw-translate-y:25%]"
+    className="row-start-1 h-1/2 translate-y-full origin-bottom-left -skew-x-45"
     face={faces.U}
     maskedColors={[Colors.Y, Colors.B, Colors.O]}
   />
   <Face
-    className="h-[66%]! w-[66%]!"
+    className="row-start-2"
     face={faces.F}
     maskedColors={[Colors.Y, Colors.B, Colors.O]}
   />
   <Face
-    className="absolute left-[65%] top-[34%] h-[66%]! w-[66%]! transform [--tw-scale-x:0.5] [--tw-skew-y:-45deg] [--tw-translate-x:-25%] [--tw-translate-y:-25%]"
+    className="row-start-2 w-1/2 origin-bottom-left -skew-y-45"
     face={faces.R}
     maskedColors={[Colors.Y, Colors.B, Colors.O]}
   />

@@ -7,11 +7,6 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   base: process.env.BASE,
   integrations: [react()],
-
-  experimental: {
-    contentIntellisense: true,
-  },
-
   vite: {
     plugins: [tailwindcss()],
   },
