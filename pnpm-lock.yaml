@@ -34,7 +34,7 @@ importers:
         version: 1.1.8(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@react-stately/data':
         specifier: ^3.12.0
-        version: 3.12.1(react@19.0.0)
+        version: 3.12.2(react@19.0.0)
       '@tailwindcss/vite':
         specifier: ^4.0.1
         version: 4.0.11(vite@6.2.0(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.0))
@@ -1068,13 +1068,13 @@ packages:
   '@radix-ui/rect@1.1.0':
     resolution: {integrity: sha512-A9+lCBZoaMJlVKcRBz2YByCG+Cp2t6nAnMnNba+XiWxnj6r4JUFqfsgwocMBZU9LPtdxC6wB56ySYpc7LQIoJg==}
 
-  '@react-stately/data@3.12.1':
-    resolution: {integrity: sha512-/Nc8X1FmrJ53QU4rN/1i1JtNir4iqo+39Xn5ZOJ74Nng7T+xVVuEuWSo+OEGaycCJf2eZRsomauPxUnnZgCM1A==}
+  '@react-stately/data@3.12.2':
+    resolution: {integrity: sha512-u0yQkISnPyR5RjpNJCSxyC28bx/UvUKtVYRH5yx/MtXbP+2Byn7ItQ+evRqpJB5XsWFlyohGebgbXvL3JSBVsg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
 
-  '@react-types/shared@3.27.0':
-    resolution: {integrity: sha512-gvznmLhi6JPEf0bsq7SwRYTHAKKq/wcmKqFez9sRdbED+SPMUmK5omfZ6w3EwUFQHbYUa4zPBYedQ7Knv70RMw==}
+  '@react-types/shared@3.28.0':
+    resolution: {integrity: sha512-9oMEYIDc3sk0G5rysnYvdNrkSg7B04yTKl50HHSZVbokeHpnU0yRmsDaWb9B/5RprcKj8XszEk5guBO8Sa/Q+Q==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
 
@@ -5088,13 +5088,13 @@ snapshots:
 
   '@radix-ui/rect@1.1.0': {}
 
-  '@react-stately/data@3.12.1(react@19.0.0)':
+  '@react-stately/data@3.12.2(react@19.0.0)':
     dependencies:
-      '@react-types/shared': 3.27.0(react@19.0.0)
+      '@react-types/shared': 3.28.0(react@19.0.0)
       '@swc/helpers': 0.5.15
       react: 19.0.0
 
-  '@react-types/shared@3.27.0(react@19.0.0)':
+  '@react-types/shared@3.28.0(react@19.0.0)':
     dependencies:
       react: 19.0.0
 
