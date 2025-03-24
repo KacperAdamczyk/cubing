@@ -56,7 +56,7 @@
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "0.6.11",
     "shadcn": "2.4.0-canary.17",
-    "typescript-eslint": "8.27.0",
+    "typescript-eslint": "8.28.0",
     "vitest": "3.0.9"
   },
   "packageManager": "pnpm@10.6.5"
