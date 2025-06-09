@@ -47,7 +47,7 @@
     "@types/node": "22.15.30",
     "@types/react": "19.1.6",
     "@types/react-dom": "19.1.6",
-    "@vitest/ui": "3.1.4",
+    "@vitest/ui": "3.2.3",
     "eslint": "9.28.0",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-tailwindcss": "3.18.0",
@@ -57,7 +57,7 @@
     "prettier-plugin-tailwindcss": "0.6.12",
     "shadcn": "2.6.0",
     "typescript-eslint": "8.33.1",
-    "vitest": "3.1.4"
+    "vitest": "3.2.3"
   },
   "packageManager": "pnpm@10.12.1"
 }
