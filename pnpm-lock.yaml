@@ -121,8 +121,8 @@ importers:
         specifier: 0.6.12
         version: 0.6.12(prettier-plugin-astro@0.14.1)(prettier@3.5.3)
       shadcn:
-        specifier: 2.6.0
-        version: 2.6.0(@types/node@22.15.30)(typescript@5.8.3)
+        specifier: 2.6.1
+        version: 2.6.1(@types/node@22.15.30)(typescript@5.8.3)
       typescript-eslint:
         specifier: 8.33.1
         version: 8.33.1(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3)
@@ -1742,9 +1742,6 @@ packages:
   camelcase@8.0.0:
     resolution: {integrity: sha512-8WB3Jcas3swSvjIeA2yvCJ+Miyz5l1ZmB6HFb9R1317dt9LCQoswg/BGrmAmkWVEszSrrg4RwmO46qIm2OEnSA==}
     engines: {node: '>=16'}
-
-  caniuse-lite@1.0.30001718:
-    resolution: {integrity: sha512-AflseV1ahcSunK53NfEs9gFWgOEmzr0f+kaMFA4xiLZlr9Hzt7HxcSpIFcnNCUkz6R6dWKa54rUz3HUmI3nVcw==}
 
   caniuse-lite@1.0.30001721:
     resolution: {integrity: sha512-cOuvmUVtKrtEaoKiO0rSc29jcjwMwX5tOHDy4MgVFEWiUXj4uBMJkwI8MDySkgXidpMiHUcviogAvFi4pA2hDQ==}
@@ -3683,8 +3680,8 @@ packages:
   setprototypeof@1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
 
-  shadcn@2.6.0:
-    resolution: {integrity: sha512-Z/yN3TnVPvdnr623Ln4RIOs20++6HFEAEMQObDOsU3+qkoQ0Y/gAP+S8/paAnUAXj849hDNtu4SJEvhW9XqJUA==}
+  shadcn@2.6.1:
+    resolution: {integrity: sha512-ryLZPgt0QaROv1wIN8yJNx3lZEGoq6WJyWaY+5pBWxVeT/DhM2rJmR+SeKsoUOYRWBKLhzO25jwv8d/4eXmYsg==}
     hasBin: true
 
   sharp@0.33.5:
@@ -6262,7 +6259,7 @@ snapshots:
 
   browserslist@4.24.4:
     dependencies:
-      caniuse-lite: 1.0.30001718
+      caniuse-lite: 1.0.30001721
       electron-to-chromium: 1.5.84
       node-releases: 2.0.19
       update-browserslist-db: 1.1.2(browserslist@4.24.4)
@@ -6300,8 +6297,6 @@ snapshots:
   callsites@3.1.0: {}
 
   camelcase@8.0.0: {}
-
-  caniuse-lite@1.0.30001718: {}
 
   caniuse-lite@1.0.30001721: {}
 
@@ -8579,7 +8574,7 @@ snapshots:
 
   setprototypeof@1.2.0: {}
 
-  shadcn@2.6.0(@types/node@22.15.30)(typescript@5.8.3):
+  shadcn@2.6.1(@types/node@22.15.30)(typescript@5.8.3):
     dependencies:
       '@antfu/ni': 23.3.1
       '@babel/core': 7.27.1
