@@ -121,8 +121,8 @@ importers:
         specifier: 0.6.12
         version: 0.6.12(prettier-plugin-astro@0.14.1)(prettier@3.5.3)
       shadcn:
-        specifier: 2.6.2
-        version: 2.6.2(@types/node@22.15.31)(typescript@5.8.3)
+        specifier: 2.6.3
+        version: 2.6.3(@types/node@22.15.31)(typescript@5.8.3)
       typescript-eslint:
         specifier: 8.34.0
         version: 8.34.0(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3)
@@ -3698,8 +3698,8 @@ packages:
   setprototypeof@1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
 
-  shadcn@2.6.2:
-    resolution: {integrity: sha512-B8TqFCmNEBhXx4YLrXWZ+3xX0BJYfmrFlKfZYbgrINuzWDOVMn4Obl0573O8RLwCB/B9ZVbqbqL4OPgMsCDeOQ==}
+  shadcn@2.6.3:
+    resolution: {integrity: sha512-6As/8eKHtZWUVNxn4EbG703emgzPOAJV69IdfnP5Xe9mXARJWP64545SRj5nSOvn8c342U2RaM3TaV/13bGL1w==}
     hasBin: true
 
   sharp@0.33.5:
@@ -8573,7 +8573,7 @@ snapshots:
 
   setprototypeof@1.2.0: {}
 
-  shadcn@2.6.2(@types/node@22.15.31)(typescript@5.8.3):
+  shadcn@2.6.3(@types/node@22.15.31)(typescript@5.8.3):
     dependencies:
       '@antfu/ni': 23.3.1
       '@babel/core': 7.27.1
