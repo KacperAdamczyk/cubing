@@ -4,7 +4,7 @@
     "": {
       "name": "cubing",
       "devDependencies": {
-        "turbo": "^2.3.4",
+        "turbo": "2.5.5",
       },
     },
     "apps/client": {
