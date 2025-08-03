@@ -8,6 +8,6 @@ export default defineConfig({
   base: process.env.BASE,
   integrations: [react()],
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss() as never],
   },
 });
