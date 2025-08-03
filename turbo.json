@@ -1,0 +1,31 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "outputs": ["dist/**", ".astro/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+    },
+    "format:check": {
+    },
+    "format:write": {
+    },
+    "test": {
+      "outputs": ["coverage/**"]
+    },
+    "test:ui": {
+      "cache": false,
+      "persistent": true
+    },
+    "check": {
+    },
+    "preview": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

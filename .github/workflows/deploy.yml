@@ -23,7 +23,7 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v4
         with:
-          node-version: "lts/*"
+          path: 'apps/client'
         env:
           BASE: "/cubing"
   deploy:
