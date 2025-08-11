@@ -27,7 +27,7 @@ jobs:
       - name: Check
         run: pnpm check
       - name: Tests
-        run: pnpm test
+        run: pnpm test -- --run
       - name: Lint
         run: pnpm lint
       - name: Run prettier
