@@ -1,0 +1,1 @@
+export { toFaceSlices } from "./toFaceSlices";
