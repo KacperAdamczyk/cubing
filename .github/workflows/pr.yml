@@ -15,21 +15,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-      - name: Setup bun
-        uses: oven-sh/setup-bun@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "lts/*"
+          cache: "pnpm"
       - name: Install dependencies
-        run: bun i --frozen-lockfile
+        run: pnpm i --frozen-lockfile
       - name: Check
-        run: bun run check
+        run: pnpm check
       - name: Tests
-        run: bun run test
+        run: pnpm test
       - name: Lint
-        run: bun run lint
+        run: pnpm lint
       - name: Run prettier
-        run: bun run format:check
+        run: pnpm format:check
       - name: Build
-        run: bun run build
+        run: pnpm build
