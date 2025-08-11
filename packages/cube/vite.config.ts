@@ -9,7 +9,7 @@ export default defineConfig({
         lib: {
             entry: resolve(import.meta.dirname, "src/index.ts"),
             name: "Cube",
-            fileName: "cube",
+            fileName: "index",
             formats: ["es"],
         },
     },
