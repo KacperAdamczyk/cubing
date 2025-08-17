@@ -1,0 +1,22 @@
+{
+  "name": "db",
+  "module": "db.ts",
+  "type": "module",
+  "exports": {
+    "import": "./build/index.js"
+  },
+  "scripts": {
+    "build": "bun build.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "bun-plugin-dts": "^0.3.0",
+    "drizzle-kit": "^0.31.4"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.44.4"
+  }
+}

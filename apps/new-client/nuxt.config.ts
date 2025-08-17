@@ -11,5 +11,10 @@ export default defineNuxtConfig({
         '@nuxt/test-utils',
         '@nuxt/ui',
         '@nuxt/content'
-    ]
+    ],
+    vite: {
+        ssr: {
+            external: ['db']
+        }
+    }
 })
