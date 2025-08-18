@@ -1,7 +1,5 @@
-import {drizzle} from 'drizzle-orm/bun-sql';
-// @ts-ignore
-import client from "./db.sqlite" with {type: "sqlite", embed: "true"};
+import {drizzle} from 'drizzle-orm/bun-sqlite';
 
-export const db = drizzle({client});
-
+const dbPath = Bun.resolveSync("../db.sqlite", import.meta.dirname);
+export const db = drizzle(dbPath);
 export * from './schema';
