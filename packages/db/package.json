@@ -12,10 +12,10 @@
     "build": "bun build.ts"
   },
   "devDependencies": {
-    "@types/better-sqlite3": "^7.6.13",
+    "@types/better-sqlite3": "7.6.13",
     "@types/bun": "latest",
-    "bun-plugin-dts": "^0.3.0",
-    "drizzle-kit": "^0.31.4"
+    "bun-plugin-dts": "0.3.0",
+    "drizzle-kit": "0.31.4"
   },
   "peerDependencies": {
     "better-sqlite3": "^12.2.0",
