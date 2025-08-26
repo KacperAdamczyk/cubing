@@ -4,33 +4,33 @@ import type { FaceSlice, Colors, AdjacentPieces, Faces } from "cube";
 import { cn } from "@/lib/utils";
 
 interface Props {
-  className?: string;
-  face: FaceSlice<Colors>;
-  maskedColors: (Colors | undefined)[];
-  maskedAdjPieces?: Partial<AdjacentPieces<true | undefined>>;
-  adjacentPieces?: AdjacentPieces<Colors>;
-  faceLabel?: Faces;
+	className?: string;
+	face: FaceSlice<Colors>;
+	maskedColors: (Colors | undefined)[];
+	maskedAdjPieces?: Partial<AdjacentPieces<true | undefined>>;
+	adjacentPieces?: AdjacentPieces<Colors>;
+	faceLabel?: Faces;
 }
 
 const {
-  className,
-  face,
-  maskedColors,
-  maskedAdjPieces,
-  adjacentPieces,
-  faceLabel,
+	className,
+	face,
+	maskedColors,
+	maskedAdjPieces,
+	adjacentPieces,
+	faceLabel,
 } = Astro.props;
 
 const maskedColorsSet = new Set(maskedColors);
 const maskColor = (
-  color: Colors,
-  hidden?: true,
+	color: Colors,
+	hidden?: true,
 ): Colors | typeof blankColor | undefined => {
-  if (hidden) {
-    return;
-  }
+	if (hidden) {
+		return;
+	}
 
-  return maskedColorsSet.has(color) ? blankColor : color;
+	return maskedColorsSet.has(color) ? blankColor : color;
 };
 const pieces = face.flat().map((piece) => maskColor(piece));
 ---

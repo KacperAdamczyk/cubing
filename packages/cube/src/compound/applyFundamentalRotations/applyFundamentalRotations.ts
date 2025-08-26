@@ -3,10 +3,10 @@ import type { Cube } from "@/cube/types/Cube";
 import type { FundamentalRotations } from "@/cube/types/Rotations";
 
 export const applyFundamentalRotations = (
-  rotations: FundamentalRotations[],
-  cube: Cube,
+	rotations: FundamentalRotations[],
+	cube: Cube,
 ): Cube =>
-  rotations.reduce(
-    (currentCube, rotation) => rotateCube(rotation, currentCube),
-    cube,
-  );
+	rotations.reduce(
+		(currentCube, rotation) => rotateCube(rotation, currentCube),
+		cube,
+	);

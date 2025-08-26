@@ -8,17 +8,17 @@ import { linkWithBase } from "@/helpers/linkWithBase";
 import type { InferEntrySchema } from "astro:content";
 
 export interface Case extends InferEntrySchema<"cases"> {
-  subset: InferEntrySchema<"subsets">;
+	subset: InferEntrySchema<"subsets">;
 }
 
 interface Props {
-  case: Case;
-  slim: boolean;
+	case: Case;
+	slim: boolean;
 }
 
 const {
-  case: { id, name, algorithms, setup, subset, viewType },
-  slim,
+	case: { id, name, algorithms, setup, subset, viewType },
+	slim,
 } = Astro.props;
 ---
 

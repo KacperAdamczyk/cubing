@@ -11,20 +11,20 @@ const sets = await getCollection("sets");
 const allCases = await getAllCases();
 
 const items: Items = await Promise.all([
-  {
-    href: "/",
-    name: "All",
-    previewAlgorithm: "",
-    size: allCases.length,
-    viewType: "PLL",
-  },
-  ...sets.map(async ({ data: set }) => ({
-    href: `/${set.id}`,
-    name: set.name,
-    previewAlgorithm: "",
-    size: (await getSetCases(set.id)).length,
-    viewType: set.viewType,
-  })),
+	{
+		href: "/",
+		name: "All",
+		previewAlgorithm: "",
+		size: allCases.length,
+		viewType: "PLL",
+	},
+	...sets.map(async ({ data: set }) => ({
+		href: `/${set.id}`,
+		name: set.name,
+		previewAlgorithm: "",
+		size: (await getSetCases(set.id)).length,
+		viewType: set.viewType,
+	})),
 ]);
 ---
 

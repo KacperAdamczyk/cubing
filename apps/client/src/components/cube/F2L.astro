@@ -3,14 +3,14 @@ import Face from "@/components/cube/Face.astro";
 import { algorithmToFaces, Colors } from "cube";
 
 interface Props {
-  algorithm: string;
+	algorithm: string;
 }
 
 const { algorithm } = Astro.props;
 
 const faces = algorithmToFaces({
-  algorithm,
-  orientation: { U: Colors.Y, F: Colors.R },
+	algorithm,
+	orientation: { U: Colors.Y, F: Colors.R },
 });
 ---
 

@@ -8,19 +8,19 @@ import AlgorithmView from "@/components/AlgorithmView.astro";
 const otherAlgorithmsLimit = 2;
 
 interface Props {
-  className?: string;
-  setup: string;
-  algorithms: Case["algorithms"];
-  slim: boolean;
-  viewType: ViewType;
+	className?: string;
+	setup: string;
+	algorithms: Case["algorithms"];
+	slim: boolean;
+	viewType: ViewType;
 }
 
 const { className, setup, algorithms, slim, viewType } = Astro.props;
 
 const [mainAlgorithm, ...otherAlgorithms] = algorithms;
 const limitedOtherAlgorithms = otherAlgorithms.slice(
-  0,
-  slim ? otherAlgorithmsLimit : otherAlgorithms.length,
+	0,
+	slim ? otherAlgorithmsLimit : otherAlgorithms.length,
 );
 const hasMore = otherAlgorithms.length > limitedOtherAlgorithms.length;
 ---

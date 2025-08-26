@@ -6,35 +6,35 @@ import { getAllCases } from "@/queries/getAllCases";
 import { getCollection } from "astro:content";
 
 interface Props {
-  breadcrumbs: BreadcrumbEntry[];
+	breadcrumbs: BreadcrumbEntry[];
 }
 
 const { breadcrumbs } = Astro.props;
 
 const sets = await Promise.all(
-  (await getCollection("sets")).map(async (set) => {
-    const subsets = await getCollection(
-      "subsets",
-      (subset) => subset.data.setId.id === set.id,
-    );
-    const subsetsWithCases = await Promise.all(
-      subsets.map(async (subset) => {
-        const cases = await getCollection(
-          "cases",
-          (c) => c.data.subsetId.id === subset.id,
-        );
-        return {
-          ...subset.data,
-          cases: cases.map((c) => c.data),
-        };
-      }),
-    );
+	(await getCollection("sets")).map(async (set) => {
+		const subsets = await getCollection(
+			"subsets",
+			(subset) => subset.data.setId.id === set.id,
+		);
+		const subsetsWithCases = await Promise.all(
+			subsets.map(async (subset) => {
+				const cases = await getCollection(
+					"cases",
+					(c) => c.data.subsetId.id === subset.id,
+				);
+				return {
+					...subset.data,
+					cases: cases.map((c) => c.data),
+				};
+			}),
+		);
 
-    return {
-      ...set.data,
-      subsets: subsetsWithCases,
-    };
-  }),
+		return {
+			...set.data,
+			subsets: subsetsWithCases,
+		};
+	}),
 );
 const cases = await getAllCases();
 ---

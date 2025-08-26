@@ -10,20 +10,20 @@ import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 
 export const getStaticPaths = (async () => {
-  const sets = await getCollection("sets");
+	const sets = await getCollection("sets");
 
-  return (
-    await Promise.all(
-      sets.map(async ({ data: set }) => {
-        const subsets = await getSetSubsets(set.id);
+	return (
+		await Promise.all(
+			sets.map(async ({ data: set }) => {
+				const subsets = await getSetSubsets(set.id);
 
-        return subsets.map((subset) => ({
-          params: { setId: set.id, subsetId: subset.id },
-          props: { set, subset, subsets },
-        }));
-      }),
-    )
-  ).flat();
+				return subsets.map((subset) => ({
+					params: { setId: set.id, subsetId: subset.id },
+					props: { set, subset, subsets },
+				}));
+			}),
+		)
+	).flat();
 }) satisfies GetStaticPaths;
 
 const { setId, subsetId } = Astro.params;
@@ -31,20 +31,20 @@ const { set, subset, subsets } = Astro.props;
 
 const cases = await getSubsetCases(subsetId);
 const items: Items = await Promise.all([
-  {
-    href: `/${set.id}`,
-    name: "All",
-    previewAlgorithm: "",
-    size: (await getSetCases(setId)).length,
-    viewType: set.viewType,
-  },
-  ...subsets.map(async ({ id, name, previewAlgorithm }) => ({
-    href: `/${set.id}/${id}`,
-    name: name,
-    previewAlgorithm: previewAlgorithm,
-    size: (await getSubsetCases(id)).length,
-    viewType: set.viewType,
-  })),
+	{
+		href: `/${set.id}`,
+		name: "All",
+		previewAlgorithm: "",
+		size: (await getSetCases(setId)).length,
+		viewType: set.viewType,
+	},
+	...subsets.map(async ({ id, name, previewAlgorithm }) => ({
+		href: `/${set.id}/${id}`,
+		name: name,
+		previewAlgorithm: previewAlgorithm,
+		size: (await getSubsetCases(id)).length,
+		viewType: set.viewType,
+	})),
 ]);
 ---
 
