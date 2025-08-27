@@ -15,7 +15,7 @@
     "vinxi": "^0.5.7"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "4.1.11",
+    "@tailwindcss/vite": "4.1.12",
     "@types/better-sqlite3": "7.6.13",
     "tailwindcss": "4.1.12"
   },
