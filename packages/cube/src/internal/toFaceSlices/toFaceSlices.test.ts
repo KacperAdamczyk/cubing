@@ -1,9 +1,9 @@
+import { expect, test } from "vitest";
 import { createCube } from "@/cube/initializers/createCube";
 import { toFaceSlices } from "@/cube/internal/toFaceSlices";
 import { mockPieceScheme } from "@/cube/test/mockPieceScheme";
 import type { FaceSlices } from "@/cube/types/FaceSlices";
 import { Faces } from "@/cube/types/Faces";
-import { expect, test } from "vitest";
 
 test("returns faces for a solved cube", () => {
 	const faces = toFaceSlices(createCube());

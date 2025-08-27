@@ -1,5 +1,5 @@
-import { getSetCases } from "@/queries/getSetCases";
 import { getCollection } from "astro:content";
+import { getSetCases } from "@/queries/getSetCases";
 
 export const getAllCases = async () => {
 	const sets = await getCollection("sets");

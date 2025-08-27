@@ -1,5 +1,5 @@
+import { expect, test } from "vitest";
 import { createCubeState } from "@/cube/initializers/createCubeState";
-import { test, expect } from "vitest";
 
 test("creates a cube state", () => {
 	const state = createCubeState();

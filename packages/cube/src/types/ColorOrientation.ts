@@ -1,4 +1,4 @@
-import { Colors } from "@/cube/types/Colors";
+import type { Colors } from "@/cube/types/Colors";
 
 export type ColorOrientation =
 	// Y

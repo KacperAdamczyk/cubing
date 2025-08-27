@@ -1,6 +1,6 @@
 import { A, createAsync, query } from "@solidjs/router";
-import Counter from "~/components/Counter";
 import { db, usersTable } from "db";
+import Counter from "~/components/Counter";
 
 const getUsers = query(async () => {
 	"use server";
@@ -29,6 +29,7 @@ export default function Home() {
 					href="https://solidjs.com"
 					target="_blank"
 					class="text-sky-600 hover:underline"
+					rel="noopener"
 				>
 					solidjs.com
 				</a>{" "}

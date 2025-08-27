@@ -1,8 +1,8 @@
+import { match, P } from "ts-pattern";
 import { moveInScheme } from "@/cube/internal/moveInScheme";
 import { Faces } from "@/cube/types/Faces";
-import { type Piece } from "@/cube/types/Piece";
+import type { Piece } from "@/cube/types/Piece";
 import { FundamentalRotations } from "@/cube/types/Rotations";
-import { P, match } from "ts-pattern";
 
 export const rotatePiece = (
 	rotation: FundamentalRotations,

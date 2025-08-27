@@ -1,6 +1,6 @@
+import { getEntry } from "astro:content";
 import { getSetSubsets } from "@/queries/getSetSubsets";
 import { getSubsetCases } from "@/queries/getSubsetCases";
-import { getEntry } from "astro:content";
 
 export const getSetCases = async (setId: string) => {
 	const set = await getEntry("sets", setId);

@@ -1,4 +1,4 @@
-import { Faces } from "@/cube/types/Faces";
+import type { Faces } from "@/cube/types/Faces";
 
 export type PieceScheme<Value = Faces> = Record<
 	keyof typeof Faces,

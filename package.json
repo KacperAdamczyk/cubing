@@ -1,23 +1,22 @@
 {
-	"name": "cubing",
-	"version": "1.0.0",
-	"type": "module",
-	"private": true,
-	"scripts": {
-		"build": "turbo build",
-		"dev": "turbo dev",
-		"lint": "turbo lint",
-		"format:check": "turbo format:check",
-		"format:write": "turbo format:write",
-		"format": "biome format --write",
-		"test": "turbo test",
-		"test:ui": "turbo test:ui",
-		"check": "turbo check",
-		"preview": "turbo preview"
-	},
-	"packageManager": "pnpm@10.15.0",
-	"devDependencies": {
-		"@biomejs/biome": "2.2.2",
-		"turbo": "2.5.6"
-	}
+  "name": "cubing",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format:check": "turbo format:check",
+    "format:write": "turbo format:write",
+    "check": "biome format --write",
+    "test": "turbo test",
+    "test:ui": "turbo test:ui",
+    "preview": "turbo preview"
+  },
+  "packageManager": "pnpm@10.15.0",
+  "devDependencies": {
+    "@biomejs/biome": "2.2.2",
+    "turbo": "2.5.6"
+  }
 }

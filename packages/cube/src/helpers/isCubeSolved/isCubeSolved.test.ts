@@ -1,8 +1,8 @@
+import { expect, test } from "vitest";
 import { applyRotations } from "@/cube/compound/applyRotations";
 import { isCubeSolved } from "@/cube/helpers/isCubeSolved";
 import { createCube } from "@/cube/initializers/createCube";
 import { Rotations } from "@/cube/types/Rotations";
-import { expect, test } from "vitest";
 
 test("correctly identifies a solved cube", () => {
 	const cube = createCube();

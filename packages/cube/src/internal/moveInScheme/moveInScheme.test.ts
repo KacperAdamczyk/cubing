@@ -1,7 +1,7 @@
+import { expect, test } from "vitest";
 import { moveInScheme } from "@/cube/internal/moveInScheme";
 import { mockPieceScheme } from "@/cube/test/mockPieceScheme";
 import { Faces } from "@/cube/types/Faces";
-import { expect, test } from "vitest";
 
 test("moves to an empty slot", () => {
 	const scheme = moveInScheme(

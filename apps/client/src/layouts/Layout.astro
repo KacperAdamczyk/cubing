@@ -1,9 +1,9 @@
 ---
+import { getCollection } from "astro:content";
 import { AppLayout } from "@/layouts/AppLayout";
 import type { BreadcrumbEntry } from "@/layouts/Breadcrumbs";
 import RootLayout from "@/layouts/RootLayout.astro";
 import { getAllCases } from "@/queries/getAllCases";
-import { getCollection } from "astro:content";
 
 interface Props {
 	breadcrumbs: BreadcrumbEntry[];

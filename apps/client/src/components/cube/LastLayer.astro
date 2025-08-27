@@ -1,12 +1,12 @@
 ---
-import Face from "@/components/cube/Face.astro";
 import {
 	algorithmToFaces,
+	type ColorOrientation,
 	Colors,
 	Faces,
 	getAdjacentPieces,
-	type ColorOrientation,
 } from "cube";
+import Face from "@/components/cube/Face.astro";
 
 interface Props {
 	algorithm: string;

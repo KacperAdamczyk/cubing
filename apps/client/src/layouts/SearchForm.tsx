@@ -1,11 +1,11 @@
 import { Search } from "lucide-react";
+import type { FC } from "react";
 import { Label } from "@/components/ui/label";
 import {
 	SidebarGroup,
 	SidebarGroupContent,
 	SidebarInput,
 } from "@/components/ui/sidebar";
-import type { FC } from "react";
 
 interface SearchFormProps {
 	query: string;

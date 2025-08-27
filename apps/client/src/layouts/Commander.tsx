@@ -1,3 +1,5 @@
+import type { InferEntrySchema } from "astro:content";
+import { type FC, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
 	CommandDialog,
@@ -9,8 +11,6 @@ import {
 	CommandSeparator,
 } from "@/components/ui/command";
 import { cn } from "@/lib/utils";
-import type { InferEntrySchema } from "astro:content";
-import { useEffect, useState, type FC } from "react";
 
 export type Case = InferEntrySchema<"cases"> & {
 	set: InferEntrySchema<"sets">;

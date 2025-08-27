@@ -1,6 +1,6 @@
+import { expect, test } from "vitest";
 import { rotationsFromString } from "@/cube/helpers/rotationsFromString";
 import { Rotations } from "@/cube/types/Rotations";
-import { expect, test } from "vitest";
 
 test("converts all possible rotations from string", () => {
 	const rotations = rotationsFromString(

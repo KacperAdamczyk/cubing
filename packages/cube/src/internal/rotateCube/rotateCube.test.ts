@@ -1,10 +1,10 @@
+import { expect, test } from "vitest";
 import { createCube } from "@/cube/initializers/createCube";
 import { rotateCube } from "@/cube/internal/rotateCube";
 import { toFaceSlices } from "@/cube/internal/toFaceSlices";
 import type { FaceSlices } from "@/cube/types/FaceSlices";
 import { Faces } from "@/cube/types/Faces";
 import { FundamentalRotations } from "@/cube/types/Rotations";
-import { expect, test } from "vitest";
 
 test("rotates cube by R", () => {
 	const cube = createCube();

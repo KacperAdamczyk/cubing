@@ -1,5 +1,6 @@
+import type { InferEntrySchema } from "astro:content";
 import { GalleryVerticalEnd } from "lucide-react";
-
+import { type ComponentProps, type FC, useState } from "react";
 import {
 	Sidebar,
 	SidebarContent,
@@ -16,8 +17,6 @@ import {
 	SidebarRail,
 } from "@/components/ui/sidebar";
 import { SearchForm } from "@/layouts/SearchForm";
-import { useState, type ComponentProps, type FC } from "react";
-import type { InferEntrySchema } from "astro:content";
 
 type Case = InferEntrySchema<"cases">;
 type Subset = InferEntrySchema<"subsets"> & { cases: Case[] };

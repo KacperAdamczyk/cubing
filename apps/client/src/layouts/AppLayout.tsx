@@ -1,13 +1,13 @@
 import type { FC, PropsWithChildren } from "react";
-import { AppSidebar, type Set } from "@/layouts/AppSidebar";
 import { Separator } from "@/components/ui/separator";
 import {
 	SidebarInset,
 	SidebarProvider,
 	SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Breadcrumbs, type BreadcrumbEntry } from "@/layouts/Breadcrumbs";
-import { Commander, type Case } from "@/layouts/Commander";
+import { AppSidebar, type Set } from "@/layouts/AppSidebar";
+import { type BreadcrumbEntry, Breadcrumbs } from "@/layouts/Breadcrumbs";
+import { type Case, Commander } from "@/layouts/Commander";
 
 interface AppLayoutProps {
 	sets: Set[];

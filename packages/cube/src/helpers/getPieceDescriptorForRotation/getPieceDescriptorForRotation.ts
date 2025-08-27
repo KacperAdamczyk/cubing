@@ -1,7 +1,7 @@
+import { match, P } from "ts-pattern";
 import { Faces } from "@/cube/types/Faces";
 import { PieceType } from "@/cube/types/Piece";
 import { FundamentalRotations } from "@/cube/types/Rotations";
-import { P, match } from "ts-pattern";
 
 interface GetPieceDescriptorForRotation {
 	types: PieceType[];

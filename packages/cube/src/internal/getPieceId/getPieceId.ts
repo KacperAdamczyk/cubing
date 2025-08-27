@@ -1,4 +1,4 @@
-import { Faces } from "@/cube/types/Faces";
+import type { Faces } from "@/cube/types/Faces";
 import type { PieceId } from "@/cube/types/PieceId";
 import type { PieceScheme } from "@/cube/types/PieceScheme";
 

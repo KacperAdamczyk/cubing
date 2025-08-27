@@ -1,7 +1,7 @@
+import { match } from "ts-pattern";
 import type { AdjacentPieces } from "@/cube/types/AdjacentPieces";
 import type { FaceSlices } from "@/cube/types/FaceSlices";
 import { Faces } from "@/cube/types/Faces";
-import { match } from "ts-pattern";
 
 export const getAdjacentPieces = <Value>(
 	faces: FaceSlices<Value>,

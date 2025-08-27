@@ -1,3 +1,4 @@
+import { expect, test } from "vitest";
 import { pieceIds } from "@/cube/helpers/pieceIds";
 import { createPieceScheme } from "@/cube/initializers/createPieceScheme";
 import { rotatePiece } from "@/cube/internal/rotatePiece";
@@ -6,7 +7,6 @@ import { Faces } from "@/cube/types/Faces";
 import { PieceType } from "@/cube/types/Piece";
 import type { PieceScheme } from "@/cube/types/PieceScheme";
 import { FundamentalRotations } from "@/cube/types/Rotations";
-import { expect, test } from "vitest";
 
 const c = createPieceScheme;
 const m = mockPieceScheme;

@@ -1,4 +1,4 @@
-import { Rotations, isRotation } from "@/cube/types/Rotations";
+import { isRotation, type Rotations } from "@/cube/types/Rotations";
 
 const rotationsRegexp = /[UDFBLRudfblrMSExyz]2?'?/g;
 

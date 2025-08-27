@@ -1,9 +1,9 @@
+import { produce } from "immer";
 import { getPieceDescriptorForRotation } from "@/cube/helpers/getPieceDescriptorForRotation/getPieceDescriptorForRotation";
 import { rotatePiece } from "@/cube/internal/rotatePiece";
 import type { Cube } from "@/cube/types/Cube";
 import type { Faces } from "@/cube/types/Faces";
-import { FundamentalRotations } from "@/cube/types/Rotations";
-import { produce } from "immer";
+import type { FundamentalRotations } from "@/cube/types/Rotations";
 
 export const rotateCube = (rotation: FundamentalRotations, cube: Cube): Cube =>
 	produce(cube, (cubeDraft) => {

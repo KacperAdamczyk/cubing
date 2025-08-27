@@ -1,9 +1,9 @@
+import { expect, test } from "vitest";
 import { colorPiece } from "@/cube/internal/colorPiece";
 import { mockPieceScheme } from "@/cube/test/mockPieceScheme";
 import { Colors } from "@/cube/types/Colors";
 import { Faces } from "@/cube/types/Faces";
 import { PieceType } from "@/cube/types/Piece";
-import { expect, test } from "vitest";
 
 test("colors a piece", () => {
 	const coloredPiece = colorPiece(

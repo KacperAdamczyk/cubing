@@ -1,11 +1,11 @@
 ---
+import { getCollection } from "astro:content";
 import CasesList from "@/components/CasesList.astro";
 import PreviewList, { type Items } from "@/components/PreviewList.astro";
 import { getBreadcrumbs } from "@/helpers/getBreadcrumbs";
 import Layout from "@/layouts/Layout.astro";
 import { getAllCases } from "@/queries/getAllCases";
 import { getSetCases } from "@/queries/getSetCases";
-import { getCollection } from "astro:content";
 
 const sets = await getCollection("sets");
 const allCases = await getAllCases();

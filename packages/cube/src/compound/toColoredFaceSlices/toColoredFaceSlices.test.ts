@@ -1,10 +1,10 @@
+import { expect, test } from "vitest";
 import { toColoredFaceSlices } from "@/cube/compound/toColoredFaceSlices";
 import { createCube } from "@/cube/initializers/createCube";
 import { mockPieceScheme } from "@/cube/test/mockPieceScheme";
 import { Colors } from "@/cube/types/Colors";
 import type { FaceSlices } from "@/cube/types/FaceSlices";
 import { Faces } from "@/cube/types/Faces";
-import { expect, test } from "vitest";
 
 test("returns colored faces", () => {
 	const faces = toColoredFaceSlices(

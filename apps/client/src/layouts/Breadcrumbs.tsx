@@ -1,12 +1,12 @@
+import { type FC, Fragment } from "react";
 import {
 	Breadcrumb,
-	BreadcrumbList,
-	BreadcrumbLink,
-	BreadcrumbSeparator,
-	BreadcrumbPage,
 	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbPage,
+	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Fragment, type FC } from "react";
 
 export interface BreadcrumbEntry {
 	name: string;

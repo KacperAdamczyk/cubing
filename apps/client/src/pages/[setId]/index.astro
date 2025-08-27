@@ -1,4 +1,6 @@
 ---
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
 import CasesList from "@/components/CasesList.astro";
 import PreviewList, { type Items } from "@/components/PreviewList.astro";
 import { getBreadcrumbs } from "@/helpers/getBreadcrumbs";
@@ -6,8 +8,6 @@ import Layout from "@/layouts/Layout.astro";
 import { getSetCases } from "@/queries/getSetCases";
 import { getSetSubsets } from "@/queries/getSetSubsets";
 import { getSubsetCases } from "@/queries/getSubsetCases";
-import type { GetStaticPaths } from "astro";
-import { getCollection } from "astro:content";
 
 export const getStaticPaths = (async () => {
 	const sets = await getCollection("sets");

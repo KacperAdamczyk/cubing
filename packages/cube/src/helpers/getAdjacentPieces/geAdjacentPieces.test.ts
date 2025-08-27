@@ -1,9 +1,9 @@
+import { expect, test } from "vitest";
 import { algorithmToFaces } from "@/cube/compound/algorithmToFaces";
 import { getAdjacentPieces } from "@/cube/helpers/getAdjacentPieces";
 import type { AdjacentPieces } from "@/cube/types/AdjacentPieces";
 import { Colors } from "@/cube/types/Colors";
 import { Faces } from "@/cube/types/Faces";
-import { expect, test } from "vitest";
 
 const UPieces = {
 	Top: [Colors.W, Colors.G, Colors.G],
