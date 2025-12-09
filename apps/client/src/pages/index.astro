@@ -1,30 +1,30 @@
 ---
+import { getCollection } from "astro:content";
 import CasesList from "@/components/CasesList.astro";
 import PreviewList, { type Items } from "@/components/PreviewList.astro";
 import { getBreadcrumbs } from "@/helpers/getBreadcrumbs";
 import Layout from "@/layouts/Layout.astro";
 import { getAllCases } from "@/queries/getAllCases";
 import { getSetCases } from "@/queries/getSetCases";
-import { getCollection } from "astro:content";
 
 const sets = await getCollection("sets");
 const allCases = await getAllCases();
 
 const items: Items = await Promise.all([
-  {
-    href: "/",
-    name: "All",
-    previewAlgorithm: "",
-    size: allCases.length,
-    viewType: "PLL",
-  },
-  ...sets.map(async ({ data: set }) => ({
-    href: `/${set.id}`,
-    name: set.name,
-    previewAlgorithm: "",
-    size: (await getSetCases(set.id)).length,
-    viewType: set.viewType,
-  })),
+	{
+		href: "/",
+		name: "All",
+		previewAlgorithm: "",
+		size: allCases.length,
+		viewType: "PLL",
+	},
+	...sets.map(async ({ data: set }) => ({
+		href: `/${set.id}`,
+		name: set.name,
+		previewAlgorithm: "",
+		size: (await getSetCases(set.id)).length,
+		viewType: set.viewType,
+	})),
 ]);
 ---
 

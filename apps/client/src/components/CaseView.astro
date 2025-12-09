@@ -1,24 +1,24 @@
 ---
+import type { InferEntrySchema } from "astro:content";
 import AlgorithmsList from "@/components/AlgorithmsList.astro";
 import CubeView from "@/components/cube/CubeView.astro";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { linkWithBase } from "@/helpers/linkWithBase";
-import type { InferEntrySchema } from "astro:content";
 
 export interface Case extends InferEntrySchema<"cases"> {
-  subset: InferEntrySchema<"subsets">;
+	subset: InferEntrySchema<"subsets">;
 }
 
 interface Props {
-  case: Case;
-  slim: boolean;
+	case: Case;
+	slim: boolean;
 }
 
 const {
-  case: { id, name, algorithms, setup, subset, viewType },
-  slim,
+	case: { id, name, algorithms, setup, subset, viewType },
+	slim,
 } = Astro.props;
 ---
 

@@ -4,19 +4,19 @@ import { Colors } from "@/cube/types/Colors";
 import type { Cube } from "@/cube/types/Cube";
 
 const defaultColorOrientation = {
-  U: Colors.W,
-  F: Colors.G,
+	U: Colors.W,
+	F: Colors.G,
 } satisfies ColorOrientation;
 
 export interface CreateCubeOptions {
-  orientation?: ColorOrientation;
+	orientation?: ColorOrientation;
 }
 
 export const createCube = ({
-  orientation = defaultColorOrientation,
+	orientation = defaultColorOrientation,
 }: CreateCubeOptions = {}): Cube => {
-  return {
-    orientation,
-    state: createCubeState(),
-  };
+	return {
+		orientation,
+		state: createCubeState(),
+	};
 };

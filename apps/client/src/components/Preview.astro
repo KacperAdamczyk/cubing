@@ -2,22 +2,22 @@
 import CubeView from "@/components/cube/CubeView.astro";
 import { Badge } from "@/components/ui/badge";
 import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
+	Card,
+	CardContent,
+	CardFooter,
+	CardHeader,
+	CardTitle,
 } from "@/components/ui/card";
 import type { ViewType } from "@/content.config";
 import { cn } from "@/lib/utils";
 
 export interface Props {
-  name: string;
-  size: number;
-  href: string;
-  previewAlgorithm: string;
-  viewType: ViewType;
-  isActive?: boolean;
+	name: string;
+	size: number;
+	href: string;
+	previewAlgorithm: string;
+	viewType: ViewType;
+	isActive?: boolean;
 }
 
 const { name, size, href, previewAlgorithm, viewType, isActive } = Astro.props;

@@ -1,20 +1,19 @@
 ---
 import {
-  applyRotations,
-  toColoredFaceSlices,
-  isCubeSolved,
-  rotationsFromString,
-  createCube,
+	applyRotations,
+	createCube,
+	isCubeSolved,
+	rotationsFromString,
+	toColoredFaceSlices,
 } from "cube";
-import { MdErrorOutline } from "react-icons/md";
-import { MdOutlineGppGood } from "react-icons/md";
+import { MdErrorOutline, MdOutlineGppGood } from "react-icons/md";
 import type { ViewType } from "src/content.config";
 
 interface Props {
-  algorithm: string;
-  setup: string;
-  onlyError?: boolean;
-  viewType: ViewType;
+	algorithm: string;
+	setup: string;
+	onlyError?: boolean;
+	viewType: ViewType;
 }
 
 const { algorithm, setup, onlyError = false, viewType } = Astro.props;
@@ -22,12 +21,12 @@ const { algorithm, setup, onlyError = false, viewType } = Astro.props;
 const operations = rotationsFromString(`${setup} ${algorithm}`);
 const scrambledCube = applyRotations(operations, createCube());
 const isSolved = (() => {
-  if (viewType === "PLL") {
-    return isCubeSolved(scrambledCube);
-  }
-  const faces = toColoredFaceSlices(scrambledCube);
-  const isTopLayerUniform = new Set(faces.U.flat()).size === 1;
-  return isTopLayerUniform;
+	if (viewType === "PLL") {
+		return isCubeSolved(scrambledCube);
+	}
+	const faces = toColoredFaceSlices(scrambledCube);
+	const isTopLayerUniform = new Set(faces.U.flat()).size === 1;
+	return isTopLayerUniform;
 })();
 ---
 

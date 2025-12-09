@@ -7,18 +7,18 @@ import type { FaceSlices } from "@/cube/types/FaceSlices";
 import type { Faces } from "@/cube/types/Faces";
 
 export const toColoredFaceSlices = (cube: Cube): FaceSlices<Colors> => {
-  const slices = toFaceSlices(cube);
-  const colorScheme = expandColors(cube.orientation);
+	const slices = toFaceSlices(cube);
+	const colorScheme = expandColors(cube.orientation);
 
-  return Object.fromEntries(
-    (Object.entries(slices) as [Faces, FaceSlice<Faces>][]).map(
-      ([face, slice]) => {
-        const coloredSlice = slice.map((row) =>
-          row.map((value) => colorScheme[value]),
-        );
+	return Object.fromEntries(
+		(Object.entries(slices) as [Faces, FaceSlice<Faces>][]).map(
+			([face, slice]) => {
+				const coloredSlice = slice.map((row) =>
+					row.map((value) => colorScheme[value]),
+				);
 
-        return [face, coloredSlice] as const;
-      },
-    ),
-  ) as FaceSlices<Colors>;
+				return [face, coloredSlice] as const;
+			},
+		),
+	) as FaceSlices<Colors>;
 };

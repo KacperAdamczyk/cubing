@@ -1,8 +1,8 @@
+import { expect, test } from "vitest";
 import { createCubeState } from "@/cube/initializers/createCubeState";
-import { test, expect } from "vitest";
 
 test("creates a cube state", () => {
-  const state = createCubeState();
+	const state = createCubeState();
 
-  expect(state).toHaveLength(26);
+	expect(state).toHaveLength(26);
 });

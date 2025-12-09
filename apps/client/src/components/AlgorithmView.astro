@@ -1,23 +1,23 @@
 ---
+import type { ViewType } from "src/content.config";
 import AlgorithmVerifier from "@/components/AlgorithmVerifier.astro";
 import type { Case } from "@/components/CaseView.astro";
 import { cn } from "@/lib/utils";
-import type { ViewType } from "src/content.config";
 
 interface Props {
-  setup: string;
-  algorithm: Case["algorithms"][number];
-  isMain?: boolean;
-  slim: boolean;
-  viewType: ViewType;
+	setup: string;
+	algorithm: Case["algorithms"][number];
+	isMain?: boolean;
+	slim: boolean;
+	viewType: ViewType;
 }
 
 const {
-  setup,
-  algorithm: { rotations, rotationsMnemonic, description },
-  isMain,
-  slim,
-  viewType,
+	setup,
+	algorithm: { rotations, rotationsMnemonic, description },
+	isMain,
+	slim,
+	viewType,
 } = Astro.props;
 
 const showMnemonic = (!slim || isMain) && rotationsMnemonic;
