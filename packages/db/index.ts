@@ -1,7 +1,9 @@
-import {drizzle} from "drizzle-orm/bun-sqlite";
+import { drizzle } from "drizzle-orm/bun-sqlite";
 import * as schema from "./schema";
 
-const dbPath = Bun.resolveSync("../db.sqlite", import.meta.dirname);
-export const db = drizzle(dbPath, {schema, casing: "snake_case"});
+// @ts-expect-error
+import database from "./db.sqlite" with { type: "sqlite", embed: "true" };
+
+export const db = drizzle(database, { schema, casing: "snake_case" });
 
 export * from "./schema";
