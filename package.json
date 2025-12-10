@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "type": "module",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
@@ -14,9 +18,9 @@
     "test:ui": "turbo test:ui",
     "preview": "turbo preview"
   },
-  "packageManager": "pnpm@10.15.0",
+  "packageManager": "bun@1.3.4",
   "devDependencies": {
-    "@biomejs/biome": "2.2.2",
-    "turbo": "2.5.6"
+    "@biomejs/biome": "2.3.8",
+    "turbo": "2.6.3"
   }
 }
