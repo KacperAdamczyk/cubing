@@ -1,21 +1,21 @@
 import { A, createAsync, query } from "@solidjs/router";
-import { db, usersTable } from "db";
+import { db, cube } from "db";
 import Counter from "~/components/Counter";
 
-const getUsers = query(async () => {
+const getCubes = query(async () => {
 	"use server";
-	const users = db.select().from(usersTable).all();
+	const cubes = db.select().from(cube).all();
 
-	return users;
-}, "users");
+	return cubes;
+}, "cubes");
 
 export const route = {
-	preload: () => getUsers(),
+	preload: () => getCubes(),
 };
 
 export default function Home() {
-	const users = createAsync(() => getUsers());
-	console.log(users());
+	const cubes = createAsync(() => getCubes());
+	console.log(cubes());
 
 	return (
 		<main class="text-center mx-auto text-gray-700 p-4">
