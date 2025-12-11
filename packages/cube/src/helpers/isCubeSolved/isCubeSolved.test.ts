@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from "bun:test";
 import { applyRotations } from "@/cube/compound/applyRotations";
 import { isCubeSolved } from "@/cube/helpers/isCubeSolved";
 import { createCube } from "@/cube/initializers/createCube";

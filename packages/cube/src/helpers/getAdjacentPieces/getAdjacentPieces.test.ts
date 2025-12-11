@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from "bun:test";
 import { algorithmToFaces } from "@/cube/compound/algorithmToFaces";
 import { getAdjacentPieces } from "@/cube/helpers/getAdjacentPieces";
 import type { AdjacentPieces } from "@/cube/types/AdjacentPieces";
@@ -47,35 +47,55 @@ const BPieces = {
 	Left: [Colors.O, Colors.Y, Colors.B],
 } satisfies AdjacentPieces<Colors>;
 
-test.each`
-	scramble                                                       | face       | expected
-	${"L B D2 R2 D' B R2 B' R F2 U2 L2 D2 B D2 B U2 B' D2 B2"}     | ${Faces.U} | ${UPieces}
-	${"D2 L' F' B2 U' R2 L U' B R2 F R2 D2 F2 D2 B2 L2 D2 L'"}     | ${Faces.R} | ${RPieces}
-	${"L B D2 R2 D' B R2 B' R F2 U2 L2 D2 B D2 B U2 B' D2 B2"}     | ${Faces.L} | ${LPieces}
-	${"L B D2 R2 D' B R2 B' R F2 U2 L2 D2 B D2 B U2 B' D2 B2"}     | ${Faces.D} | ${DPieces}
-	${"D B2 D F2 R2 D F2 D2 R2 F2 R2 U2 B' U' F L2 B' L' F' R B'"} | ${Faces.F} | ${FPieces}
-	${"D2 L' F' B2 U' R2 L U' B R2 F R2 D2 F2 D2 B2 L2 D2 L'"}     | ${Faces.B} | ${BPieces}
-`(
-	"Returns correct adjacent pieces for: $face",
-	({
-		scramble,
-		face,
-		expected,
-	}: {
-		scramble: string;
-		face: Faces;
-		expected: AdjacentPieces<Colors>;
-	}) => {
-		const coloredFaces = algorithmToFaces({
-			algorithm: scramble,
-			orientation: {
-				U: Colors.W,
-				F: Colors.G,
-			},
-		});
-
-		const adjacentPieces = getAdjacentPieces(coloredFaces, face);
-
-		expect(adjacentPieces).toEqual(expected);
+test.each([
+	{
+		scramble: "L B D2 R2 D' B R2 B' R F2 U2 L2 D2 B D2 B U2 B' D2 B2",
+		face: Faces.U,
+		expected: UPieces,
 	},
-);
+	{
+		scramble: "D2 L' F' B2 U' R2 L U' B R2 F R2 D2 F2 D2 B2 L2 D2 L'",
+		face: Faces.R,
+		expected: RPieces,
+	},
+	{
+		scramble: "L B D2 R2 D' B R2 B' R F2 U2 L2 D2 B D2 B U2 B' D2 B2",
+		face: Faces.L,
+		expected: LPieces,
+	},
+	{
+		scramble: "L B D2 R2 D' B R2 B' R F2 U2 L2 D2 B D2 B U2 B' D2 B2",
+		face: Faces.D,
+		expected: DPieces,
+	},
+	{
+		scramble: "D B2 D F2 R2 D F2 D2 R2 F2 R2 U2 B' U' F L2 B' L' F' R B'",
+		face: Faces.F,
+		expected: FPieces,
+	},
+	{
+		scramble: "D2 L' F' B2 U' R2 L U' B R2 F R2 D2 F2 D2 B2 L2 D2 L'",
+		face: Faces.B,
+		expected: BPieces,
+	},
+])("Returns correct adjacent pieces for: $face", ({
+	scramble,
+	face,
+	expected,
+}: {
+	scramble: string;
+	face: Faces;
+	expected: AdjacentPieces<Colors>;
+}) => {
+	const coloredFaces = algorithmToFaces({
+		algorithm: scramble,
+		orientation: {
+			U: Colors.W,
+			F: Colors.G,
+		},
+	});
+
+	const adjacentPieces = getAdjacentPieces(coloredFaces, face);
+
+	expect(adjacentPieces).toEqual(expected);
+});

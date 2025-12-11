@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from "bun:test";
 import { createCubeState } from "@/cube/initializers/createCubeState";
 
 test("creates a cube state", () => {

@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from "bun:test";
 import { expandColors } from "@/cube/helpers/expandColors";
 import { Colors } from "@/cube/types/Colors";
 

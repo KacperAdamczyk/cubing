@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from "bun:test";
 import { createCube } from "@/cube/initializers/createCube";
 import { toFaceSlices } from "@/cube/internal/toFaceSlices";
 import { mockPieceScheme } from "@/cube/test/mockPieceScheme";
