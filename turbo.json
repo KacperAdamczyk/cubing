@@ -1,29 +1,30 @@
 {
-  "$schema": "https://turborepo.com/schema.json",
-  "tasks": {
-    "build": {
-      "outputs": ["dist/**", ".astro/**"]
-    },
-    "dev": {
-      "cache": false,
-      "persistent": true
-    },
-    "lint": {},
-    "format:check": {},
-    "format:write": {},
-    "test": {
-      "outputs": ["coverage/**"]
-    },
-    "test:ui": {
-      "cache": false,
-      "persistent": true
-    },
-    "check": {
-      "dependsOn": ["^build"]
-    },
-    "preview": {
-      "cache": false,
-      "persistent": true
-    }
-  }
+	"$schema": "https://turborepo.com/schema.json",
+	"tasks": {
+		"build": {
+			"outputs": ["dist/**", ".astro/**"],
+			"dependsOn": ["^build"]
+		},
+		"dev": {
+			"cache": false,
+			"persistent": true
+		},
+		"lint": {},
+		"format:check": {},
+		"format:write": {},
+		"test": {
+			"outputs": ["coverage/**"]
+		},
+		"test:ui": {
+			"cache": false,
+			"persistent": true
+		},
+		"check": {
+			"dependsOn": ["^build"]
+		},
+		"preview": {
+			"cache": false,
+			"persistent": true
+		}
+	}
 }

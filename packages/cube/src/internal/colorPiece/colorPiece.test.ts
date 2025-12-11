@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from "bun:test";
 import { colorPiece } from "@/cube/internal/colorPiece";
 import { mockPieceScheme } from "@/cube/test/mockPieceScheme";
 import { Colors } from "@/cube/types/Colors";

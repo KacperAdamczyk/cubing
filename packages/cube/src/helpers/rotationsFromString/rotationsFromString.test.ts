@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from "bun:test";
 import { rotationsFromString } from "@/cube/helpers/rotationsFromString";
 import { Rotations } from "@/cube/types/Rotations";
 
