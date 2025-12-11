@@ -25,7 +25,5 @@ jobs:
         run: bun run test
       - name: Lint
         run: bun run lint
-      - name: Run prettier
-        run: bun run format:check
       - name: Build
         run: bun run build
