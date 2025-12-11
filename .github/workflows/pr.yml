@@ -22,7 +22,7 @@ jobs:
       - name: Check
         run: bun run check
       - name: Tests
-        run: bun run test -- --run
+        run: bun run test
       - name: Lint
         run: bun run lint
       - name: Run prettier
