@@ -42,10 +42,10 @@ export const subset = sqliteTable("subset", {
 
 export const subsetRelations = relations(subset, ({ one, many }) => ({
 	set: one(set, { fields: [subset.setId], references: [set.id] }),
-	cases: many(_case),
+	cases: many(case_),
 }));
 
-export const _case = sqliteTable("case", {
+export const case_ = sqliteTable("case", {
 	id: text().primaryKey(),
 	name: text().notNull().unique(),
 	setup: text().notNull(),
@@ -55,8 +55,8 @@ export const _case = sqliteTable("case", {
 	defaultAlgorithmId: text().references((): AnySQLiteColumn => algorithm.id),
 });
 
-export const caseRelations = relations(_case, ({ one, many }) => ({
-	subset: one(subset, { fields: [_case.subsetId], references: [subset.id] }),
+export const caseRelations = relations(case_, ({ one, many }) => ({
+	subset: one(subset, { fields: [case_.subsetId], references: [subset.id] }),
 	algorithms: many(algorithm),
 }));
 
@@ -65,12 +65,12 @@ export const algorithm = sqliteTable("algorithm", {
 	name: text().notNull().unique(),
 	caseId: text()
 		.notNull()
-		.references(() => _case.id),
+		.references(() => case_.id),
 	rotations: text().notNull().unique(),
 	mnemonics: text(),
 	description: text(),
 });
 
 export const algorithmRelations = relations(algorithm, ({ one }) => ({
-	case: one(_case, { fields: [algorithm.caseId], references: [_case.id] }),
+	case: one(case_, { fields: [algorithm.caseId], references: [case_.id] }),
 }));
