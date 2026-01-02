@@ -25,5 +25,6 @@
     "paths": {
       "@/cube/*": ["./src/*"]
     }
-  }
+  },
+  "exclude": ["node_modules", "dist", "bunup.config.ts"]
 }

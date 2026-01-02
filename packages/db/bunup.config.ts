@@ -5,4 +5,5 @@ export default defineConfig({
     inferTypes: true,
   },
   exports: true,
+  target: "bun",
 });

@@ -1,31 +1,33 @@
 {
-	"name": "db",
-	"module": "index.ts",
-	"type": "module",
-	"exports": {
-		"import": "./build/index.js",
-		"types": "./build/index.d.ts"
-	},
-	"scripts": {
-		"build": "bun build.ts",
-		"dev": "bun --watch build.ts",
-		"drizzle": "drizzle-kit",
-		"drizzle:push": "drizzle-kit push",
-		"drizzle:studio": "drizzle-kit studio"
-	},
-	"devDependencies": {
-		"@types/better-sqlite3": "7.6.13",
-		"@types/bun": "latest",
-		"bun-plugin-dts": "0.3.0",
-		"drizzle-kit": "0.31.8"
-	},
-	"peerDependencies": {
-		"better-sqlite3": "^12.2.0",
-		"typescript": "^5"
-	},
-	"dependencies": {
-		"@libsql/client": "0.15.15",
-		"better-sqlite3": "12.5.0",
-		"drizzle-orm": "0.45.1"
-	}
+  "name": "db",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "bunup",
+    "dev": "bunup --watch",
+    "drizzle": "drizzle-kit",
+    "drizzle:push": "drizzle-kit push",
+    "drizzle:studio": "drizzle-kit studio"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "bunup": "^0.16.17",
+    "drizzle-kit": "0.31.8"
+  },
+  "dependencies": {
+    "drizzle-orm": "0.45.1"
+  }
 }
