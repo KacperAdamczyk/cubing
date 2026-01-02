@@ -1,12 +1,9 @@
 {
 	"compilerOptions": {
 		// Environment setup & latest features
-		"lib": ["ESNext"],
 		"target": "ESNext",
 		"module": "Preserve",
 		"moduleDetection": "force",
-		"jsx": "react-jsx",
-		"allowJs": true,
 
 		// Bundler mode
 		"moduleResolution": "bundler",
@@ -28,5 +25,6 @@
 		"paths": {
 			"@/cube/*": ["./src/*"]
 		}
-	}
+	},
+	"exclude": ["node_modules", "dist", "bunup.config.ts"]
 }
