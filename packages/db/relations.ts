@@ -1,8 +1,8 @@
 import { defineRelations } from "drizzle-orm";
-import { algorithm, case_, cube, set, subset } from "./schema";
+import * as schema from "./schema";
 
 export const relations = defineRelations(
-	{ cube, set, subset, case_, algorithm },
+	schema,
 	(r) => ({
 		cube: {
 			sets: r.many.set(),
