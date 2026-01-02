@@ -1,9 +1,11 @@
 import { drizzle } from "drizzle-orm/bun-sqlite";
-import * as schema from "./schema";
-
 // @ts-expect-error
-import database from "./db.sqlite" with { type: "sqlite", embed: "true" };
+import database from "./db.sqlite" with { embed: "true", type: "sqlite" };
+import { relations } from "./relations";
 
-export const db = drizzle(database, { schema, casing: "snake_case" });
+export const db = drizzle(database, {
+	relations,
+	casing: "snake_case",
+});
 
 export * from "./schema";

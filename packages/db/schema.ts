@@ -1,4 +1,3 @@
-import { relations } from "drizzle-orm";
 import {
 	type AnySQLiteColumn,
 	sqliteTable,
@@ -12,10 +11,6 @@ export const cube = sqliteTable("cube", {
 	name: text().notNull().unique(),
 });
 
-export const cubeRelations = relations(cube, ({ many }) => ({
-	sets: many(set),
-}));
-
 export const set = sqliteTable("set", {
 	id: text().primaryKey(),
 	name: text().notNull().unique(),
@@ -26,11 +21,6 @@ export const set = sqliteTable("set", {
 	viewType: text({ enum: viewType }).notNull(),
 });
 
-export const setRelations = relations(set, ({ one, many }) => ({
-	cube: one(cube, { fields: [set.cubeId], references: [cube.id] }),
-	subsets: many(subset),
-}));
-
 export const subset = sqliteTable("subset", {
 	id: text().primaryKey(),
 	name: text().notNull().unique(),
@@ -40,12 +30,7 @@ export const subset = sqliteTable("subset", {
 		.references(() => set.id),
 });
 
-export const subsetRelations = relations(subset, ({ one, many }) => ({
-	set: one(set, { fields: [subset.setId], references: [set.id] }),
-	cases: many(_case),
-}));
-
-export const _case = sqliteTable("case", {
+export const case_ = sqliteTable("case", {
 	id: text().primaryKey(),
 	name: text().notNull().unique(),
 	setup: text().notNull(),
@@ -55,22 +40,13 @@ export const _case = sqliteTable("case", {
 	defaultAlgorithmId: text().references((): AnySQLiteColumn => algorithm.id),
 });
 
-export const caseRelations = relations(_case, ({ one, many }) => ({
-	subset: one(subset, { fields: [_case.subsetId], references: [subset.id] }),
-	algorithms: many(algorithm),
-}));
-
 export const algorithm = sqliteTable("algorithm", {
 	id: text().primaryKey(),
 	name: text().notNull().unique(),
 	caseId: text()
 		.notNull()
-		.references(() => _case.id),
+		.references(() => case_.id),
 	rotations: text().notNull().unique(),
 	mnemonics: text(),
 	description: text(),
 });
-
-export const algorithmRelations = relations(algorithm, ({ one }) => ({
-	case: one(_case, { fields: [algorithm.caseId], references: [_case.id] }),
-}));
