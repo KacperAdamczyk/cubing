@@ -1,8 +1,8 @@
 import { defineConfig } from "bunup";
 
 export default defineConfig({
-  dts: {
-    inferTypes: true,
-  },
-  exports: true,
+	dts: {
+		inferTypes: true,
+	},
+	exports: true,
 });

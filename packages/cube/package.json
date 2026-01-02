@@ -1,35 +1,35 @@
 {
-  "name": "cube",
-  "version": "0.0.0",
-  "type": "module",
-  "private": true,
-  "files": [
-    "dist"
-  ],
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    },
-    "./package.json": "./package.json"
-  },
-  "scripts": {
-    "build": "bunup",
-    "dev": "bunup --watch",
-    "test": "bun test",
-    "test:watch": "bun test --watch"
-  },
-  "devDependencies": {
-    "@types/bun": "1.3.4",
-    "bunup": "^0.16.17",
-    "typescript": "5.9.3"
-  },
-  "dependencies": {
-    "immer": "11.0.1",
-    "ts-pattern": "5.9.0"
-  }
+	"name": "cube",
+	"version": "0.0.0",
+	"type": "module",
+	"private": true,
+	"files": [
+		"dist"
+	],
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.js"
+			}
+		},
+		"./package.json": "./package.json"
+	},
+	"scripts": {
+		"build": "bunup",
+		"dev": "bunup --watch",
+		"test": "bun test",
+		"test:watch": "bun test --watch"
+	},
+	"devDependencies": {
+		"@types/bun": "1.3.4",
+		"bunup": "^0.16.17",
+		"typescript": "5.9.3"
+	},
+	"dependencies": {
+		"immer": "11.0.1",
+		"ts-pattern": "5.9.0"
+	}
 }
