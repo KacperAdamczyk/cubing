@@ -19,6 +19,7 @@ The `packages/cube` engine (pure, framework-agnostic TypeScript) is reused **unc
 1. **Command palette: dropped.** The legacy ⌘K `cmdk` palette (`Commander.tsx`) is not ported. The sidebar search filter is the only search. The header's right slot becomes a **light/dark theme toggle**.
 2. **Theme: daisyUI light + dark with a toggle**, defaulting to dark. Cube face colors preserved exactly via custom tokens (not theme-driven).
 3. **Rendering: `adapter-static` + full prerender. No base path. `deploy.yml` untouched.** The app is host-agnostic static output; deployment target is deferred ("something different, later").
+4. **Data source: JSON now, shaped to the `db` schema.** `packages/db` is the intended long-term source but is currently unseeded/non-functional (see Data layer). Build on the legacy JSON, normalized to mirror the `db` tables, behind a repository interface so swapping to the real `db` later is localized. Actually seeding/wiring `db` is a separate follow-up.
 
 ## Architecture
 
@@ -29,22 +30,28 @@ The `packages/cube` engine (pure, framework-agnostic TypeScript) is reused **unc
 - Dynamic routes export `entries()` to enumerate params (mirrors the legacy `getStaticPaths`).
 - No `paths.base`; links are plain root-relative. `linkWithBase` is **not** ported.
 
-### Data layer
-- Move `sets.json`, `subsets.json`, `cases.json` into `src/lib/data/`. (`algorithms.json` is unused — not migrated.)
-- Replace the `astro:content` + zod schema with plain TypeScript types in `src/lib/data/types.ts`:
-  - `ViewType = 'PLL' | 'OLL' | 'F2L'`
-  - `Algorithm = { rotations: string; rotationsMnemonic: string | null; description: string | null }`
-  - `Set = { id; name; viewType }`
-  - `Subset = { id; name; previewAlgorithm; viewType; setId }`
-  - `Case = { id; name; setup; viewType; subsetId; algorithms: Algorithm[] }`
-- Synchronous query helpers in `src/lib/data/` (data is bundled, no async needed) mirroring the legacy queries:
-  - `getSets()`
-  - `getSetSubsets(setId)`
-  - `getSubsetCases(subsetId)` → cases joined with their `subset`
-  - `getSetCases(setId)` → all cases in a set
-  - `getAllCases()` → all cases joined with their `set`
-  - `getSidebarTree()` → nested `sets → subsets → cases` for the sidebar (mirrors the computation in legacy `Layout.astro`)
-- Relationships are resolved in TS (`case.subsetId → subset`, `subset.setId → set`); the legacy `reference()` indirection is dropped.
+### Data layer — JSON-backed, shaped to the `db` schema
+
+**Decision context.** `packages/db` (Drizzle + Bun-embedded SQLite) is the intended long-term source but is **not usable as-is**: it's unseeded (1 cube, 3 sets, **3 of 7** subsets, **0** cases, **0** algorithms — real content lives only in the legacy JSON); its query layer doesn't initialize under plain runtime (`db.query.*` undefined, embedded sqlite reads as empty / "no such table" outside a bunup build); it's Bun-only (`drizzle-orm/bun-sqlite` → `bun:sqlite`) with a separate hashed `.sqlite` asset that a Vite `adapter-static` build can't consume; and it has a `casing: "snake_case"` vs camelCase-columns mismatch. So we build on the JSON **now**, but shape the client's types and data-access interface to the **`db` schema** so a later switch to the real `db` (Bun build-time codegen or direct queries) is a localized change behind the repository, with the UI untouched.
+
+**Normalized, db-mirrored data.** A one-off transform (`scripts/transform-legacy-data.ts`, kept for provenance and as the basis for a future db seed) reads the legacy JSON and emits five normalized JSON files into `src/lib/data/tables/`, one per `db` table, each row matching the Drizzle `$inferSelect` shape:
+- `cube.json` — `{ id, name }` (single `3x3`)
+- `set.json` — `{ id, name, previewAlgorithm, cubeId, viewType }`
+- `subset.json` — `{ id, name, previewAlgorithm, setId }`
+- `case.json` — `{ id, name, setup, subsetId, defaultAlgorithmId }`
+- `algorithm.json` — `{ id, name, caseId, rotations, mnemonics, description }`
+
+Mapping vs legacy: a synthetic `cube` (`3x3`) is added above `set`; `viewType` lives only on `set` (subset/case inherit it); legacy `case.viewType` and the inline `algorithms[]` are dropped in favor of the `algorithm` table — each legacy `case.algorithms[]` entry becomes an `algorithm` row (synthesized `id`/`name`; `mnemonics` ← legacy `rotationsMnemonic`), and the first algorithm per case sets that case's `defaultAlgorithmId`. (Legacy `algorithms.json` remains unused.) The `cube` level is **data-only** — navigation stays `set → subset → case` (there is a single `3x3` cube); no `/[cubeId]` route.
+
+**Types** (`src/lib/data/types.ts`) — hand-defined to mirror `packages/db/schema.ts` exactly: `Cube`, `Set`, `Subset`, `Case`, `Algorithm`, and `ViewType = 'F2L' | 'OLL' | 'PLL'`. Hand-defined rather than imported from `db` to keep the client free of the Bun/drizzle runtime; they can be re-pointed at db's inferred `$inferSelect` types after the swap.
+
+**Repository** (`src/lib/data/repository.ts`) — the single data-access interface the UI consumes. Synchronous functions (bundled JSON, no async) that read the normalized tables and assemble UI **view-models**, so components never touch the normalization:
+- `getSets()`, `getSetSubsets(setId)`, `getSidebarTree()` (nested sets → subsets → cases)
+- `getAllCases()`, `getSetCases(setId)`, `getSubsetCases(subsetId)` → `CaseWithContext[]`
+- `CaseWithContext` = `{ id, name, setup, viewType (resolved from its set), subset, set, algorithms (default first) }`
+- preview-item + breadcrumb helpers as needed
+
+Only the repository's internals know the data is JSON; swapping to `db` later replaces those internals while every signature and view-model stays stable.
 
 ### Routing & prerender
 Same hierarchy as legacy, each route gets a `+page.ts` (`load` + `entries` where dynamic) and a `+page.svelte`:
@@ -76,9 +83,9 @@ Each `load` also returns `breadcrumbs` (via a `getBreadcrumbs` helper ported fro
 ### Component mapping (Astro/React → Svelte + daisyUI)
 All under `src/lib/components/`:
 - `Preview.svelte` / `PreviewList.svelte` → daisyUI `card` + count `badge` in a flex-wrap grid; active card gets a ring (cube-green or primary).
-- `CaseView.svelte` → daisyUI `card` with the same CSS grid (cube view + setup block + name/subset `badge` + algorithms); `divider` replaces the shadcn `Separator`. `slim` prop controls density.
+- `CaseView.svelte` → daisyUI `card` with the same CSS grid (cube view + setup block + name/subset `badge` + algorithms); `divider` replaces the shadcn `Separator`. `slim` prop controls density. Consumes a `CaseWithContext` view-model (resolved `viewType`, `subset`, `algorithms`) — no normalization logic in the component.
 - `CasesList.svelte` → vertical list of `CaseView` wrapped in links; "No cases" empty state.
-- `AlgorithmsList.svelte` / `AlgorithmView.svelte` → same main-algorithm + limited-others (2 in slim) + "+N" `badge` structure.
+- `AlgorithmsList.svelte` / `AlgorithmView.svelte` → same main-algorithm + limited-others (2 in slim) + "+N" `badge` structure; the default algorithm (`case.defaultAlgorithmId`) is the main one. Mnemonic line uses the `mnemonics` field (db naming).
 - `AlgorithmVerifier.svelte` → same cube-engine solve check (`rotationsFromString` → `applyRotations` → `isCubeSolved` for PLL, else top-layer-uniform via `toColoredFaceSlices`), rendered with daisyUI `text-success` / `text-error` and `@lucide/svelte` icons.
 - `Breadcrumbs` → daisyUI `breadcrumbs` (rendered in the layout header from `page.data.breadcrumbs`).
 
@@ -103,17 +110,20 @@ Near-verbatim Svelte ports — logic is presentational (call engine, render grid
 ### Cleanup & dependencies
 - Remove scaffold files: `routes/demo/**`, the welcome `routes/+page.svelte`, `lib/vitest-examples/**`, the placeholder `lib/index.ts`.
 - Remove the stray `apps/client/pnpm-lock.yaml` (repo standardizes on bun); normalize `npm run` references in `package.json` scripts to bun where it matters.
-- Add dependencies: `cube` (`workspace:*`), `@lucide/svelte`. (`daisyui` already present.)
+- Add dependencies: `cube` (`workspace:*`), `@lucide/svelte`. (`daisyui` already present.) No `db` dependency yet — added when `db` is actually wired.
+- Generated/normalized data (`src/lib/data/tables/*.json`) + the one-off `scripts/transform-legacy-data.ts` that produces them from the legacy JSON.
 - Update the root `CLAUDE.md` (currently describes the Astro app) to reflect the SvelteKit stack, commands, and structure.
 
 ### Testing
-- Unit tests (Vitest, node project) for pure logic: the data query helpers and the `AlgorithmVerifier` solve-detection.
+- Unit tests (Vitest, node project) for pure logic: the repository joins/view-model assembly and the `AlgorithmVerifier` solve-detection.
+- A sanity check on the normalized data (expected counts: 1 cube, 3 sets, 7 subsets, 29 cases, ≥29 algorithms; every `defaultAlgorithmId` and FK resolves).
 - `svelte-check` must pass; a dev-server smoke check (via the `run`/`verify` skills) confirms the visual components and cube rendering.
 - Not pursuing exhaustive component tests — proportional to a visual port.
 
 ## Out of scope
 - Command palette (⌘K).
 - `deploy.yml` / CI changes and the `/cubing` base path. **Heads-up:** `deploy.yml` still uses `withastro/action` pointed at `apps/client`, so it must be updated before the next deploy — tracked separately.
+- Actually seeding/wiring `packages/db` (seed from JSON, fix relations/casing, Bun build-time codegen or direct queries). Deferred follow-up; this migration only shapes the client to that schema.
 - The unused `algorithms.json`.
 - Any change to `packages/cube`.
 
