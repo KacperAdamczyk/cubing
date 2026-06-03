@@ -4,78 +4,51 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Development Commands
 
-This is a monorepo using Bun workspaces. The main application is in `apps/client/`.
-
-**From the root directory:**
-- `cd apps/client` - Navigate to the main application
-- Use Bun as the package manager: `bun install`, `bun run <script>`
+This is a monorepo using Bun workspaces. The main application is in `apps/client/` (SvelteKit). `apps/client-legacy/` is the previous Astro app, kept for reference.
 
 **From `apps/client/`:**
-- `bun run dev` - Start development server at localhost:4321
-- `bun run build` - Build production site to ./dist/
-- `bun run preview` - Preview production build
-- `bun run test` - Run Vitest tests
-- `bun run test:ui` - Run Vitest with UI
-- `bun run lint` - Run ESLint
-- `bun run format:check` - Check Prettier formatting
-- `bun run format:write` - Apply Prettier formatting
-- `bun run check` - Run Astro check for type/syntax errors
+- `bun run dev` - Start the Vite dev server (http://localhost:5173)
+- `bun run build` - Build the static site to `./build/` (adapter-static, fully prerendered)
+- `bun run preview` - Preview the production build
+- `bun run test` - Run Vitest unit tests (node project)
+- `bun run check` - Run `svelte-check` for type/syntax errors
+- `bun run lint` - Run Prettier check + ESLint
+- `bun run format` - Apply Prettier formatting
 
 ## Architecture Overview
 
-This is a **Rubik's Cube algorithm learning application** built with:
-- **Astro** - Static site generator with React components
-- **React 19** - UI components and interactivity
-- **TypeScript** - Type safety throughout
-- **Tailwind CSS** - Styling with shadcn/ui components
-- **Vitest** - Testing framework
+A **Rubik's Cube algorithm learning application** built with:
+- **SvelteKit 2** - file-based routing, statically prerendered (`adapter-static`)
+- **Svelte 5** - runes-mode components
+- **TypeScript** - type safety throughout
+- **Tailwind CSS 4 + daisyUI 5** - styling
+- **Vitest** - testing framework
 
 ### Core Structure
 
-**`src/cube/`** - Custom 3D cube simulation engine:
-- **Types**: Comprehensive type definitions for cube state, rotations, colors, faces
-- **Initializers**: Functions to create cube instances and states
-- **Internal**: Low-level cube operations (piece rotation, face manipulation)
-- **Compound**: High-level operations combining multiple internal functions
-- **Helpers**: Utility functions for cube analysis and manipulation
+**`packages/cube/`** - framework-agnostic 3D cube simulation engine (reused as-is). See `packages/cube/src/internals.md`. Key API: `algorithmToFaces`, `applyRotations`, `createCube`, `isCubeSolved`, `rotationsFromString`, `toColoredFaceSlices`, `getAdjacentPieces`, `Colors`, `Faces`.
 
-**Key Cube Concepts:**
-- 26-piece cube model (corners and edges)
-- Each piece treated as 1x1 cube with rotations
-- Face schemes represent piece orientations
-- Algorithm notation (R, U, F, etc.) parsed to rotations
+**`packages/db/`** - Drizzle + SQLite schema (cube → set → subset → case → algorithm). The intended long-term data source; not yet wired into the client.
 
-**`src/data/`** - JSON datasets:
-- `algorithms.json` - Cubing algorithms with rotations
-- `cases.json` - Algorithm cases and scenarios  
-- `sets.json` - Algorithm categories (PLL, OLL, F2L, etc.)
-- `subsets.json` - Subcategories within sets
+**`apps/client/src/lib/data/`** - the data layer. `tables/*.json` are normalized, db-mirrored data generated from the legacy JSON by `scripts/transform-legacy-data.ts`. `repository.ts` reads them and assembles UI view-models (`CaseWithContext`, sidebar tree). `types.ts` mirrors `packages/db/schema.ts`. Swapping to the real `db` later is localized to the repository.
 
-**`src/components/`** - React/Astro components:
-- **Cube visualization** components (CubeView, Face, Piece)
-- **Algorithm displays** (AlgorithmView, AlgorithmsList)
-- **UI components** using shadcn/ui patterns
+**`apps/client/src/lib/components/`** - UI components, incl. `cube/` (the 2D cube visualization: `CubeView`, `Face`, `Piece`, `PLL`, `OLL`, `F2L`, `LastLayer`).
 
-**`src/pages/`** - Astro file-based routing:
-- Dynamic routes: `[setId]/[subsetId]/[caseId].astro`
-- Hierarchical navigation through algorithm sets
+**`apps/client/src/lib/layout/`** - `AppSidebar`.
 
-### Key Files
+**`apps/client/src/routes/`** - file-based routes: `/`, `/[setId]`, `/[setId]/[subsetId]`, `/[setId]/[subsetId]/[caseId]`; the root `+layout.svelte` is the daisyUI drawer shell. Each dynamic route exports `entries()` for prerendering.
 
-- `src/cube/index.ts` - Main cube engine API exports
-- `src/cube/internals.md` - Detailed cube engine documentation
-- `src/queries/` - Data fetching functions for algorithms and cases
-- `src/layouts/` - App shell with sidebar navigation
+**Data model:** `cube` is data-only (single `3x3`); navigation is `set → subset → case`. `viewType` (`F2L`/`OLL`/`PLL`) lives on `set` and is inherited. Each algorithm is its own row; a case's `defaultAlgorithmId` is the "main" algorithm.
 
 ## Testing
 
 - Tests use Vitest and are co-located with source files (`.test.ts`)
-- Run `bun run test` for all tests or `bun run test:ui` for interactive mode
-- Cube engine has comprehensive unit tests for core operations
+- Run `bun run test` for the unit tests, or `bun run test:unit` for interactive watch mode
+- Cube engine tests live in `packages/cube`; run them with `bun test` there
 
 ## Code Patterns
 
-- **Astro components** for static content, **React components** for interactivity
+- **Svelte 5 runes-mode components** (`$props`, `$state`, `$derived`); presentational components live in `src/lib/components`, the cube visualization in `src/lib/components/cube`
 - **Barrel exports** from `index.ts` files for clean imports
 - **Type-first development** with comprehensive TypeScript definitions
 - **Functional programming** patterns in cube operations (immutable transformations)
