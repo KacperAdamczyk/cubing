@@ -13,7 +13,8 @@
 		"format:check": {},
 		"format:write": {},
 		"test": {
-			"outputs": ["coverage/**"]
+			"outputs": ["coverage/**"],
+			"dependsOn": ["^build"]
 		},
 		"test:ui": {
 			"cache": false,
