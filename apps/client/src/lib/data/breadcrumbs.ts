@@ -11,7 +11,11 @@ interface GetBreadcrumbsParams {
 	case?: Entity;
 }
 
-export const getBreadcrumbs = ({ set, subset, case: c }: GetBreadcrumbsParams = {}): Breadcrumb[] => {
+export const getBreadcrumbs = ({
+	set,
+	subset,
+	case: c
+}: GetBreadcrumbsParams = {}): Breadcrumb[] => {
 	const breadcrumbs: Breadcrumb[] = [{ name: 'Algorithms', href: '/' }];
 
 	if (set) breadcrumbs.push({ name: set.name, href: `/${set.id}` });

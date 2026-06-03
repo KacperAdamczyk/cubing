@@ -10,7 +10,11 @@ import {
 
 describe('repository', () => {
 	it('returns all sets', () => {
-		expect(getSets().map((s) => s.id).sort()).toEqual(['F2L', 'OLL', 'PLL']);
+		expect(
+			getSets()
+				.map((s) => s.id)
+				.sort()
+		).toEqual(['F2L', 'OLL', 'PLL']);
 	});
 
 	it('assembles a case with resolved context and the default algorithm first', () => {
