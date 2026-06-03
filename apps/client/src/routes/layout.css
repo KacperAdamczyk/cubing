@@ -1,1 +1,19 @@
 @import 'tailwindcss';
+
+@plugin 'daisyui' {
+	themes: dark --default, light;
+}
+
+@theme {
+	--color-cube-green: #009b48;
+	--color-cube-red: #b90000;
+	--color-cube-blue: #0045ad;
+	--color-cube-orange: #ff5900;
+	--color-cube-white: #ffffff;
+	--color-cube-yellow: #ffd500;
+	--color-cube-blank: #808080;
+	--grid-template-columns-cube: 1fr repeat(3, 5fr) 1fr;
+	--grid-template-columns-cube-flat: 0 repeat(3, 5fr) 0;
+	--grid-template-rows-cube: 1fr repeat(3, 5fr) 1fr;
+	--grid-template-rows-cube-flat: 0 repeat(3, 5fr) 0;
+}
