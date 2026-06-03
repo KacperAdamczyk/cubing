@@ -11,18 +11,59 @@
 	const faces = $derived(
 		algorithmToFaces({ algorithm, orientation: { U: Colors.Y, F: Colors.R } })
 	);
+	const maskedColors = [Colors.Y, Colors.B, Colors.O];
 </script>
 
-<div class="grid aspect-square origin-bottom-left scale-125 grid-cols-2 grid-rows-2">
-	<Face
-		class="row-start-1 h-1/2 origin-bottom-left translate-y-full -skew-x-45"
-		face={faces.U}
-		maskedColors={[Colors.Y, Colors.B, Colors.O]}
-	/>
-	<Face class="row-start-2" face={faces.F} maskedColors={[Colors.Y, Colors.B, Colors.O]} />
-	<Face
-		class="row-start-2 w-1/2 origin-bottom-left -skew-y-45"
-		face={faces.R}
-		maskedColors={[Colors.Y, Colors.B, Colors.O]}
-	/>
+<!-- Isometric F2L: the U / F / R faces of a cube, positioned with real 3D
+     transforms. Sizes use container-query units so the cube scales to its box. -->
+<div class="scene">
+	<div class="stage">
+		<div class="cube">
+			<div class="face face-top"><Face face={faces.U} {maskedColors} /></div>
+			<div class="face face-front"><Face face={faces.F} {maskedColors} /></div>
+			<div class="face face-right"><Face face={faces.R} {maskedColors} /></div>
+		</div>
+	</div>
 </div>
+
+<style>
+	.scene {
+		width: 100%;
+		aspect-ratio: 1;
+		container-type: inline-size;
+	}
+
+	.stage {
+		display: flex;
+		width: 100%;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+		perspective: 240cqw;
+	}
+
+	.cube {
+		position: relative;
+		width: 60cqw;
+		height: 60cqw;
+		transform: rotateX(-24deg) rotateY(-36deg);
+		transform-style: preserve-3d;
+	}
+
+	.face {
+		position: absolute;
+		inset: 0;
+	}
+
+	.face-front {
+		transform: translateZ(30cqw);
+	}
+
+	.face-top {
+		transform: rotateX(90deg) translateZ(30cqw);
+	}
+
+	.face-right {
+		transform: rotateY(90deg) translateZ(30cqw);
+	}
+</style>
