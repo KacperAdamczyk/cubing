@@ -5,7 +5,6 @@ import { relations } from "./relations";
 
 export const db = drizzle(database, {
 	relations,
-	casing: "snake_case",
 });
 
 export * from "./schema";

@@ -1,17 +1,13 @@
-import {
-	type AnySQLiteColumn,
-	sqliteTable,
-	text,
-} from "drizzle-orm/sqlite-core";
+import { type AnySQLiteColumn, snakeCase, text } from "drizzle-orm/sqlite-core";
 
 const viewType = ["F2L", "OLL", "PLL"] as const;
 
-export const cube = sqliteTable("cube", {
+export const cube = snakeCase.table("cube", {
 	id: text().primaryKey(),
 	name: text().notNull().unique(),
 });
 
-export const set = sqliteTable("set", {
+export const set = snakeCase.table("set", {
 	id: text().primaryKey(),
 	name: text().notNull().unique(),
 	previewAlgorithm: text().notNull(),
@@ -21,7 +17,7 @@ export const set = sqliteTable("set", {
 	viewType: text({ enum: viewType }).notNull(),
 });
 
-export const subset = sqliteTable("subset", {
+export const subset = snakeCase.table("subset", {
 	id: text().primaryKey(),
 	name: text().notNull().unique(),
 	previewAlgorithm: text().notNull(),
@@ -30,7 +26,7 @@ export const subset = sqliteTable("subset", {
 		.references(() => set.id),
 });
 
-export const case_ = sqliteTable("case", {
+export const case_ = snakeCase.table("case", {
 	id: text().primaryKey(),
 	name: text().notNull().unique(),
 	setup: text().notNull(),
@@ -40,7 +36,7 @@ export const case_ = sqliteTable("case", {
 	defaultAlgorithmId: text().references((): AnySQLiteColumn => algorithm.id),
 });
 
-export const algorithm = sqliteTable("algorithm", {
+export const algorithm = snakeCase.table("algorithm", {
 	id: text().primaryKey(),
 	name: text().notNull().unique(),
 	caseId: text()
