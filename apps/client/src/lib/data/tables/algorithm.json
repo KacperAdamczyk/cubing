@@ -1,0 +1,298 @@
+[
+	{
+		"id": "F2L-6-FR__0",
+		"name": "F2L 6 FR 1",
+		"caseId": "F2L-6-FR",
+		"rotations": "U' r U' R' U R U r'",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "OLL-21__0",
+		"name": "Cross 1",
+		"caseId": "OLL-21",
+		"rotations": "(R U R' U) (R U' R' U) (R U2' R')",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "OLL-21__1",
+		"name": "Cross 2",
+		"caseId": "OLL-21",
+		"rotations": "y (R U2 R') (U' R U R') (U' R U' R')",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "OLL-22__0",
+		"name": "Bruno 1",
+		"caseId": "OLL-22",
+		"rotations": "R U2' R2' U' R2 U' R2' U2' R",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "OLL-23__0",
+		"name": "Headlights 1",
+		"caseId": "OLL-23",
+		"rotations": "R2 D (R' U2 R) D' (R' U2 R')",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "OLL-24__0",
+		"name": "Chameleon 1",
+		"caseId": "OLL-24",
+		"rotations": "(r U R' U') (r' F R F')",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "OLL-25__0",
+		"name": "Bowtie 1",
+		"caseId": "OLL-25",
+		"rotations": "y F' (r U R' U') r' F R",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "OLL-26__0",
+		"name": "Anti-Sune 1",
+		"caseId": "OLL-26",
+		"rotations": "y R U2 R' U' R U' R'",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "OLL-26__1",
+		"name": "Anti-Sune 2",
+		"caseId": "OLL-26",
+		"rotations": "R' U' R U' R' U2 R",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "OLL-27__0",
+		"name": "Sune 1",
+		"caseId": "OLL-27",
+		"rotations": "R U R' U R U2' R'",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "OLL-27__1",
+		"name": "Sune 2",
+		"caseId": "OLL-27",
+		"rotations": "y' R' U2' R U R' U R",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "Ua__0",
+		"name": "Ua 1",
+		"caseId": "Ua",
+		"rotations": "(M2 U M) U2 (M' U M2)",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "Ua__1",
+		"name": "Ua 2",
+		"caseId": "Ua",
+		"rotations": "y2 (R U R' U R') U' R2 U' (R' U R' U R) [U2]",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "Ub__0",
+		"name": "Ub 1",
+		"caseId": "Ub",
+		"rotations": "(M2 U' M) U2 (M' U' M2)",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "Ub__1",
+		"name": "Ub 2",
+		"caseId": "Ub",
+		"rotations": "y2 (R' U) (R' U') (R' U') (R' U) R U R2",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "H__0",
+		"name": "H 1",
+		"caseId": "H",
+		"rotations": "(M2 U' M2) U2 (M2 U' M2)",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "Z__0",
+		"name": "Z 1",
+		"caseId": "Z",
+		"rotations": "M' U' (M2 U') (M2 U') M' U2 M2  [U']",
+		"mnemonics": "Make sure to hold a checkerboard (two sides with only two colors) on the right side for this alg.",
+		"description": "CubeHead"
+	},
+	{
+		"id": "Z__1",
+		"name": "Z 2",
+		"caseId": "Z",
+		"rotations": "(M2 U) (M2 U) (M' U2) M2 (U2 M')",
+		"mnemonics": "Make sure to hold a checkerboard (two sides with only two colors) on the right side for this alg.",
+		"description": "SDB, Felix"
+	},
+	{
+		"id": "Aa__0",
+		"name": "Aa 1",
+		"caseId": "Aa",
+		"rotations": "x (R' U R') D2 (R U' R') D2 R2 x'",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "Ab__0",
+		"name": "Ab 1",
+		"caseId": "Ab",
+		"rotations": "x R2 D2 (R U R') D2 (R U' R) x'",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "E__0",
+		"name": "E 1",
+		"caseId": "E",
+		"rotations": "x' (R U' R' D) (R U R' D') (R U R' D) (R U' R' D') x",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "T__0",
+		"name": "T 1",
+		"caseId": "T",
+		"rotations": "(R U R' U') (R' F R2 U') R' U' (R U R' F')",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "F__0",
+		"name": "F 1",
+		"caseId": "F",
+		"rotations": "(R' U' F') (R U R' U') (R' F R2 U') (R' U' R U) (R' U R)",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "Ja__0",
+		"name": "Ja 1",
+		"caseId": "Ja",
+		"rotations": "y (R' U L' U2) (R U' R' U2) R L",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "Jb__0",
+		"name": "Jb 1",
+		"caseId": "Jb",
+		"rotations": "(R U R' F') (R U R' U') R' F R2 U' R'",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "Ra__0",
+		"name": "Ra 1",
+		"caseId": "Ra",
+		"rotations": "y (R U' R' U') (R U R D) (R' U' R D') (R' U2 R')",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "Rb__0",
+		"name": "Rb 1",
+		"caseId": "Rb",
+		"rotations": "(R' U2 R U2') R' F (R U R' U') R' F' R2",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "V__0",
+		"name": "V 1",
+		"caseId": "V",
+		"rotations": "(R' U R' U') (R D' R' D) (R' U D') (R2 U' R2) D R2",
+		"mnemonics": null,
+		"description": "SDB"
+	},
+	{
+		"id": "V__1",
+		"name": "V 2",
+		"caseId": "V",
+		"rotations": "(R' U R' U') y (R' F' R2 U') (R' U R' F) R F",
+		"mnemonics": null,
+		"description": "CubeHead, FZ"
+	},
+	{
+		"id": "Y__0",
+		"name": "Y 1",
+		"caseId": "Y",
+		"rotations": "F (R U' R' U') (R U R' F') (R U R' U') (R' F R F')",
+		"mnemonics": "The alg consists of two OLL's : F (R U' R' U') (R U R' F') and (R U R' U') (R' F R F')",
+		"description": null
+	},
+	{
+		"id": "Na__0",
+		"name": "Na 1",
+		"caseId": "Na",
+		"rotations": "(R U R' U) (R U R' F') (R U R' U') R' F (R2 U' R') (U2 R U' R')",
+		"mnemonics": "( R U R' U ) ( Jb- perm ) ( U2 R U' R' )",
+		"description": null
+	},
+	{
+		"id": "Nb__0",
+		"name": "Nb 1",
+		"caseId": "Nb",
+		"rotations": "(R' U R U') (R' F' U' F) (R U R' F) R' F' (R U' R)",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "Ga__0",
+		"name": "Ga 1",
+		"caseId": "Ga",
+		"rotations": "R2 U (R' U R' U') (R U' R2) D U' (R' U R D')",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "Gb__0",
+		"name": "Gb 1",
+		"caseId": "Gb",
+		"rotations": "(R' U' R U) D' R2 (U R' U R U' R U') R2 D",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "Gb__1",
+		"name": "Gb 2",
+		"caseId": "Gb",
+		"rotations": "D ( R' U' R U ) D' ( R2 U R' U ) ( R U' R U' ) R2'",
+		"mnemonics": null,
+		"description": "CubeHead"
+	},
+	{
+		"id": "Gc__0",
+		"name": "Gc 1",
+		"caseId": "Gc",
+		"rotations": "R2 (U' R U' R U R' U) R2 D' (U R U' R') D",
+		"mnemonics": null,
+		"description": null
+	},
+	{
+		"id": "Gd__0",
+		"name": "Gd 1",
+		"caseId": "Gd",
+		"rotations": "(R U R' U') D R2 (U' R U' R' U R' U) R2 D'",
+		"mnemonics": null,
+		"description": null
+	}
+]
