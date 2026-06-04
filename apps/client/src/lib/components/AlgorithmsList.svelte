@@ -8,14 +8,24 @@
 		class?: string;
 		setup: string;
 		algorithms: Algorithm[];
+		defaultAlgorithmId: string | null;
 		slim: boolean;
 		viewType: ViewType;
 	}
 
-	let { class: className = '', setup, algorithms, slim, viewType }: Props = $props();
+	let {
+		class: className = '',
+		setup,
+		algorithms,
+		defaultAlgorithmId,
+		slim,
+		viewType
+	}: Props = $props();
 
-	const mainAlgorithm = $derived(algorithms[0]);
-	const otherAlgorithms = $derived(algorithms.slice(1));
+	const mainAlgorithm = $derived(
+		algorithms.find((a) => a.id === defaultAlgorithmId) ?? algorithms[0]
+	);
+	const otherAlgorithms = $derived(algorithms.filter((a) => a.id !== mainAlgorithm?.id));
 	const limitedOtherAlgorithms = $derived(
 		otherAlgorithms.slice(0, slim ? otherAlgorithmsLimit : otherAlgorithms.length)
 	);
