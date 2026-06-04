@@ -31,8 +31,12 @@ chain end-to-end:
   `3x3` row).
 - With **`experimental.async`** + `<svelte:boundary>` + top-level
   `await getCubes()`, the data is **SSR'd into the prerendered HTML**.
+- An **arg'd `prerender` function validated by a Zod schema**
+  (`prerender(z.string(), …)`) works too: a dynamic route prerenders per its
+  `entries()`, and a **per-argument** payload is captured as a static asset
+  (`_app/remote/<hash>/getCube/<base64-arg>`).
 - **adapter-cloudflare completes cleanly**; the emitted `_worker.js` (~4.3 KB)
-  has **zero** `bun:sqlite` / `db` / `drizzle` references.
+  has **zero** `bun:sqlite` / `db` / `drizzle` / `zod` references.
 
 The remaining work is the data-layer rework, the one-time DB reseed, and the
 test/CI wiring.
@@ -91,6 +95,7 @@ static assets to Cloudflare Workers. Findings that shape this design:
 | --- | --- |
 | Runtime model | Build-time, fully static (all routes prerendered). |
 | db usage | Directly in `prerender` remote functions (`.remote.ts`), via `$lib/server` repository. |
+| Argument validation | Zod schemas (Standard Schema) on arg'd remote functions — not `'unchecked'`. |
 | Component data | `await` remote functions inside `<svelte:boundary>` (experimental async). |
 | Build runtime | Forced under Bun via `bunx --bun vite …`. |
 | db resolution | `ssr.external: ['db']`; opened read-only from the package's dist. |
@@ -163,7 +168,9 @@ export * from "./schema";
   - `"dev": "bunx --bun vite dev"` (dev runs remote functions → needs Bun; verify
     during implementation)
   - `"preview": "vite preview"` (serves static output; unchanged)
-- Add `"db": "workspace:*"` to `apps/client` **devDependencies**.
+- Add `"db": "workspace:*"` and `"zod": "^3.25.76"` to `apps/client`
+  **devDependencies** (both are server-only / build-time; never shipped to the
+  browser — the `.remote.ts` body is stripped from the client bundle).
 
 ## Phase 2 — Data layer (server repository + remote functions + async components)
 
@@ -177,18 +184,22 @@ export * from "./schema";
 
   ```ts
   import { prerender } from '$app/server';
+  import { z } from 'zod';
   import * as repo from '$lib/server/repository';
 
   export const getSidebar = prerender(() => repo.getSidebarTree());
   export const getHome = prerender(() => /* sets + allCases + counts */);
-  export const getSetView = prerender('unchecked', (setId: string) => /* … */);
-  export const getSubsetView = prerender('unchecked', (p: { setId: string; subsetId: string }) => /* … */);
-  export const getCaseView = prerender('unchecked', (caseId: string) => repo.getCase(caseId));
+  export const getSetView = prerender(z.string(), (setId) => /* … */);
+  export const getSubsetView = prerender(
+    z.object({ setId: z.string(), subsetId: z.string() }),
+    ({ setId, subsetId }) => /* … */
+  );
+  export const getCaseView = prerender(z.string(), (caseId) => repo.getCase(caseId));
   ```
 
-  Arg'd `prerender` calls are captured when their page is prerendered (driven by
-  the route `entries()` below); add `inputs` only if a payload isn't otherwise
-  reached.
+  Arg'd `prerender` calls are validated by the Zod schema and captured when their
+  page is prerendered (driven by the route `entries()` below) — both proven in the
+  spike; add `inputs` only if a payload isn't otherwise reached.
 - **Routes**:
   - `+layout.ts` keeps `export const prerender = true` (flag only; no db import).
   - Dynamic routes (`[setId]`, `[setId]/[subsetId]`, `[setId]/[subsetId]/[caseId]`)
