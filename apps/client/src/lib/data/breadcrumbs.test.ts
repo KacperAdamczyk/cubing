@@ -1,21 +1,27 @@
 import { describe, expect, it } from 'vitest';
 import { getBreadcrumbs } from './breadcrumbs';
-import type { SidebarSet } from './types';
+import type { SidebarCube } from './types';
 
-const tree: SidebarSet[] = [
+const tree: SidebarCube[] = [
 	{
-		id: 'OLL',
-		name: 'OLL',
-		previewAlgorithm: '',
-		cubeId: '3x3',
-		viewType: 'OLL',
-		subsets: [
+		id: '3x3',
+		name: '3x3',
+		sets: [
 			{
-				id: 'Oriented-Edges',
-				name: 'Oriented Edges',
+				id: 'OLL',
+				name: 'OLL',
 				previewAlgorithm: '',
-				setId: 'OLL',
-				cases: [{ id: 'OLL-21', name: 'Cross' }]
+				cubeId: '3x3',
+				viewType: 'OLL',
+				subsets: [
+					{
+						id: 'Oriented-Edges',
+						name: 'Oriented Edges',
+						previewAlgorithm: '',
+						setId: 'OLL',
+						cases: [{ id: 'OLL-21', name: 'Cross' }]
+					}
+				]
 			}
 		]
 	}
@@ -26,14 +32,20 @@ describe('getBreadcrumbs', () => {
 		expect(getBreadcrumbs(tree, {})).toEqual([{ name: 'Algorithms', href: '/' }]);
 	});
 
-	it('builds nested crumbs for set/subset/case from the tree', () => {
+	it('builds nested crumbs for cube/set/subset/case', () => {
 		expect(
-			getBreadcrumbs(tree, { setId: 'OLL', subsetId: 'Oriented-Edges', caseId: 'OLL-21' })
+			getBreadcrumbs(tree, {
+				cubeId: '3x3',
+				setId: 'OLL',
+				subsetId: 'Oriented-Edges',
+				caseId: 'OLL-21'
+			})
 		).toEqual([
 			{ name: 'Algorithms', href: '/' },
-			{ name: 'OLL', href: '/OLL' },
-			{ name: 'Oriented Edges', href: '/OLL/Oriented-Edges' },
-			{ name: 'Cross', href: '/OLL/Oriented-Edges/OLL-21' }
+			{ name: '3x3', href: '/3x3' },
+			{ name: 'OLL', href: '/3x3/OLL' },
+			{ name: 'Oriented Edges', href: '/3x3/OLL/Oriented-Edges' },
+			{ name: 'Cross', href: '/3x3/OLL/Oriented-Edges/OLL-21' }
 		]);
 	});
 });
