@@ -37,15 +37,9 @@ export interface Algorithm {
 	description: string | null;
 }
 
-/** View-model assembled by the repository for the UI. */
-export interface CaseWithContext {
-	id: string;
-	name: string;
-	setup: string;
-	viewType: ViewType;
-	set: Set;
-	subset: Subset;
-	/** Default algorithm first, then the rest in source order. */
+/** View-model = the relational-query result: a case with its joined subset (+ set) and algorithms. */
+export interface CaseWithContext extends Case {
+	subset: Subset & { set: Set };
 	algorithms: Algorithm[];
 }
 
@@ -55,6 +49,10 @@ export interface SidebarSubset extends Subset {
 
 export interface SidebarSet extends Set {
 	subsets: SidebarSubset[];
+}
+
+export interface SidebarCube extends Cube {
+	sets: SidebarSet[];
 }
 
 export interface PreviewItem {
