@@ -22,14 +22,16 @@
 	const hasMore = $derived(otherAlgorithms.length > limitedOtherAlgorithms.length);
 </script>
 
-<div class={[className, 'flex flex-col gap-1']}>
+<div class={[className, 'flex flex-col gap-2']}>
 	<AlgorithmView {setup} algorithm={mainAlgorithm} {slim} {viewType} isMain />
 	{#each limitedOtherAlgorithms as algorithm (algorithm.id)}
 		<AlgorithmView {setup} {algorithm} {slim} {viewType} />
 	{/each}
 	{#if hasMore}
-		<span class="badge self-center badge-outline">
-			+{otherAlgorithms.length - limitedOtherAlgorithms.length}
+		<span
+			class="self-center rounded-full border border-base-300 px-2.5 py-0.5 text-xs font-semibold text-base-content/60"
+		>
+			+{otherAlgorithms.length - limitedOtherAlgorithms.length} more
 		</span>
 	{/if}
 </div>

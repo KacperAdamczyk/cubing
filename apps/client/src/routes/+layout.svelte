@@ -19,8 +19,8 @@
 
 <div class="drawer lg:drawer-open">
 	<input id="app-drawer" type="checkbox" class="drawer-toggle" />
-	<div class="drawer-content flex min-h-screen flex-col">
-		<header class="navbar border-b border-base-300 bg-base-100">
+	<div class="drawer-content flex min-h-screen flex-col bg-base-200">
+		<header class="navbar sticky top-0 z-20 border-b border-base-300 bg-base-100/85 backdrop-blur">
 			<label for="app-drawer" class="btn btn-square btn-ghost lg:hidden" aria-label="Open sidebar">
 				<Menu class="size-5" />
 			</label>
@@ -29,11 +29,13 @@
 			</div>
 			<ThemeToggle />
 		</header>
-		<main class="flex-1 p-4">
-			{@render children()}
+		<main class="flex-1 p-4 sm:p-6">
+			<div class="mx-auto w-full max-w-5xl">
+				{@render children()}
+			</div>
 		</main>
 	</div>
-	<div class="drawer-side z-10">
+	<div class="drawer-side z-30">
 		<label for="app-drawer" class="drawer-overlay" aria-label="Close sidebar"></label>
 		<AppSidebar sidebar={data.sidebar} />
 	</div>

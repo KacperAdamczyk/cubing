@@ -10,7 +10,7 @@
 	let { items }: Props = $props();
 </script>
 
-<div class="flex flex-wrap gap-1">
+<div class="flex flex-wrap gap-3">
 	{#each items as item (item.href)}
 		<Preview {...item} isActive={item.href === page.url.pathname} />
 	{/each}

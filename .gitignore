@@ -3,3 +3,6 @@ node_modules/
 # Turbo
 .turbo
 .log
+
+# Superpowers brainstorming companion
+.superpowers/
