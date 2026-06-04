@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Development Commands
 
-This is a monorepo using Bun workspaces. The main application is in `apps/client/` (SvelteKit). `apps/client-legacy/` is the previous Astro app, kept for reference.
+This is a monorepo using Bun workspaces. The application is in `apps/client/` (SvelteKit).
 
 **From `apps/client/`:**
 - `bun run dev` - Start the Vite dev server (http://localhost:5173)
@@ -31,7 +31,7 @@ A **Rubik's Cube algorithm learning application** built with:
 
 **`packages/db/`** - Drizzle + SQLite schema (cube → set → subset → case → algorithm). The intended long-term data source; not yet wired into the client.
 
-**`apps/client/src/lib/data/`** - the data layer. `tables/*.json` are normalized, db-mirrored data generated from the legacy JSON by `scripts/transform-legacy-data.ts`. `repository.ts` reads them and assembles UI view-models (`CaseWithContext`, sidebar tree). `types.ts` mirrors `packages/db/schema.ts`. Swapping to the real `db` later is localized to the repository.
+**`apps/client/src/lib/data/`** - the data layer. `tables/*.json` are normalized, db-mirrored data. `repository.ts` reads them and assembles UI view-models (`CaseWithContext`, sidebar tree). `types.ts` mirrors `packages/db/schema.ts`. Swapping to the real `db` later is localized to the repository.
 
 **`apps/client/src/lib/components/`** - UI components, incl. `cube/` (the 2D cube visualization: `CubeView`, `Face`, `Piece`, `PLL`, `OLL`, `F2L`, `LastLayer`).
 
