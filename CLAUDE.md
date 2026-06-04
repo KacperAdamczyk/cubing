@@ -33,15 +33,15 @@ A **Rubik's Cube algorithm learning application** built with:
 
 **`packages/db/`** - Drizzle + SQLite, the **source of truth** for algorithm data (cube → set → subset → case → algorithm). `index.ts` opens the committed `db.sqlite` read-only via `bun:sqlite` (Bun-only; runs at build/prerender time, never in the browser/Worker). Schema in `schema.ts`, migrations in `drizzle/`; edit data via Drizzle Studio / SQL and commit `db.sqlite`.
 
-**`apps/client/src/lib/server/` + `src/lib/data/`** - the data layer. `server/repository.ts` (server-only) reads `db` and assembles UI view-models (`CaseWithContext`, sidebar tree). `data/catalog.remote.ts` exposes them as Zod-validated **`prerender` remote functions**; components `await` those (Svelte experimental async, `$derived(await …)`), with route params asserted non-null. `data/types.ts` mirrors `packages/db/schema.ts`. Everything is queried at prerender (build) time and inlined into the static output — no DB code reaches the browser/Worker.
+**`apps/client/src/lib/server/` + `src/lib/data/`** - the data layer. `server/repository.ts` (server-only) queries `db` with Drizzle **relational queries (v2)** (`db.query.*` + `with`) and returns the join-shaped results directly — no manual stitching (`CaseWithContext` is the join shape; the sidebar tree is cube-rooted). `data/catalog.remote.ts` exposes cube/set/subset/case views as Zod-validated **`prerender` remote functions**; components `await` those (Svelte experimental async, `$derived(await …)`), with route params asserted non-null. `data/types.ts` mirrors `packages/db/schema.ts`. Everything is queried at prerender (build) time and inlined into the static output — no DB code reaches the browser/Worker.
 
 **`apps/client/src/lib/components/`** - UI components, incl. `cube/` (the 2D cube visualization: `CubeView`, `Face`, `Piece`, `PLL`, `OLL`, `F2L`, `LastLayer`).
 
 **`apps/client/src/lib/layout/`** - `AppSidebar`.
 
-**`apps/client/src/routes/`** - file-based routes: `/`, `/[setId]`, `/[setId]/[subsetId]`, `/[setId]/[subsetId]/[caseId]`; the root `+layout.svelte` is the daisyUI drawer shell. Pages fetch data via remote functions (no universal `load`s); each dynamic route's `+page.server.ts` exports `entries()` for prerendering. Enabled via `kit.experimental.remoteFunctions` + `compilerOptions.experimental.async` in `svelte.config.js`, with `ssr.external: ['db']` in `vite.config.ts`.
+**`apps/client/src/routes/`** - file-based routes: `/` (cube picker), `/[cubeId]`, `/[cubeId]/[setId]`, `/[cubeId]/[setId]/[subsetId]`, `/[cubeId]/[setId]/[subsetId]/[caseId]`; the root `+layout.svelte` is the daisyUI drawer shell. Pages fetch data via remote functions (no universal `load`s); each dynamic route's `+page.server.ts` exports `entries()` for prerendering. Enabled via `kit.experimental.remoteFunctions` + `compilerOptions.experimental.async` in `svelte.config.js`, with `ssr.external: ['db']` in `vite.config.ts`.
 
-**Data model:** `cube` is data-only (single `3x3`); navigation is `set → subset → case`. `viewType` (`F2L`/`OLL`/`PLL`) lives on `set` and is inherited. Each algorithm is its own row; a case's `defaultAlgorithmId` is the "main" algorithm.
+**Data model:** navigation is `cube → set → subset → case` (cube is the top level; root `/` is the cube picker — currently a single `3x3`, ready for more sizes). `viewType` (`F2L`/`OLL`/`PLL`) lives on `set` and is inherited. Each algorithm is its own row; a case's `defaultAlgorithmId` is the "main" algorithm.
 
 ## Testing
 
