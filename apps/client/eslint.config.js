@@ -40,7 +40,7 @@ export default defineConfig(
 		// Override or add rule settings here, such as:
 		// 'svelte/button-has-type': 'error'
 		rules: {
-			// This project uses adapter-static (fully prerendered). All <a href> links point to
+			// This project uses adapter-cloudflare (fully prerendered). All <a href> links point to
 			// statically-generated pages, so resolve() from $app/paths is not needed.
 			'svelte/no-navigation-without-resolve': ['error', { ignoreLinks: true }]
 		}

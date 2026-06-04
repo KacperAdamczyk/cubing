@@ -8,8 +8,9 @@ This is a monorepo using Bun workspaces. The main application is in `apps/client
 
 **From `apps/client/`:**
 - `bun run dev` - Start the Vite dev server (http://localhost:5173)
-- `bun run build` - Build the static site to `./build/` (adapter-static, fully prerendered)
-- `bun run preview` - Preview the production build
+- `bun run build` - Build to `.svelte-kit/cloudflare/` (adapter-cloudflare, fully prerendered)
+- `bun run preview` - Preview the production build (`vite preview`)
+- `bun run deploy` - Deploy to Cloudflare Workers (`wrangler deploy`, uses `apps/client/wrangler.jsonc`)
 - `bun run test` - Run Vitest unit tests (node project)
 - `bun run check` - Run `svelte-check` for type/syntax errors
 - `bun run lint` - Run Prettier check + ESLint
@@ -18,7 +19,7 @@ This is a monorepo using Bun workspaces. The main application is in `apps/client
 ## Architecture Overview
 
 A **Rubik's Cube algorithm learning application** built with:
-- **SvelteKit 2** - file-based routing, statically prerendered (`adapter-static`)
+- **SvelteKit 2** - file-based routing, statically prerendered (`adapter-cloudflare`, deployed to Cloudflare Workers)
 - **Svelte 5** - runes-mode components
 - **TypeScript** - type safety throughout
 - **Tailwind CSS 4 + daisyUI 5** - styling
@@ -45,6 +46,13 @@ A **Rubik's Cube algorithm learning application** built with:
 - Tests use Vitest and are co-located with source files (`.test.ts`)
 - Run `bun run test` for the unit tests, or `bun run test:unit` for interactive watch mode
 - Cube engine tests live in `packages/cube`; run them with `bun test` there
+
+## Deployment
+
+Deployed to **Cloudflare Workers** (static assets) at https://cubing.admck.com.
+- Config: `apps/client/wrangler.jsonc` (worker name `cubing`; custom domain set via `routes`).
+- CI: `.github/workflows/deploy.yml` runs on every push to `main` (GitHub `production` environment; requires secrets `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID`).
+- Manual: `cd apps/client && bun run build && bun run deploy`.
 
 ## Code Patterns
 
