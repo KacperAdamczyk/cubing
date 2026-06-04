@@ -1,8 +1,9 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import CaseView from '$lib/components/CaseView.svelte';
-	import type { PageData } from './$types';
+	import { getCaseView } from '$lib/data/catalog.remote';
 
-	let { data }: { data: PageData } = $props();
+	const currentCase = $derived(await getCaseView(page.params.caseId));
 </script>
 
-<CaseView case={data.case} slim={false} />
+<CaseView case={currentCase} slim={false} />
