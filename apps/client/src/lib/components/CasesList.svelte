@@ -13,8 +13,8 @@
 <div class="flex flex-col gap-4">
 	{#each cases as c (c.id)}
 		<a
-			href={`/${c.subset.setId}/${c.subset.id}/${c.id}`}
-			data-type={c.viewType}
+			href={`/${c.subset.set.cubeId}/${c.subset.setId}/${c.subset.id}/${c.id}`}
+			data-type={c.subset.set.viewType}
 			class="group block w-full rounded-box transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--type-accent)"
 		>
 			<CaseView case={c} {slim} />

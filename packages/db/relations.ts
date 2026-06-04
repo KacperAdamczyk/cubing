@@ -9,6 +9,7 @@ export const relations = defineRelations(schema, (r) => ({
 		cube: r.one.cube({
 			from: r.set.cubeId,
 			to: r.cube.id,
+			optional: false,
 		}),
 		subsets: r.many.subset(),
 	},
@@ -16,6 +17,7 @@ export const relations = defineRelations(schema, (r) => ({
 		set: r.one.set({
 			from: r.subset.setId,
 			to: r.set.id,
+			optional: false,
 		}),
 		cases: r.many.case_(),
 	},
@@ -23,6 +25,7 @@ export const relations = defineRelations(schema, (r) => ({
 		subset: r.one.subset({
 			from: r.case_.subsetId,
 			to: r.subset.id,
+			optional: false,
 		}),
 		algorithms: r.many.algorithm(),
 	},
@@ -30,6 +33,7 @@ export const relations = defineRelations(schema, (r) => ({
 		case: r.one.case_({
 			from: r.algorithm.caseId,
 			to: r.case_.id,
+			optional: false,
 		}),
 	},
 }));

@@ -1,12 +1,8 @@
 <script lang="ts">
-	import CasesList from '$lib/components/CasesList.svelte';
 	import PreviewList from '$lib/components/PreviewList.svelte';
-	import type { PageData } from './$types';
+	import { getCubesView } from '$lib/data/catalog.remote';
 
-	let { data }: { data: PageData } = $props();
+	const items = await getCubesView();
 </script>
 
-<PreviewList items={data.items} />
-<div class="mt-2 flex flex-col gap-2">
-	<CasesList cases={data.cases} slim />
-</div>
+<PreviewList {items} />

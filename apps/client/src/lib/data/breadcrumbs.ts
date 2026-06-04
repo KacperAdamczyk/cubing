@@ -1,27 +1,26 @@
-import type { Breadcrumb } from './types';
+import type { Breadcrumb, SidebarCube } from './types';
 
-interface Entity {
-	id: string;
-	name: string;
-}
+export const getBreadcrumbs = (
+	tree: SidebarCube[],
+	params: Record<string, string>
+): Breadcrumb[] => {
+	const crumbs: Breadcrumb[] = [{ name: 'Algorithms', href: '/' }];
 
-interface GetBreadcrumbsParams {
-	set?: Entity;
-	subset?: Entity;
-	case?: Entity;
-}
+	const cube = params.cubeId ? tree.find((c) => c.id === params.cubeId) : undefined;
+	if (!cube) return crumbs;
+	crumbs.push({ name: cube.name, href: `/${cube.id}` });
 
-export const getBreadcrumbs = ({
-	set,
-	subset,
-	case: c
-}: GetBreadcrumbsParams = {}): Breadcrumb[] => {
-	const breadcrumbs: Breadcrumb[] = [{ name: 'Algorithms', href: '/' }];
+	const set = params.setId ? cube.sets.find((s) => s.id === params.setId) : undefined;
+	if (!set) return crumbs;
+	crumbs.push({ name: set.name, href: `/${cube.id}/${set.id}` });
 
-	if (set) breadcrumbs.push({ name: set.name, href: `/${set.id}` });
-	if (set && subset) breadcrumbs.push({ name: subset.name, href: `/${set.id}/${subset.id}` });
-	if (set && subset && c)
-		breadcrumbs.push({ name: c.name, href: `/${set.id}/${subset.id}/${c.id}` });
+	const subset = params.subsetId ? set.subsets.find((s) => s.id === params.subsetId) : undefined;
+	if (!subset) return crumbs;
+	crumbs.push({ name: subset.name, href: `/${cube.id}/${set.id}/${subset.id}` });
 
-	return breadcrumbs;
+	const c = params.caseId ? subset.cases.find((x) => x.id === params.caseId) : undefined;
+	if (!c) return crumbs;
+	crumbs.push({ name: c.name, href: `/${cube.id}/${set.id}/${subset.id}/${c.id}` });
+
+	return crumbs;
 };
