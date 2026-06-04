@@ -1,34 +1,15 @@
 import { db } from 'db';
-import type { Algorithm, Case, CaseWithContext, Set, SidebarSet, Subset } from '$lib/data/types';
+import type { CaseWithContext, Cube, Set, SidebarCube, Subset } from '$lib/data/types';
 
-// Each case is fetched with its parent subset (+ its set) and its algorithms, so
-// the view-model can be assembled without loading unrelated rows.
-const caseWith = {
-	subset: { with: { set: true } },
-	algorithms: true
-} as const;
+const caseWith = { subset: { with: { set: true } }, algorithms: true } as const;
 
-// Drizzle types `one` relations as nullable (it doesn't assume FK presence),
-// so guard them — mirroring the previous repository's "not found" errors.
-type CaseRow = Case & { subset: (Subset & { set: Set | null }) | null; algorithms: Algorithm[] };
+export const getCubes = (): Cube[] => db.query.cube.findMany().sync();
 
-const toCaseWithContext = (c: CaseRow): CaseWithContext => {
-	if (!c.subset) throw new Error(`Subset ${c.subsetId} not found for case ${c.id}`);
-	const { set, ...subset } = c.subset;
-	if (!set) throw new Error(`Set ${subset.setId} not found for subset ${subset.id}`);
-	const main = c.algorithms.filter((a) => a.id === c.defaultAlgorithmId);
-	const rest = c.algorithms.filter((a) => a.id !== c.defaultAlgorithmId);
+export const findCube = (cubeId: string): Cube | undefined =>
+	db.query.cube.findFirst({ where: { id: cubeId } }).sync();
 
-	return {
-		id: c.id,
-		name: c.name,
-		setup: c.setup,
-		viewType: set.viewType,
-		set,
-		subset,
-		algorithms: [...main, ...rest]
-	};
-};
+export const getCubeSets = (cubeId: string): Set[] =>
+	db.query.set.findMany({ where: { cubeId } }).sync();
 
 export const getSets = (): Set[] => db.query.set.findMany().sync();
 
@@ -41,24 +22,26 @@ export const findSubset = (subsetId: string): Subset | undefined =>
 export const getSetSubsets = (setId: string): Subset[] =>
 	db.query.subset.findMany({ where: { setId } }).sync();
 
-export const getSubsetCases = (subsetId: string): CaseWithContext[] =>
-	db.query.case_.findMany({ where: { subsetId }, with: caseWith }).sync().map(toCaseWithContext);
+export const getCubeCases = (cubeId: string): CaseWithContext[] =>
+	db.query.case_.findMany({ where: { subset: { set: { cubeId } } }, with: caseWith }).sync();
 
 export const getSetCases = (setId: string): CaseWithContext[] =>
-	db.query.case_
-		.findMany({ where: { subset: { setId } }, with: caseWith })
-		.sync()
-		.map(toCaseWithContext);
+	db.query.case_.findMany({ where: { subset: { setId } }, with: caseWith }).sync();
+
+export const getSubsetCases = (subsetId: string): CaseWithContext[] =>
+	db.query.case_.findMany({ where: { subsetId }, with: caseWith }).sync();
 
 export const getAllCases = (): CaseWithContext[] =>
-	db.query.case_.findMany({ with: caseWith }).sync().map(toCaseWithContext);
+	db.query.case_.findMany({ with: caseWith }).sync();
 
-export const getCase = (caseId: string): CaseWithContext | undefined => {
-	const c = db.query.case_.findFirst({ where: { id: caseId }, with: caseWith }).sync();
-	return c ? toCaseWithContext(c) : undefined;
-};
+export const getCase = (caseId: string): CaseWithContext | undefined =>
+	db.query.case_.findFirst({ where: { id: caseId }, with: caseWith }).sync();
 
-export const getSidebarTree = (): SidebarSet[] =>
-	db.query.set
-		.findMany({ with: { subsets: { with: { cases: { columns: { id: true, name: true } } } } } })
+export const getSidebarTree = (): SidebarCube[] =>
+	db.query.cube
+		.findMany({
+			with: {
+				sets: { with: { subsets: { with: { cases: { columns: { id: true, name: true } } } } } }
+			}
+		})
 		.sync();
