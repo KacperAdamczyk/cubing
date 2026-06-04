@@ -2,6 +2,11 @@
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "cubing",
 	"main": ".svelte-kit/cloudflare/_worker.js",
+	// `db` (Drizzle + bun:sqlite) is pulled into the Worker bundle via the
+	// prerender remote functions, but all DB access is prerendered at build time —
+	// the Worker never runs it. Alias bun:sqlite to a no-op shim so wrangler can
+	// bundle the dead import (workerd has no bun:sqlite).
+	"alias": { "bun:sqlite": "./bun-sqlite-shim.js" },
 	"compatibility_date": "2025-09-23",
 	"compatibility_flags": ["nodejs_als"],
 	"assets": {
