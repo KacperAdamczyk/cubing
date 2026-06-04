@@ -63,7 +63,10 @@
 	<ul class="menu w-full grow flex-nowrap gap-0.5 overflow-y-auto px-0">
 		{#each filtered as cube (cube.id)}
 			<li class="menu-title px-0">
-				<a href={`/${cube.id}`} class={['font-bold', isActive(`/${cube.id}`) && 'text-base-content']}>
+				<a
+					href={`/${cube.id}`}
+					class={['font-bold', isActive(`/${cube.id}`) && 'text-base-content']}
+				>
 					{cube.name}
 				</a>
 			</li>
