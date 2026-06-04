@@ -1,13 +1,16 @@
-import algorithmTable from './tables/algorithm.json';
-import caseTable from './tables/case.json';
-import setTable from './tables/set.json';
-import subsetTable from './tables/subset.json';
-import type { Algorithm, Case, CaseWithContext, Set, SidebarSet, Subset } from './types';
+import {
+	db,
+	set as setTable,
+	subset as subsetTable,
+	case_ as caseTable,
+	algorithm as algorithmTable
+} from 'db';
+import type { Algorithm, Case, CaseWithContext, Set, SidebarSet, Subset } from '$lib/data/types';
 
-const sets = setTable as unknown as Set[];
-const subsets = subsetTable as unknown as Subset[];
-const cases = caseTable as unknown as Case[];
-const algorithms = algorithmTable as unknown as Algorithm[];
+const sets = db.select().from(setTable).all() as Set[];
+const subsets = db.select().from(subsetTable).all() as Subset[];
+const cases = db.select().from(caseTable).all() as Case[];
+const algorithms = db.select().from(algorithmTable).all() as Algorithm[];
 
 const setsById = new Map(sets.map((s) => [s.id, s]));
 const subsetsById = new Map(subsets.map((s) => [s.id, s]));
