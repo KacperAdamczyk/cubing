@@ -4,9 +4,7 @@
 	import PreviewList from '$lib/components/PreviewList.svelte';
 	import { getSubsetView } from '$lib/data/catalog.remote';
 
-	const view = $derived(
-		await getSubsetView({ setId: page.params.setId!, subsetId: page.params.subsetId! })
-	);
+	const view = $derived(await getSubsetView(page.params.subsetId!));
 </script>
 
 <PreviewList items={view.items} />

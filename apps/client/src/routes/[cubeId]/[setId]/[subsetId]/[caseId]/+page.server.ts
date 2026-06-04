@@ -6,6 +6,7 @@ export const entries = () =>
 	repo.getSets().flatMap((set) =>
 		repo.getSetSubsets(set.id).flatMap((subset) =>
 			repo.getSubsetCases(subset.id).map((c) => ({
+				cubeId: set.cubeId,
 				setId: set.id,
 				subsetId: subset.id,
 				caseId: c.id
