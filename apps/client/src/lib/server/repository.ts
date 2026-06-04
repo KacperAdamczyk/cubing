@@ -1,50 +1,23 @@
-import {
-	db,
-	set as setTable,
-	subset as subsetTable,
-	case_ as caseTable,
-	algorithm as algorithmTable
-} from 'db';
+import { db } from 'db';
 import type { Algorithm, Case, CaseWithContext, Set, SidebarSet, Subset } from '$lib/data/types';
 
-const sets = db.select().from(setTable).all() as Set[];
-const subsets = db.select().from(subsetTable).all() as Subset[];
-const cases = db.select().from(caseTable).all() as Case[];
-const algorithms = db.select().from(algorithmTable).all() as Algorithm[];
+// Each case is fetched with its parent subset (+ its set) and its algorithms, so
+// the view-model can be assembled without loading unrelated rows.
+const caseWith = {
+	subset: { with: { set: true } },
+	algorithms: true
+} as const;
 
-const setsById = new Map(sets.map((s) => [s.id, s]));
-const subsetsById = new Map(subsets.map((s) => [s.id, s]));
+// Drizzle types `one` relations as nullable (it doesn't assume FK presence),
+// so guard them — mirroring the previous repository's "not found" errors.
+type CaseRow = Case & { subset: (Subset & { set: Set | null }) | null; algorithms: Algorithm[] };
 
-const subsetsBySet = new Map<string, Subset[]>();
-for (const s of subsets) {
-	const list = subsetsBySet.get(s.setId) ?? [];
-	list.push(s);
-	subsetsBySet.set(s.setId, list);
-}
-
-const casesBySubset = new Map<string, Case[]>();
-for (const c of cases) {
-	const list = casesBySubset.get(c.subsetId) ?? [];
-	list.push(c);
-	casesBySubset.set(c.subsetId, list);
-}
-
-const algorithmsByCase = new Map<string, Algorithm[]>();
-for (const a of algorithms) {
-	const list = algorithmsByCase.get(a.caseId) ?? [];
-	list.push(a);
-	algorithmsByCase.set(a.caseId, list);
-}
-
-const buildContext = (c: Case): CaseWithContext => {
-	const subset = subsetsById.get(c.subsetId);
-	if (!subset) throw new Error(`Subset ${c.subsetId} not found for case ${c.id}`);
-	const set = setsById.get(subset.setId);
+const toCaseWithContext = (c: CaseRow): CaseWithContext => {
+	if (!c.subset) throw new Error(`Subset ${c.subsetId} not found for case ${c.id}`);
+	const { set, ...subset } = c.subset;
 	if (!set) throw new Error(`Set ${subset.setId} not found for subset ${subset.id}`);
-
-	const list = algorithmsByCase.get(c.id) ?? [];
-	const main = list.filter((a) => a.id === c.defaultAlgorithmId);
-	const rest = list.filter((a) => a.id !== c.defaultAlgorithmId);
+	const main = c.algorithms.filter((a) => a.id === c.defaultAlgorithmId);
+	const rest = c.algorithms.filter((a) => a.id !== c.defaultAlgorithmId);
 
 	return {
 		id: c.id,
@@ -57,29 +30,35 @@ const buildContext = (c: Case): CaseWithContext => {
 	};
 };
 
-export const getSets = (): Set[] => sets;
-export const findSet = (setId: string): Set | undefined => setsById.get(setId);
-export const findSubset = (subsetId: string): Subset | undefined => subsetsById.get(subsetId);
-export const getSetSubsets = (setId: string): Subset[] => subsetsBySet.get(setId) ?? [];
+export const getSets = (): Set[] => db.query.set.findMany().sync();
+
+export const findSet = (setId: string): Set | undefined =>
+	db.query.set.findFirst({ where: { id: setId } }).sync();
+
+export const findSubset = (subsetId: string): Subset | undefined =>
+	db.query.subset.findFirst({ where: { id: subsetId } }).sync();
+
+export const getSetSubsets = (setId: string): Subset[] =>
+	db.query.subset.findMany({ where: { setId } }).sync();
 
 export const getSubsetCases = (subsetId: string): CaseWithContext[] =>
-	(casesBySubset.get(subsetId) ?? []).map(buildContext);
+	db.query.case_.findMany({ where: { subsetId }, with: caseWith }).sync().map(toCaseWithContext);
 
 export const getSetCases = (setId: string): CaseWithContext[] =>
-	getSetSubsets(setId).flatMap((s) => getSubsetCases(s.id));
+	db.query.case_
+		.findMany({ where: { subset: { setId } }, with: caseWith })
+		.sync()
+		.map(toCaseWithContext);
 
-export const getAllCases = (): CaseWithContext[] => cases.map(buildContext);
+export const getAllCases = (): CaseWithContext[] =>
+	db.query.case_.findMany({ with: caseWith }).sync().map(toCaseWithContext);
 
 export const getCase = (caseId: string): CaseWithContext | undefined => {
-	const found = cases.find((c) => c.id === caseId);
-	return found ? buildContext(found) : undefined;
+	const c = db.query.case_.findFirst({ where: { id: caseId }, with: caseWith }).sync();
+	return c ? toCaseWithContext(c) : undefined;
 };
 
 export const getSidebarTree = (): SidebarSet[] =>
-	sets.map((set) => ({
-		...set,
-		subsets: getSetSubsets(set.id).map((subset) => ({
-			...subset,
-			cases: (casesBySubset.get(subset.id) ?? []).map((c) => ({ id: c.id, name: c.name }))
-		}))
-	}));
+	db.query.set
+		.findMany({ with: { subsets: { with: { cases: { columns: { id: true, name: true } } } } } })
+		.sync();
