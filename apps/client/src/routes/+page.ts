@@ -8,7 +8,14 @@ export const load: PageLoad = () => {
 	const allCases = getAllCases();
 
 	const items: PreviewItem[] = [
-		{ href: '/', name: 'All', previewAlgorithm: '', size: allCases.length, viewType: 'PLL' },
+		{
+			href: '/',
+			name: 'All',
+			previewAlgorithm: '',
+			size: allCases.length,
+			viewType: 'PLL',
+			all: true
+		},
 		...sets.map((set) => ({
 			href: `/${set.id}`,
 			name: set.name,

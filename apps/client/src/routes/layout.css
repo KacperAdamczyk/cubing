@@ -1,9 +1,80 @@
 @import 'tailwindcss';
+@plugin 'daisyui';
 
-@plugin 'daisyui' {
-	themes:
-		dark --default,
-		light;
+/* ===== Custom daisyUI themes — "Playful Cube" tuned surfaces ===== */
+/* base-100 is the clean, raised surface (cards/sidebar/navbar);            */
+/* base-200 is the page behind them; base-300 is borders/dividers.         */
+
+@plugin 'daisyui/theme' {
+	name: 'dark';
+	default: true;
+	prefersdark: true;
+	color-scheme: dark;
+
+	--color-base-100: #20202e;
+	--color-base-200: #15151f;
+	--color-base-300: #2f2f42;
+	--color-base-content: #f2f3f8;
+	--color-primary: #ff7a33;
+	--color-primary-content: #1a0a00;
+	--color-secondary: #a78bfa;
+	--color-secondary-content: #1a0033;
+	--color-accent: #1cb35a;
+	--color-accent-content: #04140d;
+	--color-neutral: #2a2a3c;
+	--color-neutral-content: #d6d7e3;
+	--color-info: #5b8bff;
+	--color-info-content: #03102e;
+	--color-success: #34d07a;
+	--color-success-content: #04140d;
+	--color-warning: #ffce3a;
+	--color-warning-content: #1a1400;
+	--color-error: #f0556a;
+	--color-error-content: #2a0007;
+
+	--radius-selector: 0.5rem;
+	--radius-field: 0.5rem;
+	--radius-box: 1rem;
+	--size-selector: 0.25rem;
+	--size-field: 0.25rem;
+	--border: 1px;
+	--depth: 1;
+	--noise: 0;
+}
+
+@plugin 'daisyui/theme' {
+	name: 'light';
+	color-scheme: light;
+
+	--color-base-100: #ffffff;
+	--color-base-200: #f2f4f7;
+	--color-base-300: #e3e7ee;
+	--color-base-content: #1b2230;
+	--color-primary: #ff5900;
+	--color-primary-content: #ffffff;
+	--color-secondary: #7c3aed;
+	--color-secondary-content: #ffffff;
+	--color-accent: #16a34a;
+	--color-accent-content: #ffffff;
+	--color-neutral: #1b2230;
+	--color-neutral-content: #f2f4f7;
+	--color-info: #2f6dff;
+	--color-info-content: #ffffff;
+	--color-success: #16a34a;
+	--color-success-content: #ffffff;
+	--color-warning: #e0a200;
+	--color-warning-content: #1a1400;
+	--color-error: #dc2626;
+	--color-error-content: #ffffff;
+
+	--radius-selector: 0.5rem;
+	--radius-field: 0.5rem;
+	--radius-box: 1rem;
+	--size-selector: 0.25rem;
+	--size-field: 0.25rem;
+	--border: 1px;
+	--depth: 1;
+	--noise: 0;
 }
 
 @theme {
@@ -18,4 +89,70 @@
 	--grid-template-columns-cube-flat: 0 repeat(3, 5fr) 0;
 	--grid-template-rows-cube: 1fr repeat(3, 5fr) 1fr;
 	--grid-template-rows-cube-flat: 0 repeat(3, 5fr) 0;
+}
+
+/* ===== Type accent system =====
+ * Color-code by algorithm type. A `data-type` attribute on a container sets
+ * `--type-accent` (+ content/tint/soft), which descendant utilities consume
+ * via `bg-(--type-accent)`, `border-(--type-accent)`, `text-(--type-accent)`,
+ * `ring-(--type-accent)`, `bg-(--type-tint)`, etc.
+ * Accents are contrast-tuned cousins of the real cube colors so text/borders
+ * stay legible on both themes; the cube stickers keep their true colors. */
+
+:root {
+	--color-type-f2l: #16a34a;
+	--color-type-oll: #e0a200;
+	--color-type-pll: #2f6dff;
+}
+
+[data-theme='dark'] {
+	--color-type-f2l: #1cb35a;
+	--color-type-oll: #ffce3a;
+	--color-type-pll: #5b8bff;
+}
+
+/* `--type-accent` drives bars/dots/rings/tints (no text on them, so it can be
+ * bright). `--type-pill` is a separate, AA-safe solid background for the small
+ * bold type pills, which DO carry text. */
+
+[data-type='F2L'] {
+	--type-accent: var(--color-type-f2l);
+	--type-accent-content: #ffffff;
+	--type-tint: color-mix(in srgb, var(--color-type-f2l) 7%, var(--color-base-100));
+	--type-soft: color-mix(in srgb, var(--color-type-f2l) 16%, transparent);
+	--type-pill: #15803d;
+	--type-pill-content: #ffffff;
+}
+
+[data-type='OLL'] {
+	--type-accent: var(--color-type-oll);
+	--type-accent-content: #1a1400;
+	--type-tint: color-mix(in srgb, var(--color-type-oll) 7%, var(--color-base-100));
+	--type-soft: color-mix(in srgb, var(--color-type-oll) 16%, transparent);
+	--type-pill: #e0a200;
+	--type-pill-content: #1a1400;
+}
+
+[data-type='PLL'] {
+	--type-accent: var(--color-type-pll);
+	--type-accent-content: #ffffff;
+	--type-tint: color-mix(in srgb, var(--color-type-pll) 7%, var(--color-base-100));
+	--type-soft: color-mix(in srgb, var(--color-type-pll) 16%, transparent);
+	--type-pill: #2563eb;
+	--type-pill-content: #ffffff;
+}
+
+[data-type='all'] {
+	--type-accent: #8b8ba0;
+	--type-accent-content: #ffffff;
+	--type-tint: var(--color-base-100);
+	--type-soft: color-mix(in srgb, var(--color-base-content) 8%, transparent);
+	--type-pill: #5b5b6e;
+	--type-pill-content: #ffffff;
+	--type-gradient: linear-gradient(135deg, #009b48, #ffd500 52%, #ff5900);
+}
+
+/* Shared cube-gradient (logo mark, the "All" chip edge) */
+.cube-gradient {
+	background-image: linear-gradient(135deg, #009b48, #ffd500 52%, #ff5900);
 }

@@ -18,23 +18,23 @@
 
 <div
 	class={[
-		'flex flex-col justify-center rounded-md border border-base-300',
-		{ 'mb-2 border-2': isMain }
+		'flex flex-col gap-1 rounded-field border px-3 py-2 text-center',
+		isMain ? 'border-(--type-accent)/35 bg-base-200/60' : 'border-base-300 bg-base-200/30'
 	]}
 >
 	<span
 		class={[
-			'flex items-center justify-center gap-1 p-1 text-center',
-			isMain ? 'text-2xl font-bold' : 'text-xl'
+			'flex flex-wrap items-center justify-center gap-x-1.5 gap-y-0.5 font-mono tracking-wide',
+			isMain ? 'text-xl font-bold sm:text-2xl' : 'text-base sm:text-lg'
 		]}
 	>
 		{algorithm.rotations}
 		<AlgorithmVerifier algorithm={algorithm.rotations} {setup} onlyError={slim} {viewType} />
 	</span>
 	{#if showMnemonic}
-		<span class="text-center text-lg text-base-content/80">{algorithm.mnemonics}</span>
+		<span class="text-sm text-base-content/75 italic">{algorithm.mnemonics}</span>
 	{/if}
 	{#if showDescription}
-		<span class="text-center text-base text-base-content/60">{algorithm.description}</span>
+		<span class="text-xs text-base-content/55">{algorithm.description}</span>
 	{/if}
 </div>

@@ -63,6 +63,8 @@ export interface PreviewItem {
 	previewAlgorithm: string;
 	size: number;
 	viewType: ViewType;
+	/** True for the home "All" chip, which spans every type and uses the neutral cube-gradient accent. */
+	all?: boolean;
 }
 
 export interface Breadcrumb {

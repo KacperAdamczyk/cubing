@@ -11,13 +11,17 @@
 	const active = $derived(breadcrumbs.at(-1));
 </script>
 
-<div class="breadcrumbs text-sm">
+<div class="breadcrumbs px-2 text-sm">
 	<ul>
 		{#each links as link (link.href)}
-			<li><a href={link.href}>{link.name}</a></li>
+			<li>
+				<a href={link.href} class="text-base-content/55 transition-colors hover:text-base-content">
+					{link.name}
+				</a>
+			</li>
 		{/each}
 		{#if active}
-			<li>{active.name}</li>
+			<li class="font-semibold">{active.name}</li>
 		{/if}
 	</ul>
 </div>

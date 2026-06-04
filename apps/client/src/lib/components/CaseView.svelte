@@ -11,36 +11,41 @@
 	let { case: c, slim }: Props = $props();
 </script>
 
-<div id={c.id} class="@container card w-full bg-base-200 p-2">
-	<div
-		class="card-body grid grid-cols-[8rem_1fr] grid-rows-[auto_1fr_auto] items-center justify-center gap-2 p-2 @lg:grid-cols-[15rem_1fr]"
-	>
-		<div class="col-start-1 row-span-2 row-start-1">
+<article
+	id={c.id}
+	data-type={c.viewType}
+	class="@container relative w-full overflow-hidden rounded-box border border-base-300 bg-(--type-tint) shadow-sm transition-shadow group-hover:shadow-lg"
+>
+	<span class="absolute inset-y-0 left-0 w-1.5 bg-(--type-accent)"></span>
+	<div class="flex items-center gap-4 p-4 pl-5 @lg:gap-6 @lg:p-6 @lg:pl-7">
+		<div class="size-28 shrink-0 @lg:size-40">
 			<CubeView algorithm={c.setup} type={c.viewType} />
 		</div>
-		<div
-			class="col-span-2 col-start-1 row-start-3 flex flex-col items-center rounded-md border-2 border-base-300 p-2"
-		>
-			<div>Setup</div>
-			<div class="divider my-1"></div>
-			<span class="text-center">{c.setup}</span>
+		<div class="flex min-w-0 flex-1 flex-col gap-3">
+			<div class="flex flex-wrap items-center gap-2">
+				<h2 class="text-2xl font-extrabold tracking-tight">{c.name}</h2>
+				{#if slim}
+					<span
+						class="rounded-full bg-(--type-pill) px-2.5 py-0.5 text-xs font-bold text-(--type-pill-content)"
+					>
+						{c.subset.name}
+					</span>
+				{:else}
+					<a
+						href={`/${c.subset.setId}/${c.subset.id}#${c.id}`}
+						class="rounded-full bg-(--type-pill) px-2.5 py-0.5 text-xs font-bold text-(--type-pill-content) transition-opacity hover:opacity-80"
+					>
+						{c.subset.name}
+					</a>
+				{/if}
+			</div>
+
+			<AlgorithmsList viewType={c.viewType} setup={c.setup} algorithms={c.algorithms} {slim} />
+
+			<p class="flex flex-wrap items-baseline gap-x-2 text-xs text-base-content/55">
+				<span class="font-bold tracking-wide text-base-content/45 uppercase">Setup</span>
+				<span class="font-mono">{c.setup}</span>
+			</p>
 		</div>
-		<div class="flex items-center justify-center gap-1">
-			<span class="text-2xl font-bold">{c.name}</span>
-			{#if slim}
-				<span class="badge">{c.subset.name}</span>
-			{:else}
-				<a href={`/${c.subset.setId}/${c.subset.id}#${c.id}`}>
-					<span class="badge">{c.subset.name}</span>
-				</a>
-			{/if}
-		</div>
-		<AlgorithmsList
-			class="self-start"
-			viewType={c.viewType}
-			setup={c.setup}
-			algorithms={c.algorithms}
-			{slim}
-		/>
 	</div>
-</div>
+</article>
