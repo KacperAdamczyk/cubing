@@ -965,6 +965,20 @@ git commit -m "test: verify db-backed remote-function data layer end-to-end"
 
 ## Notes for the implementer
 
+- **Correction applied during execution (Tasks 7–8):** do NOT wrap awaited remote
+  data in `<svelte:boundary>` with a `pending` snippet. A pending boundary is
+  rendered during SSR/prerender and the awaited content is *ignored* — so data is
+  not inlined into the HTML (only a spinner ships, then hydrates). Instead put the
+  `await` at the top of the component, *outside* any boundary: top-level
+  `const x = await fn()` for param-free components (layout, home) and
+  `const x = $derived(await fn(page.params.id!))` for param-dependent pages.
+  SvelteKit awaits these during prerender (data inlined) and `$derived(await …)`
+  stays reactive on client-side navigation. The committed components omit the
+  boundaries shown in the Task 7–8 code blocks. (Refs:
+  https://svelte.dev/docs/kit/remote-functions, https://svelte.dev/docs/svelte/await-expressions)
+- **`page.params.<x>`** from `$app/state` is typed `string | undefined` (the
+  app-wide union), so assert non-null when passing to a remote arg:
+  `getCaseView(page.params.caseId!)`.
 - **Always invoke client build/dev/test through the npm scripts** (which carry `bunx --bun`). A bare `vite build`/`vitest` under Node fails with `ERR_UNSUPPORTED_ESM_URL_SCHEME … protocol 'bun:'`.
 - **After editing `packages/db/db.sqlite`** (e.g. via Drizzle Studio), rerun `bun run --filter db build` so the externalized `db` resolves the latest file before a client build.
 - The stable fallback for the whole data layer, if an experimental API regresses, is server `load`s over the same `$lib/server/repository.ts` (no remote functions / async).
