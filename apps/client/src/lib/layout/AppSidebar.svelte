@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { Box, Search } from '@lucide/svelte';
 	import { page } from '$app/state';
-	import type { SidebarSet } from '$lib/data/types';
+	import type { SidebarCube } from '$lib/data/types';
 
 	interface Props {
-		sidebar: SidebarSet[];
+		sidebar: SidebarCube[];
 	}
 
 	let { sidebar }: Props = $props();
@@ -14,17 +14,25 @@
 	const filtered = $derived.by(() => {
 		const q = query.toLowerCase();
 		return sidebar
-			.map((set) => ({
-				...set,
-				subsets: set.subsets
-					.map((subset) =>
-						subset.name.toLowerCase().includes(q)
-							? subset
-							: { ...subset, cases: subset.cases.filter((c) => c.name.toLowerCase().includes(q)) }
-					)
-					.filter((subset) => subset.cases.length > 0)
+			.map((cube) => ({
+				...cube,
+				sets: cube.sets
+					.map((set) => ({
+						...set,
+						subsets: set.subsets
+							.map((subset) =>
+								subset.name.toLowerCase().includes(q)
+									? subset
+									: {
+											...subset,
+											cases: subset.cases.filter((c) => c.name.toLowerCase().includes(q))
+										}
+							)
+							.filter((subset) => subset.cases.length > 0)
+					}))
+					.filter((set) => set.subsets.length > 0)
 			}))
-			.filter((set) => set.subsets.length > 0);
+			.filter((cube) => cube.sets.length > 0);
 	});
 
 	const isActive = (href: string) => page.url.pathname === href;
@@ -53,50 +61,58 @@
 	</label>
 
 	<ul class="menu w-full grow flex-nowrap gap-0.5 overflow-y-auto px-0">
-		{#each filtered as set (set.id)}
-			<li data-type={set.viewType}>
-				<a
-					href={`/${set.id}`}
-					class={[
-						'gap-2.5 font-semibold transition-colors',
-						isActive(`/${set.id}`) && `bg-(--type-soft) ${activeBar}`
-					]}
-				>
-					<span class="size-2.5 rounded-[3px] bg-(--type-accent)"></span>
-					{set.name}
+		{#each filtered as cube (cube.id)}
+			<li class="menu-title px-0">
+				<a href={`/${cube.id}`} class={['font-bold', isActive(`/${cube.id}`) && 'text-base-content']}>
+					{cube.name}
 				</a>
-				<ul class="border-base-300">
-					{#each set.subsets as subset (subset.id)}
-						<li>
-							<a
-								href={`/${set.id}/${subset.id}`}
-								class={[
-									'transition-colors',
-									isActive(`/${set.id}/${subset.id}`) && `bg-(--type-soft) font-medium ${activeBar}`
-								]}
-							>
-								{subset.name}
-							</a>
-							<ul>
-								{#each subset.cases as c (c.id)}
-									<li>
-										<a
-											href={`/${set.id}/${subset.id}/${c.id}`}
-											class={[
-												'transition-colors',
-												isActive(`/${set.id}/${subset.id}/${c.id}`) &&
-													`bg-(--type-soft) font-medium ${activeBar}`
-											]}
-										>
-											{c.name}
-										</a>
-									</li>
-								{/each}
-							</ul>
-						</li>
-					{/each}
-				</ul>
 			</li>
+			{#each cube.sets as set (set.id)}
+				<li data-type={set.viewType}>
+					<a
+						href={`/${cube.id}/${set.id}`}
+						class={[
+							'gap-2.5 font-semibold transition-colors',
+							isActive(`/${cube.id}/${set.id}`) && `bg-(--type-soft) ${activeBar}`
+						]}
+					>
+						<span class="size-2.5 rounded-[3px] bg-(--type-accent)"></span>
+						{set.name}
+					</a>
+					<ul class="border-base-300">
+						{#each set.subsets as subset (subset.id)}
+							<li>
+								<a
+									href={`/${cube.id}/${set.id}/${subset.id}`}
+									class={[
+										'transition-colors',
+										isActive(`/${cube.id}/${set.id}/${subset.id}`) &&
+											`bg-(--type-soft) font-medium ${activeBar}`
+									]}
+								>
+									{subset.name}
+								</a>
+								<ul>
+									{#each subset.cases as c (c.id)}
+										<li>
+											<a
+												href={`/${cube.id}/${set.id}/${subset.id}/${c.id}`}
+												class={[
+													'transition-colors',
+													isActive(`/${cube.id}/${set.id}/${subset.id}/${c.id}`) &&
+														`bg-(--type-soft) font-medium ${activeBar}`
+												]}
+											>
+												{c.name}
+											</a>
+										</li>
+									{/each}
+								</ul>
+							</li>
+						{/each}
+					</ul>
+				</li>
+			{/each}
 		{/each}
 	</ul>
 </aside>
