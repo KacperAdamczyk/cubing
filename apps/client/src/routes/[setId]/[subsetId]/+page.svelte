@@ -5,7 +5,7 @@
 	import { getSubsetView } from '$lib/data/catalog.remote';
 
 	const view = $derived(
-		await getSubsetView({ setId: page.params.setId, subsetId: page.params.subsetId })
+		await getSubsetView({ setId: page.params.setId!, subsetId: page.params.subsetId! })
 	);
 </script>
 

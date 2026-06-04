@@ -10,7 +10,14 @@ export const getHomeView = prerender(() => {
 	const sets = repo.getSets();
 	const cases = repo.getAllCases();
 	const items: PreviewItem[] = [
-		{ href: '/', name: 'All', previewAlgorithm: '', size: cases.length, viewType: 'PLL', all: true },
+		{
+			href: '/',
+			name: 'All',
+			previewAlgorithm: '',
+			size: cases.length,
+			viewType: 'PLL',
+			all: true
+		},
 		...sets.map((set) => ({
 			href: `/${set.id}`,
 			name: set.name,

@@ -4,7 +4,7 @@
 	import PreviewList from '$lib/components/PreviewList.svelte';
 	import { getSetView } from '$lib/data/catalog.remote';
 
-	const view = $derived(await getSetView(page.params.setId));
+	const view = $derived(await getSetView(page.params.setId!));
 </script>
 
 <PreviewList items={view.items} />
