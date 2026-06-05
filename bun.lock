@@ -45,7 +45,7 @@
         "vitest": "4.1.8",
         "vitest-browser-svelte": "2.1.1",
         "wrangler": "4.98.0",
-        "zod": "3.25.76",
+        "zod": "4.4.3",
       },
     },
     "packages/cube": {
@@ -1082,7 +1082,7 @@
 
     "zlye": ["zlye@0.4.4", "", { "dependencies": { "picocolors": "^1.1.1" }, "peerDependencies": { "typescript": ">=4.5.0" }, "optionalPeers": ["typescript"] }, "sha512-fwpeC841X3ElOLYRMKXbwX29pitNrsm6nRNvEhDMrRXDl3BhR2i03Bkr0GNrpyYgZJuEzUsBylXAYzgGPXXOCQ=="],
 
-    "zod": ["zod@3.25.76", "", {}, "sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ=="],
+    "zod": ["zod@4.4.3", "", {}, "sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ=="],
 
     "@bunup/dts/std-env": ["std-env@3.10.0", "", {}, "sha512-5GS12FdOZNliM5mAOxFRg7Ir0pWz8MdpYm6AY6VPkGpbA7ZzmbzNcBJQ0GPvvyWgcY7QAhCgf9Uy89I03faLkg=="],
 
