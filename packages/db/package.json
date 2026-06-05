@@ -26,7 +26,7 @@
 	},
 	"devDependencies": {
 		"@types/bun": "latest",
-		"bunup": "^0.16.32",
+		"bunup": "0.16.32",
 		"drizzle-kit": "1.0.0-rc.3"
 	},
 	"dependencies": {
