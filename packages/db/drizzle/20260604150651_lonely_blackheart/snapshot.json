@@ -1,0 +1,425 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "id": "24ea5a35-75be-4787-a71e-f3991633efbd",
+  "prevIds": [
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "ddl": [
+    {
+      "name": "algorithm",
+      "entityType": "tables"
+    },
+    {
+      "name": "case",
+      "entityType": "tables"
+    },
+    {
+      "name": "cube",
+      "entityType": "tables"
+    },
+    {
+      "name": "set",
+      "entityType": "tables"
+    },
+    {
+      "name": "subset",
+      "entityType": "tables"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "algorithm"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "algorithm"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "case_id",
+      "entityType": "columns",
+      "table": "algorithm"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "rotations",
+      "entityType": "columns",
+      "table": "algorithm"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "mnemonics",
+      "entityType": "columns",
+      "table": "algorithm"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "description",
+      "entityType": "columns",
+      "table": "algorithm"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "case"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "case"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "setup",
+      "entityType": "columns",
+      "table": "case"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "subset_id",
+      "entityType": "columns",
+      "table": "case"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "default_algorithm_id",
+      "entityType": "columns",
+      "table": "case"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "cube"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "cube"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "set"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "set"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "preview_algorithm",
+      "entityType": "columns",
+      "table": "set"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "cube_id",
+      "entityType": "columns",
+      "table": "set"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "view_type",
+      "entityType": "columns",
+      "table": "set"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "subset"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "subset"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "preview_algorithm",
+      "entityType": "columns",
+      "table": "subset"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "set_id",
+      "entityType": "columns",
+      "table": "subset"
+    },
+    {
+      "columns": [
+        "case_id"
+      ],
+      "tableTo": "case",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "nameExplicit": false,
+      "name": "fk_algorithm_case_id_case_id_fk",
+      "entityType": "fks",
+      "table": "algorithm"
+    },
+    {
+      "columns": [
+        "subset_id"
+      ],
+      "tableTo": "subset",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "nameExplicit": false,
+      "name": "fk_case_subset_id_subset_id_fk",
+      "entityType": "fks",
+      "table": "case"
+    },
+    {
+      "columns": [
+        "default_algorithm_id"
+      ],
+      "tableTo": "algorithm",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "nameExplicit": false,
+      "name": "fk_case_default_algorithm_id_algorithm_id_fk",
+      "entityType": "fks",
+      "table": "case"
+    },
+    {
+      "columns": [
+        "cube_id"
+      ],
+      "tableTo": "cube",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "nameExplicit": false,
+      "name": "fk_set_cube_id_cube_id_fk",
+      "entityType": "fks",
+      "table": "set"
+    },
+    {
+      "columns": [
+        "set_id"
+      ],
+      "tableTo": "set",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "nameExplicit": false,
+      "name": "fk_subset_set_id_set_id_fk",
+      "entityType": "fks",
+      "table": "subset"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "algorithm_pk",
+      "table": "algorithm",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "case_pk",
+      "table": "case",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "cube_pk",
+      "table": "cube",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "set_pk",
+      "table": "set",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "subset_pk",
+      "table": "subset",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "name"
+      ],
+      "nameExplicit": false,
+      "name": "algorithm_name_unique",
+      "entityType": "uniques",
+      "table": "algorithm"
+    },
+    {
+      "columns": [
+        "rotations"
+      ],
+      "nameExplicit": false,
+      "name": "algorithm_rotations_unique",
+      "entityType": "uniques",
+      "table": "algorithm"
+    },
+    {
+      "columns": [
+        "name"
+      ],
+      "nameExplicit": false,
+      "name": "case_name_unique",
+      "entityType": "uniques",
+      "table": "case"
+    },
+    {
+      "columns": [
+        "name"
+      ],
+      "nameExplicit": false,
+      "name": "cube_name_unique",
+      "entityType": "uniques",
+      "table": "cube"
+    },
+    {
+      "columns": [
+        "name"
+      ],
+      "nameExplicit": false,
+      "name": "set_name_unique",
+      "entityType": "uniques",
+      "table": "set"
+    },
+    {
+      "columns": [
+        "name"
+      ],
+      "nameExplicit": false,
+      "name": "subset_name_unique",
+      "entityType": "uniques",
+      "table": "subset"
+    }
+  ],
+  "renames": []
+}

@@ -7,9 +7,14 @@
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 	import AppSidebar from '$lib/layout/AppSidebar.svelte';
-	import type { LayoutData } from './$types';
+	import { getBreadcrumbs } from '$lib/data/breadcrumbs';
+	import { getSidebar } from '$lib/data/catalog.remote';
 
-	let { data, children }: { data: LayoutData; children: Snippet } = $props();
+	let { children }: { children: Snippet } = $props();
+
+	// Awaited outside any <svelte:boundary> so the data is awaited during SSR and
+	// inlined into the prerendered HTML (a pending boundary would suppress that).
+	const sidebar = await getSidebar();
 </script>
 
 <svelte:head>
@@ -28,7 +33,7 @@
 				<Menu class="size-5" />
 			</label>
 			<div class="flex-1">
-				<Breadcrumbs breadcrumbs={page.data.breadcrumbs ?? []} />
+				<Breadcrumbs breadcrumbs={getBreadcrumbs(sidebar, page.params)} />
 			</div>
 			<ThemeToggle />
 		</header>
@@ -40,6 +45,6 @@
 	</div>
 	<div class="drawer-side z-30">
 		<label for="app-drawer" class="drawer-overlay" aria-label="Close sidebar"></label>
-		<AppSidebar sidebar={data.sidebar} />
+		<AppSidebar {sidebar} />
 	</div>
 </div>

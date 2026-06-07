@@ -20,11 +20,13 @@
 		"dev": "bunup --watch",
 		"drizzle": "drizzle-kit",
 		"drizzle:push": "drizzle-kit push",
+		"drizzle:generate": "drizzle-kit generate",
+		"drizzle:migrate": "drizzle-kit migrate",
 		"drizzle:studio": "drizzle-kit studio"
 	},
 	"devDependencies": {
 		"@types/bun": "latest",
-		"bunup": "^0.16.32",
+		"bunup": "0.16.32",
 		"drizzle-kit": "1.0.0-rc.3"
 	},
 	"dependencies": {
