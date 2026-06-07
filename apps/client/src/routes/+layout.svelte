@@ -14,7 +14,10 @@
 
 <svelte:head>
 	<title>My Cubing Algs</title>
-	<link rel="icon" href={favicon} />
+	<link rel="icon" type="image/svg+xml" href={favicon} />
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+	<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#15151f" />
+	<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f4f7" />
 </svelte:head>
 
 <div class="drawer lg:drawer-open">
