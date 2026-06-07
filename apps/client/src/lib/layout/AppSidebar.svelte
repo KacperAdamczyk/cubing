@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { Box, Search } from '@lucide/svelte';
+	import { Search } from '@lucide/svelte';
 	import { page } from '$app/state';
+	import favicon from '$lib/assets/favicon.svg';
 	import type { SidebarCube } from '$lib/data/types';
 
 	interface Props {
@@ -42,11 +43,7 @@
 
 <aside class="flex min-h-full w-72 flex-col gap-3 border-r border-base-300 bg-base-100 p-4">
 	<a href="/" class="flex items-center gap-2.5 px-2 py-1">
-		<span
-			class="cube-gradient flex size-8 items-center justify-center rounded-lg text-white shadow-sm"
-		>
-			<Box class="size-4" />
-		</span>
+		<img src={favicon} alt="" class="size-8 drop-shadow-sm" />
 		<span class="text-base font-bold tracking-tight">Algorithms</span>
 	</a>
 
