@@ -1,33 +1,33 @@
-import type { Colors } from "@/cube/types/Colors";
+import type { Color } from "@/cube/types/Color";
 
 export type ColorOrientation =
 	// Y
-	| { U: Colors.Y; F: Colors.B }
-	| { U: Colors.Y; F: Colors.G }
-	| { U: Colors.Y; F: Colors.O }
-	| { U: Colors.Y; F: Colors.R }
+	| { U: Color.Y; F: Color.B }
+	| { U: Color.Y; F: Color.G }
+	| { U: Color.Y; F: Color.O }
+	| { U: Color.Y; F: Color.R }
 	// W
-	| { U: Colors.W; F: Colors.B }
-	| { U: Colors.W; F: Colors.G }
-	| { U: Colors.W; F: Colors.O }
-	| { U: Colors.W; F: Colors.R }
+	| { U: Color.W; F: Color.B }
+	| { U: Color.W; F: Color.G }
+	| { U: Color.W; F: Color.O }
+	| { U: Color.W; F: Color.R }
 	// G
-	| { U: Colors.G; F: Colors.O }
-	| { U: Colors.G; F: Colors.R }
-	| { U: Colors.G; F: Colors.W }
-	| { U: Colors.G; F: Colors.Y }
+	| { U: Color.G; F: Color.O }
+	| { U: Color.G; F: Color.R }
+	| { U: Color.G; F: Color.W }
+	| { U: Color.G; F: Color.Y }
 	// B
-	| { U: Colors.B; F: Colors.Y }
-	| { U: Colors.B; F: Colors.O }
-	| { U: Colors.B; F: Colors.W }
-	| { U: Colors.B; F: Colors.R }
+	| { U: Color.B; F: Color.Y }
+	| { U: Color.B; F: Color.O }
+	| { U: Color.B; F: Color.W }
+	| { U: Color.B; F: Color.R }
 	// O
-	| { U: Colors.O; F: Colors.G }
-	| { U: Colors.O; F: Colors.W }
-	| { U: Colors.O; F: Colors.B }
-	| { U: Colors.O; F: Colors.Y }
+	| { U: Color.O; F: Color.G }
+	| { U: Color.O; F: Color.W }
+	| { U: Color.O; F: Color.B }
+	| { U: Color.O; F: Color.Y }
 	// R
-	| { U: Colors.R; F: Colors.G }
-	| { U: Colors.R; F: Colors.Y }
-	| { U: Colors.R; F: Colors.B }
-	| { U: Colors.R; F: Colors.W };
+	| { U: Color.R; F: Color.G }
+	| { U: Color.R; F: Color.Y }
+	| { U: Color.R; F: Color.B }
+	| { U: Color.R; F: Color.W };

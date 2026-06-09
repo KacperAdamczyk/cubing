@@ -1,1 +1,0 @@
-export { getPieceDescriptorForRotation } from "./getPieceDescriptorForRotation";

@@ -1,10 +1,4 @@
-import {
-	applyRotations,
-	createCube,
-	isCubeSolved,
-	rotationsFromString,
-	toColoredFaceSlices
-} from 'cube';
+import { applyMoves, createCube, isCubeSolved, movesFromString, toColoredFaceGrids } from 'cube';
 import type { ViewType } from '$lib/data/types';
 
 /**
@@ -17,13 +11,13 @@ export const isAlgorithmCorrect = (
 	algorithm: string,
 	viewType: ViewType
 ): boolean => {
-	const operations = rotationsFromString(`${setup} ${algorithm}`);
-	const scrambled = applyRotations(operations, createCube());
+	const operations = movesFromString(`${setup} ${algorithm}`);
+	const scrambled = applyMoves(operations, createCube());
 
 	if (viewType === 'PLL') {
 		return isCubeSolved(scrambled);
 	}
 
-	const faces = toColoredFaceSlices(scrambled);
+	const faces = toColoredFaceGrids(scrambled);
 	return new Set(faces.U.flat()).size === 1;
 };

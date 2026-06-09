@@ -1,10 +1,10 @@
-type Slice<Value> = [Value, Value, Value];
+import type { Triple } from "@/cube/types/Triple";
 
-export enum AdjacentFaces {
+export enum Side {
 	Top = "Top",
 	Bottom = "Bottom",
 	Left = "Left",
 	Right = "Right",
 }
 
-export type AdjacentPieces<Value> = Record<AdjacentFaces, Slice<Value>>;
+export type AdjacentPieces<Value> = Record<Side, Triple<Value>>;

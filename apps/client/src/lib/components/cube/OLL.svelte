@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Colors } from 'cube';
+	import { Color } from 'cube';
 	import LastLayer from './LastLayer.svelte';
 
 	interface Props {
@@ -9,4 +9,4 @@
 	let { algorithm }: Props = $props();
 </script>
 
-<LastLayer maskedColors={[Colors.B, Colors.G, Colors.O, Colors.R, Colors.W]} {algorithm} />
+<LastLayer maskedColors={[Color.B, Color.G, Color.O, Color.R, Color.W]} {algorithm} />

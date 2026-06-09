@@ -1,8 +1,8 @@
 import { expect, test } from "bun:test";
-import { applyRotations } from "@/cube/compound/applyRotations";
+import { applyMoves } from "@/cube/compound/applyMoves";
 import { isCubeSolved } from "@/cube/helpers/isCubeSolved";
-import { createCube } from "@/cube/initializers/createCube";
-import { Rotations } from "@/cube/types/Rotations";
+import { createCube } from "@/cube/factories/createCube";
+import { Move } from "@/cube/types/Move";
 
 test("correctly identifies a solved cube", () => {
 	const cube = createCube();
@@ -13,7 +13,7 @@ test("correctly identifies a solved cube", () => {
 });
 
 test("correctly identifies an unsolved cube", () => {
-	const cube = applyRotations([Rotations.R], createCube());
+	const cube = applyMoves([Move.R], createCube());
 
 	const isSolved = isCubeSolved(cube);
 

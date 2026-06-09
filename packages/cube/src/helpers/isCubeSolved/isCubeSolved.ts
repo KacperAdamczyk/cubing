@@ -1,8 +1,8 @@
-import { toFaceSlices } from "@/cube/internal/toFaceSlices";
+import { toFaceGrids } from "@/cube/internal/toFaceGrids";
 import type { Cube } from "@/cube/types/Cube";
 
 export const isCubeSolved = (cube: Cube): boolean => {
-	const faces = toFaceSlices(cube);
+	const faces = toFaceGrids(cube);
 
 	const hasAllFacesUnified = Object.values(faces).every(
 		(face) => new Set(face.flat()).size === 1,

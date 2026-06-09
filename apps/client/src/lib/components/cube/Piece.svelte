@@ -3,10 +3,10 @@
 </script>
 
 <script lang="ts">
-	import { Colors } from 'cube';
+	import { Color } from 'cube';
 
 	interface Props {
-		color?: Colors | typeof blankColor;
+		color?: Color | typeof blankColor;
 		class?: string;
 	}
 
@@ -19,12 +19,12 @@
 		'rounded',
 		{
 			'bg-cube-blank': color === blankColor,
-			'bg-cube-green': color === Colors.G,
-			'bg-cube-red': color === Colors.R,
-			'bg-cube-blue': color === Colors.B,
-			'bg-cube-orange': color === Colors.O,
-			'bg-cube-yellow': color === Colors.Y,
-			'bg-cube-white': color === Colors.W
+			'bg-cube-green': color === Color.G,
+			'bg-cube-red': color === Color.R,
+			'bg-cube-blue': color === Color.B,
+			'bg-cube-orange': color === Color.O,
+			'bg-cube-yellow': color === Color.Y,
+			'bg-cube-white': color === Color.W
 		}
 	]}
 ></div>

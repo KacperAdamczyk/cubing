@@ -1,85 +1,85 @@
 import { expect, test } from "bun:test";
-import { createCube } from "@/cube/initializers/createCube";
+import { createCube } from "@/cube/factories/createCube";
 import { rotateCube } from "@/cube/internal/rotateCube";
-import { toFaceSlices } from "@/cube/internal/toFaceSlices";
-import type { FaceSlices } from "@/cube/types/FaceSlices";
-import { Faces } from "@/cube/types/Faces";
-import { FundamentalRotations } from "@/cube/types/Rotations";
+import { toFaceGrids } from "@/cube/internal/toFaceGrids";
+import type { FaceGrids } from "@/cube/types/FaceGrids";
+import { Face } from "@/cube/types/Face";
+import { FundamentalMove } from "@/cube/types/Move";
 
 test("rotates cube by R", () => {
 	const cube = createCube();
 
-	const rotatedCube = rotateCube(FundamentalRotations.R, cube);
+	const rotatedCube = rotateCube(FundamentalMove.R, cube);
 
-	expect(toFaceSlices(rotatedCube)).toEqual({
+	expect(toFaceGrids(rotatedCube)).toEqual({
 		U: [
-			[Faces.U, Faces.U, Faces.F],
-			[Faces.U, Faces.U, Faces.F],
-			[Faces.U, Faces.U, Faces.F],
+			[Face.U, Face.U, Face.F],
+			[Face.U, Face.U, Face.F],
+			[Face.U, Face.U, Face.F],
 		],
 		F: [
-			[Faces.F, Faces.F, Faces.D],
-			[Faces.F, Faces.F, Faces.D],
-			[Faces.F, Faces.F, Faces.D],
+			[Face.F, Face.F, Face.D],
+			[Face.F, Face.F, Face.D],
+			[Face.F, Face.F, Face.D],
 		],
 		R: [
-			[Faces.R, Faces.R, Faces.R],
-			[Faces.R, Faces.R, Faces.R],
-			[Faces.R, Faces.R, Faces.R],
+			[Face.R, Face.R, Face.R],
+			[Face.R, Face.R, Face.R],
+			[Face.R, Face.R, Face.R],
 		],
 		D: [
-			[Faces.D, Faces.D, Faces.B],
-			[Faces.D, Faces.D, Faces.B],
-			[Faces.D, Faces.D, Faces.B],
+			[Face.D, Face.D, Face.B],
+			[Face.D, Face.D, Face.B],
+			[Face.D, Face.D, Face.B],
 		],
 		B: [
-			[Faces.U, Faces.B, Faces.B],
-			[Faces.U, Faces.B, Faces.B],
-			[Faces.U, Faces.B, Faces.B],
+			[Face.U, Face.B, Face.B],
+			[Face.U, Face.B, Face.B],
+			[Face.U, Face.B, Face.B],
 		],
 		L: [
-			[Faces.L, Faces.L, Faces.L],
-			[Faces.L, Faces.L, Faces.L],
-			[Faces.L, Faces.L, Faces.L],
+			[Face.L, Face.L, Face.L],
+			[Face.L, Face.L, Face.L],
+			[Face.L, Face.L, Face.L],
 		],
-	} satisfies FaceSlices<Faces>);
+	} satisfies FaceGrids<Face>);
 });
 
 test("rotates cube by M", () => {
 	const cube = createCube();
 
-	const rotatedCube = rotateCube(FundamentalRotations.M, cube);
+	const rotatedCube = rotateCube(FundamentalMove.M, cube);
 
-	expect(toFaceSlices(rotatedCube)).toEqual({
+	expect(toFaceGrids(rotatedCube)).toEqual({
 		U: [
-			[Faces.U, Faces.B, Faces.U],
-			[Faces.U, Faces.B, Faces.U],
-			[Faces.U, Faces.B, Faces.U],
+			[Face.U, Face.B, Face.U],
+			[Face.U, Face.B, Face.U],
+			[Face.U, Face.B, Face.U],
 		],
 		F: [
-			[Faces.F, Faces.U, Faces.F],
-			[Faces.F, Faces.U, Faces.F],
-			[Faces.F, Faces.U, Faces.F],
+			[Face.F, Face.U, Face.F],
+			[Face.F, Face.U, Face.F],
+			[Face.F, Face.U, Face.F],
 		],
 		R: [
-			[Faces.R, Faces.R, Faces.R],
-			[Faces.R, Faces.R, Faces.R],
-			[Faces.R, Faces.R, Faces.R],
+			[Face.R, Face.R, Face.R],
+			[Face.R, Face.R, Face.R],
+			[Face.R, Face.R, Face.R],
 		],
 		D: [
-			[Faces.D, Faces.F, Faces.D],
-			[Faces.D, Faces.F, Faces.D],
-			[Faces.D, Faces.F, Faces.D],
+			[Face.D, Face.F, Face.D],
+			[Face.D, Face.F, Face.D],
+			[Face.D, Face.F, Face.D],
 		],
 		B: [
-			[Faces.B, Faces.D, Faces.B],
-			[Faces.B, Faces.D, Faces.B],
-			[Faces.B, Faces.D, Faces.B],
+			[Face.B, Face.D, Face.B],
+			[Face.B, Face.D, Face.B],
+			[Face.B, Face.D, Face.B],
 		],
 		L: [
-			[Faces.L, Faces.L, Faces.L],
-			[Faces.L, Faces.L, Faces.L],
-			[Faces.L, Faces.L, Faces.L],
+			[Face.L, Face.L, Face.L],
+			[Face.L, Face.L, Face.L],
+			[Face.L, Face.L, Face.L],
 		],
-	} satisfies FaceSlices<Faces>);
+	} satisfies FaceGrids<Face>);
 });

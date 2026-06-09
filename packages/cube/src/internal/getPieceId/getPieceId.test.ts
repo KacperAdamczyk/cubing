@@ -1,14 +1,14 @@
 import { expect, test } from "bun:test";
 import { getPieceId } from "@/cube/internal/getPieceId";
-import { mockPieceScheme } from "@/cube/test/mockPieceScheme";
-import { Faces } from "@/cube/types/Faces";
+import { mockStickers } from "@/cube/test/mockStickers";
+import { Face } from "@/cube/types/Face";
 
 test("returns the piece id", () => {
 	const id = getPieceId(
-		mockPieceScheme({
-			U: Faces.R,
-			R: Faces.U,
-			B: Faces.F,
+		mockStickers({
+			U: Face.R,
+			R: Face.U,
+			B: Face.F,
 		}),
 	);
 
