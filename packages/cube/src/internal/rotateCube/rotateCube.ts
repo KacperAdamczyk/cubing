@@ -5,11 +5,11 @@ import type { Cube } from "@/cube/types/Cube";
 import type { Face } from "@/cube/types/Face";
 import type { FundamentalMove } from "@/cube/types/Move";
 
-export const rotateCube = (move: FundamentalMove, cube: Cube): Cube =>
-	produce(cube, (cubeDraft) => {
-		for (const piece of cubeDraft.state) {
-			const { types, includeFaces, skipFaces = [] } = getMoveScope(move);
+export const rotateCube = (move: FundamentalMove, cube: Cube): Cube => {
+	const { types, includeFaces, skipFaces = [] } = getMoveScope(move);
 
+	return produce(cube, (cubeDraft) => {
+		for (const piece of cubeDraft.state) {
 			const pieceFaces = Object.entries(piece.stickers) as [
 				Face,
 				Face | undefined,
@@ -30,3 +30,4 @@ export const rotateCube = (move: FundamentalMove, cube: Cube): Cube =>
 			piece.stickers = rotatePiece(move, piece).stickers;
 		}
 	});
+};

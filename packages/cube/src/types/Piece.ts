@@ -1,4 +1,3 @@
-import type { Color } from "@/cube/types/Color";
 import type { Stickers } from "@/cube/types/Stickers";
 
 export enum PieceType {
@@ -10,11 +9,6 @@ export enum PieceType {
 export interface Piece {
 	type: PieceType;
 	stickers: Stickers;
-}
-
-export interface ColoredPiece {
-	type: PieceType;
-	stickers: Stickers<Color>;
 }
 
 export interface CornerPiece extends Piece {
