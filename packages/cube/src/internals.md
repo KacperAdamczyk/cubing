@@ -1,106 +1,69 @@
+# Cube engine internals
+
+A framework-agnostic 3x3 Rubik's Cube simulation. Every operation is a pure,
+immutable transformation; nothing here touches the DOM or any framework.
+
 ## Design
 
-- The 3x3 cube is divided into 26 pieces.
-- Each piece is either a corner or an edge
-- Each piece is treated as a 1x1 cube
-- Each operation on the cube is a rotation on a piece
+- The cube is modelled as the 26 visible pieces (the hidden core is omitted):
+  8 corners, 12 edges, 6 centers.
+- Each piece is treated as its own 1x1 cube. A piece's **stickers** record,
+  for each of the six directions (U/D/F/B/L/R), which original face currently
+  points that way — or `undefined` where the piece has no sticker.
+- Every move is expressed as a rotation of the affected pieces' stickers, so
+  the cube state is just the collection of pieces and their stickers.
 
-## Cube pieces layout
+## Piece layout
 
-|     |     |      |     |     |     |      |     |     |       |      |     |
-| --- | --- | ---- | --- | --- | --- | ---- | --- | --- | ----- | ---- | --- |
-|     |     |      | 18  | 19  | 20  |      |     |     |       |      |     |
-|     |     |      | 10  | 11  | 12  |      |     |     |       |      |     |
-|     |     |      | 1   | 2   | 3   |      |     |     |       |      |     |
-|     |     |      |     |     |     |      |     |     |       | <--> |     |
-| 18  | 10  | 1 \| | 1   | 2   | 3   | \| 3 | 12  | 20  | \| 18 | 19   | 20  |
-| 21  | 13  | 4 \| | 4   | 5   | 6   | \| 6 | 14  | 23  | \| 21 | 22   | 23  |
-| 24  | 15  | 7 \| | 7   | 8   | 9   | \| 9 | 17  | 26  | \| 24 | 25   | 26  |
-|     |     |      |     |     |     |      |     |     |       |      |     |
-|     |     |      | 7   | 8   | 9   |      |     |     |       |      |     |
-|     |     |      | 15  | 16  | 17  |      |     |     |       |      |     |
-|     |     |      | 24  | 25  | 26  |      |     |     |       |      |     |
+`CubeState` is a 26-tuple laid out top layer, then middle layer, then bottom
+layer (9 + 8 + 9). Pieces are not identified by index but by the faces they
+occupy — `getPieceId` derives that set from a piece's stickers, and
+`stringifyPieceId` turns it into a stable key (e.g. `FRU`). The authoritative
+construction of the solved cube lives in `factories/createCubeState`.
 
-## Cube
+`toFaceGrids` maps those pieces onto the six 3x3 face grids via the
+`facesToIdsMap` table; `toColoredFaceGrids` then colors them for a given
+orientation.
 
-- cube state
-- color orientation
-- history?
+## Core types
 
-## Cube State
+- `Cube` — `{ orientation, state }`.
+- `CubeState` — the 26-piece tuple (`CornerPiece` / `EdgePiece` / `CenterPiece`).
+- `Piece` — `{ type, stickers }`.
+- `Stickers<Value = Face>` — `Record<Face, Value | undefined>`.
+- `Color` — the six colors (R, G, B, O, W, Y).
+- `Face` — the six faces (U, D, F, B, L, R).
+- `Move` — full notation (U, U', U2, u, M, E, S, x, y, z, ...).
+  `FundamentalMove` — the quarter-turn primitives every `Move` decomposes into.
+- `FaceGrid<V>` / `FaceGrids<V>` — one face's 3x3 grid / all six grids.
+  `Triple<V>` is the shared `[V, V, V]` row.
+- `ColorOrientation` — the cube's orientation (the U and F colors).
+  `FaceColors` — the resolved color of all six faces for an orientation.
+- `AdjacentPieces<V>` (+ `Side`) — the ring of stickers around a face.
 
-- Edges
-- Corners
+## Public API
 
-### Piece
+Exported from the package root (`index.ts`):
 
-- Face Scheme
+- `createCube(options?)` — build a solved cube (optionally oriented).
+- `movesFromString(algorithm)` — parse notation into `Move[]`.
+- `applyMoves(moves, cube)` — apply moves to a cube.
+- `algorithmToFaces({ algorithm, orientation })` — parse + apply + color in one
+  call; the path used for rendering.
+- `toColoredFaceGrids(cube)` — the six faces as color grids.
+- `getAdjacentPieces(grids, upFace)` — the ring of stickers around a face.
+- `isCubeSolved(cube)`.
+- Types/enums: `Color`, `Face`, `Cube`, `FaceGrid`, `FaceGrids`,
+  `ColorOrientation`, `AdjacentPieces`, `Side`.
 
-## Face Scheme
+## Internal operators
 
-Face scheme is an representation of all 6 faces of a piece in relation to the cube faces
-
-## Colors
-
-- R
-- G
-- B
-- O
-- W
-- Y
-
-## Rotations
-
-- x, x', x2
-- y, y', y2
-- z, z', z2
-
-## Internal Operators
-
-### Pieces
-
-- rotatePiece(Rotation, Piece): Piece
-- isPieceFacing(Face, Piece): boolean
-- isPieceValid(Piece): boolean
-- getPieceType(Piece): PieceType | undefined
-- getPieceId(Piece): string
-- colorPiece(ColorOrientation, Piece): ColorScheme
-
-### Cube
-
-- executeOperation(FundamentalOperation, Cube): Cube
-- executeOperations(FundamentalOperation[], Cube): Cube
-
-## Public Operators
-
-### Cube - Cube
-
-- U, U', U2, U2', u, u'
-- R, R', R2, R2', r, r'
-- L...
-- F...
-- B...
-- D...
-- M, M', M2, M2'
-- S...
-- E...
-- x, x', x2
-- y, y', y2
-- z, z', z2
-
-### Cube - any
-
-- toColoredFaces(Cube): Faces
-- validate(Cube): boolean
-
-### any - Cube
-
-- createCube(stringOrOperators?): Cube
-- setColorOrientation(ColorOrientation, Cube): Cube
-- fromFaces(Faces, Cube): Cube
-- move(Operators[], Cube): Cube
-
-### Helpers
-
-- operatorsFromString(string): Operators[]
-- execute(...)
+- `rotatePiece(move, piece)` / `rotateCube(move, cube)` — the primitives;
+  `applyFundamentalMoves` / the `moveFns` table compose them into full moves.
+- `permuteStickers(swaps, stickers)` — apply face swaps to a piece's stickers.
+- `getMoveScope(move)` — which piece types and faces a fundamental move affects.
+- `getPieceId(stickers)` / `stringifyPieceId(id)` — identify a piece by the
+  faces it occupies.
+- `toFaceGrids(cube)` — the six faces as `Face` grids (before coloring).
+- `expandColors(orientation)` — `ColorOrientation` → `FaceColors`.
+- `faceEntries(record)` — `Object.entries` typed by `Face`.
