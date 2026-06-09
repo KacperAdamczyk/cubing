@@ -29,7 +29,7 @@ A **Rubik's Cube algorithm learning application** built with:
 
 ### Core Structure
 
-**`packages/cube/`** - framework-agnostic 3D cube simulation engine (reused as-is). See `packages/cube/src/internals.md`. Key API: `algorithmToFaces`, `applyRotations`, `createCube`, `isCubeSolved`, `rotationsFromString`, `toColoredFaceSlices`, `getAdjacentPieces`, `Colors`, `Faces`.
+**`packages/cube/`** - framework-agnostic 3D cube simulation engine (reused as-is). See `packages/cube/src/internals.md`. Key API: `algorithmToFaces`, `applyMoves`, `createCube`, `isCubeSolved`, `movesFromString`, `toColoredFaceGrids`, `getAdjacentPieces`, `Color`, `Face`.
 
 **`packages/db/`** - Drizzle + SQLite, the **source of truth** for algorithm data (cube → set → subset → case → algorithm). `index.ts` opens the committed `db.sqlite` read-only via `bun:sqlite` (Bun-only; runs at build/prerender time, never in the browser/Worker). Schema in `schema.ts`, migrations in `drizzle/`; edit data via Drizzle Studio / SQL and commit `db.sqlite`.
 

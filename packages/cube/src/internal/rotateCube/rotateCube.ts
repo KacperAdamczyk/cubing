@@ -1,22 +1,18 @@
 import { produce } from "immer";
-import { getPieceDescriptorForRotation } from "@/cube/helpers/getPieceDescriptorForRotation/getPieceDescriptorForRotation";
+import { getMoveScope } from "@/cube/helpers/getMoveScope/getMoveScope";
 import { rotatePiece } from "@/cube/internal/rotatePiece";
 import type { Cube } from "@/cube/types/Cube";
-import type { Faces } from "@/cube/types/Faces";
-import type { FundamentalRotations } from "@/cube/types/Rotations";
+import type { Face } from "@/cube/types/Face";
+import type { FundamentalMove } from "@/cube/types/Move";
 
-export const rotateCube = (rotation: FundamentalRotations, cube: Cube): Cube =>
+export const rotateCube = (move: FundamentalMove, cube: Cube): Cube =>
 	produce(cube, (cubeDraft) => {
 		for (const piece of cubeDraft.state) {
-			const {
-				types,
-				includeFaces,
-				skipFaces = [],
-			} = getPieceDescriptorForRotation(rotation);
+			const { types, includeFaces, skipFaces = [] } = getMoveScope(move);
 
-			const pieceFaces = Object.entries(piece.scheme) as [
-				Faces,
-				Faces | undefined,
+			const pieceFaces = Object.entries(piece.stickers) as [
+				Face,
+				Face | undefined,
 			][];
 
 			const hasMatchingFace = pieceFaces.some(
@@ -31,6 +27,6 @@ export const rotateCube = (rotation: FundamentalRotations, cube: Cube): Cube =>
 				continue;
 			}
 
-			piece.scheme = rotatePiece(rotation, piece).scheme;
+			piece.stickers = rotatePiece(move, piece).stickers;
 		}
 	});

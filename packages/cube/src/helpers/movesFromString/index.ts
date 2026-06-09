@@ -1,0 +1,1 @@
+export { movesFromString } from "./movesFromString";

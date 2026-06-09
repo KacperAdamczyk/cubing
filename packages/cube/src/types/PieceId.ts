@@ -1,3 +1,3 @@
-import type { Faces } from "@/cube/types/Faces";
+import type { Face } from "@/cube/types/Face";
 
-export type PieceId = Partial<Record<Faces, true>>;
+export type PieceId = Partial<Record<Face, true>>;

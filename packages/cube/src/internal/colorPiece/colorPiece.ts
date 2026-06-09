@@ -1,9 +1,9 @@
 import { expandColors } from "@/cube/helpers/expandColors";
 import type { ColorOrientation } from "@/cube/types/ColorOrientation";
-import type { Colors } from "@/cube/types/Colors";
-import type { Faces } from "@/cube/types/Faces";
+import type { Color } from "@/cube/types/Color";
+import type { Face } from "@/cube/types/Face";
 import type { ColoredPiece, Piece } from "@/cube/types/Piece";
-import type { PieceScheme } from "@/cube/types/PieceScheme";
+import type { Stickers } from "@/cube/types/Stickers";
 
 export const colorPiece = (
 	orientation: ColorOrientation,
@@ -11,8 +11,8 @@ export const colorPiece = (
 ): ColoredPiece => {
 	const expandedColors = expandColors(orientation);
 
-	const coloredPieceScheme = Object.fromEntries(
-		(Object.entries(piece.scheme) as [Faces, Faces | undefined][]).map(
+	const coloredStickers = Object.fromEntries(
+		(Object.entries(piece.stickers) as [Face, Face | undefined][]).map(
 			([face, orientedFace]) => {
 				if (orientedFace === undefined) {
 					return [face, undefined] as const;
@@ -21,10 +21,10 @@ export const colorPiece = (
 				return [face, expandedColors[orientedFace]] as const;
 			},
 		),
-	) as PieceScheme<Colors>;
+	) as Stickers<Color>;
 
 	return {
 		...piece,
-		scheme: coloredPieceScheme,
+		stickers: coloredStickers,
 	};
 };

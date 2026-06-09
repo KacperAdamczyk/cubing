@@ -1,185 +1,185 @@
 import { match } from "ts-pattern";
 import type { ColorOrientation } from "@/cube/types/ColorOrientation";
-import type { ColorScheme } from "@/cube/types/ColorScheme";
-import { Colors } from "@/cube/types/Colors";
+import type { FaceColors } from "@/cube/types/FaceColors";
+import { Color } from "@/cube/types/Color";
 
-export const expandColors = (orientation: ColorOrientation): ColorScheme => {
+export const expandColors = (orientation: ColorOrientation): FaceColors => {
 	return (
 		match(orientation)
-			.returnType<ColorScheme>()
+			.returnType<FaceColors>()
 			// W
-			.with({ U: Colors.W, F: Colors.G }, (base) => ({
+			.with({ U: Color.W, F: Color.G }, (base) => ({
 				...base,
-				R: Colors.R,
-				B: Colors.B,
-				L: Colors.O,
-				D: Colors.Y,
+				R: Color.R,
+				B: Color.B,
+				L: Color.O,
+				D: Color.Y,
 			}))
-			.with({ U: Colors.W, F: Colors.R }, (base) => ({
+			.with({ U: Color.W, F: Color.R }, (base) => ({
 				...base,
-				R: Colors.B,
-				B: Colors.O,
-				L: Colors.G,
-				D: Colors.Y,
+				R: Color.B,
+				B: Color.O,
+				L: Color.G,
+				D: Color.Y,
 			}))
-			.with({ U: Colors.W, F: Colors.B }, (base) => ({
+			.with({ U: Color.W, F: Color.B }, (base) => ({
 				...base,
-				R: Colors.O,
-				B: Colors.G,
-				L: Colors.R,
-				D: Colors.Y,
+				R: Color.O,
+				B: Color.G,
+				L: Color.R,
+				D: Color.Y,
 			}))
-			.with({ U: Colors.W, F: Colors.O }, (base) => ({
+			.with({ U: Color.W, F: Color.O }, (base) => ({
 				...base,
-				R: Colors.G,
-				B: Colors.R,
-				L: Colors.B,
-				D: Colors.Y,
+				R: Color.G,
+				B: Color.R,
+				L: Color.B,
+				D: Color.Y,
 			}))
 			// Y
-			.with({ U: Colors.Y, F: Colors.G }, (base) => ({
+			.with({ U: Color.Y, F: Color.G }, (base) => ({
 				...base,
-				R: Colors.O,
-				B: Colors.B,
-				L: Colors.R,
-				D: Colors.W,
+				R: Color.O,
+				B: Color.B,
+				L: Color.R,
+				D: Color.W,
 			}))
-			.with({ U: Colors.Y, F: Colors.R }, (base) => ({
+			.with({ U: Color.Y, F: Color.R }, (base) => ({
 				...base,
-				R: Colors.G,
-				B: Colors.O,
-				L: Colors.B,
-				D: Colors.W,
+				R: Color.G,
+				B: Color.O,
+				L: Color.B,
+				D: Color.W,
 			}))
-			.with({ U: Colors.Y, F: Colors.B }, (base) => ({
+			.with({ U: Color.Y, F: Color.B }, (base) => ({
 				...base,
-				R: Colors.R,
-				B: Colors.G,
-				L: Colors.O,
-				D: Colors.W,
+				R: Color.R,
+				B: Color.G,
+				L: Color.O,
+				D: Color.W,
 			}))
-			.with({ U: Colors.Y, F: Colors.O }, (base) => ({
+			.with({ U: Color.Y, F: Color.O }, (base) => ({
 				...base,
-				R: Colors.B,
-				B: Colors.R,
-				L: Colors.G,
-				D: Colors.W,
+				R: Color.B,
+				B: Color.R,
+				L: Color.G,
+				D: Color.W,
 			}))
 			// G
-			.with({ U: Colors.G, F: Colors.Y }, (base) => ({
+			.with({ U: Color.G, F: Color.Y }, (base) => ({
 				...base,
-				R: Colors.R,
-				B: Colors.W,
-				L: Colors.O,
-				D: Colors.B,
+				R: Color.R,
+				B: Color.W,
+				L: Color.O,
+				D: Color.B,
 			}))
-			.with({ U: Colors.G, F: Colors.W }, (base) => ({
+			.with({ U: Color.G, F: Color.W }, (base) => ({
 				...base,
-				R: Colors.O,
-				B: Colors.Y,
-				L: Colors.R,
-				D: Colors.B,
+				R: Color.O,
+				B: Color.Y,
+				L: Color.R,
+				D: Color.B,
 			}))
-			.with({ U: Colors.G, F: Colors.O }, (base) => ({
+			.with({ U: Color.G, F: Color.O }, (base) => ({
 				...base,
-				R: Colors.Y,
-				B: Colors.R,
-				L: Colors.W,
-				D: Colors.B,
+				R: Color.Y,
+				B: Color.R,
+				L: Color.W,
+				D: Color.B,
 			}))
-			.with({ U: Colors.G, F: Colors.R }, (base) => ({
+			.with({ U: Color.G, F: Color.R }, (base) => ({
 				...base,
-				R: Colors.W,
-				B: Colors.O,
-				L: Colors.Y,
-				D: Colors.B,
+				R: Color.W,
+				B: Color.O,
+				L: Color.Y,
+				D: Color.B,
 			}))
 			// B
-			.with({ U: Colors.B, F: Colors.R }, (base) => ({
+			.with({ U: Color.B, F: Color.R }, (base) => ({
 				...base,
-				R: Colors.Y,
-				B: Colors.O,
-				L: Colors.W,
-				D: Colors.G,
+				R: Color.Y,
+				B: Color.O,
+				L: Color.W,
+				D: Color.G,
 			}))
-			.with({ U: Colors.B, F: Colors.O }, (base) => ({
+			.with({ U: Color.B, F: Color.O }, (base) => ({
 				...base,
-				R: Colors.W,
-				B: Colors.R,
-				L: Colors.Y,
-				D: Colors.G,
+				R: Color.W,
+				B: Color.R,
+				L: Color.Y,
+				D: Color.G,
 			}))
-			.with({ U: Colors.B, F: Colors.W }, (base) => ({
+			.with({ U: Color.B, F: Color.W }, (base) => ({
 				...base,
-				R: Colors.R,
-				B: Colors.Y,
-				L: Colors.O,
-				D: Colors.G,
+				R: Color.R,
+				B: Color.Y,
+				L: Color.O,
+				D: Color.G,
 			}))
-			.with({ U: Colors.B, F: Colors.Y }, (base) => ({
+			.with({ U: Color.B, F: Color.Y }, (base) => ({
 				...base,
-				R: Colors.O,
-				B: Colors.W,
-				L: Colors.R,
-				D: Colors.G,
+				R: Color.O,
+				B: Color.W,
+				L: Color.R,
+				D: Color.G,
 			}))
 			// R
-			.with({ U: Colors.R, F: Colors.G }, (base) => ({
+			.with({ U: Color.R, F: Color.G }, (base) => ({
 				...base,
-				R: Colors.Y,
-				B: Colors.B,
-				L: Colors.W,
-				D: Colors.O,
+				R: Color.Y,
+				B: Color.B,
+				L: Color.W,
+				D: Color.O,
 			}))
-			.with({ U: Colors.R, F: Colors.B }, (base) => ({
+			.with({ U: Color.R, F: Color.B }, (base) => ({
 				...base,
-				R: Colors.W,
-				B: Colors.G,
-				L: Colors.Y,
-				D: Colors.O,
+				R: Color.W,
+				B: Color.G,
+				L: Color.Y,
+				D: Color.O,
 			}))
-			.with({ U: Colors.R, F: Colors.Y }, (base) => ({
+			.with({ U: Color.R, F: Color.Y }, (base) => ({
 				...base,
-				R: Colors.B,
-				B: Colors.W,
-				L: Colors.G,
-				D: Colors.O,
+				R: Color.B,
+				B: Color.W,
+				L: Color.G,
+				D: Color.O,
 			}))
-			.with({ U: Colors.R, F: Colors.W }, (base) => ({
+			.with({ U: Color.R, F: Color.W }, (base) => ({
 				...base,
-				R: Colors.G,
-				B: Colors.Y,
-				L: Colors.B,
-				D: Colors.O,
+				R: Color.G,
+				B: Color.Y,
+				L: Color.B,
+				D: Color.O,
 			}))
 			// O
-			.with({ U: Colors.O, F: Colors.W }, (base) => ({
+			.with({ U: Color.O, F: Color.W }, (base) => ({
 				...base,
-				R: Colors.B,
-				B: Colors.Y,
-				L: Colors.G,
-				D: Colors.R,
+				R: Color.B,
+				B: Color.Y,
+				L: Color.G,
+				D: Color.R,
 			}))
-			.with({ U: Colors.O, F: Colors.Y }, (base) => ({
+			.with({ U: Color.O, F: Color.Y }, (base) => ({
 				...base,
-				R: Colors.G,
-				B: Colors.W,
-				L: Colors.B,
-				D: Colors.R,
+				R: Color.G,
+				B: Color.W,
+				L: Color.B,
+				D: Color.R,
 			}))
-			.with({ U: Colors.O, F: Colors.B }, (base) => ({
+			.with({ U: Color.O, F: Color.B }, (base) => ({
 				...base,
-				R: Colors.Y,
-				B: Colors.G,
-				L: Colors.W,
-				D: Colors.R,
+				R: Color.Y,
+				B: Color.G,
+				L: Color.W,
+				D: Color.R,
 			}))
-			.with({ U: Colors.O, F: Colors.G }, (base) => ({
+			.with({ U: Color.O, F: Color.G }, (base) => ({
 				...base,
-				R: Colors.W,
-				B: Colors.B,
-				L: Colors.Y,
-				D: Colors.R,
+				R: Color.W,
+				B: Color.B,
+				L: Color.Y,
+				D: Color.R,
 			}))
 			.exhaustive()
 	);

@@ -2,19 +2,19 @@ export {
 	type AlgorithmToFacesParams,
 	algorithmToFaces,
 } from "@/cube/compound/algorithmToFaces";
-export { applyRotations } from "@/cube/compound/applyRotations";
-export { toColoredFaceSlices } from "@/cube/compound/toColoredFaceSlices";
+export { applyMoves } from "@/cube/compound/applyMoves";
+export { toColoredFaceGrids } from "@/cube/compound/toColoredFaceGrids";
 export { getAdjacentPieces } from "@/cube/helpers/getAdjacentPieces";
 export { isCubeSolved } from "@/cube/helpers/isCubeSolved";
-export { rotationsFromString } from "@/cube/helpers/rotationsFromString";
-export { createCube } from "@/cube/initializers/createCube";
+export { movesFromString } from "@/cube/helpers/movesFromString";
+export { createCube } from "@/cube/factories/createCube";
 export type {
-	AdjacentFaces,
+	Side,
 	AdjacentPieces,
 } from "@/cube/types/AdjacentPieces";
 export type { ColorOrientation } from "@/cube/types/ColorOrientation";
-export { Colors } from "@/cube/types/Colors";
+export { Color } from "@/cube/types/Color";
 export type { Cube } from "@/cube/types/Cube";
-export type { FaceSlice } from "@/cube/types/FaceSlice";
-export type { FaceSlices } from "@/cube/types/FaceSlices";
-export { Faces } from "@/cube/types/Faces";
+export type { FaceGrid } from "@/cube/types/FaceGrid";
+export type { FaceGrids } from "@/cube/types/FaceGrids";
+export { Face } from "@/cube/types/Face";

@@ -1,10 +1,10 @@
-import type { Faces } from "@/cube/types/Faces";
+import type { Face } from "@/cube/types/Face";
 import type { PieceId } from "@/cube/types/PieceId";
-import type { PieceScheme } from "@/cube/types/PieceScheme";
+import type { Stickers } from "@/cube/types/Stickers";
 
-export const getPieceId = (scheme: PieceScheme): PieceId =>
+export const getPieceId = (stickers: Stickers): PieceId =>
 	Object.fromEntries(
-		(Object.entries(scheme) as [Faces, Faces | undefined][])
-			.filter((schemePart): schemePart is [Faces, Faces] => !!schemePart.at(1))
+		(Object.entries(stickers) as [Face, Face | undefined][])
+			.filter((schemePart): schemePart is [Face, Face] => !!schemePart.at(1))
 			.map(([face]) => [face, true] as const),
 	);

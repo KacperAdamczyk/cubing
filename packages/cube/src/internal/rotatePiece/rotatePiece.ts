@@ -1,122 +1,95 @@
 import { match, P } from "ts-pattern";
-import { moveInScheme } from "@/cube/internal/moveInScheme";
-import { Faces } from "@/cube/types/Faces";
+import { permuteStickers } from "@/cube/internal/permuteStickers";
+import { Face } from "@/cube/types/Face";
 import type { Piece } from "@/cube/types/Piece";
-import { FundamentalRotations } from "@/cube/types/Rotations";
+import { FundamentalMove } from "@/cube/types/Move";
 
-export const rotatePiece = (
-	rotation: FundamentalRotations,
-	piece: Piece,
-): Piece => {
-	const currentScheme = piece.scheme;
+export const rotatePiece = (move: FundamentalMove, piece: Piece): Piece => {
+	const currentStickers = piece.stickers;
 
-	const newScheme = match(rotation)
+	const newStickers = match(move)
 		.with(
-			P.union(
-				FundamentalRotations.U,
-				FundamentalRotations.D_,
-				FundamentalRotations.E_,
-			),
+			P.union(FundamentalMove.U, FundamentalMove.D_, FundamentalMove.E_),
 			() =>
-				moveInScheme(
+				permuteStickers(
 					[
-						[Faces.B, Faces.R],
-						[Faces.R, Faces.F],
-						[Faces.F, Faces.L],
-						[Faces.L, Faces.B],
+						[Face.B, Face.R],
+						[Face.R, Face.F],
+						[Face.F, Face.L],
+						[Face.L, Face.B],
 					],
-					currentScheme,
+					currentStickers,
 				),
 		)
 		.with(
-			P.union(
-				FundamentalRotations.U_,
-				FundamentalRotations.D,
-				FundamentalRotations.E,
-			),
+			P.union(FundamentalMove.U_, FundamentalMove.D, FundamentalMove.E),
 			() =>
-				moveInScheme(
+				permuteStickers(
 					[
-						[Faces.B, Faces.L],
-						[Faces.L, Faces.F],
-						[Faces.F, Faces.R],
-						[Faces.R, Faces.B],
+						[Face.B, Face.L],
+						[Face.L, Face.F],
+						[Face.F, Face.R],
+						[Face.R, Face.B],
 					],
-					currentScheme,
+					currentStickers,
 				),
 		)
 		.with(
-			P.union(
-				FundamentalRotations.R,
-				FundamentalRotations.L_,
-				FundamentalRotations.M_,
-			),
+			P.union(FundamentalMove.R, FundamentalMove.L_, FundamentalMove.M_),
 			() =>
-				moveInScheme(
+				permuteStickers(
 					[
-						[Faces.U, Faces.B],
-						[Faces.B, Faces.D],
-						[Faces.D, Faces.F],
-						[Faces.F, Faces.U],
+						[Face.U, Face.B],
+						[Face.B, Face.D],
+						[Face.D, Face.F],
+						[Face.F, Face.U],
 					],
-					currentScheme,
+					currentStickers,
 				),
 		)
 		.with(
-			P.union(
-				FundamentalRotations.R_,
-				FundamentalRotations.L,
-				FundamentalRotations.M,
-			),
+			P.union(FundamentalMove.R_, FundamentalMove.L, FundamentalMove.M),
 			() =>
-				moveInScheme(
+				permuteStickers(
 					[
-						[Faces.U, Faces.F],
-						[Faces.F, Faces.D],
-						[Faces.D, Faces.B],
-						[Faces.B, Faces.U],
+						[Face.U, Face.F],
+						[Face.F, Face.D],
+						[Face.D, Face.B],
+						[Face.B, Face.U],
 					],
-					currentScheme,
+					currentStickers,
 				),
 		)
 		.with(
-			P.union(
-				FundamentalRotations.F,
-				FundamentalRotations.B_,
-				FundamentalRotations.S,
-			),
+			P.union(FundamentalMove.F, FundamentalMove.B_, FundamentalMove.S),
 			() =>
-				moveInScheme(
+				permuteStickers(
 					[
-						[Faces.U, Faces.R],
-						[Faces.R, Faces.D],
-						[Faces.D, Faces.L],
-						[Faces.L, Faces.U],
+						[Face.U, Face.R],
+						[Face.R, Face.D],
+						[Face.D, Face.L],
+						[Face.L, Face.U],
 					],
-					currentScheme,
+					currentStickers,
 				),
 		)
 		.with(
-			P.union(
-				FundamentalRotations.F_,
-				FundamentalRotations.B,
-				FundamentalRotations.S_,
-			),
+			P.union(FundamentalMove.F_, FundamentalMove.B, FundamentalMove.S_),
 			() =>
-				moveInScheme(
+				permuteStickers(
 					[
-						[Faces.U, Faces.L],
-						[Faces.L, Faces.D],
-						[Faces.D, Faces.R],
-						[Faces.R, Faces.U],
+						[Face.U, Face.L],
+						[Face.L, Face.D],
+						[Face.D, Face.R],
+						[Face.R, Face.U],
 					],
-					currentScheme,
+					currentStickers,
 				),
 		)
 		.exhaustive();
 
 	return {
 		...piece,
-		scheme: newScheme,
+		stickers: newStickers,
 	};
 };

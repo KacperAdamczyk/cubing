@@ -18,12 +18,8 @@ type BuildTuple<
 	? Tuple
 	: BuildTuple<Length, Item, [...Tuple, Item]>;
 
-type Subtract<A extends number, B extends number> = Range<A> extends [
-	...Range<B>,
-	...infer R,
-]
-	? R["length"]
-	: never;
+type Subtract<A extends number, B extends number> =
+	Range<A> extends [...Range<B>, ...infer R] ? R["length"] : never;
 
 type Multiply<
 	A extends number,

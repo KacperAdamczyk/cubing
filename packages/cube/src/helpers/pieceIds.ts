@@ -1,10 +1,10 @@
-import type { Faces } from "@/cube/types/Faces";
+import type { Face } from "@/cube/types/Face";
 import type { PieceId } from "@/cube/types/PieceId";
 
 export type PieceDescriptor =
-	| `${Faces}`
-	| `${Faces}${Faces}`
-	| `${Faces}${Faces}${Faces}`;
+	| `${Face}`
+	| `${Face}${Face}`
+	| `${Face}${Face}${Face}`;
 
 export const pieceIds = {
 	BLU: { B: true, L: true, U: true },

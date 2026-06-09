@@ -1,14 +1,14 @@
 <script lang="ts">
-	import type { AdjacentPieces, Colors, FaceSlice, Faces } from 'cube';
+	import type { AdjacentPieces, Color, FaceGrid, Face } from 'cube';
 	import Piece, { blankColor } from './Piece.svelte';
 
 	interface Props {
 		class?: string;
-		face: FaceSlice<Colors>;
-		maskedColors: (Colors | undefined)[];
+		face: FaceGrid<Color>;
+		maskedColors: (Color | undefined)[];
 		maskedAdjPieces?: Partial<AdjacentPieces<true | undefined>>;
-		adjacentPieces?: AdjacentPieces<Colors>;
-		faceLabel?: Faces;
+		adjacentPieces?: AdjacentPieces<Color>;
+		faceLabel?: Face;
 	}
 
 	let {
@@ -22,7 +22,7 @@
 
 	const maskedColorsSet = $derived(new Set(maskedColors));
 
-	const mask = (color: Colors, hidden?: true): Colors | typeof blankColor | undefined =>
+	const mask = (color: Color, hidden?: true): Color | typeof blankColor | undefined =>
 		hidden ? undefined : maskedColorsSet.has(color) ? blankColor : color;
 
 	const pieces = $derived(face.flat().map((piece) => mask(piece)));

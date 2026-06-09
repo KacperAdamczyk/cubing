@@ -1,19 +1,19 @@
 import { expect, test } from "bun:test";
 import { expandColors } from "@/cube/helpers/expandColors";
-import { Colors } from "@/cube/types/Colors";
+import { Color } from "@/cube/types/Color";
 
 test("expands colors", () => {
 	const expandedColors = expandColors({
-		U: Colors.W,
-		F: Colors.G,
+		U: Color.W,
+		F: Color.G,
 	});
 
 	expect(expandedColors).toEqual({
-		U: Colors.W,
-		F: Colors.G,
-		R: Colors.R,
-		B: Colors.B,
-		L: Colors.O,
-		D: Colors.Y,
+		U: Color.W,
+		F: Color.G,
+		R: Color.R,
+		B: Color.B,
+		L: Color.O,
+		D: Color.Y,
 	});
 });

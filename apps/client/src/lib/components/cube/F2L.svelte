@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { algorithmToFaces, Colors } from 'cube';
+	import { algorithmToFaces, Color } from 'cube';
 	import Face from './Face.svelte';
 
 	interface Props {
@@ -8,10 +8,8 @@
 
 	let { algorithm }: Props = $props();
 
-	const faces = $derived(
-		algorithmToFaces({ algorithm, orientation: { U: Colors.Y, F: Colors.R } })
-	);
-	const maskedColors = [Colors.Y, Colors.B, Colors.O];
+	const faces = $derived(algorithmToFaces({ algorithm, orientation: { U: Color.Y, F: Color.R } }));
+	const maskedColors = [Color.Y, Color.B, Color.O];
 </script>
 
 <!-- Isometric F2L: the U / F / R faces of a cube, positioned with real 3D

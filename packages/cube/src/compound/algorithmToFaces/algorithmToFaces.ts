@@ -1,10 +1,10 @@
-import { applyRotations } from "@/cube/compound/applyRotations";
-import { toColoredFaceSlices } from "@/cube/compound/toColoredFaceSlices";
-import { rotationsFromString } from "@/cube/helpers/rotationsFromString";
-import { createCube } from "@/cube/initializers/createCube";
+import { applyMoves } from "@/cube/compound/applyMoves";
+import { toColoredFaceGrids } from "@/cube/compound/toColoredFaceGrids";
+import { movesFromString } from "@/cube/helpers/movesFromString";
+import { createCube } from "@/cube/factories/createCube";
 import type { ColorOrientation } from "@/cube/types/ColorOrientation";
-import type { Colors } from "@/cube/types/Colors";
-import type { FaceSlices } from "@/cube/types/FaceSlices";
+import type { Color } from "@/cube/types/Color";
+import type { FaceGrids } from "@/cube/types/FaceGrids";
 
 export interface AlgorithmToFacesParams {
 	algorithm: string;
@@ -14,12 +14,12 @@ export interface AlgorithmToFacesParams {
 export const algorithmToFaces = ({
 	algorithm,
 	orientation,
-}: AlgorithmToFacesParams): FaceSlices<Colors> => {
+}: AlgorithmToFacesParams): FaceGrids<Color> => {
 	const cube = createCube({
 		orientation,
 	});
-	const rotations = rotationsFromString(algorithm);
-	const scrambledCube = applyRotations(rotations, cube);
+	const moves = movesFromString(algorithm);
+	const scrambledCube = applyMoves(moves, cube);
 
-	return toColoredFaceSlices(scrambledCube);
+	return toColoredFaceGrids(scrambledCube);
 };
