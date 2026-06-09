@@ -1,14 +1,14 @@
+import { faceEntries } from "@/cube/helpers/faceEntries";
 import { pieceIds } from "@/cube/helpers/pieceIds";
 import { stringifyPieceId } from "@/cube/helpers/stringifyPieceId/stringifyPieceId";
 import { getPieceId } from "@/cube/internal/getPieceId";
 import type { Cube } from "@/cube/types/Cube";
-import type { FaceGrid } from "@/cube/types/FaceGrid";
-import type { FaceGrids } from "@/cube/types/FaceGrids";
 import type { Face } from "@/cube/types/Face";
+import type { FaceGrids } from "@/cube/types/FaceGrids";
 import type { Piece } from "@/cube/types/Piece";
 import type { PieceId } from "@/cube/types/PieceId";
 
-const facesToIdsMap = {
+const facesToIdsMap: FaceGrids<PieceId> = {
 	U: [
 		[pieceIds.BLU, pieceIds.BU, pieceIds.BRU],
 		[pieceIds.LU, pieceIds.U, pieceIds.RU],
@@ -39,7 +39,7 @@ const facesToIdsMap = {
 		[pieceIds.FR, pieceIds.R, pieceIds.BR],
 		[pieceIds.DFR, pieceIds.DR, pieceIds.BDR],
 	],
-} satisfies FaceGrids<PieceId>;
+};
 
 export const toFaceGrids = ({ state }: Cube): FaceGrids<Face> => {
 	const piecesMap = new Map<string, Piece>(
@@ -47,31 +47,29 @@ export const toFaceGrids = ({ state }: Cube): FaceGrids<Face> => {
 	);
 
 	return Object.fromEntries(
-		(Object.entries(facesToIdsMap) as [Face, FaceGrid<PieceId>][]).map(
-			([face, faceScheme]) => [
-				face,
-				faceScheme.map((row) =>
-					row.map((pieceId) => {
-						const piece = piecesMap.get(stringifyPieceId(pieceId));
+		faceEntries(facesToIdsMap).map(([face, faceGrid]) => [
+			face,
+			faceGrid.map((row) =>
+				row.map((pieceId) => {
+					const piece = piecesMap.get(stringifyPieceId(pieceId));
 
-						if (!piece) {
-							throw new Error(
-								`Piece ${JSON.stringify(pieceId)} for face ${face} not found`,
-							);
-						}
+					if (!piece) {
+						throw new Error(
+							`Piece ${JSON.stringify(pieceId)} for face ${face} not found`,
+						);
+					}
 
-						const facesAtPlace = piece.stickers[face];
+					const facesAtPlace = piece.stickers[face];
 
-						if (!facesAtPlace) {
-							throw new Error(
-								`Piece ${JSON.stringify(pieceId)} has no face ${face}`,
-							);
-						}
+					if (!facesAtPlace) {
+						throw new Error(
+							`Piece ${JSON.stringify(pieceId)} has no face ${face}`,
+						);
+					}
 
-						return facesAtPlace;
-					}),
-				),
-			],
-		),
+					return facesAtPlace;
+				}),
+			),
+		]),
 	) as FaceGrids<Face>;
 };

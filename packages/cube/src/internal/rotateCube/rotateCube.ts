@@ -1,8 +1,8 @@
 import { produce } from "immer";
+import { faceEntries } from "@/cube/helpers/faceEntries";
 import { getMoveScope } from "@/cube/helpers/getMoveScope/getMoveScope";
 import { rotatePiece } from "@/cube/internal/rotatePiece";
 import type { Cube } from "@/cube/types/Cube";
-import type { Face } from "@/cube/types/Face";
 import type { FundamentalMove } from "@/cube/types/Move";
 
 export const rotateCube = (move: FundamentalMove, cube: Cube): Cube => {
@@ -10,10 +10,7 @@ export const rotateCube = (move: FundamentalMove, cube: Cube): Cube => {
 
 	return produce(cube, (cubeDraft) => {
 		for (const piece of cubeDraft.state) {
-			const pieceFaces = Object.entries(piece.stickers) as [
-				Face,
-				Face | undefined,
-			][];
+			const pieceFaces = faceEntries(piece.stickers);
 
 			const hasMatchingFace = pieceFaces.some(
 				([face, value]) => value && includeFaces.includes(face),
