@@ -18,7 +18,7 @@
 		"test:e2e": "playwright install && playwright test"
 	},
 	"dependencies": {
-		"@lucide/svelte": "1.21.0",
+		"@lucide/svelte": "1.23.0",
 		"cube": "workspace:*"
 	},
 	"devDependencies": {
