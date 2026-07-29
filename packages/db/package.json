@@ -30,6 +30,6 @@
 		"drizzle-kit": "1.0.0-rc.4-ca0f029"
 	},
 	"dependencies": {
-		"drizzle-orm": "1.0.0-rc.4-5d5b77c"
+		"drizzle-orm": "1.0.0-rc.4-de6c356"
 	}
 }
