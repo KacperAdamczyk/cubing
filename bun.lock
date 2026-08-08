@@ -26,7 +26,7 @@
         "@tailwindcss/vite": "4.3.3",
         "@types/node": "26.1.1",
         "@vitest/browser-playwright": "4.1.10",
-        "daisyui": "5.7.4",
+        "daisyui": "5.7.16",
         "db": "workspace:*",
         "eslint": "10.8.0",
         "eslint-config-prettier": "10.1.8",
@@ -580,7 +580,7 @@
 
     "cube": ["cube@workspace:packages/cube"],
 
-    "daisyui": ["daisyui@5.7.4", "", {}, "sha512-zKzFIwvEvn2QvE1TbUUtDnYFOqWoxeZh+j4QXfhkZKYAT++pO2ijyT9rkFm0GIPDWR1/oo9hHZzd96AsTK0iZg=="],
+    "daisyui": ["daisyui@5.7.16", "", {}, "sha512-V9CJxvrWIXTDuP/0tpijjWaKaKJNYo2IrULJfTWs3/DjW9rPqswk1n8NCLQRLrTutmlG2Ech7nkJDpCnF+6Dzw=="],
 
     "db": ["db@workspace:packages/db"],
 
