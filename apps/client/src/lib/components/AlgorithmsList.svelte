@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { Algorithm, ViewType } from '$lib/data/types';
-	import AlgorithmView from './AlgorithmView.svelte';
+	import type { Algorithm, ViewType } from "$lib/data/types";
+	import AlgorithmView from "./AlgorithmView.svelte";
 
 	const otherAlgorithmsLimit = 2;
 
@@ -14,20 +14,20 @@
 	}
 
 	let {
-		class: className = '',
+		class: className = "",
 		setup,
 		algorithms,
 		defaultAlgorithmId,
 		slim,
-		viewType
+		viewType,
 	}: Props = $props();
 
 	const mainAlgorithm = $derived(
-		algorithms.find((a) => a.id === defaultAlgorithmId) ?? algorithms[0]
+		algorithms.find((a) => a.id === defaultAlgorithmId) ?? algorithms[0],
 	);
 	const otherAlgorithms = $derived(algorithms.filter((a) => a.id !== mainAlgorithm?.id));
 	const limitedOtherAlgorithms = $derived(
-		otherAlgorithms.slice(0, slim ? otherAlgorithmsLimit : otherAlgorithms.length)
+		otherAlgorithms.slice(0, slim ? otherAlgorithmsLimit : otherAlgorithms.length),
 	);
 	const hasMore = $derived(otherAlgorithms.length > limitedOtherAlgorithms.length);
 </script>
@@ -41,7 +41,8 @@
 		<span
 			class="self-center rounded-full border border-base-300 px-2.5 py-0.5 text-xs font-semibold text-base-content/60"
 		>
-			+{otherAlgorithms.length - limitedOtherAlgorithms.length} more
+			+{otherAlgorithms.length - limitedOtherAlgorithms.length}
+			more
 		</span>
 	{/if}
 </div>

@@ -15,9 +15,7 @@ export const rotateCube = (move: FundamentalMove, cube: Cube): Cube => {
 			const hasMatchingFace = pieceFaces.some(
 				([face, value]) => value && includeFaces.includes(face),
 			);
-			const hasSkippedFaces = pieceFaces.some(
-				([face, value]) => value && skipFaces.includes(face),
-			);
+			const hasSkippedFaces = pieceFaces.some(([face, value]) => value && skipFaces.includes(face));
 			const hasMatchingType = types.includes(piece.type);
 
 			if (!hasMatchingFace || hasSkippedFaces || !hasMatchingType) {

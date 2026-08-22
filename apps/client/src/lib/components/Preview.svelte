@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { ViewType } from '$lib/data/types';
-	import CubeView from './cube/CubeView.svelte';
+	import type { ViewType } from "$lib/data/types";
+	import CubeView from "./cube/CubeView.svelte";
 
 	interface Props {
 		name: string;
@@ -19,7 +19,7 @@
 		previewAlgorithm,
 		viewType,
 		isActive = false,
-		all = false
+		all = false,
 	}: Props = $props();
 </script>
 
@@ -34,7 +34,8 @@
 			: 'border-base-300 shadow-sm'
 	]}
 >
-	<span class={['absolute inset-x-0 top-0 h-1', all ? 'cube-gradient' : 'bg-(--type-accent)']}
+	<span
+		class={['absolute inset-x-0 top-0 h-1', all ? 'cube-gradient' : 'bg-(--type-accent)']}
 	></span>
 	<div class="size-20">
 		<CubeView algorithm={previewAlgorithm} type={viewType} />

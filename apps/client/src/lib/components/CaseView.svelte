@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { CaseWithContext } from '$lib/data/types';
-	import AlgorithmsList from './AlgorithmsList.svelte';
-	import CubeView from './cube/CubeView.svelte';
+	import type { CaseWithContext } from "$lib/data/types";
+	import AlgorithmsList from "./AlgorithmsList.svelte";
+	import CubeView from "./cube/CubeView.svelte";
 
 	interface Props {
 		case: CaseWithContext;

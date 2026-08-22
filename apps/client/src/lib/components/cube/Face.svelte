@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { AdjacentPieces, Color, FaceGrid, Face } from 'cube';
-	import Piece, { blankColor } from './Piece.svelte';
+	import type { AdjacentPieces, Color, Face, FaceGrid } from "cube";
+	import Piece, { blankColor } from "./Piece.svelte";
 
 	interface Props {
 		class?: string;
@@ -12,12 +12,12 @@
 	}
 
 	let {
-		class: className = '',
+		class: className = "",
 		face,
 		maskedColors,
 		maskedAdjPieces,
 		adjacentPieces,
-		faceLabel
+		faceLabel,
 	}: Props = $props();
 
 	const maskedColorsSet = $derived(new Set(maskedColors));

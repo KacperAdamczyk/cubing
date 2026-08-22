@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { Algorithm, ViewType } from '$lib/data/types';
-	import AlgorithmVerifier from './AlgorithmVerifier.svelte';
+	import type { Algorithm, ViewType } from "$lib/data/types";
+	import AlgorithmVerifier from "./AlgorithmVerifier.svelte";
 
 	interface Props {
 		setup: string;

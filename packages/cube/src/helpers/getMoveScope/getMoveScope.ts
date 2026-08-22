@@ -1,7 +1,7 @@
 import { match, P } from "ts-pattern";
 import { Face } from "@/cube/types/Face";
-import { PieceType } from "@/cube/types/Piece";
 import { FundamentalMove } from "@/cube/types/Move";
+import { PieceType } from "@/cube/types/Piece";
 
 interface MoveScope {
 	types: PieceType[];

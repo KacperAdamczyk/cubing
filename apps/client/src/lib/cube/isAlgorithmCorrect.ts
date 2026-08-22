@@ -1,5 +1,5 @@
-import { applyMoves, createCube, isCubeSolved, movesFromString, toColoredFaceGrids } from 'cube';
-import type { ViewType } from '$lib/data/types';
+import { applyMoves, createCube, isCubeSolved, movesFromString, toColoredFaceGrids } from "cube";
+import type { ViewType } from "$lib/data/types";
 
 /**
  * Applies `setup` then `algorithm` to a solved cube and reports whether the
@@ -9,12 +9,12 @@ import type { ViewType } from '$lib/data/types';
 export const isAlgorithmCorrect = (
 	setup: string,
 	algorithm: string,
-	viewType: ViewType
+	viewType: ViewType,
 ): boolean => {
 	const operations = movesFromString(`${setup} ${algorithm}`);
 	const scrambled = applyMoves(operations, createCube());
 
-	if (viewType === 'PLL') {
+	if (viewType === "PLL") {
 		return isCubeSolved(scrambled);
 	}
 

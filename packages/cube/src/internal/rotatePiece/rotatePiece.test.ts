@@ -1,12 +1,12 @@
 import { expect, test } from "bun:test";
-import { pieceIds } from "@/cube/helpers/pieceIds";
 import { createStickers } from "@/cube/factories/createStickers";
+import { pieceIds } from "@/cube/helpers/pieceIds";
 import { rotatePiece } from "@/cube/internal/rotatePiece";
 import { mockStickers } from "@/cube/test/mockStickers";
 import { Face } from "@/cube/types/Face";
+import { FundamentalMove } from "@/cube/types/Move";
 import { PieceType } from "@/cube/types/Piece";
 import type { Stickers } from "@/cube/types/Stickers";
-import { FundamentalMove } from "@/cube/types/Move";
 
 const c = createStickers;
 const m = mockStickers;
@@ -877,19 +877,22 @@ test.each([
 		stickers: c(pieceIds.L),
 		expectedScheme: m({ B: F.L }),
 	},
-])("$id: Rotation: $move | Scheme: $stickers", ({
-	move,
-	stickers,
-	expectedScheme,
-}: {
-	move: FundamentalMove;
-	stickers: Stickers;
-	expectedScheme: Stickers;
-}) => {
-	const rotatedPiece = rotatePiece(move, {
-		type: PieceType.CORNER,
+])(
+	"$id: Rotation: $move | Scheme: $stickers",
+	({
+		move,
 		stickers,
-	});
+		expectedScheme,
+	}: {
+		move: FundamentalMove;
+		stickers: Stickers;
+		expectedScheme: Stickers;
+	}) => {
+		const rotatedPiece = rotatePiece(move, {
+			type: PieceType.CORNER,
+			stickers,
+		});
 
-	expect(rotatedPiece.stickers).toEqual(expectedScheme);
-});
+		expect(rotatedPiece.stickers).toEqual(expectedScheme);
+	},
+);

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { CaseWithContext } from '$lib/data/types';
-	import CaseView from './CaseView.svelte';
+	import type { CaseWithContext } from "$lib/data/types";
+	import CaseView from "./CaseView.svelte";
 
 	interface Props {
 		cases: CaseWithContext[];

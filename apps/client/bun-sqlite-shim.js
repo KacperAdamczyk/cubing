@@ -12,11 +12,10 @@ const emptyStatement = {
 	get: () => undefined,
 	values: () => [],
 	run: () => ({ changes: 0, lastInsertRowid: 0 }),
-	finalize: () => {}
+	finalize: () => {},
 };
 
 export class Database {
-	constructor() {}
 	query() {
 		return emptyStatement;
 	}

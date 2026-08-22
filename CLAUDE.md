@@ -13,8 +13,11 @@ This is a monorepo using Bun workspaces. The application is in `apps/client/` (S
 - `bun run deploy` - Deploy to Cloudflare Workers (`wrangler deploy`, uses `apps/client/wrangler.jsonc`)
 - `bun run test` - Run Vitest unit tests (server project, under Bun)
 - `bun run check` - Run `svelte-check` for type/syntax errors
-- `bun run lint` - Run Prettier check + ESLint
-- `bun run format` - Apply Prettier formatting
+
+**From the repo root** (Biome is the single formatter/linter for the whole monorepo, Svelte files included — config in `biome.json`):
+- `bun run lint` - `biome check .` (formatting, import order and lint rules; this is what CI runs)
+- `bun run format` - `biome check --write .` (apply formatting, import sorting and safe lint fixes)
+- `bun run typecheck` / `test` / `build` - run the workspace tasks through turbo (`typecheck` = `svelte-check`)
 
 > `dev`/`build`/`test` run under the **Bun runtime** (`bunx --bun …` in the scripts) because `packages/db` reads `bun:sqlite` during prerender; plain Node fails with `ERR_UNSUPPORTED_ESM_URL_SCHEME`. Editing data in `packages/db/db.sqlite` requires `bun run --filter db build` before a client build so the externalized `db` resolves the latest file.
 

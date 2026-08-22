@@ -1,10 +1,7 @@
 import { Face } from "@/cube/types/Face";
 import type { Stickers } from "@/cube/types/Stickers";
 
-export const permuteStickers = (
-	swaps: [Face, Face][],
-	stickers: Stickers,
-): Stickers => {
+export const permuteStickers = (swaps: [Face, Face][], stickers: Stickers): Stickers => {
 	const swapMap = new Map([
 		...swaps.map(([from]) => [from, undefined] as const),
 		...swaps.map(([from, to]) => [to, from] as const),

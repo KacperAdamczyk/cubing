@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { ViewType } from '$lib/data/types';
-	import F2L from './F2L.svelte';
-	import OLL from './OLL.svelte';
-	import PLL from './PLL.svelte';
+	import type { ViewType } from "$lib/data/types";
+	import F2L from "./F2L.svelte";
+	import OLL from "./OLL.svelte";
+	import PLL from "./PLL.svelte";
 
 	interface Props {
 		algorithm: string;

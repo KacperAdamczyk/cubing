@@ -1,10 +1,10 @@
-import type { Breadcrumb, SidebarCube } from './types';
+import type { Breadcrumb, SidebarCube } from "./types";
 
 export const getBreadcrumbs = (
 	tree: SidebarCube[],
-	params: Record<string, string>
+	params: Record<string, string>,
 ): Breadcrumb[] => {
-	const crumbs: Breadcrumb[] = [{ name: 'Algorithms', href: '/' }];
+	const crumbs: Breadcrumb[] = [{ name: "Algorithms", href: "/" }];
 
 	const cube = params.cubeId ? tree.find((c) => c.id === params.cubeId) : undefined;
 	if (!cube) return crumbs;

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Search } from '@lucide/svelte';
-	import { page } from '$app/state';
-	import favicon from '$lib/assets/favicon.svg';
-	import type { SidebarCube } from '$lib/data/types';
+	import { Search } from "@lucide/svelte";
+	import { page } from "$app/state";
+	import favicon from "$lib/assets/favicon.svg";
+	import type { SidebarCube } from "$lib/data/types";
 
 	interface Props {
 		sidebar: SidebarCube[];
@@ -10,7 +10,7 @@
 
 	let { sidebar }: Props = $props();
 
-	let query = $state('');
+	let query = $state("");
 
 	const filtered = $derived.by(() => {
 		const q = query.toLowerCase();
@@ -26,19 +26,19 @@
 									? subset
 									: {
 											...subset,
-											cases: subset.cases.filter((c) => c.name.toLowerCase().includes(q))
-										}
+											cases: subset.cases.filter((c) => c.name.toLowerCase().includes(q)),
+										},
 							)
-							.filter((subset) => subset.cases.length > 0)
+							.filter((subset) => subset.cases.length > 0),
 					}))
-					.filter((set) => set.subsets.length > 0)
+					.filter((set) => set.subsets.length > 0),
 			}))
 			.filter((cube) => cube.sets.length > 0);
 	});
 
 	const isActive = (href: string) => page.url.pathname === href;
 
-	const activeBar = 'shadow-[inset_3px_0_0_0_var(--type-accent)]';
+	const activeBar = "shadow-[inset_3px_0_0_0_var(--type-accent)]";
 </script>
 
 <aside class="flex min-h-full w-72 flex-col gap-3 border-r border-base-300 bg-base-100 p-4">

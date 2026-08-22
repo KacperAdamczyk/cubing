@@ -123,9 +123,7 @@ test("skips parentheses", () => {
 });
 
 test("skips unknown rotations", () => {
-	const rotations = movesFromString(
-		"F (R U R' U') W F' f Z G' (R U R' U') f' x",
-	);
+	const rotations = movesFromString("F (R U R' U') W F' f Z G' (R U R' U') f' x");
 
 	expect(rotations).toEqual([
 		Move.F,

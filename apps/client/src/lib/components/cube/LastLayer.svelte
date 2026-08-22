@@ -1,12 +1,12 @@
 <script lang="ts">
 	import {
 		algorithmToFaces,
-		type ColorOrientation,
 		Color,
+		type ColorOrientation,
 		Face as CubeFace,
-		getAdjacentPieces
-	} from 'cube';
-	import Face from './Face.svelte';
+		getAdjacentPieces,
+	} from "cube";
+	import Face from "./Face.svelte";
 
 	interface Props {
 		algorithm: string;

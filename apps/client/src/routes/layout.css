@@ -1,12 +1,12 @@
-@import 'tailwindcss';
-@plugin 'daisyui';
+@import "tailwindcss";
+@plugin "daisyui";
 
 /* ===== Custom daisyUI themes — "Playful Cube" tuned surfaces ===== */
 /* base-100 is the clean, raised surface (cards/sidebar/navbar);            */
 /* base-200 is the page behind them; base-300 is borders/dividers.         */
 
-@plugin 'daisyui/theme' {
-	name: 'dark';
+@plugin "daisyui/theme" {
+	name: "dark";
 	default: true;
 	prefersdark: true;
 	color-scheme: dark;
@@ -42,8 +42,8 @@
 	--noise: 0;
 }
 
-@plugin 'daisyui/theme' {
-	name: 'light';
+@plugin "daisyui/theme" {
+	name: "light";
 	color-scheme: light;
 
 	--color-base-100: #ffffff;
@@ -105,7 +105,7 @@
 	--color-type-pll: #2f6dff;
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
 	--color-type-f2l: #1cb35a;
 	--color-type-oll: #ffce3a;
 	--color-type-pll: #5b8bff;
@@ -115,7 +115,7 @@
  * bright). `--type-pill` is a separate, AA-safe solid background for the small
  * bold type pills, which DO carry text. */
 
-[data-type='F2L'] {
+[data-type="F2L"] {
 	--type-accent: var(--color-type-f2l);
 	--type-accent-content: #ffffff;
 	--type-tint: color-mix(in srgb, var(--color-type-f2l) 7%, var(--color-base-100));
@@ -124,7 +124,7 @@
 	--type-pill-content: #ffffff;
 }
 
-[data-type='OLL'] {
+[data-type="OLL"] {
 	--type-accent: var(--color-type-oll);
 	--type-accent-content: #1a1400;
 	--type-tint: color-mix(in srgb, var(--color-type-oll) 7%, var(--color-base-100));
@@ -133,7 +133,7 @@
 	--type-pill-content: #1a1400;
 }
 
-[data-type='PLL'] {
+[data-type="PLL"] {
 	--type-accent: var(--color-type-pll);
 	--type-accent-content: #ffffff;
 	--type-tint: color-mix(in srgb, var(--color-type-pll) 7%, var(--color-base-100));
@@ -142,7 +142,7 @@
 	--type-pill-content: #ffffff;
 }
 
-[data-type='all'] {
+[data-type="all"] {
 	--type-accent: #8b8ba0;
 	--type-accent-content: #ffffff;
 	--type-tint: var(--color-base-100);

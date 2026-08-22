@@ -1,9 +1,9 @@
 import { applyMoves } from "@/cube/compound/applyMoves";
 import { toColoredFaceGrids } from "@/cube/compound/toColoredFaceGrids";
-import { movesFromString } from "@/cube/helpers/movesFromString";
 import { createCube } from "@/cube/factories/createCube";
-import type { ColorOrientation } from "@/cube/types/ColorOrientation";
+import { movesFromString } from "@/cube/helpers/movesFromString";
 import type { Color } from "@/cube/types/Color";
+import type { ColorOrientation } from "@/cube/types/ColorOrientation";
 import type { FaceGrids } from "@/cube/types/FaceGrids";
 
 export interface AlgorithmToFacesParams {

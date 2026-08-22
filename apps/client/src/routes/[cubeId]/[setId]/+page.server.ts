@@ -1,4 +1,4 @@
-import * as repo from '$lib/server/repository';
+import * as repo from "$lib/server/repository";
 
 export const prerender = true;
 

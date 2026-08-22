@@ -1,5 +1,5 @@
 <script lang="ts">
-	import LastLayer from './LastLayer.svelte';
+	import LastLayer from "./LastLayer.svelte";
 
 	interface Props {
 		algorithm: string;

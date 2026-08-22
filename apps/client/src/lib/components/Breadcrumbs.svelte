@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Breadcrumb } from '$lib/data/types';
+	import type { Breadcrumb } from "$lib/data/types";
 
 	interface Props {
 		breadcrumbs: Breadcrumb[];

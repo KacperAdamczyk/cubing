@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { page } from '$app/state';
-	import CasesList from '$lib/components/CasesList.svelte';
-	import PreviewList from '$lib/components/PreviewList.svelte';
-	import { getSetView } from '$lib/data/catalog.remote';
+	import { page } from "$app/state";
+	import CasesList from "$lib/components/CasesList.svelte";
+	import PreviewList from "$lib/components/PreviewList.svelte";
+	import { getSetView } from "$lib/data/catalog.remote";
 
 	const view = $derived(await getSetView(page.params.setId!));
 </script>

@@ -20,7 +20,5 @@ test("a slice move affects edges and centers and skips the parallel faces", () =
 });
 
 test("a turn and its inverse share the same scope", () => {
-	expect(getMoveScope(FundamentalMove.U_)).toEqual(
-		getMoveScope(FundamentalMove.U),
-	);
+	expect(getMoveScope(FundamentalMove.U_)).toEqual(getMoveScope(FundamentalMove.U));
 });

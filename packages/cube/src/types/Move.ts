@@ -106,5 +106,4 @@ export enum Move {
 	z2_ = "z2'",
 }
 
-export const isMove = (move: string): move is Move =>
-	Object.values(Move).includes(move as Move);
+export const isMove = (move: string): move is Move => Object.values(Move).includes(move as Move);

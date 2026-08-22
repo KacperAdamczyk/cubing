@@ -1,7 +1,7 @@
 import { expect, test } from "bun:test";
 import { applyMoves } from "@/cube/compound/applyMoves";
-import { isCubeSolved } from "@/cube/helpers/isCubeSolved";
 import { createCube } from "@/cube/factories/createCube";
+import { isCubeSolved } from "@/cube/helpers/isCubeSolved";
 import { Move } from "@/cube/types/Move";
 
 test("correctly identifies a solved cube", () => {
