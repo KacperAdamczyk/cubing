@@ -1,16 +1,21 @@
 <script lang="ts">
+	import { Shuffle } from "@lucide/svelte";
 	import type { CaseWithContext } from "$lib/data/types";
+	import AlgorithmNotation from "./AlgorithmNotation.svelte";
 	import AlgorithmsList from "./AlgorithmsList.svelte";
 	import CubeView from "./cube/CubeView.svelte";
 
 	interface Props {
 		case: CaseWithContext;
 		slim: boolean;
+		/** Page-level variant: bigger cube and title, `h1` heading. */
+		large?: boolean;
 	}
 
-	let { case: c, slim }: Props = $props();
+	let { case: c, slim, large = false }: Props = $props();
 
 	const viewType = $derived(c.subset.set.viewType);
+	const subsetHref = $derived(`/${c.subset.set.cubeId}/${c.subset.setId}/${c.subset.id}`);
 </script>
 
 <article
@@ -19,13 +24,22 @@
 	class="@container relative w-full overflow-hidden rounded-box border border-base-300 bg-(--type-tint) shadow-sm transition-shadow group-hover:shadow-lg"
 >
 	<span class="absolute inset-y-0 left-0 w-1.5 bg-(--type-accent)"></span>
-	<div class="flex items-center gap-4 p-4 pl-5 @lg:gap-6 @lg:p-6 @lg:pl-7">
-		<div class="size-28 shrink-0 @lg:size-40">
+	<div
+		class="flex flex-col items-center gap-4 p-4 pl-5 @md:flex-row @md:gap-6 @md:p-5 @md:pl-7 @2xl:gap-8 @2xl:p-6 @2xl:pl-8"
+	>
+		<div
+			class={['shrink-0', large ? 'size-40 @md:size-44 @2xl:size-56' : 'size-28 @md:size-32 @2xl:size-40']}
+		>
 			<CubeView algorithm={c.setup} type={viewType} />
 		</div>
-		<div class="flex min-w-0 flex-1 flex-col gap-3">
-			<div class="flex flex-wrap items-center gap-2">
-				<h2 class="text-2xl font-extrabold tracking-tight">{c.name}</h2>
+		<div class="flex w-full min-w-0 flex-1 flex-col gap-3">
+			<div class="flex flex-wrap items-center justify-center gap-2 @md:justify-start">
+				<svelte:element
+					this={large ? 'h1' : 'h2'}
+					class={['font-display font-extrabold tracking-tight', large ? 'text-3xl @2xl:text-4xl' : 'text-2xl']}
+				>
+					{c.name}
+				</svelte:element>
 				{#if slim}
 					<span
 						class="rounded-full bg-(--type-pill) px-2.5 py-0.5 text-xs font-bold text-(--type-pill-content)"
@@ -34,7 +48,7 @@
 					</span>
 				{:else}
 					<a
-						href={`/${c.subset.set.cubeId}/${c.subset.setId}/${c.subset.id}#${c.id}`}
+						href={`${subsetHref}#${c.id}`}
 						class="rounded-full bg-(--type-pill) px-2.5 py-0.5 text-xs font-bold text-(--type-pill-content) transition-opacity hover:opacity-80"
 					>
 						{c.subset.name}
@@ -50,9 +64,16 @@
 				{slim}
 			/>
 
-			<p class="flex flex-wrap items-baseline gap-x-2 text-xs text-base-content/55">
-				<span class="font-bold tracking-wide text-base-content/45 uppercase">Setup</span>
-				<span class="font-mono">{c.setup}</span>
+			<!-- The setup (scramble) that produces the pictured state: a dashed strip so
+			     it reads as "apply this first", not as another alg to learn. -->
+			<p
+				class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-field border border-dashed border-base-content/15 px-3 py-2 @md:justify-start"
+			>
+				<span class="eyebrow flex items-center gap-1.5">
+					<Shuffle class="size-3.5" aria-hidden="true" />
+					Setup
+				</span>
+				<AlgorithmNotation notation={c.setup} class="text-sm text-base-content/70" />
 			</p>
 		</div>
 	</div>

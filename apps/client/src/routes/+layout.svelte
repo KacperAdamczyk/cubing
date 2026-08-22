@@ -2,6 +2,7 @@
 	import "./layout.css";
 	import { Menu } from "@lucide/svelte";
 	import type { Snippet } from "svelte";
+	import { onNavigate } from "$app/navigation";
 	import { page } from "$app/state";
 	import favicon from "$lib/assets/favicon.svg";
 	import Breadcrumbs from "$lib/components/Breadcrumbs.svelte";
@@ -11,6 +12,12 @@
 	import AppSidebar from "$lib/layout/AppSidebar.svelte";
 
 	let { children }: { children: Snippet } = $props();
+
+	// The mobile drawer; closed again as soon as a link in it is followed.
+	let drawerOpen = $state(false);
+	onNavigate(() => {
+		drawerOpen = false;
+	});
 
 	// Awaited outside any <svelte:boundary> so the data is awaited during SSR and
 	// inlined into the prerendered HTML (a pending boundary would suppress that).
@@ -26,9 +33,11 @@
 </svelte:head>
 
 <div class="drawer lg:drawer-open">
-	<input id="app-drawer" type="checkbox" class="drawer-toggle" />
-	<div class="drawer-content flex min-h-screen flex-col bg-base-200">
-		<header class="navbar sticky top-0 z-20 border-b border-base-300 bg-base-100/85 backdrop-blur">
+	<input id="app-drawer" type="checkbox" class="drawer-toggle" bind:checked={drawerOpen} />
+	<div class="drawer-content app-bg flex min-h-screen flex-col">
+		<header
+			class="navbar sticky top-0 z-20 border-b border-base-300/80 bg-base-100/80 backdrop-blur-md"
+		>
 			<label for="app-drawer" class="btn btn-square btn-ghost lg:hidden" aria-label="Open sidebar">
 				<Menu class="size-5" />
 			</label>
@@ -37,7 +46,7 @@
 			</div>
 			<ThemeToggle />
 		</header>
-		<main class="flex-1 p-4 sm:p-6">
+		<main class="flex-1 px-4 py-6 sm:px-6 sm:py-8 lg:px-10">
 			<div class="mx-auto w-full max-w-5xl">
 				{@render children()}
 			</div>

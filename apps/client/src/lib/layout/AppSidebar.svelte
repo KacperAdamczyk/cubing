@@ -2,7 +2,7 @@
 	import { Search } from "@lucide/svelte";
 	import { page } from "$app/state";
 	import favicon from "$lib/assets/favicon.svg";
-	import type { SidebarCube } from "$lib/data/types";
+	import type { SidebarCube, SidebarSet } from "$lib/data/types";
 
 	interface Props {
 		sidebar: SidebarCube[];
@@ -13,7 +13,7 @@
 	let query = $state("");
 
 	const filtered = $derived.by(() => {
-		const q = query.toLowerCase();
+		const q = query.trim().toLowerCase();
 		return sidebar
 			.map((cube) => ({
 				...cube,
@@ -36,15 +36,17 @@
 			.filter((cube) => cube.sets.length > 0);
 	});
 
+	const setSize = (set: SidebarSet) => set.subsets.reduce((n, s) => n + s.cases.length, 0);
+
 	const isActive = (href: string) => page.url.pathname === href;
 
 	const activeBar = "shadow-[inset_3px_0_0_0_var(--type-accent)]";
 </script>
 
 <aside class="flex min-h-full w-72 flex-col gap-3 border-r border-base-300 bg-base-100 p-4">
-	<a href="/" class="flex items-center gap-2.5 px-2 py-1">
+	<a href="/" class="flex items-center gap-2.5 px-1 py-1">
 		<img src={favicon} alt="" class="size-8 drop-shadow-sm" />
-		<span class="text-base font-bold tracking-tight">Algorithms</span>
+		<span class="font-display text-lg font-extrabold tracking-tight">My Cubing Algs</span>
 	</a>
 
 	<label class="input input-sm w-full rounded-field">
@@ -62,7 +64,7 @@
 			<li class="menu-title px-0">
 				<a
 					href={`/${cube.id}`}
-					class={['font-bold', isActive(`/${cube.id}`) && 'text-base-content']}
+					class={['text-xs font-bold text-base-content/50', isActive(`/${cube.id}`) && 'text-base-content']}
 				>
 					{cube.name}
 				</a>
@@ -72,12 +74,17 @@
 					<a
 						href={`/${cube.id}/${set.id}`}
 						class={[
-							'gap-2.5 font-semibold transition-colors',
+							'font-display gap-2.5 text-[15px] font-bold transition-colors',
 							isActive(`/${cube.id}/${set.id}`) && `bg-(--type-soft) ${activeBar}`
 						]}
 					>
 						<span class="size-2.5 rounded-[3px] bg-(--type-accent)"></span>
 						{set.name}
+						<span
+							class="ml-auto rounded-full bg-base-200 px-1.5 py-px font-sans text-[10px] font-bold text-base-content/55"
+						>
+							{setSize(set)}
+						</span>
 					</a>
 					<ul class="border-base-300">
 						{#each set.subsets as subset (subset.id)}
@@ -91,6 +98,9 @@
 									]}
 								>
 									{subset.name}
+									<span class="ml-auto text-[11px] font-semibold text-base-content/40">
+										{subset.cases.length}
+									</span>
 								</a>
 								<ul>
 									{#each subset.cases as c (c.id)}
@@ -114,5 +124,8 @@
 				</li>
 			{/each}
 		{/each}
+		{#if filtered.length === 0}
+			<li class="px-3 py-6 text-center text-sm text-base-content/50">No algs match “{query}”.</li>
+		{/if}
 	</ul>
 </aside>

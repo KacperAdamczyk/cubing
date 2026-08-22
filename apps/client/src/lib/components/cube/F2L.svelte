@@ -1,15 +1,22 @@
 <script lang="ts">
-	import { algorithmToFaces, Color } from "cube";
+	import { algorithmToFaces, Color, type ColorOrientation } from "cube";
 	import Face from "./Face.svelte";
 
 	interface Props {
 		algorithm: string;
+		/** Sticker colours to grey out; defaults to the F2L mask (last layer + the hidden sides). */
+		maskedColors?: Color[];
+		/** Which colours face up / front; defaults to the yellow-top F2L view. */
+		orientation?: ColorOrientation;
 	}
 
-	let { algorithm }: Props = $props();
+	let {
+		algorithm,
+		maskedColors = [Color.Y, Color.B, Color.O],
+		orientation = { U: Color.Y, F: Color.R },
+	}: Props = $props();
 
-	const faces = $derived(algorithmToFaces({ algorithm, orientation: { U: Color.Y, F: Color.R } }));
-	const maskedColors = [Color.Y, Color.B, Color.O];
+	const faces = $derived(algorithmToFaces({ algorithm, orientation }));
 </script>
 
 <!-- Isometric F2L: the U / F / R faces of a cube, positioned with real 3D

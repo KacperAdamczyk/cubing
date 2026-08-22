@@ -61,8 +61,20 @@ export interface PreviewItem {
 	previewAlgorithm: string;
 	size: number;
 	viewType: ViewType;
-	/** True for the home "All" chip, which spans every type and uses the neutral cube-gradient accent. */
+	/** True for the "All" chip, which spans every type and uses the neutral cube-gradient accent. */
 	all?: boolean;
+}
+
+/** Home-page summary of a cube: its size plus a per-set breakdown. */
+export interface CubeSummary extends Cube {
+	href: string;
+	size: number;
+	sets: Array<Pick<Set, "id" | "name" | "viewType"> & { href: string; size: number }>;
+}
+
+/** The previous / next case inside the same subset, for case-page navigation. */
+export interface CaseNeighbor extends Pick<Case, "id" | "name" | "setup"> {
+	href: string;
 }
 
 export interface Breadcrumb {
