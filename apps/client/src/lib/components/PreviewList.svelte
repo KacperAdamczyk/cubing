@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { page } from '$app/state';
-	import type { PreviewItem } from '$lib/data/types';
-	import Preview from './Preview.svelte';
+	import { page } from "$app/state";
+	import type { PreviewItem } from "$lib/data/types";
+	import Preview from "./Preview.svelte";
 
 	interface Props {
 		items: PreviewItem[];

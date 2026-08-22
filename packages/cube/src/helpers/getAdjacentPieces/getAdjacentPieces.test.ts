@@ -78,24 +78,27 @@ test.each([
 		face: Face.B,
 		expected: BPieces,
 	},
-])("Returns correct adjacent pieces for: $face", ({
-	scramble,
-	face,
-	expected,
-}: {
-	scramble: string;
-	face: Face;
-	expected: AdjacentPieces<Color>;
-}) => {
-	const coloredFaces = algorithmToFaces({
-		algorithm: scramble,
-		orientation: {
-			U: Color.W,
-			F: Color.G,
-		},
-	});
+])(
+	"Returns correct adjacent pieces for: $face",
+	({
+		scramble,
+		face,
+		expected,
+	}: {
+		scramble: string;
+		face: Face;
+		expected: AdjacentPieces<Color>;
+	}) => {
+		const coloredFaces = algorithmToFaces({
+			algorithm: scramble,
+			orientation: {
+				U: Color.W,
+				F: Color.G,
+			},
+		});
 
-	const adjacentPieces = getAdjacentPieces(coloredFaces, face);
+		const adjacentPieces = getAdjacentPieces(coloredFaces, face);
 
-	expect(adjacentPieces).toEqual(expected);
-});
+		expect(adjacentPieces).toEqual(expected);
+	},
+);

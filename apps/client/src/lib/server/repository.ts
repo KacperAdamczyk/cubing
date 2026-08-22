@@ -1,5 +1,6 @@
-import { db } from 'db';
-import type { CaseWithContext, Cube, Set, SidebarCube, Subset } from '$lib/data/types';
+import { db } from "db";
+// biome-ignore lint/suspicious/noShadowRestrictedNames: `Set` is the domain type (cube → set → subset → case), not the global
+import type { CaseWithContext, Cube, Set, SidebarCube, Subset } from "$lib/data/types";
 
 const caseWith = { subset: { with: { set: true } }, algorithms: true } as const;
 
@@ -41,7 +42,7 @@ export const getSidebarTree = (): SidebarCube[] =>
 	db.query.cube
 		.findMany({
 			with: {
-				sets: { with: { subsets: { with: { cases: { columns: { id: true, name: true } } } } } }
-			}
+				sets: { with: { subsets: { with: { cases: { columns: { id: true, name: true } } } } } },
+			},
 		})
 		.sync();

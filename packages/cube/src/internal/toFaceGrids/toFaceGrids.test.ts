@@ -2,8 +2,8 @@ import { expect, test } from "bun:test";
 import { createCube } from "@/cube/factories/createCube";
 import { toFaceGrids } from "@/cube/internal/toFaceGrids";
 import { mockStickers } from "@/cube/test/mockStickers";
-import type { FaceGrids } from "@/cube/types/FaceGrids";
 import { Face } from "@/cube/types/Face";
+import type { FaceGrids } from "@/cube/types/FaceGrids";
 
 test("returns faces for a solved cube", () => {
 	const faces = toFaceGrids(createCube());

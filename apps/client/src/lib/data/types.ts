@@ -1,4 +1,4 @@
-export type ViewType = 'F2L' | 'OLL' | 'PLL';
+export type ViewType = "F2L" | "OLL" | "PLL";
 
 export interface Cube {
 	id: string;
@@ -44,7 +44,7 @@ export interface CaseWithContext extends Case {
 }
 
 export interface SidebarSubset extends Subset {
-	cases: Array<Pick<Case, 'id' | 'name'>>;
+	cases: Array<Pick<Case, "id" | "name">>;
 }
 
 export interface SidebarSet extends Set {

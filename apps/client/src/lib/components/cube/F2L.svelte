@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { algorithmToFaces, Color } from 'cube';
-	import Face from './Face.svelte';
+	import { algorithmToFaces, Color } from "cube";
+	import Face from "./Face.svelte";
 
 	interface Props {
 		algorithm: string;

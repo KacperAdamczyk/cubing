@@ -11,9 +11,7 @@ export const toColoredFaceGrids = (cube: Cube): FaceGrids<Color> => {
 
 	return Object.fromEntries(
 		faceEntries(grids).map(([face, grid]) => {
-			const coloredGrid = grid.map((row) =>
-				row.map((value) => colorScheme[value]),
-			);
+			const coloredGrid = grid.map((row) => row.map((value) => colorScheme[value]));
 
 			return [face, coloredGrid] as const;
 		}),

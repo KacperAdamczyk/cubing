@@ -1,14 +1,14 @@
 <script lang="ts">
-	import './layout.css';
-	import { Menu } from '@lucide/svelte';
-	import type { Snippet } from 'svelte';
-	import { page } from '$app/state';
-	import favicon from '$lib/assets/favicon.svg';
-	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
-	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
-	import AppSidebar from '$lib/layout/AppSidebar.svelte';
-	import { getBreadcrumbs } from '$lib/data/breadcrumbs';
-	import { getSidebar } from '$lib/data/catalog.remote';
+	import "./layout.css";
+	import { Menu } from "@lucide/svelte";
+	import type { Snippet } from "svelte";
+	import { page } from "$app/state";
+	import favicon from "$lib/assets/favicon.svg";
+	import Breadcrumbs from "$lib/components/Breadcrumbs.svelte";
+	import ThemeToggle from "$lib/components/ThemeToggle.svelte";
+	import { getBreadcrumbs } from "$lib/data/breadcrumbs";
+	import { getSidebar } from "$lib/data/catalog.remote";
+	import AppSidebar from "$lib/layout/AppSidebar.svelte";
 
 	let { children }: { children: Snippet } = $props();
 

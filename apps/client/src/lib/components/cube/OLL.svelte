@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Color } from 'cube';
-	import LastLayer from './LastLayer.svelte';
+	import { Color } from "cube";
+	import LastLayer from "./LastLayer.svelte";
 
 	interface Props {
 		algorithm: string;

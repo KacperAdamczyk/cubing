@@ -2,8 +2,8 @@ import { expect, test } from "bun:test";
 import { createCube } from "@/cube/factories/createCube";
 import { rotateCube } from "@/cube/internal/rotateCube";
 import { toFaceGrids } from "@/cube/internal/toFaceGrids";
-import type { FaceGrids } from "@/cube/types/FaceGrids";
 import { Face } from "@/cube/types/Face";
+import type { FaceGrids } from "@/cube/types/FaceGrids";
 import { FundamentalMove } from "@/cube/types/Move";
 
 test("rotates cube by R", () => {

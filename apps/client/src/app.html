@@ -5,9 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<script>
 			try {
-				const t = localStorage.getItem('theme');
-				if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
-			} catch (e) {}
+				const t = localStorage.getItem("theme");
+				if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+			} catch {}
 		</script>
 		%sveltekit.head%
 	</head>

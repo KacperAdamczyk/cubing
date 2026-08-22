@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { CircleAlert, ShieldCheck } from '@lucide/svelte';
-	import { isAlgorithmCorrect } from '$lib/cube/isAlgorithmCorrect';
-	import type { ViewType } from '$lib/data/types';
+	import { CircleAlert, ShieldCheck } from "@lucide/svelte";
+	import { isAlgorithmCorrect } from "$lib/cube/isAlgorithmCorrect";
+	import type { ViewType } from "$lib/data/types";
 
 	interface Props {
 		algorithm: string;

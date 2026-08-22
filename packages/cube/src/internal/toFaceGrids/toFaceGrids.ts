@@ -54,17 +54,13 @@ export const toFaceGrids = ({ state }: Cube): FaceGrids<Face> => {
 					const piece = piecesMap.get(stringifyPieceId(pieceId));
 
 					if (!piece) {
-						throw new Error(
-							`Piece ${JSON.stringify(pieceId)} for face ${face} not found`,
-						);
+						throw new Error(`Piece ${JSON.stringify(pieceId)} for face ${face} not found`);
 					}
 
 					const facesAtPlace = piece.stickers[face];
 
 					if (!facesAtPlace) {
-						throw new Error(
-							`Piece ${JSON.stringify(pieceId)} has no face ${face}`,
-						);
+						throw new Error(`Piece ${JSON.stringify(pieceId)} has no face ${face}`);
 					}
 
 					return facesAtPlace;

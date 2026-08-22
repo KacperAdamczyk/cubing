@@ -1,4 +1,4 @@
-import * as repo from '$lib/server/repository';
+import * as repo from "$lib/server/repository";
 
 export const prerender = true;
 
@@ -9,7 +9,7 @@ export const entries = () =>
 				cubeId: set.cubeId,
 				setId: set.id,
 				subsetId: subset.id,
-				caseId: c.id
-			}))
-		)
+				caseId: c.id,
+			})),
+		),
 	);

@@ -1,7 +1,7 @@
 import { match } from "ts-pattern";
+import { Color } from "@/cube/types/Color";
 import type { ColorOrientation } from "@/cube/types/ColorOrientation";
 import type { FaceColors } from "@/cube/types/FaceColors";
-import { Color } from "@/cube/types/Color";
 
 export const expandColors = (orientation: ColorOrientation): FaceColors => {
 	return (

@@ -1,16 +1,16 @@
 <script lang="ts" module>
-	export const blankColor = 'X';
+	export const blankColor = "X";
 </script>
 
 <script lang="ts">
-	import { Color } from 'cube';
+	import { Color } from "cube";
 
 	interface Props {
 		color?: Color | typeof blankColor;
 		class?: string;
 	}
 
-	let { color, class: className = '' }: Props = $props();
+	let { color, class: className = "" }: Props = $props();
 </script>
 
 <div

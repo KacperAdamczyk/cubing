@@ -3,8 +3,8 @@ import { toColoredFaceGrids } from "@/cube/compound/toColoredFaceGrids";
 import { createCube } from "@/cube/factories/createCube";
 import { mockStickers } from "@/cube/test/mockStickers";
 import { Color } from "@/cube/types/Color";
-import type { FaceGrids } from "@/cube/types/FaceGrids";
 import { Face } from "@/cube/types/Face";
+import type { FaceGrids } from "@/cube/types/FaceGrids";
 
 test("returns colored faces", () => {
 	const faces = toColoredFaceGrids(

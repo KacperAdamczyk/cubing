@@ -2,7 +2,8 @@
 
 - **Language**: TypeScript
 - **Package Manager**: bun
-- **Add-ons**: mcp, sveltekit-adapter, tailwindcss, vitest, eslint, prettier, playwright
+- **Add-ons**: mcp, sveltekit-adapter, tailwindcss, vitest, playwright
+- **Lint/format**: Biome, configured once for the whole monorepo in the repo-root `biome.json` (run `bun run lint` / `bun run format` from the repo root; there is no ESLint/Prettier here)
 
 ---
 

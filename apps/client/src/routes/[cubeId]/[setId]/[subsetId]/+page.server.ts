@@ -1,4 +1,4 @@
-import * as repo from '$lib/server/repository';
+import * as repo from "$lib/server/repository";
 
 export const prerender = true;
 
@@ -7,6 +7,6 @@ export const entries = () =>
 		repo.getSetSubsets(set.id).map((subset) => ({
 			cubeId: set.cubeId,
 			setId: set.id,
-			subsetId: subset.id
-		}))
+			subsetId: subset.id,
+		})),
 	);

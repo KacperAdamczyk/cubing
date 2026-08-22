@@ -140,16 +140,8 @@ export const moveFns = {
 	[Move.S2]: createMoveFn([FundamentalMove.S, FundamentalMove.S]),
 	[Move.S2_]: createMoveFn([FundamentalMove.S_, FundamentalMove.S_]),
 	// x
-	[Move.x]: createMoveFn([
-		FundamentalMove.R,
-		FundamentalMove.M_,
-		FundamentalMove.L_,
-	]),
-	[Move.x_]: createMoveFn([
-		FundamentalMove.R_,
-		FundamentalMove.M,
-		FundamentalMove.L,
-	]),
+	[Move.x]: createMoveFn([FundamentalMove.R, FundamentalMove.M_, FundamentalMove.L_]),
+	[Move.x_]: createMoveFn([FundamentalMove.R_, FundamentalMove.M, FundamentalMove.L]),
 	[Move.x2]: createMoveFn([
 		FundamentalMove.R,
 		FundamentalMove.R,
@@ -167,16 +159,8 @@ export const moveFns = {
 		FundamentalMove.L,
 	]),
 	// y
-	[Move.y]: createMoveFn([
-		FundamentalMove.U,
-		FundamentalMove.E_,
-		FundamentalMove.D_,
-	]),
-	[Move.y_]: createMoveFn([
-		FundamentalMove.U_,
-		FundamentalMove.E,
-		FundamentalMove.D,
-	]),
+	[Move.y]: createMoveFn([FundamentalMove.U, FundamentalMove.E_, FundamentalMove.D_]),
+	[Move.y_]: createMoveFn([FundamentalMove.U_, FundamentalMove.E, FundamentalMove.D]),
 	[Move.y2]: createMoveFn([
 		FundamentalMove.U,
 		FundamentalMove.U,
@@ -194,16 +178,8 @@ export const moveFns = {
 		FundamentalMove.D,
 	]),
 	// z
-	[Move.z]: createMoveFn([
-		FundamentalMove.F,
-		FundamentalMove.S,
-		FundamentalMove.B_,
-	]),
-	[Move.z_]: createMoveFn([
-		FundamentalMove.F_,
-		FundamentalMove.S_,
-		FundamentalMove.B,
-	]),
+	[Move.z]: createMoveFn([FundamentalMove.F, FundamentalMove.S, FundamentalMove.B_]),
+	[Move.z_]: createMoveFn([FundamentalMove.F_, FundamentalMove.S_, FundamentalMove.B]),
 	[Move.z2]: createMoveFn([
 		FundamentalMove.F,
 		FundamentalMove.F,

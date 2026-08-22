@@ -1,6 +1,6 @@
 import { createCubeState } from "@/cube/factories/createCubeState";
-import type { ColorOrientation } from "@/cube/types/ColorOrientation";
 import { Color } from "@/cube/types/Color";
+import type { ColorOrientation } from "@/cube/types/ColorOrientation";
 import type { Cube } from "@/cube/types/Cube";
 
 const defaultColorOrientation = {
