@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "@fontsource-variable/outfit/index.css";
+@import "@fontsource-variable/jetbrains-mono/index.css";
 @plugin "daisyui";
 
 /* ===== Custom daisyUI themes — "Playful Cube" tuned surfaces ===== */
@@ -78,6 +80,11 @@
 }
 
 @theme {
+	/* Display face for headings, names and the brand; body text stays on the
+	 * system stack, notation uses a proper monospace. Both are self-hosted. */
+	--font-display: "Outfit Variable", ui-sans-serif, system-ui, sans-serif;
+	--font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
 	--color-cube-green: #009b48;
 	--color-cube-red: #b90000;
 	--color-cube-blue: #0045ad;
@@ -103,12 +110,15 @@
 	--color-type-f2l: #16a34a;
 	--color-type-oll: #e0a200;
 	--color-type-pll: #2f6dff;
+	/* strength of the page-background glow (see `app-bg`) */
+	--glow: 7%;
 }
 
 [data-theme="dark"] {
 	--color-type-f2l: #1cb35a;
 	--color-type-oll: #ffce3a;
 	--color-type-pll: #5b8bff;
+	--glow: 13%;
 }
 
 /* `--type-accent` drives bars/dots/rings/tints (no text on them, so it can be
@@ -155,4 +165,37 @@
 /* Shared cube-gradient (logo mark, the "All" chip edge) */
 .cube-gradient {
 	background-image: linear-gradient(135deg, #009b48, #ffd500 52%, #ff5900);
+}
+
+/* ===== Layout helpers ===== */
+
+/* Page background: the flat base-200 canvas with two soft colour glows at the
+ * top so the UI has a little depth; they scroll away with the page. */
+@utility app-bg {
+	background-color: var(--color-base-200);
+	background-image:
+		radial-gradient(
+			80rem 36rem at 10% -12%,
+			color-mix(in srgb, var(--color-primary) var(--glow), transparent),
+			transparent 70%
+		),
+		radial-gradient(
+			64rem 32rem at 96% -8%,
+			color-mix(in srgb, var(--color-secondary) var(--glow), transparent),
+			transparent 70%
+		);
+	background-repeat: no-repeat;
+}
+
+/* Small, spaced, uppercase label used for eyebrows and section titles. */
+@utility eyebrow {
+	@apply text-xs font-semibold tracking-[0.14em] text-base-content/50 uppercase;
+}
+
+/* Horizontal scrollers (chip rows on small screens) without a visible bar. */
+@utility no-scrollbar {
+	scrollbar-width: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
 }

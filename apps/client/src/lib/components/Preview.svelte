@@ -26,21 +26,26 @@
 <a
 	{href}
 	data-type={all ? 'all' : viewType}
+	aria-current={isActive ? 'page' : undefined}
 	class={[
-		'relative flex w-36 flex-col items-center gap-2 overflow-hidden rounded-box border bg-base-100 p-4 transition-all duration-150',
+		'relative flex w-32 shrink-0 snap-start flex-col items-center gap-2 overflow-hidden rounded-box border p-3 transition-all duration-150 sm:w-34',
 		'hover:-translate-y-0.5 hover:shadow-md',
 		isActive
-			? 'border-(--type-accent) shadow-[0_0_0_1px_var(--type-accent)]'
-			: 'border-base-300 shadow-sm'
+			? 'border-(--type-accent) bg-(--type-tint) shadow-[0_0_0_1px_var(--type-accent)]'
+			: 'border-base-300 bg-base-100 shadow-sm'
 	]}
 >
 	<span
 		class={['absolute inset-x-0 top-0 h-1', all ? 'cube-gradient' : 'bg-(--type-accent)']}
 	></span>
-	<div class="size-20">
+	<div class="size-16 sm:size-18">
 		<CubeView algorithm={previewAlgorithm} type={viewType} />
 	</div>
-	<h2 class="text-center font-bold tracking-tight">{name}</h2>
+	<span
+		class="font-display text-center text-[15px] leading-tight font-bold tracking-tight sm:text-base"
+	>
+		{name}
+	</span>
 	<span
 		class="mt-auto rounded-full bg-base-200 px-2.5 py-0.5 text-xs font-semibold text-base-content/70"
 	>

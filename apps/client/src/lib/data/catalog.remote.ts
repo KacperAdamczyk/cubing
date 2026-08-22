@@ -2,18 +2,22 @@ import { error } from "@sveltejs/kit";
 import { z } from "zod";
 import { prerender } from "$app/server";
 import * as repo from "$lib/server/repository";
-import type { PreviewItem } from "./types";
+import type { Case, CaseNeighbor, CubeSummary, PreviewItem } from "./types";
 
 export const getSidebar = prerender(() => repo.getSidebarTree());
 
-export const getCubesView = prerender((): PreviewItem[] =>
+export const getCubesView = prerender((): CubeSummary[] =>
 	repo.getCubes().map((cube) => ({
+		...cube,
 		href: `/${cube.id}`,
-		name: cube.name,
-		previewAlgorithm: "",
 		size: repo.getCubeCases(cube.id).length,
-		viewType: "PLL",
-		all: true,
+		sets: repo.getCubeSets(cube.id).map((set) => ({
+			id: set.id,
+			name: set.name,
+			viewType: set.viewType,
+			href: `/${cube.id}/${set.id}`,
+			size: repo.getSetCases(set.id).length,
+		})),
 	})),
 );
 
@@ -39,12 +43,13 @@ export const getCubeView = prerender(z.string(), (cubeId) => {
 			viewType: set.viewType,
 		})),
 	];
-	return { items, cases };
+	return { cube, sets, items, cases };
 });
 
 export const getSetView = prerender(z.string(), (setId) => {
 	const set = repo.findSet(setId);
-	if (!set) error(404, "Set not found");
+	const cube = set && repo.findCube(set.cubeId);
+	if (!set || !cube) error(404, "Set not found");
 	const cubeId = set.cubeId;
 	const subsets = repo.getSetSubsets(set.id);
 	const cases = repo.getSetCases(set.id);
@@ -64,13 +69,14 @@ export const getSetView = prerender(z.string(), (setId) => {
 			viewType: set.viewType,
 		})),
 	];
-	return { items, cases };
+	return { cube, set, subsets, items, cases };
 });
 
 export const getSubsetView = prerender(z.string(), (subsetId) => {
 	const subset = repo.findSubset(subsetId);
 	const set = subset && repo.findSet(subset.setId);
-	if (!subset || !set) error(404, "Not found");
+	const cube = set && repo.findCube(set.cubeId);
+	if (!subset || !set || !cube) error(404, "Not found");
 	const cubeId = set.cubeId;
 	const subsets = repo.getSetSubsets(set.id);
 	const cases = repo.getSubsetCases(subset.id);
@@ -90,11 +96,29 @@ export const getSubsetView = prerender(z.string(), (subsetId) => {
 			viewType: set.viewType,
 		})),
 	];
-	return { items, cases };
+	return { cube, set, subset, items, cases };
 });
 
 export const getCaseView = prerender(z.string(), (caseId) => {
 	const c = repo.getCase(caseId);
 	if (!c) error(404, "Case not found");
-	return c;
+	const { cubeId } = c.subset.set;
+	const siblings = repo.getSubsetCases(c.subsetId);
+	const index = siblings.findIndex((s) => s.id === c.id);
+	const toNeighbor = (s: Case | undefined): CaseNeighbor | null =>
+		s
+			? {
+					id: s.id,
+					name: s.name,
+					setup: s.setup,
+					href: `/${cubeId}/${c.subset.setId}/${c.subsetId}/${s.id}`,
+				}
+			: null;
+	return {
+		case: c,
+		// `.at(-1)` would wrap around to the last case, so the first case has no prev.
+		prev: toNeighbor(index > 0 ? siblings.at(index - 1) : undefined),
+		next: toNeighbor(siblings.at(index + 1)),
+		position: { index: index + 1, total: siblings.length },
+	};
 });
