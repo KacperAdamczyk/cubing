@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Play } from "@lucide/svelte";
-	import { browser } from "$app/environment";
 	import { goto } from "$app/navigation";
 	import { page } from "$app/state";
 	import PageHeader from "$lib/components/PageHeader.svelte";
@@ -20,11 +19,11 @@
 	// Every case id in catalogue order — the canonical order of a selection.
 	const order = flattenTree(tree).map((entry) => entry.case.id);
 
-	// The selection is the `?cases=` query (see selection.ts). It can't be read
-	// while prerendering, so the static page ships unticked and hydration fills
-	// it in; every change is written straight back to the URL (replacing the
+	// The selection is the `?cases=` query (see selection.ts); this route is
+	// rendered dynamically, so the server response already has the right boxes
+	// ticked. Every change is written straight back to the URL (replacing the
 	// history entry) so the picker has no state of its own.
-	const ids = $derived(browser ? parseCaseIds(page.url.searchParams) : []);
+	const ids = $derived(parseCaseIds(page.url.searchParams));
 	const selected = $derived(new Set(order.filter((id) => ids.includes(id))));
 
 	const update = (next: string[]) =>

@@ -2,7 +2,7 @@
 	import "./layout.css";
 	import { Menu } from "@lucide/svelte";
 	import type { Snippet } from "svelte";
-	import { browser } from "$app/environment";
+	import { building } from "$app/environment";
 	import { onNavigate } from "$app/navigation";
 	import { page } from "$app/state";
 	import favicon from "$lib/assets/favicon.svg";
@@ -25,11 +25,12 @@
 	const sidebar = await getSidebar();
 
 	// The query string is off-limits while prerendering (SvelteKit throws on
-	// `url.search`), and only the trainer's crumbs need it, so read it client-side.
+	// `url.search`); only the trainer's crumbs need it, and the trainer routes
+	// are rendered dynamically, so outside the build it is safe to read.
 	const breadcrumbs = $derived(
 		getBreadcrumbs(sidebar, page.params, {
 			pathname: page.url.pathname,
-			search: browser ? page.url.search : "",
+			search: building ? "" : page.url.search,
 		}),
 	);
 </script>

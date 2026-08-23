@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { ArrowLeft, ArrowRight, Check, ListChecks } from "@lucide/svelte";
-	import { browser } from "$app/environment";
 	import { page } from "$app/state";
 	import TrainingCard from "$lib/components/training/TrainingCard.svelte";
 	import { getTrainingTree } from "$lib/data/catalog.remote";
@@ -17,14 +16,12 @@
 	const tree = await getTrainingTree();
 	const catalogue = flattenTree(tree);
 
-	// Selection and position both come from the URL (see selection.ts). The
-	// query isn't readable while prerendering, so the static page shows a
-	// placeholder that hydration swaps for the real session.
-	const entries = $derived(
-		browser ? resolveEntries(catalogue, parseCaseIds(page.url.searchParams)) : [],
-	);
+	// Selection and position both come from the URL (see selection.ts); the
+	// route is rendered dynamically, so a shared link server-renders the real
+	// session directly.
+	const entries = $derived(resolveEntries(catalogue, parseCaseIds(page.url.searchParams)));
 	const ids = $derived(entries.map((entry) => entry.case.id));
-	const index = $derived(browser ? parseStep(page.url.searchParams, entries.length) : 0);
+	const index = $derived(parseStep(page.url.searchParams, entries.length));
 	const current = $derived(entries.at(index));
 	const isLast = $derived(index === entries.length - 1);
 
@@ -53,9 +50,7 @@
 		</a>
 	</header>
 
-	{#if !browser}
-		<div class="skeleton h-80 w-full rounded-box"></div>
-	{:else if current}
+	{#if current}
 		{#key current.case.id}
 			<TrainingCard entry={current} {index} total={entries.length} />
 		{/key}
