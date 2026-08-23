@@ -21,10 +21,12 @@
 	};
 </script>
 
-<button type="button" class="btn btn-circle btn-ghost" onclick={toggle} aria-label="Toggle theme">
-	{#if theme === 'dark'}
-		<Sun class="size-5" />
-	{:else}
-		<Moon class="size-5" />
-	{/if}
-</button>
+<!-- A daisyUI swap: the (visually hidden) checkbox is "on" in light mode and
+     rotates the sun/moon icons into each other. -->
+<label
+	class="btn btn-circle btn-ghost swap swap-rotate has-focus-visible:outline-2 has-focus-visible:outline-offset-2"
+>
+	<input type="checkbox" aria-label="Toggle theme" checked={theme === 'light'} onchange={toggle} />
+	<Sun class="swap-off size-5" />
+	<Moon class="swap-on size-5" />
+</label>

@@ -6,6 +6,7 @@
 /* ===== Custom daisyUI themes — "Playful Cube" tuned surfaces ===== */
 /* base-100 is the clean, raised surface (cards/sidebar/navbar);            */
 /* base-200 is the page behind them; base-300 is borders/dividers.         */
+/* --radius-selector 1rem keeps badges (our pills) fully round at any size. */
 
 @plugin "daisyui/theme" {
 	name: "dark";
@@ -34,7 +35,7 @@
 	--color-error: #f0556a;
 	--color-error-content: #2a0007;
 
-	--radius-selector: 0.5rem;
+	--radius-selector: 1rem;
 	--radius-field: 0.5rem;
 	--radius-box: 1rem;
 	--size-selector: 0.25rem;
@@ -69,7 +70,7 @@
 	--color-error: #dc2626;
 	--color-error-content: #ffffff;
 
-	--radius-selector: 0.5rem;
+	--radius-selector: 1rem;
 	--radius-field: 0.5rem;
 	--radius-box: 1rem;
 	--size-selector: 0.25rem;
@@ -162,6 +163,13 @@
 	--type-gradient: linear-gradient(135deg, #009b48, #ffd500 52%, #ff5900);
 }
 
+/* `badge-type`: a daisyUI badge colour modifier (like `badge-primary`) that takes
+ * its colours from the surrounding `data-type` container. */
+@utility badge-type {
+	--badge-color: var(--type-pill);
+	--badge-fg: var(--type-pill-content);
+}
+
 /* Shared cube-gradient (logo mark, the "All" chip edge) */
 .cube-gradient {
 	background-image: linear-gradient(135deg, #009b48, #ffd500 52%, #ff5900);
@@ -190,12 +198,4 @@
 /* Small, spaced, uppercase label used for eyebrows and section titles. */
 @utility eyebrow {
 	@apply text-xs font-semibold tracking-[0.14em] text-base-content/50 uppercase;
-}
-
-/* Horizontal scrollers (chip rows on small screens) without a visible bar. */
-@utility no-scrollbar {
-	scrollbar-width: none;
-	&::-webkit-scrollbar {
-		display: none;
-	}
 }

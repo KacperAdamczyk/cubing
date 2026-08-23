@@ -20,7 +20,7 @@
 
 <div
 	class={[
-		'flex flex-col overflow-hidden rounded-field border',
+		'flex flex-col rounded-field border',
 		isMain ? 'border-(--type-accent)/40 bg-base-200/60 shadow-xs' : 'border-base-300 bg-base-200/30'
 	]}
 >
