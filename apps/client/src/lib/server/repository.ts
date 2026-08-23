@@ -2,8 +2,7 @@ import { db } from "db";
 import type {
 	CaseWithContext,
 	Cube,
-	// biome-ignore lint/suspicious/noShadowRestrictedNames: `Set` is the domain type (cube → set → subset → case), not the global
-	Set,
+	CubeSet,
 	SidebarCube,
 	Subset,
 	TrainingCube,
@@ -16,12 +15,12 @@ export const getCubes = (): Cube[] => db.query.cube.findMany().sync();
 export const findCube = (cubeId: string): Cube | undefined =>
 	db.query.cube.findFirst({ where: { id: cubeId } }).sync();
 
-export const getCubeSets = (cubeId: string): Set[] =>
+export const getCubeSets = (cubeId: string): CubeSet[] =>
 	db.query.set.findMany({ where: { cubeId } }).sync();
 
-export const getSets = (): Set[] => db.query.set.findMany().sync();
+export const getSets = (): CubeSet[] => db.query.set.findMany().sync();
 
-export const findSet = (setId: string): Set | undefined =>
+export const findSet = (setId: string): CubeSet | undefined =>
 	db.query.set.findFirst({ where: { id: setId } }).sync();
 
 export const findSubset = (subsetId: string): Subset | undefined =>

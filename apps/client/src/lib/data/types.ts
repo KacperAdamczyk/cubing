@@ -5,7 +5,7 @@ export interface Cube {
 	name: string;
 }
 
-export interface Set {
+export interface CubeSet {
 	id: string;
 	name: string;
 	previewAlgorithm: string;
@@ -39,7 +39,7 @@ export interface Algorithm {
 
 /** View-model = the relational-query result: a case with its joined subset (+ set) and algorithms. */
 export interface CaseWithContext extends Case {
-	subset: Subset & { set: Set };
+	subset: Subset & { set: CubeSet };
 	algorithms: Algorithm[];
 }
 
@@ -47,7 +47,7 @@ export interface SidebarSubset extends Subset {
 	cases: Array<Pick<Case, "id" | "name">>;
 }
 
-export interface SidebarSet extends Set {
+export interface SidebarSet extends CubeSet {
 	subsets: SidebarSubset[];
 }
 
@@ -66,7 +66,7 @@ export interface TrainingSubset extends Subset {
 	cases: TrainingCase[];
 }
 
-export interface TrainingSet extends Set {
+export interface TrainingSet extends CubeSet {
 	subsets: TrainingSubset[];
 }
 
@@ -96,7 +96,7 @@ export interface PreviewItem {
 export interface CubeSummary extends Cube {
 	href: string;
 	size: number;
-	sets: Array<Pick<Set, "id" | "name" | "viewType"> & { href: string; size: number }>;
+	sets: Array<Pick<CubeSet, "id" | "name" | "viewType"> & { href: string; size: number }>;
 }
 
 /** The previous / next case inside the same subset, for case-page navigation. */
