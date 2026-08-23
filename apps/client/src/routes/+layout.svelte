@@ -2,6 +2,7 @@
 	import "./layout.css";
 	import { Menu } from "@lucide/svelte";
 	import type { Snippet } from "svelte";
+	import { browser } from "$app/environment";
 	import { onNavigate } from "$app/navigation";
 	import { page } from "$app/state";
 	import favicon from "$lib/assets/favicon.svg";
@@ -22,6 +23,15 @@
 	// Awaited outside any <svelte:boundary> so the data is awaited during SSR and
 	// inlined into the prerendered HTML (a pending boundary would suppress that).
 	const sidebar = await getSidebar();
+
+	// The query string is off-limits while prerendering (SvelteKit throws on
+	// `url.search`), and only the trainer's crumbs need it, so read it client-side.
+	const breadcrumbs = $derived(
+		getBreadcrumbs(sidebar, page.params, {
+			pathname: page.url.pathname,
+			search: browser ? page.url.search : "",
+		}),
+	);
 </script>
 
 <svelte:head>
@@ -42,7 +52,7 @@
 				<Menu class="size-5" />
 			</label>
 			<div class="flex-1">
-				<Breadcrumbs breadcrumbs={getBreadcrumbs(sidebar, page.params)} />
+				<Breadcrumbs {breadcrumbs} />
 			</div>
 			<ThemeToggle />
 		</header>

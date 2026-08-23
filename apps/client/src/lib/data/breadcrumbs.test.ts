@@ -48,4 +48,25 @@ describe("getBreadcrumbs", () => {
 			{ name: "Cross", href: "/3x3/OLL/Oriented-Edges/OLL-21" },
 		]);
 	});
+
+	it("builds training crumbs that carry the selection query", () => {
+		expect(getBreadcrumbs(tree, {}, { pathname: "/train", search: "?cases=OLL-21" })).toEqual([
+			{ name: "Algorithms", href: "/" },
+			{ name: "Training", href: "/train?cases=OLL-21" },
+		]);
+		expect(
+			getBreadcrumbs(tree, {}, { pathname: "/train/session", search: "?cases=OLL-21&step=2" }),
+		).toEqual([
+			{ name: "Algorithms", href: "/" },
+			{ name: "Training", href: "/train?cases=OLL-21&step=2" },
+			{ name: "Session", href: "/train/session?cases=OLL-21&step=2" },
+		]);
+	});
+
+	it("ignores the location for catalogue routes", () => {
+		expect(getBreadcrumbs(tree, { cubeId: "3x3" }, { pathname: "/3x3", search: "" })).toEqual([
+			{ name: "Algorithms", href: "/" },
+			{ name: "3x3", href: "/3x3" },
+		]);
+	});
 });

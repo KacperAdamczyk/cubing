@@ -42,7 +42,9 @@ A **Rubik's Cube algorithm learning application** built with:
 
 **`apps/client/src/lib/layout/`** - `AppSidebar`.
 
-**`apps/client/src/routes/`** - file-based routes: `/` (cube picker), `/[cubeId]`, `/[cubeId]/[setId]`, `/[cubeId]/[setId]/[subsetId]`, `/[cubeId]/[setId]/[subsetId]/[caseId]`; the root `+layout.svelte` is the daisyUI drawer shell. Pages fetch data via remote functions (no universal `load`s); each dynamic route's `+page.server.ts` exports `entries()` for prerendering. Enabled via `kit.experimental.remoteFunctions` + `compilerOptions.experimental.async` in `svelte.config.js`, with `ssr.external: ['db']` in `vite.config.ts`.
+**`apps/client/src/routes/`** - file-based routes: `/` (cube picker), `/[cubeId]`, `/[cubeId]/[setId]`, `/[cubeId]/[setId]/[subsetId]`, `/[cubeId]/[setId]/[subsetId]/[caseId]`, plus the trainer `/train` (selection tree) and `/train/session` (stepper); the root `+layout.svelte` is the daisyUI drawer shell. Pages fetch data via remote functions (no universal `load`s); each dynamic route's `+page.server.ts` exports `entries()` for prerendering. Enabled via `kit.experimental.remoteFunctions` + `compilerOptions.experimental.async` in `svelte.config.js`, with `ssr.external: ['db']` in `vite.config.ts`.
+
+**`apps/client/src/lib/training/`** - the algorithm trainer's state helpers. The selection and position live only in the URL (`/train?cases=Ua,Ub&…`, `/train/session?cases=…&step=2`, see `selection.ts`); pages read it client-side (`browser ? page.url.searchParams : …` — `url.search` throws during prerender) and write it with `goto(..., { replaceState: true })` (shallow `replaceState` would leave `page.url` stale). UI in `components/training/` (`SelectionTree` = daisyUI `menu` + `checkbox` + `<details>`, `TrainingCard` = preview/setup with the solution behind a reveal).
 
 **Data model:** navigation is `cube → set → subset → case` (cube is the top level; root `/` is the cube picker — currently a single `3x3`, ready for more sizes). `viewType` (`F2L`/`OLL`/`PLL`) lives on `set` and is inherited. Each algorithm is its own row; a case's `defaultAlgorithmId` is the "main" algorithm.
 
