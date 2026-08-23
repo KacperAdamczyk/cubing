@@ -9,6 +9,7 @@ import {
 	getSets,
 	getSidebarTree,
 	getSubsetCases,
+	getTrainingTree,
 } from "./repository";
 
 describe("repository", () => {
@@ -59,5 +60,15 @@ describe("repository", () => {
 		const oll = cube.sets.find((s) => s.id === "OLL")!;
 		expect(oll.subsets.length).toBeGreaterThan(0);
 		expect(oll.subsets[0].cases.length).toBeGreaterThan(0);
+	});
+
+	it("builds a training tree whose cases carry their algorithms", () => {
+		const tree = getTrainingTree();
+		expect(tree.map((c) => c.id)).toEqual(["3x3"]);
+		const cases = tree.flatMap((c) => c.sets.flatMap((s) => s.subsets.flatMap((ss) => ss.cases)));
+		expect(cases).toHaveLength(29);
+		const oll21 = cases.find((c) => c.id === "OLL-21");
+		expect(oll21?.algorithms.some((a) => a.id === "OLL-21__0")).toBe(true);
+		expect(oll21?.setup).toBeTruthy();
 	});
 });

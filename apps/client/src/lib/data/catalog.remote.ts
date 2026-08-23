@@ -6,6 +6,8 @@ import type { Case, CaseNeighbor, CubeSummary, PreviewItem } from "./types";
 
 export const getSidebar = prerender(() => repo.getSidebarTree());
 
+export const getTrainingTree = prerender(() => repo.getTrainingTree());
+
 export const getCubesView = prerender((): CubeSummary[] =>
 	repo.getCubes().map((cube) => ({
 		...cube,

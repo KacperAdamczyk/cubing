@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { Search } from "@lucide/svelte";
+	import { Dumbbell, Search } from "@lucide/svelte";
 	import { page } from "$app/state";
 	import favicon from "$lib/assets/favicon.svg";
 	import type { SidebarCube, SidebarSet } from "$lib/data/types";
+	import { pickerPath } from "$lib/training/selection";
 
 	interface Props {
 		sidebar: SidebarCube[];
@@ -39,6 +40,7 @@
 	const setSize = (set: SidebarSet) => set.subsets.reduce((n, s) => n + s.cases.length, 0);
 
 	const isActive = (href: string) => page.url.pathname === href;
+	const isTraining = $derived(page.url.pathname.startsWith(pickerPath));
 
 	// daisyUI's `menu-active` paints the item with `--menu-active-bg/fg`, which each
 	// typed <li> below points at its type's soft tint; the accent bar is ours.
@@ -60,6 +62,16 @@
 			bind:value={query}
 		/>
 	</label>
+
+	<!-- The trainer sits outside the catalogue tree, so it gets its own entry. -->
+	<a
+		href={pickerPath}
+		aria-current={isTraining ? 'page' : undefined}
+		class={['btn btn-primary btn-sm justify-start gap-2', !isTraining && 'btn-soft']}
+	>
+		<Dumbbell class="size-4" aria-hidden="true" />
+		Training
+	</a>
 
 	<ul class="menu w-full grow flex-nowrap gap-0.5 overflow-y-auto px-0">
 		{#each filtered as cube (cube.id)}
