@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a monorepo using Bun workspaces. The application is in `apps/client/` (SvelteKit).
 
 **From `apps/client/`:**
-- `bun run dev` - Start the Vite dev server (http://localhost:5173)
+- `bun run dev` - Start the Vite dev server through [portless](https://github.com/vercel-labs/portless) at a stable named URL: `https://cubing.localhost` (`:1355` when the proxy runs unprivileged). Vite's own port comes from `PORTLESS_APP_PORT`/random; `.claude/launch.json` sets it from the harness-assigned `$PORT` (`autoPort`), so previews use `http://localhost:<port>` directly. A second `bun run dev` in the same worktree fails with a portless route conflict — reuse the running server instead (git worktrees get their own `<branch>.cubing.localhost` route automatically).
 - `bun run build` - Build to `.svelte-kit/cloudflare/` (adapter-cloudflare, fully prerendered)
 - `bun run preview` - Preview the production build (`vite preview`)
 - `bun run deploy` - Deploy to Cloudflare Workers (`wrangler deploy`, uses `apps/client/wrangler.jsonc`)
