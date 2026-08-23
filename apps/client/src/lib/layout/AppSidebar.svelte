@@ -40,7 +40,9 @@
 
 	const isActive = (href: string) => page.url.pathname === href;
 
-	const activeBar = "shadow-[inset_3px_0_0_0_var(--type-accent)]";
+	// daisyUI's `menu-active` paints the item with `--menu-active-bg/fg`, which each
+	// typed <li> below points at its type's soft tint; the accent bar is ours.
+	const activeClass = "menu-active shadow-[inset_3px_0_0_0_var(--type-accent)]";
 </script>
 
 <aside class="flex min-h-full w-72 flex-col gap-3 border-r border-base-300 bg-base-100 p-4">
@@ -49,7 +51,7 @@
 		<span class="font-display text-lg font-extrabold tracking-tight">My Cubing Algs</span>
 	</a>
 
-	<label class="input input-sm w-full rounded-field">
+	<label class="input input-sm w-full">
 		<Search class="size-4 opacity-50" />
 		<input
 			type="search"
@@ -70,19 +72,20 @@
 				</a>
 			</li>
 			{#each cube.sets as set (set.id)}
-				<li data-type={set.viewType}>
+				<li
+					data-type={set.viewType}
+					class="[--menu-active-bg:var(--type-soft)] [--menu-active-fg:var(--color-base-content)]"
+				>
 					<a
 						href={`/${cube.id}/${set.id}`}
 						class={[
 							'font-display gap-2.5 text-[15px] font-bold transition-colors',
-							isActive(`/${cube.id}/${set.id}`) && `bg-(--type-soft) ${activeBar}`
+							isActive(`/${cube.id}/${set.id}`) && activeClass
 						]}
 					>
 						<span class="size-2.5 rounded-[3px] bg-(--type-accent)"></span>
 						{set.name}
-						<span
-							class="ml-auto rounded-full bg-base-200 px-1.5 py-px font-sans text-[10px] font-bold text-base-content/55"
-						>
+						<span class="badge badge-ghost badge-xs font-sans font-bold text-base-content/55">
 							{setSize(set)}
 						</span>
 					</a>
@@ -93,8 +96,7 @@
 									href={`/${cube.id}/${set.id}/${subset.id}`}
 									class={[
 										'transition-colors',
-										isActive(`/${cube.id}/${set.id}/${subset.id}`) &&
-											`bg-(--type-soft) font-medium ${activeBar}`
+										isActive(`/${cube.id}/${set.id}/${subset.id}`) && `font-medium ${activeClass}`
 									]}
 								>
 									{subset.name}
@@ -110,7 +112,7 @@
 												class={[
 													'transition-colors',
 													isActive(`/${cube.id}/${set.id}/${subset.id}/${c.id}`) &&
-														`bg-(--type-soft) font-medium ${activeBar}`
+														`font-medium ${activeClass}`
 												]}
 											>
 												{c.name}

@@ -38,9 +38,7 @@
 		<AlgorithmView {setup} {algorithm} {slim} {viewType} />
 	{/each}
 	{#if hasMore}
-		<span
-			class="self-center rounded-full border border-base-300 px-2.5 py-0.5 text-xs font-semibold text-base-content/60"
-		>
+		<span class="badge badge-soft badge-sm self-center font-semibold text-base-content/60">
 			+{otherAlgorithms.length - limitedOtherAlgorithms.length}
 			more
 		</span>

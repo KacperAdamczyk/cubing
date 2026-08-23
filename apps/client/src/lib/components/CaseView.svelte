@@ -21,7 +21,7 @@
 <article
 	id={c.id}
 	data-type={viewType}
-	class="@container relative w-full overflow-hidden rounded-box border border-base-300 bg-(--type-tint) shadow-sm transition-shadow group-hover:shadow-lg"
+	class="card card-border @container w-full overflow-hidden border-base-300 bg-(--type-tint) shadow-sm transition-shadow group-hover:shadow-lg"
 >
 	<span class="absolute inset-y-0 left-0 w-1.5 bg-(--type-accent)"></span>
 	<div
@@ -33,7 +33,7 @@
 			<CubeView algorithm={c.setup} type={viewType} />
 		</div>
 		<div class="flex w-full min-w-0 flex-1 flex-col gap-3">
-			<div class="flex flex-wrap items-center justify-center gap-2 @md:justify-start">
+			<div class="card-title flex-wrap justify-center @md:justify-start">
 				<svelte:element
 					this={large ? 'h1' : 'h2'}
 					class={['font-display font-extrabold tracking-tight', large ? 'text-3xl @2xl:text-4xl' : 'text-2xl']}
@@ -41,15 +41,11 @@
 					{c.name}
 				</svelte:element>
 				{#if slim}
-					<span
-						class="rounded-full bg-(--type-pill) px-2.5 py-0.5 text-xs font-bold text-(--type-pill-content)"
-					>
-						{c.subset.name}
-					</span>
+					<span class="badge badge-type badge-sm font-bold">{c.subset.name}</span>
 				{:else}
 					<a
 						href={`${subsetHref}#${c.id}`}
-						class="rounded-full bg-(--type-pill) px-2.5 py-0.5 text-xs font-bold text-(--type-pill-content) transition-opacity hover:opacity-80"
+						class="badge badge-type badge-sm font-bold transition-opacity hover:opacity-80"
 					>
 						{c.subset.name}
 					</a>

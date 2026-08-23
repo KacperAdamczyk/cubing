@@ -15,10 +15,25 @@
 	const isCorrect = $derived(isAlgorithmCorrect(setup, algorithm, viewType));
 </script>
 
+<!-- The verdict icon explains itself with a daisyUI tooltip on hover / focus. -->
 {#if isCorrect}
 	{#if !onlyError}
-		<span title="Algorithm is good" class="text-success"><ShieldCheck class="size-4" /></span>
+		<span
+			role="img"
+			aria-label="Algorithm is good"
+			class="tooltip tooltip-success text-success"
+			data-tip="Algorithm is good"
+		>
+			<ShieldCheck class="size-4" />
+		</span>
 	{/if}
 {:else}
-	<span title="Algorithm is bad" class="text-error"><CircleAlert class="size-4" /></span>
+	<span
+		role="img"
+		aria-label="Algorithm is bad"
+		class="tooltip tooltip-error text-error"
+		data-tip="Algorithm is bad"
+	>
+		<CircleAlert class="size-4" />
+	</span>
 {/if}

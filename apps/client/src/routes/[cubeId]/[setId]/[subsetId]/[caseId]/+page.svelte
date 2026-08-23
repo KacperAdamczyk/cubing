@@ -9,7 +9,7 @@
 	const viewType = $derived(view.case.subset.set.viewType);
 
 	const neighborClass =
-		"group flex items-center gap-3 rounded-box border border-base-300 bg-base-100 p-3 shadow-sm transition-all duration-150 hover:-translate-y-0.5 hover:shadow-md";
+		"card card-side card-border group items-center gap-3 border-base-300 bg-base-100 p-3 shadow-sm transition-all duration-150 hover:-translate-y-0.5 hover:shadow-md";
 </script>
 
 <svelte:head>
@@ -19,7 +19,7 @@
 <div data-type={viewType} class="flex flex-col gap-6">
 	<CaseView case={view.case} slim={false} large />
 
-	<p class="text-center text-xs font-semibold text-base-content/50">
+	<p class="divider my-0 text-xs font-semibold text-base-content/50">
 		Case {view.position.index} of {view.position.total} in {view.case.subset.name}
 	</p>
 

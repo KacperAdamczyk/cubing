@@ -23,12 +23,13 @@
 	}: Props = $props();
 </script>
 
+<!-- A daisyUI card that is also a carousel item of the PreviewList scroller. -->
 <a
 	{href}
 	data-type={all ? 'all' : viewType}
 	aria-current={isActive ? 'page' : undefined}
 	class={[
-		'relative flex w-32 shrink-0 snap-start flex-col items-center gap-2 overflow-hidden rounded-box border p-3 transition-all duration-150 sm:w-34',
+		'card card-border carousel-item box-border w-32 flex-col items-center gap-2 overflow-hidden p-3 transition-all duration-150 sm:w-34',
 		'hover:-translate-y-0.5 hover:shadow-md',
 		isActive
 			? 'border-(--type-accent) bg-(--type-tint) shadow-[0_0_0_1px_var(--type-accent)]'
@@ -46,9 +47,5 @@
 	>
 		{name}
 	</span>
-	<span
-		class="mt-auto rounded-full bg-base-200 px-2.5 py-0.5 text-xs font-semibold text-base-content/70"
-	>
-		{size}
-	</span>
+	<span class="badge badge-ghost badge-sm mt-auto font-semibold text-base-content/70">{size}</span>
 </a>

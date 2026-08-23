@@ -39,14 +39,10 @@
 				>
 					<span class="size-2.5 shrink-0 rounded-[3px] bg-(--type-accent)"></span>
 					<h2 class="font-display text-lg font-bold tracking-tight">
-						<a href={subsetHref(group.subset)} class="hover:underline">{group.subset.name}</a>
+						<a href={subsetHref(group.subset)} class="link link-hover">{group.subset.name}</a>
 					</h2>
 					{#if showSetNames}
-						<span
-							class="rounded-full bg-(--type-pill) px-2 py-0.5 text-[11px] font-bold text-(--type-pill-content)"
-						>
-							{group.subset.set.name}
-						</span>
+						<span class="badge badge-type badge-sm font-bold">{group.subset.set.name}</span>
 					{/if}
 					<span class="ml-auto text-xs font-semibold text-base-content/50">
 						{count(group.cases.length, 'case')}
@@ -66,9 +62,7 @@
 		</section>
 	{/each}
 	{#if cases.length === 0}
-		<div
-			class="rounded-box border border-dashed border-base-300 p-10 text-center text-base-content/50"
-		>
+		<div class="card card-dash border-base-300 p-10 text-center text-base-content/50">
 			No cases found.
 		</div>
 	{/if}
