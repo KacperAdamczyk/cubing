@@ -30,7 +30,7 @@
 		"@tailwindcss/vite": "4.3.3",
 		"@types/node": "26.2.0",
 		"@vitest/browser-playwright": "4.1.10",
-		"daisyui": "5.7.16",
+		"daisyui": "5.7.22",
 		"db": "workspace:*",
 		"playwright": "1.62.1",
 		"portless": "0.15.5",
