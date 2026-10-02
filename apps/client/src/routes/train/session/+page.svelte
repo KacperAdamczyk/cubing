@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { ArrowLeft, ArrowRight, Check, ListChecks } from "@lucide/svelte";
-	import { page } from "$app/state";
-	import TrainingCard from "$lib/components/training/TrainingCard.svelte";
-	import { getTrainingTree } from "$lib/data/catalog.remote";
+	import TrainingCard from "#lib/components/training/TrainingCard.svelte";
+	import { getTrainingTree } from "#lib/data/catalog.remote.js";
 	import {
 		flattenTree,
 		parseCaseIds,
@@ -11,7 +10,8 @@
 		resolveEntries,
 		sessionPath,
 		trainingHref,
-	} from "$lib/training/selection";
+	} from "#lib/training/selection.js";
+	import { page } from "$app/state";
 
 	const tree = await getTrainingTree();
 	const catalogue = flattenTree(tree);

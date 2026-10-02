@@ -1,11 +1,11 @@
 <script lang="ts">
+	import CasesList from "#lib/components/CasesList.svelte";
+	import PageHeader from "#lib/components/PageHeader.svelte";
+	import PreviewList from "#lib/components/PreviewList.svelte";
+	import { getSetView } from "#lib/data/catalog.remote.js";
+	import { count } from "#lib/data/format.js";
+	import { viewTypeInfo } from "#lib/data/viewTypes.js";
 	import { page } from "$app/state";
-	import CasesList from "$lib/components/CasesList.svelte";
-	import PageHeader from "$lib/components/PageHeader.svelte";
-	import PreviewList from "$lib/components/PreviewList.svelte";
-	import { getSetView } from "$lib/data/catalog.remote";
-	import { count } from "$lib/data/format";
-	import { viewTypeInfo } from "$lib/data/viewTypes";
 
 	const view = $derived(await getSetView(page.params.setId!));
 	const info = $derived(viewTypeInfo[view.set.viewType]);

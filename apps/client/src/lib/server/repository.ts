@@ -6,7 +6,7 @@ import type {
 	SidebarCube,
 	Subset,
 	TrainingCube,
-} from "$lib/data/types";
+} from "#lib/data/types.js";
 
 const caseWith = { subset: { with: { set: true } }, algorithms: true } as const;
 

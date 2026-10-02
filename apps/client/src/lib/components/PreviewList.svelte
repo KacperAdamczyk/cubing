@@ -1,6 +1,6 @@
 <script lang="ts">
+	import type { PreviewItem } from "#lib/data/types.js";
 	import { page } from "$app/state";
-	import type { PreviewItem } from "$lib/data/types";
 	import Preview from "./Preview.svelte";
 
 	interface Props {

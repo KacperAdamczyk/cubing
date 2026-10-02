@@ -1,4 +1,4 @@
-import { pickerPath, sessionPath } from "$lib/training/selection";
+import { pickerPath, sessionPath } from "#lib/training/selection.js";
 import type { Breadcrumb, SidebarCube } from "./types";
 
 /** The part of the current URL the crumbs depend on (`search` carries a training selection). */

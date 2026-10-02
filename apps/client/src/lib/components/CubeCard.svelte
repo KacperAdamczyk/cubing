@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { ArrowRight } from "@lucide/svelte";
 	import { Color } from "cube";
-	import { count } from "$lib/data/format";
-	import type { CubeSummary } from "$lib/data/types";
+	import { count } from "#lib/data/format.js";
+	import type { CubeSummary } from "#lib/data/types.js";
 	import F2L from "./cube/F2L.svelte";
 
 	interface Props {

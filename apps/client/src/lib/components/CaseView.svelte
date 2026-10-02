@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Shuffle } from "@lucide/svelte";
-	import type { CaseWithContext } from "$lib/data/types";
+	import type { CaseWithContext } from "#lib/data/types.js";
 	import AlgorithmNotation from "./AlgorithmNotation.svelte";
 	import AlgorithmsList from "./AlgorithmsList.svelte";
 	import CubeView from "./cube/CubeView.svelte";

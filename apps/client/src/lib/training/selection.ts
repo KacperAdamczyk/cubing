@@ -1,4 +1,4 @@
-import type { TrainingCube, TrainingEntry } from "$lib/data/types";
+import type { TrainingCube, TrainingEntry } from "#lib/data/types.js";
 
 /* The training selection lives in the URL so a session is shareable, survives a
  * reload and round-trips between the picker and the stepper:
@@ -14,7 +14,7 @@ const casesParam = "cases";
 const stepParam = "step";
 
 /** The case ids from `?cases=`, in URL order, de-duplicated; empty when absent. */
-export const parseCaseIds = (params: URLSearchParams): string[] => [
+export const parseCaseIds = (params: Pick<URLSearchParams, "get">): string[] => [
 	...new Set(
 		(params.get(casesParam) ?? "")
 			.split(",")
@@ -27,7 +27,7 @@ export const parseCaseIds = (params: URLSearchParams): string[] => [
  * The 0-based index encoded by `?step=` (1-based in the URL), clamped into
  * `[0, total - 1]`; anything unparsable falls back to the first step.
  */
-export const parseStep = (params: URLSearchParams, total: number): number => {
+export const parseStep = (params: Pick<URLSearchParams, "get">, total: number): number => {
 	const step = Number.parseInt(params.get(stepParam) ?? "", 10);
 	if (!Number.isFinite(step) || total <= 0) return 0;
 	return Math.min(Math.max(step - 1, 0), total - 1);

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { TrainingCube } from "$lib/data/types";
+import type { TrainingCube } from "#lib/data/types.js";
 import {
 	flattenTree,
 	parseCaseIds,
