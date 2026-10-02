@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { TrainingCube, TrainingSet, TrainingSubset } from "$lib/data/types";
+	import type { TrainingCube, TrainingSet, TrainingSubset } from "#lib/data/types.js";
 	import CubeView from "../cube/CubeView.svelte";
 
 	interface Props {

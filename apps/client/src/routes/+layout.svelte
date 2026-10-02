@@ -2,15 +2,15 @@
 	import "./layout.css";
 	import { Menu } from "@lucide/svelte";
 	import type { Snippet } from "svelte";
-	import { building } from "$app/environment";
+	import favicon from "#lib/assets/favicon.svg";
+	import Breadcrumbs from "#lib/components/Breadcrumbs.svelte";
+	import ThemeToggle from "#lib/components/ThemeToggle.svelte";
+	import { getBreadcrumbs } from "#lib/data/breadcrumbs.js";
+	import { getSidebar } from "#lib/data/catalog.remote.js";
+	import AppSidebar from "#lib/layout/AppSidebar.svelte";
+	import { building } from "$app/env";
 	import { onNavigate } from "$app/navigation";
 	import { page } from "$app/state";
-	import favicon from "$lib/assets/favicon.svg";
-	import Breadcrumbs from "$lib/components/Breadcrumbs.svelte";
-	import ThemeToggle from "$lib/components/ThemeToggle.svelte";
-	import { getBreadcrumbs } from "$lib/data/breadcrumbs";
-	import { getSidebar } from "$lib/data/catalog.remote";
-	import AppSidebar from "$lib/layout/AppSidebar.svelte";
 
 	let { children }: { children: Snippet } = $props();
 

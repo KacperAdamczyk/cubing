@@ -1,5 +1,5 @@
 import { applyMoves, createCube, isCubeSolved, movesFromString, toColoredFaceGrids } from "cube";
-import type { ViewType } from "$lib/data/types";
+import type { ViewType } from "#lib/data/types.js";
 
 /**
  * Applies `setup` then `algorithm` to a solved cube and reports whether the

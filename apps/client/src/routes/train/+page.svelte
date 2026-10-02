@@ -1,11 +1,9 @@
 <script lang="ts">
 	import { Play } from "@lucide/svelte";
-	import { goto } from "$app/navigation";
-	import { page } from "$app/state";
-	import PageHeader from "$lib/components/PageHeader.svelte";
-	import SelectionTree from "$lib/components/training/SelectionTree.svelte";
-	import { getTrainingTree } from "$lib/data/catalog.remote";
-	import { count } from "$lib/data/format";
+	import PageHeader from "#lib/components/PageHeader.svelte";
+	import SelectionTree from "#lib/components/training/SelectionTree.svelte";
+	import { getTrainingTree } from "#lib/data/catalog.remote.js";
+	import { count } from "#lib/data/format.js";
 	import {
 		flattenTree,
 		parseCaseIds,
@@ -13,7 +11,9 @@
 		sessionPath,
 		toggleIds,
 		trainingHref,
-	} from "$lib/training/selection";
+	} from "#lib/training/selection.js";
+	import { goto } from "$app/navigation";
+	import { page } from "$app/state";
 
 	const tree = await getTrainingTree();
 	// Every case id in catalogue order — the canonical order of a selection.
@@ -27,7 +27,7 @@
 	const selected = $derived(new Set(order.filter((id) => ids.includes(id))));
 
 	const update = (next: string[]) =>
-		goto(trainingHref(pickerPath, next), { replaceState: true, noScroll: true, keepFocus: true });
+		goto(trainingHref(pickerPath, next), { replace: true, reset: false });
 	const toggle = (groupIds: string[], checked: boolean) =>
 		update(toggleIds(order, selected, groupIds, checked));
 

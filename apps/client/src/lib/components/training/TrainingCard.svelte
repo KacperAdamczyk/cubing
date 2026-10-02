@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Eye, Shuffle } from "@lucide/svelte";
-	import type { TrainingEntry } from "$lib/data/types";
+	import type { TrainingEntry } from "#lib/data/types.js";
 	import AlgorithmNotation from "../AlgorithmNotation.svelte";
 	import AlgorithmsList from "../AlgorithmsList.svelte";
 	import CubeView from "../cube/CubeView.svelte";

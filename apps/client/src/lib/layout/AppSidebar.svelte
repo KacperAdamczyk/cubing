@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { Dumbbell, Search } from "@lucide/svelte";
+	import favicon from "#lib/assets/favicon.svg";
+	import type { SidebarCube, SidebarSet } from "#lib/data/types.js";
+	import { pickerPath } from "#lib/training/selection.js";
 	import { page } from "$app/state";
-	import favicon from "$lib/assets/favicon.svg";
-	import type { SidebarCube, SidebarSet } from "$lib/data/types";
-	import { pickerPath } from "$lib/training/selection";
 
 	interface Props {
 		sidebar: SidebarCube[];

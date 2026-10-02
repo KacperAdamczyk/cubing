@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ViewType } from "$lib/data/types";
+	import type { ViewType } from "#lib/data/types.js";
 	import F2L from "./F2L.svelte";
 	import OLL from "./OLL.svelte";
 	import PLL from "./PLL.svelte";

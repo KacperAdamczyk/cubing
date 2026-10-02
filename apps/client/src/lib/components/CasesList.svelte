@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { count } from "$lib/data/format";
-	import type { CaseWithContext } from "$lib/data/types";
+	import { count } from "#lib/data/format.js";
+	import type { CaseWithContext } from "#lib/data/types.js";
 	import CaseView from "./CaseView.svelte";
 
 	interface Props {

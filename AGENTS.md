@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to coding agents (Claude Code, Codex, …) when working with code in this repository.
 
 ## Development Commands
 
@@ -43,9 +43,9 @@ A **Rubik's Cube algorithm learning application** built with:
 
 **`apps/client/src/lib/layout/`** - `AppSidebar`.
 
-**`apps/client/src/routes/`** - file-based routes: `/` (cube picker), `/[cubeId]`, `/[cubeId]/[setId]`, `/[cubeId]/[setId]/[subsetId]`, `/[cubeId]/[setId]/[subsetId]/[caseId]`, plus the trainer `/train` (selection tree) and `/train/session` (stepper), which opt out of prerendering (`train/+layout.ts`) and are SSR'd dynamically on the Worker so the `?cases=…` query renders server-side; the root `+layout.svelte` is the daisyUI drawer shell. Pages fetch data via remote functions (no universal `load`s); each dynamic route's `+page.server.ts` exports `entries()` for prerendering. Enabled via `kit.experimental.remoteFunctions` + `compilerOptions.experimental.async` in `svelte.config.js`, with `ssr.external: ['db']` in `vite.config.ts`.
+**`apps/client/src/routes/`** - file-based routes: `/` (cube picker), `/[cubeId]`, `/[cubeId]/[setId]`, `/[cubeId]/[setId]/[subsetId]`, `/[cubeId]/[setId]/[subsetId]/[caseId]`, plus the trainer `/train` (selection tree) and `/train/session` (stepper), which opt out of prerendering (`train/+layout.ts`) and are SSR'd dynamically on the Worker so the `?cases=…` query renders server-side; the root `+layout.svelte` is the daisyUI drawer shell. Pages fetch data via remote functions (no universal `load`s); each dynamic route's `+page.server.ts` exports `entries()` for prerendering. SvelteKit 3: there is no `svelte.config.js` — all config (adapter, `experimental.remoteFunctions`, `compilerOptions.experimental.async`) is passed to the `sveltekit(...)` plugin in `vite.config.ts`, alongside `ssr.external: ['db']`. `src/lib` is imported via the `#lib/*` subpath import declared in `apps/client/package.json` (with file extensions, e.g. `#lib/data/format.js`); `$lib` no longer exists.
 
-**`apps/client/src/lib/training/`** - the algorithm trainer's state helpers. The selection and position live only in the URL (`/train?cases=Ua,Ub&…`, `/train/session?cases=…&step=2`, see `selection.ts`); the trainer routes are dynamic, so pages read `page.url.searchParams` directly (only build-time code must not touch `url.search` — the shared root layout guards with `building`) and write it with `goto(..., { replaceState: true })` (shallow `replaceState` would leave `page.url` stale). At runtime on the Worker the prerender remote functions never run their queries — SvelteKit fetches their build-time JSON from the deployment's own static assets. UI in `components/training/` (`SelectionTree` = daisyUI `menu` + `checkbox` + `<details>`, `TrainingCard` = preview/setup with the solution behind a reveal).
+**`apps/client/src/lib/training/`** - the algorithm trainer's state helpers. The selection and position live only in the URL (`/train?cases=Ua,Ub&…`, `/train/session?cases=…&step=2`, see `selection.ts`); the trainer routes are dynamic, so pages read `page.url.searchParams` directly (only build-time code must not touch `url.search` — the shared root layout guards with `building`) and write it with `goto(..., { replace: true, reset: false })` (a shallow `goto` would leave `page.url` stale; `page.url` is readonly in Kit 3). At runtime on the Worker the prerender remote functions never run their queries — SvelteKit fetches their build-time JSON from the deployment's own static assets. UI in `components/training/` (`SelectionTree` = daisyUI `menu` + `checkbox` + `<details>`, `TrainingCard` = preview/setup with the solution behind a reveal).
 
 **Data model:** navigation is `cube → set → subset → case` (cube is the top level; root `/` is the cube picker — currently a single `3x3`, ready for more sizes). `viewType` (`F2L`/`OLL`/`PLL`) lives on `set` and is inherited. Each algorithm is its own row; a case's `defaultAlgorithmId` is the "main" algorithm.
 

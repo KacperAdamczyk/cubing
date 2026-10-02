@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { ArrowRight, Dumbbell } from "@lucide/svelte";
-	import CubeCard from "$lib/components/CubeCard.svelte";
-	import { getCubesView } from "$lib/data/catalog.remote";
-	import { pickerPath } from "$lib/training/selection";
+	import CubeCard from "#lib/components/CubeCard.svelte";
+	import { getCubesView } from "#lib/data/catalog.remote.js";
+	import { pickerPath } from "#lib/training/selection.js";
 
 	const cubes = await getCubesView();
 </script>

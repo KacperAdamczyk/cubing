@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Algorithm, ViewType } from "$lib/data/types";
+	import type { Algorithm, ViewType } from "#lib/data/types.js";
 	import AlgorithmView from "./AlgorithmView.svelte";
 
 	const otherAlgorithmsLimit = 2;

@@ -1,10 +1,10 @@
 <script lang="ts">
+	import CasesList from "#lib/components/CasesList.svelte";
+	import PageHeader from "#lib/components/PageHeader.svelte";
+	import PreviewList from "#lib/components/PreviewList.svelte";
+	import { getSubsetView } from "#lib/data/catalog.remote.js";
+	import { count } from "#lib/data/format.js";
 	import { page } from "$app/state";
-	import CasesList from "$lib/components/CasesList.svelte";
-	import PageHeader from "$lib/components/PageHeader.svelte";
-	import PreviewList from "$lib/components/PreviewList.svelte";
-	import { getSubsetView } from "$lib/data/catalog.remote";
-	import { count } from "$lib/data/format";
 
 	const view = $derived(await getSubsetView(page.params.subsetId!));
 </script>

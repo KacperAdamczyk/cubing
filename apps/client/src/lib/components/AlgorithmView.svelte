@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Lightbulb } from "@lucide/svelte";
-	import type { Algorithm, ViewType } from "$lib/data/types";
+	import type { Algorithm, ViewType } from "#lib/data/types.js";
 	import AlgorithmNotation from "./AlgorithmNotation.svelte";
 	import AlgorithmVerifier from "./AlgorithmVerifier.svelte";
 

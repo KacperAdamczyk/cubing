@@ -1,7 +1,7 @@
 import { error } from "@sveltejs/kit";
 import { z } from "zod";
+import * as repo from "#lib/server/repository.js";
 import { prerender } from "$app/server";
-import * as repo from "$lib/server/repository";
 import type { Case, CaseNeighbor, CubeSummary, PreviewItem } from "./types";
 
 export const getSidebar = prerender(() => repo.getSidebarTree());

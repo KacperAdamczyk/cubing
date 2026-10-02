@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ViewType } from "$lib/data/types";
+	import type { ViewType } from "#lib/data/types.js";
 
 	interface Props {
 		title: string;

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { ArrowLeft, ArrowRight } from "@lucide/svelte";
+	import CaseView from "#lib/components/CaseView.svelte";
+	import CubeView from "#lib/components/cube/CubeView.svelte";
+	import { getCaseView } from "#lib/data/catalog.remote.js";
 	import { page } from "$app/state";
-	import CaseView from "$lib/components/CaseView.svelte";
-	import CubeView from "$lib/components/cube/CubeView.svelte";
-	import { getCaseView } from "$lib/data/catalog.remote";
 
 	const view = $derived(await getCaseView(page.params.caseId!));
 	const viewType = $derived(view.case.subset.set.viewType);

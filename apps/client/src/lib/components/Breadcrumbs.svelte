@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ChevronLeft } from "@lucide/svelte";
-	import favicon from "$lib/assets/favicon.svg";
-	import type { Breadcrumb } from "$lib/data/types";
+	import favicon from "#lib/assets/favicon.svg";
+	import type { Breadcrumb } from "#lib/data/types.js";
 
 	interface Props {
 		breadcrumbs: Breadcrumb[];
