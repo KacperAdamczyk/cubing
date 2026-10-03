@@ -26,7 +26,7 @@
         "@tailwindcss/vite": "4.3.3",
         "@types/node": "26.6.3",
         "@vitest/browser-playwright": "4.1.11",
-        "daisyui": "5.7.46",
+        "daisyui": "5.7.47",
         "db": "workspace:*",
         "playwright": "1.62.1",
         "portless": "0.15.6",
@@ -513,7 +513,7 @@
 
     "cube": ["cube@workspace:packages/cube"],
 
-    "daisyui": ["daisyui@5.7.46", "", {}, "sha512-z/tfVXLpLRe1ojGeokzxauHA9Ij5CGfk+83EdatQbFSVr02h5mUcp4nkgQJOw68wH1wAAPu/SY+MWbDdJG2R4w=="],
+    "daisyui": ["daisyui@5.7.47", "", {}, "sha512-NOl4vPifelRqB3CMzoU751zc44KCDD9HdHMTTqQ30uiYVpIyK7+s94/ySDWgYqjdl1tQCaCrgGBx4KCizm+a3Q=="],
 
     "db": ["db@workspace:packages/db"],
 
