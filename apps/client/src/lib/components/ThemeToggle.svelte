@@ -26,7 +26,7 @@
 <label
 	class="btn btn-circle btn-ghost swap swap-rotate has-focus-visible:outline-2 has-focus-visible:outline-offset-2"
 >
-	<input type="checkbox" aria-label="Toggle theme" checked={theme === 'light'} onchange={toggle} />
+	<input type="checkbox" aria-label="Toggle theme" checked={theme === "light"} onchange={toggle} />
 	<Sun class="swap-off size-5" />
 	<Moon class="swap-on size-5" />
 </label>

@@ -17,7 +17,7 @@
 	<PageHeader
 		title={view.cube.name}
 		description="Every algorithm for this cube, grouped by set and subset."
-		stats={[count(view.cases.length, 'case'), count(view.sets.length, 'set')]}
+		stats={[count(view.cases.length, "case"), count(view.sets.length, "set")]}
 	/>
 
 	<section class="flex flex-col gap-3">

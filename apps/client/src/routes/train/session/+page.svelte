@@ -31,7 +31,7 @@
 
 <svelte:head>
 	<title>
-		{current ? `Training ${index + 1} of ${entries.length}` : 'Training'}
+		{current ? `Training ${index + 1} of ${entries.length}` : "Training"}
 		· My Cubing Algs
 	</title>
 </svelte:head>

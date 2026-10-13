@@ -21,7 +21,7 @@
 			<p class="mb-1 text-sm font-semibold text-base-content/55">{eyebrow}</p>
 		{/if}
 		<div class="flex items-center gap-3">
-			{#if viewType !== 'all'}
+			{#if viewType !== "all"}
 				<span class="size-3.5 shrink-0 rounded-[4px] bg-(--type-accent)" aria-hidden="true"></span>
 			{/if}
 			<h1 class="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">{title}</h1>
