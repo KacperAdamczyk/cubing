@@ -107,12 +107,3 @@ bunx wrangler dev --port 8788 --local-upstream localhost:8788 --upstream-protoco
 The `--local-upstream` flags matter: without them wrangler simulates the custom-domain route
 and the prerendered remote functions fetch their data from the live site instead of the local
 build.
-
-## Known issues
-
-- **`bun install --frozen-lockfile` fails** with "lockfile had changes, but lockfile is frozen".
-  `packages/db` declares `@types/bun` as `latest`, which now resolves to a newer version than
-  the one recorded in `bun.lock` (the lockfile has no `db/@types/bun` entry). The deploy
-  workflow uses `--frozen-lockfile`, so it is affected too. Pinning `@types/bun` in
-  `packages/db` to the same version as `packages/cube`, or committing a refreshed lockfile,
-  fixes it. Plain `bun install` works in the meantime.
