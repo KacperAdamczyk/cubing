@@ -1,48 +1,118 @@
-# Astro Starter Kit: Basics
+# cubing
 
-```sh
-npm create astro@latest -- --template basics
-```
+A Rubik's Cube algorithm learning app: browse F2L, OLL and PLL cases with a 2D cube
+visualization of each one, and drill a chosen selection of cases in the trainer.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Live at **https://cubing.admck.com**.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Built with SvelteKit 2 (Svelte 5 runes), TypeScript, Tailwind CSS 4 + daisyUI 5, Drizzle +
+SQLite for the algorithm data, and deployed to Cloudflare Workers.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## Repository layout
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+This is a [Bun](https://bun.sh) workspaces monorepo orchestrated with [Turborepo](https://turborepo.com).
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+apps/
+  client/        SvelteKit app (routes, UI components, data layer, trainer)
+packages/
+  cube/          Framework-agnostic cube simulation engine (moves, faces, solved checks)
+  db/            Drizzle schema + committed db.sqlite, the source of truth for algorithm data
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- **`apps/client`** renders `cube → set → subset → case` pages. Everything except the trainer
+  is prerendered at build time: catalog data is read from `db` through prerendered remote
+  functions and inlined into the static output, so no database code runs in the browser or
+  Worker. The trainer (`/train`, `/train/session`) is rendered dynamically on the Worker and
+  keeps its state in the URL.
+- **`packages/cube`** is the engine behind the visualizations (`createCube`, `applyMoves`,
+  `algorithmToFaces`, `isCubeSolved`, …). See `packages/cube/src/internals.md`.
+- **`packages/db`** holds the schema (`schema.ts`), migrations (`drizzle/`) and the data
+  itself (`db.sqlite`), opened read-only via `bun:sqlite`.
 
-## 🧞 Commands
+More architectural detail lives in [`AGENTS.md`](./AGENTS.md).
 
-All commands are run from the root of the project, from a terminal:
+## Getting started
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Requires Bun (the version is pinned in `packageManager` in `package.json`). The app runs on
+the Bun runtime rather than Node, because `packages/db` uses `bun:sqlite` at build time.
 
-## 👀 Want to learn more?
+```sh
+bun install
+cd apps/client
+bun run dev
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The dev server runs through [portless](https://github.com/vercel-labs/portless) at
+`https://cubing.localhost` (`:1355` if the proxy runs unprivileged). Git worktrees get their
+own `<branch>.cubing.localhost` route.
+
+## Commands
+
+From the repo root:
+
+| Command             | What it does                                                   |
+| :------------------ | :------------------------------------------------------------- |
+| `bun run build`     | Build every workspace (turbo)                                  |
+| `bun run test`      | Run every workspace's tests (turbo)                            |
+| `bun run typecheck` | `svelte-check` / `tsc` across workspaces (turbo)               |
+| `bun run lint`      | `biome check .`, the same check CI runs                        |
+| `bun run format`    | `biome check --write .` (format, sort imports, safe lint fixes) |
+
+From `apps/client`:
+
+| Command           | What it does                                                    |
+| :---------------- | :-------------------------------------------------------------- |
+| `bun run dev`     | Vite dev server via portless                                    |
+| `bun run build`   | Production build to `.svelte-kit/cloudflare/`                   |
+| `bun run preview` | Preview the production build                                    |
+| `bun run test`    | Vitest unit tests (run once)                                    |
+| `bun run test:unit` | Vitest in watch mode                                          |
+| `bun run check`   | `svelte-check` type check                                       |
+| `bun run deploy`  | `wrangler deploy` to Cloudflare Workers                         |
+
+Cube engine tests live in `packages/cube`; run them there with `bun test`.
+
+## Editing algorithm data
+
+Algorithm data lives in `packages/db/db.sqlite`. Edit it with Drizzle Studio
+(`bun run --filter db drizzle:studio`) or SQL, commit the updated `db.sqlite`, and run
+`bun run --filter db build` before building the client so it picks up the latest data.
+
+## Testing
+
+Tests use Vitest and sit next to the code they cover (`*.test.ts`). CI (`.github/workflows/pr.yml`)
+runs tests, lint, typecheck and build on every pull request.
+
+## Deployment
+
+Pushes to `main` deploy automatically via `.github/workflows/deploy.yml`, which builds and runs
+`wrangler deploy` in the GitHub `production` environment (secrets `CLOUDFLARE_API_TOKEN` and
+`CLOUDFLARE_ACCOUNT_ID`). Worker config is in `apps/client/wrangler.jsonc`.
+
+To deploy by hand:
+
+```sh
+cd apps/client
+bun run build
+bun run deploy
+```
+
+To run the built Worker locally (after a build), from `apps/client`:
+
+```sh
+bunx wrangler dev --port 8788 --local-upstream localhost:8788 --upstream-protocol http
+```
+
+The `--local-upstream` flags matter: without them wrangler simulates the custom-domain route
+and the prerendered remote functions fetch their data from the live site instead of the local
+build.
+
+## Known issues
+
+- **`bun install --frozen-lockfile` fails** with "lockfile had changes, but lockfile is frozen".
+  `packages/db` declares `@types/bun` as `latest`, which now resolves to a newer version than
+  the one recorded in `bun.lock` (the lockfile has no `db/@types/bun` entry). The deploy
+  workflow uses `--frozen-lockfile`, so it is affected too. Pinning `@types/bun` in
+  `packages/db` to the same version as `packages/cube`, or committing a refreshed lockfile,
+  fixes it. Plain `bun install` works in the meantime.
