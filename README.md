@@ -5,7 +5,7 @@ visualization of each one, and drill a chosen selection of cases in the trainer.
 
 Live at **https://cubing.admck.com**.
 
-Built with SvelteKit 2 (Svelte 5 runes), TypeScript, Tailwind CSS 4 + daisyUI 5, Drizzle +
+Built with SvelteKit 3 (Svelte 5 runes), TypeScript, Tailwind CSS 4 + daisyUI 5, Drizzle +
 SQLite for the algorithm data, and deployed to Cloudflare Workers.
 
 ## Repository layout
