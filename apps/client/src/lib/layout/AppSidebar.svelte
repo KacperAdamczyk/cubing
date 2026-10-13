@@ -66,8 +66,8 @@
 	<!-- The trainer sits outside the catalogue tree, so it gets its own entry. -->
 	<a
 		href={pickerPath}
-		aria-current={isTraining ? 'page' : undefined}
-		class={['btn btn-primary btn-sm justify-start gap-2', !isTraining && 'btn-soft']}
+		aria-current={isTraining ? "page" : undefined}
+		class={["btn btn-primary btn-sm justify-start gap-2", !isTraining && "btn-soft"]}
 	>
 		<Dumbbell class="size-4" aria-hidden="true" />
 		Training
@@ -78,7 +78,10 @@
 			<li class="menu-title px-0">
 				<a
 					href={`/${cube.id}`}
-					class={['text-xs font-bold text-base-content/50', isActive(`/${cube.id}`) && 'text-base-content']}
+					class={[
+						"text-xs font-bold text-base-content/50",
+						isActive(`/${cube.id}`) && "text-base-content",
+					]}
 				>
 					{cube.name}
 				</a>
@@ -91,8 +94,8 @@
 					<a
 						href={`/${cube.id}/${set.id}`}
 						class={[
-							'font-display gap-2.5 text-[15px] font-bold transition-colors',
-							isActive(`/${cube.id}/${set.id}`) && activeClass
+							"font-display gap-2.5 text-[15px] font-bold transition-colors",
+							isActive(`/${cube.id}/${set.id}`) && activeClass,
 						]}
 					>
 						<span class="size-2.5 rounded-[3px] bg-(--type-accent)"></span>
@@ -107,8 +110,8 @@
 								<a
 									href={`/${cube.id}/${set.id}/${subset.id}`}
 									class={[
-										'transition-colors',
-										isActive(`/${cube.id}/${set.id}/${subset.id}`) && `font-medium ${activeClass}`
+										"transition-colors",
+										isActive(`/${cube.id}/${set.id}/${subset.id}`) && `font-medium ${activeClass}`,
 									]}
 								>
 									{subset.name}
@@ -122,9 +125,9 @@
 											<a
 												href={`/${cube.id}/${set.id}/${subset.id}/${c.id}`}
 												class={[
-													'transition-colors',
+													"transition-colors",
 													isActive(`/${cube.id}/${set.id}/${subset.id}/${c.id}`) &&
-														`font-medium ${activeClass}`
+														`font-medium ${activeClass}`,
 												]}
 											>
 												{c.name}

@@ -30,9 +30,9 @@
 
 <div
 	class={[
-		'grid aspect-square h-full w-full grid-cols-cube grid-rows-cube gap-[2%]',
-		{ 'grid-cols-cube-flat': !adjacentPieces, 'grid-rows-cube-flat': !adjacentPieces },
-		className
+		"grid aspect-square h-full w-full grid-cols-cube grid-rows-cube gap-[2%]",
+		{ "grid-cols-cube-flat": !adjacentPieces, "grid-rows-cube-flat": !adjacentPieces },
+		className,
 	]}
 >
 	{#if adjacentPieces}

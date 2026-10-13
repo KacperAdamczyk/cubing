@@ -17,7 +17,7 @@
 	<PageHeader
 		eyebrow={`${view.cube.name} · ${view.set.name}`}
 		title={view.subset.name}
-		stats={[count(view.cases.length, 'case')]}
+		stats={[count(view.cases.length, "case")]}
 		viewType={view.set.viewType}
 	/>
 
