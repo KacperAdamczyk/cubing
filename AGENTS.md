@@ -25,7 +25,7 @@ This is a monorepo using Bun workspaces. The application is in `apps/client/` (S
 ## Architecture Overview
 
 A **Rubik's Cube algorithm learning application** built with:
-- **SvelteKit 2** - file-based routing, prerendered except the trainer (`adapter-cloudflare`, deployed to Cloudflare Workers)
+- **SvelteKit 3** - file-based routing, prerendered except the trainer (`adapter-cloudflare`, deployed to Cloudflare Workers)
 - **Svelte 5** - runes-mode components
 - **TypeScript** - type safety throughout
 - **Tailwind CSS 4 + daisyUI 5** - styling
