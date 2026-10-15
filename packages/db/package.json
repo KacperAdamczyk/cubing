@@ -25,7 +25,7 @@
 		"drizzle:studio": "drizzle-kit studio"
 	},
 	"devDependencies": {
-		"@types/bun": "1.4.2",
+		"@types/bun": "1.4.3",
 		"bunup": "0.16.32",
 		"drizzle-kit": "1.0.0-rc.5-ab785fc"
 	},
