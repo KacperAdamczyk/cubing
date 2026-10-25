@@ -29,7 +29,7 @@
         "daisyui": "5.7.47",
         "db": "workspace:*",
         "playwright": "1.64.0",
-        "portless": "0.15.6",
+        "portless": "0.15.9",
         "svelte": "5.57.1",
         "svelte-check": "4.7.6",
         "tailwindcss": "4.3.3",
@@ -60,7 +60,7 @@
         "drizzle-orm": "1.0.0-rc.5-ab785fc",
       },
       "devDependencies": {
-        "@types/bun": "latest",
+        "@types/bun": "1.4.2",
         "bunup": "0.16.32",
         "drizzle-kit": "1.0.0-rc.5-ab785fc",
       },
@@ -619,7 +619,7 @@
 
     "pngjs": ["pngjs@7.0.0", "", {}, "sha512-LKWqWJRhstyYo9pGvgor/ivk2w94eSjE3RGVuzLGlr3NmD8bf7RcYGze1mNdEHRP6TRP6rMuDHk5t44hnTRyow=="],
 
-    "portless": ["portless@0.15.6", "", { "os": [ "linux", "win32", "darwin", ], "bin": { "portless": "dist/cli.js" } }, "sha512-uOAwWLF32rmyEGFASzSO0VOaqb/AQxFCCzyZbPGd82UNNOfIEvc09zy92nroNibE5HNfzV4oVB0ObKbPXgkM9A=="],
+    "portless": ["portless@0.15.9", "", { "os": [ "linux", "win32", "darwin", ], "bin": { "portless": "dist/cli.js" } }, "sha512-u3anBEEEdy5v5/Nc73JcYcfqCwbhjvOf0/v9q9P/kFKLSgPQo8yQa3H2yguJ410xz+pyuzGCXJP503R6MzLE4Q=="],
 
     "postcss": ["postcss@8.5.28", "", { "dependencies": { "nanoid": "^3.3.18", "picocolors": "^1.1.1", "source-map-js": "^1.2.1" } }, "sha512-RRuzqDtt5Y9h3quz5hWhK+TPnsmVs6WwSU6LkJMeY4HstUEDuYTG8UJSdawMRzmzAtV+KEoG8N3Qg2qLy5vM/A=="],
 
