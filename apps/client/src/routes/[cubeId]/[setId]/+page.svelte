@@ -20,7 +20,7 @@
 		eyebrow={`${view.cube.name} · ${info.label}`}
 		title={view.set.name}
 		description={info.description}
-		stats={[count(view.cases.length, 'case'), count(view.subsets.length, 'subset')]}
+		stats={[count(view.cases.length, "case"), count(view.subsets.length, "subset")]}
 		viewType={view.set.viewType}
 	/>
 

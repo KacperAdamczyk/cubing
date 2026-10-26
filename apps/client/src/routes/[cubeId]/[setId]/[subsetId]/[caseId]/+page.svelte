@@ -25,7 +25,7 @@
 
 	<nav aria-label="Neighbouring cases" class="grid gap-3 sm:grid-cols-2">
 		{#if view.prev}
-			<a href={view.prev.href} class={[neighborClass, 'pr-4']}>
+			<a href={view.prev.href} class={[neighborClass, "pr-4"]}>
 				<ArrowLeft
 					class="size-4 shrink-0 text-base-content/40 transition-transform group-hover:-translate-x-0.5"
 				/>
@@ -41,7 +41,7 @@
 		{#if view.next}
 			<a
 				href={view.next.href}
-				class={[neighborClass, 'justify-end pl-4 text-right sm:col-start-2']}
+				class={[neighborClass, "justify-end pl-4 text-right sm:col-start-2"]}
 			>
 				<div class="min-w-0">
 					<p class="eyebrow">Next</p>

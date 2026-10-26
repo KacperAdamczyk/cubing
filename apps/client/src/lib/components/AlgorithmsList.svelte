@@ -32,7 +32,7 @@
 	const hasMore = $derived(otherAlgorithms.length > limitedOtherAlgorithms.length);
 </script>
 
-<div class={[className, 'flex flex-col gap-2']}>
+<div class={[className, "flex flex-col gap-2"]}>
 	<AlgorithmView {setup} algorithm={mainAlgorithm} {slim} {viewType} isMain />
 	{#each limitedOtherAlgorithms as algorithm (algorithm.id)}
 		<AlgorithmView {setup} {algorithm} {slim} {viewType} />

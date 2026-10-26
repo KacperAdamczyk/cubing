@@ -12,10 +12,10 @@
 	let { algorithm, type }: Props = $props();
 </script>
 
-{#if type === 'F2L'}
+{#if type === "F2L"}
 	<F2L {algorithm} />
-{:else if type === 'OLL'}
+{:else if type === "OLL"}
 	<OLL {algorithm} />
-{:else if type === 'PLL'}
+{:else if type === "PLL"}
 	<PLL {algorithm} />
 {/if}

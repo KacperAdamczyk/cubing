@@ -49,20 +49,20 @@
 	);
 </script>
 
-<span class={['font-mono', className]}>
+<span class={["font-mono", className]}>
 	{#each items as item, i (i)}
-		{#if item.kind === 'gap'}
-			{' '}
+		{#if item.kind === "gap"}
+			{" "}
 		{:else}
 			<span class="whitespace-nowrap">
 				{#each item.parts as part, j (j)}
-					{#if part.kind === 'space'}
-						{' '}
+					{#if part.kind === "space"}
+						{" "}
 					{:else}
 						<span
 							class={{
-								'opacity-40': part.kind === 'bracket',
-								'opacity-70 italic': part.kind === 'rotation'
+								"opacity-40": part.kind === "bracket",
+								"opacity-70 italic": part.kind === "rotation",
 							}}
 						>
 							{part.text}

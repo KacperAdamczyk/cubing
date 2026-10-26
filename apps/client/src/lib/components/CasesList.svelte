@@ -45,7 +45,7 @@
 						<span class="badge badge-type badge-sm font-bold">{group.subset.set.name}</span>
 					{/if}
 					<span class="ml-auto text-xs font-semibold text-base-content/50">
-						{count(group.cases.length, 'case')}
+						{count(group.cases.length, "case")}
 					</span>
 				</header>
 			{/if}

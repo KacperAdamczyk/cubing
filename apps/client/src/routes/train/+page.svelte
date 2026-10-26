@@ -43,7 +43,7 @@
 		eyebrow="Practice"
 		title="Algorithm training"
 		description="Tick the cases you want to revise, then go through them one at a time: set up the cube, recall the alg and reveal the solution to check yourself."
-		stats={[`${count(selected.size, 'case')} selected`]}
+		stats={[`${count(selected.size, "case")} selected`]}
 	/>
 
 	<section class="card card-border border-base-300 bg-base-100 shadow-sm">
@@ -81,7 +81,7 @@
 	>
 		<p class="text-sm font-semibold text-base-content/70">
 			{#if selected.size > 0}
-				{count(selected.size, 'case')}
+				{count(selected.size, "case")}
 				selected
 			{:else}
 				Nothing selected yet

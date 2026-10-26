@@ -20,14 +20,16 @@
 
 <div
 	class={[
-		'flex flex-col rounded-field border',
-		isMain ? 'border-(--type-accent)/40 bg-base-200/60 shadow-xs' : 'border-base-300 bg-base-200/30'
+		"flex flex-col rounded-field border",
+		isMain
+			? "border-(--type-accent)/40 bg-base-200/60 shadow-xs"
+			: "border-base-300 bg-base-200/30",
 	]}
 >
 	<p class="flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 px-3 py-2.5 text-center">
 		<AlgorithmNotation
 			notation={algorithm.rotations}
-			class={isMain ? 'text-lg font-bold @md:text-xl @2xl:text-2xl' : 'text-sm @md:text-base'}
+			class={isMain ? "text-lg font-bold @md:text-xl @2xl:text-2xl" : "text-sm @md:text-base"}
 		/>
 		<AlgorithmVerifier algorithm={algorithm.rotations} {setup} onlyError={slim} {viewType} />
 	</p>
@@ -42,7 +44,7 @@
 				</p>
 			{/if}
 			{#if showDescription}
-				<p class={['text-xs text-base-content/45', showMnemonic && 'pl-6']}>
+				<p class={["text-xs text-base-content/45", showMnemonic && "pl-6"]}>
 					{algorithm.description}
 				</p>
 			{/if}

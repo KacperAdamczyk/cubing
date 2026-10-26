@@ -24,8 +24,8 @@
 		<div>
 			<h2 class="card-title font-display text-3xl font-extrabold tracking-tight">{cube.name}</h2>
 			<p class="text-sm text-base-content/60">
-				{count(cube.size, 'case')}
-				· {count(cube.sets.length, 'set')}
+				{count(cube.size, "case")}
+				· {count(cube.sets.length, "set")}
 			</p>
 		</div>
 		<ul class="flex flex-wrap gap-1.5">

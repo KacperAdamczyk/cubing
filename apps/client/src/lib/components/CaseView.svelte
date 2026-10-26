@@ -28,15 +28,21 @@
 		class="flex flex-col items-center gap-4 p-4 pl-5 @md:flex-row @md:gap-6 @md:p-5 @md:pl-7 @2xl:gap-8 @2xl:p-6 @2xl:pl-8"
 	>
 		<div
-			class={['shrink-0', large ? 'size-40 @md:size-44 @2xl:size-56' : 'size-28 @md:size-32 @2xl:size-40']}
+			class={[
+				"shrink-0",
+				large ? "size-40 @md:size-44 @2xl:size-56" : "size-28 @md:size-32 @2xl:size-40",
+			]}
 		>
 			<CubeView algorithm={c.setup} type={viewType} />
 		</div>
 		<div class="flex w-full min-w-0 flex-1 flex-col gap-3">
 			<div class="card-title flex-wrap justify-center @md:justify-start">
 				<svelte:element
-					this={large ? 'h1' : 'h2'}
-					class={['font-display font-extrabold tracking-tight', large ? 'text-3xl @2xl:text-4xl' : 'text-2xl']}
+					this={large ? "h1" : "h2"}
+					class={[
+						"font-display font-extrabold tracking-tight",
+						large ? "text-3xl @2xl:text-4xl" : "text-2xl",
+					]}
 				>
 					{c.name}
 				</svelte:element>
