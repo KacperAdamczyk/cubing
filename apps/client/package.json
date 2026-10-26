@@ -25,7 +25,7 @@
 	"devDependencies": {
 		"@playwright/test": "1.64.0",
 		"@sveltejs/adapter-cloudflare": "8.0.0",
-		"@sveltejs/kit": "3.0.0",
+		"@sveltejs/kit": "3.1.0",
 		"@sveltejs/vite-plugin-svelte": "7.3.1",
 		"@tailwindcss/vite": "4.3.3",
 		"@types/node": "26.6.5",
@@ -34,14 +34,14 @@
 		"db": "workspace:*",
 		"playwright": "1.64.0",
 		"portless": "0.15.6",
-		"svelte": "5.57.1",
+		"svelte": "5.57.2",
 		"svelte-check": "4.7.6",
 		"tailwindcss": "4.3.3",
 		"typescript": "6.0.3",
-		"vite": "8.3.1",
+		"vite": "8.3.5",
 		"vitest": "5.0.3",
 		"vitest-browser-svelte": "3.1.0",
-		"wrangler": "4.148.0",
+		"wrangler": "4.152.0",
 		"zod": "4.6.5"
 	},
 	"imports": {
