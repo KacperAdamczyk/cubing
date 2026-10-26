@@ -30,7 +30,7 @@
 		"typescript": "7.0.2"
 	},
 	"dependencies": {
-		"immer": "11.1.18",
+		"immer": "11.2.9",
 		"ts-pattern": "5.9.0"
 	}
 }
