@@ -31,6 +31,6 @@
 	},
 	"dependencies": {
 		"immer": "11.2.9",
-		"ts-pattern": "5.9.0"
+		"ts-pattern": "5.9.2"
 	}
 }
