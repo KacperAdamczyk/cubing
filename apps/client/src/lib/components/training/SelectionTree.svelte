@@ -21,10 +21,7 @@
 <!-- A group's checkbox: ticked when every case below it is selected, a dash
      when only some are. It sits directly in the row (no wrapping label) so a
      click on it toggles the selection without also folding the <details>. -->
-{#snippet groupCheckbox(
-	ids: string[],
-	name: string,
-)}
+{#snippet groupCheckbox(ids: string[], name: string)}
 	{@const n = countSelected(ids)}
 	<input
 		type="checkbox"
@@ -36,9 +33,7 @@
 	/>
 {/snippet}
 
-{#snippet count(
-	ids: string[],
-)}
+{#snippet count(ids: string[])}
 	<span class="justify-self-end text-[11px] font-semibold text-base-content/45 tabular-nums">
 		{countSelected(ids)}/{ids.length}
 	</span>
