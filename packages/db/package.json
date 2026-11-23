@@ -31,6 +31,6 @@
 		"typescript": "7.0.2"
 	},
 	"dependencies": {
-		"drizzle-orm": "1.0.0-rc.6"
+		"drizzle-orm": "1.0.0-rc.5-ab785fc"
 	}
 }
